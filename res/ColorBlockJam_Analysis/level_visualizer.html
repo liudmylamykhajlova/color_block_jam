@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Block Jam - Level Visualizer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .control-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        input[type="number"], input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #5568d3;
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .level-info {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .level-info h2 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .level-info p {
+            color: #666;
+            margin: 5px 0;
+        }
+        
+        #canvas {
+            border: 3px solid #333;
+            border-radius: 8px;
+            background: #f0f0f0;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 13px;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            max-width: 250px;
+        }
+        
+        .tooltip.show {
+            display: block;
+        }
+        
+        .tooltip h3 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #fff;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 5px;
+        }
+        
+        .tooltip p {
+            margin: 4px 0;
+            color: #ddd;
+        }
+        
+        .tooltip .label {
+            color: #aaa;
+            font-weight: normal;
+        }
+        
+        .tooltip .value {
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        /* Search results dropdown */
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            z-index: 100;
+        }
+        
+        .search-results.show {
+            display: block;
+        }
+        
+        .search-result-item {
+            padding: 10px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .search-result-item:hover {
+            background: #f5f5f5;
+        }
+        
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .search-result-item .name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .search-result-item .guid {
+            font-size: 11px;
+            color: #999;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Color Block Jam - Level Visualizer</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label>Level:</label>
+                <input type="number" id="levelInput" value="1" min="1" max="1557">
+                <button onclick="loadLevel()">Load Level</button>
+            </div>
+            <div class="control-group">
+                <button onclick="prevLevel()">← Prev</button>
+                <button onclick="nextLevel()">Next →</button>
+            </div>
+            <div class="control-group">
+                <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                    <input type="checkbox" id="gameOrderToggle" checked onchange="toggleOrder()">
+                    Game Order
+                </label>
+            </div>
+            <div class="control-group">
+                <label>Search:</label>
+                <div style="position: relative;">
+                    <input type="text" id="searchInput" placeholder="Level name or GUID" 
+                           onkeyup="handleSearchInput(event)" 
+                           onfocus="showSearchResults()"
+                           onblur="hideSearchResults()">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+                <button onclick="searchLevel()">Search</button>
+            </div>
+        </div>
+        
+        <div id="levelInfo" class="level-info" style="display: none;">
+            <h2 id="levelName"></h2>
+            <p><strong>Grid Size:</strong> <span id="gridSize"></span></p>
+            <p><strong>Game Blocks:</strong> <span id="blockCount"></span></p>
+            <p><strong>Doors:</strong> <span id="doorCount"></span> <span id="doorDetails" style="color: #667eea;"></span></p>
+            <p><strong>GUID:</strong> <span id="levelGuid"></span></p>
+        </div>
+        
+        <div id="error" class="error" style="display: none;"></div>
+        
+        <div id="loading" class="loading">Loading levels data...</div>
+        <div id="tooltip" class="tooltip"></div>
+        <canvas id="canvas" style="display: none;"></canvas>
+    </div>
+
+    <script>
+        let levels = [];
+        let levelOrder = []; // Порядок рівнів з AllLevels_guids.json
+        let currentLevelIndex = 0;
+        let currentLevel = null; // Зберігаємо поточний рівень для tooltip
+        let useGameOrder = true; // Використовувати порядок з гри
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const tooltip = document.getElementById('tooltip');
+        
+        // Кольорова палітра відповідно до оригінальної гри Color Block Jam
+        const colorPalette = [
+            '#03a5ef', // 0 - Blue (Блакитний)
+            '#143cf6', // 1 - Dark Blue (Темно-синій)
+            '#48aa1a', // 2 - Green (Зелений)
+            '#b844c8', // 3 - Pink (Рожевий)
+            '#7343db', // 4 - Purple (Фіолетовий)
+            '#fbb32d', // 5 - Yellow (Жовтий)
+            '#09521d', // 6 - Dark Green (Темно-зелений)
+            '#f2772b', // 7 - Orange (Помаранчевий)
+            '#b8202c', // 8 - Red (Червоний)
+            '#0facae', // 9 - Cyan (Бірюзовий)
+            '#EC7063', // 10 - Коралловий
+            '#795548', // 11 - Коричневий
+            '#607D8B', // 12 - Сіро-синій
+            '#FF5722', // 13 - Глибокий помаранчевий
+            '#673AB7', // 14 - Глибокий фіолетовий
+            '#009688', // 15 - Темний бірюзовий
+        ];
+        
+        // Функція для отримання кольору з альфа-каналом
+        function getColorWithAlpha(colorIndex, alpha) {
+            const baseColor = colorPalette[colorIndex] || '#999999';
+            // Переконуємось що колір в форматі #RRGGBB
+            const fullColor = baseColor.length === 4 
+                ? '#' + baseColor[1] + baseColor[1] + baseColor[2] + baseColor[2] + baseColor[3] + baseColor[3]
+                : baseColor;
+            return fullColor + alpha;
+        }
+        
+        // Форми блоків - pivot в центрі або кутку форми
+        // Координати: [dx, dy] де dx=зміщення по колонці, dy=зміщення по рядку
+        // dy: +1 = вниз, -1 = вгору
+        // dx: +1 = вправо, -1 = вліво
+        const blockShapes = {
+            0: [[0, 0]], // One - одна клітинка
+            1: [[0, -1], [0, 0]], // Two - вертикальна 1x2 (pivot знизу, extends up)
+            2: [[0, -1], [0, 0], [0, 1]], // Three - вертикальна 1x3 (центрована)
+            3: [[0, -1], [0, 0], [0, 1], [1, 1]], // L (4 клітинки, центрований): X
+                                               //                              X  <- pivot
+                                               //                              X X
+            4: [[-1, -1], [0, -1], [-1, 0], [-1, 1]], // ReverseL (4 клітинки): X X
+                                                      //                        X  <- pivot
+                                                      //                        X
+            5: [[-1, -1], [0, -1], [0, 0]], // ShortL: X X
+                                          //            X (pivot внизу справа)
+            6: [[0, 0], [-1, 0], [1, 0], [0, -1], [0, 1]], // Plus - хрест (центрований)
+            7: [[-1, -1], [0, -1], [-1, 0], [0, 0]], // TwoSquare - 2x2 (центрований, pivot в правому нижньому)
+            8: [[-1, 0], [0, 0], [1, 0], [0, 1]], // ShortT - Т-форма (центрована)
+            9: [[0, 0], [1, 0], [1, 1], [2, 1]], // Z
+            10: [[1, 0], [2, 0], [0, 1], [1, 1]], // ReverseZ
+            11: [[0, 0], [2, 0], [0, 1], [1, 1], [2, 1]], // U
+        };
+        
+        // Завантаження даних
+        async function loadLevelsData() {
+            try {
+                // Завантажуємо рівні
+                const response = await fetch('level_data/parsed_levels_complete.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load levels data');
+                }
+                const allLevels = await response.json();
+                
+                // Завантажуємо порядок рівнів з гри
+                const guidsResponse = await fetch('level_data/AllLevels_guids.json');
+                if (guidsResponse.ok) {
+                    const guidsData = await guidsResponse.json();
+                    const guids = guidsData.level_guids;
+                    
+                    // Створюємо мапу GUID -> рівень
+                    const guidToLevel = {};
+                    allLevels.forEach(level => {
+                        guidToLevel[level.guid] = level;
+                    });
+                    
+                    // Сортуємо рівні за порядком з гри
+                    levelOrder = guids.map((guid, idx) => ({
+                        level: guidToLevel[guid],
+                        gameIndex: idx + 1
+                    })).filter(item => item.level);
+                    
+                    levels = levelOrder.map(item => item.level);
+                    allLevelsGameOrder = levels;
+                    allLevelsOriginal = allLevels;
+                    console.log('Loaded ' + levels.length + ' levels in game order');
+                } else {
+                    // Fallback до оригінального порядку
+                    levels = allLevels;
+                    levelOrder = levels.map((level, idx) => ({ level, gameIndex: idx + 1 }));
+                    useGameOrder = false;
+                }
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('canvas').style.display = 'block';
+                document.getElementById('levelInput').max = levels.length;
+                loadLevel(0);
+            } catch (error) {
+                showError('Error loading levels: ' + error.message);
+            }
+        }
+        
+        // Визначення cellSizeWorld на основі координат блоків рівня
+        function detectCellSize(level) {
+            const blocks = level.gameBlocks || level.blocks || [];
+            if (blocks.length < 2) return 2.0;
+            
+            // Для всіх рівнів використовуємо cellSize=2 для кращого розташування
+            return 2.0;
+        }
+        
+        let currentCellSize = 2.0; // Буде оновлюватись при завантаженні рівня
+        
+        // Конвертація світових координат в grid координати
+        function worldToGrid(worldX, worldY, gridSize) {
+            // Game block coordinates:
+            // - World (0, 0) is the center of the grid
+            // - Positive Y is up in world, but row 0 is at top of grid
+            
+            const cellSizeWorld = currentCellSize;
+            
+            // Центруємо сітку
+            const offsetX = (gridSize.x - 1) / 2;
+            const offsetY = (gridSize.y - 1) / 2;
+            
+            let col = Math.round(worldX / cellSizeWorld + offsetX);
+            let row = Math.round(-worldY / cellSizeWorld + offsetY);
+            
+            // Clamp to grid bounds
+            row = Math.max(0, Math.min(row, gridSize.y - 1));
+            col = Math.max(0, Math.min(col, gridSize.x - 1));
+            
+            return { row, col };
+        }
+        
+        // Застосування ротації до форми блоку
+        function rotateShape(shape, rotationY) {
+            const rotations = Math.round(rotationY / 90) % 4;
+            let rotated = shape.map(cell => [...cell]); // Deep copy
+            
+            for (let i = 0; i < rotations; i++) {
+                rotated = rotated.map(([x, y]) => [-y, x]);
+            }
+            
+            // НЕ нормалізуємо - залишаємо центровані координати
+            return rotated;
+        }
+        
+        // Завантаження рівня
+        function loadLevel(index = null) {
+            if (index === null) {
+                index = parseInt(document.getElementById('levelInput').value) - 1;
+            }
+            
+            if (index < 0 || index >= levels.length) {
+                showError('Invalid level index');
+                return;
+            }
+            
+            currentLevelIndex = index;
+            const level = levels[index];
+            currentLevel = level; // Зберігаємо для tooltip
+            document.getElementById('levelInput').value = index + 1;
+            
+            // Оновлення інформації
+            document.getElementById('levelInfo').style.display = 'block';
+            const gameNum = levelOrder[index]?.gameIndex || (index + 1);
+            document.getElementById('levelName').textContent = useGameOrder 
+                ? `Game Level ${gameNum}: ${level.name}`
+                : level.name;
+            document.getElementById('gridSize').textContent = `${level.gridSize.x} × ${level.gridSize.y}`;
+            // Use gameBlocks if available, fallback to blocks for old format
+            const blocks = level.gameBlocks || level.blocks || [];
+            document.getElementById('blockCount').textContent = blocks.length;
+            document.getElementById('doorCount').textContent = level.doors.length;
+            
+            // Показуємо деталі дверей (типи/кольори)
+            const colorNames = ['Red', 'Yellow', 'Green', 'Blue', 'Purple', 'Cyan', 'Magenta', 'Orange', 'Pink', 'DarkGray', 'Coral'];
+            const doorDetails = level.doors.map(d => colorNames[d.blockType] || `Type${d.blockType}`).join(', ');
+            document.getElementById('doorDetails').textContent = doorDetails ? `(${doorDetails})` : '';
+            
+            document.getElementById('levelGuid').textContent = level.guid;
+            
+            // Візуалізація
+            drawLevel(level);
+            
+            // Додаємо обробники подій для tooltip
+            setupTooltipHandlers();
+        }
+        
+        // Малювання рівня
+        function drawLevel(level) {
+            // Визначаємо cellSizeWorld для цього рівня
+            currentCellSize = detectCellSize(level);
+            console.log(`Level ${level.name}: detected cellSizeWorld = ${currentCellSize}`);
+            
+            const gridSize = level.gridSize;
+            const cellSize = 50;
+            const padding = 40;
+            
+            canvas.width = gridSize.x * cellSize + padding * 2;
+            canvas.height = gridSize.y * cellSize + padding * 2;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Фон сітки
+            ctx.fillStyle = '#F5F5F5';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Малювання сітки
+            ctx.strokeStyle = '#E0E0E0';
+            ctx.lineWidth = 1;
+            
+            for (let r = 0; r <= gridSize.y; r++) {
+                const y = padding + r * cellSize;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(padding + gridSize.x * cellSize, y);
+                ctx.stroke();
+            }
+            
+            for (let c = 0; c <= gridSize.x; c++) {
+                const x = padding + c * cellSize;
+                ctx.beginPath();
+                ctx.moveTo(x, padding);
+                ctx.lineTo(x, padding + gridSize.y * cellSize);
+                ctx.stroke();
+            }
+            
+            // Приховані клітинки (y=0 в даних = нижній ряд в грі)
+            if (level.hiddenCoords && level.hiddenCoords.length > 0) {
+                ctx.fillStyle = '#D0D0D0';
+                level.hiddenCoords.forEach(coord => {
+                    const col = coord.x;
+                    const row = gridSize.y - 1 - coord.y; // Інвертуємо Y
+                    const x = padding + col * cellSize;
+                    const y = padding + row * cellSize;
+                    ctx.fillRect(x, y, cellSize, cellSize);
+                });
+            }
+            
+            // Малювання блоків (спочатку блоки)
+            // Use gameBlocks if available, fallback to blocks for old format
+            const blocksToRender = level.gameBlocks || level.blocks || [];
+            console.log(`Level ${currentLevelIndex + 1}: Total blocks in JSON: ${blocksToRender.length}`);
+            let totalCellsDrawn = 0;
+            const drawnCells = new Set(); // Для відстеження дублікатів
+            
+            blocksToRender.forEach((block, blockIdx) => {
+                let gridPos = worldToGrid(block.position.x, block.position.y, gridSize);
+                let shape = blockShapes[block.blockGroupType] || [[0, 0]];
+                // Use Z rotation if non-zero, otherwise Y rotation
+                const rotation = Math.abs(block.rotation.z || 0) > 1 ? block.rotation.z : (block.rotation.y || 0);
+                let rotatedShape = rotateShape(shape, rotation);
+                
+                // ShortL: ротація Z визначає орієнтацію
+                if (block.blockGroupType === 5) {
+                    const rotZ = Math.round((block.rotation?.z || 0) / 90) % 4;
+                    // Форми ShortL для кожної ротації:
+                    // 0°:   X X     (pivot внизу справа) - extends up-left
+                    //         X
+                    // 90°:  X       (extends down-right from pivot)
+                    //       X X
+                    // 180°: X       (extends down-right from pivot)
+                    //       X X
+                    // 270°:   X     (pivot внизу справа) - extends up-left  
+                    //       X X
+                    const shortLShapes = {
+                        0: [[-1, -1], [0, -1], [0, 0]],   // X X / __X - extends up
+                        1: [[0, 0], [1, 0], [0, 1]],      // X X / X__ - extends down-left
+                        2: [[0, 0], [0, 1], [1, 1]],      // X__ / X X - extends down-right (needs offset)
+                        3: [[-1, 0], [0, -1], [0, 0]]     // __X / X X - extends up-left
+                    };
+                    rotatedShape = shortLShapes[rotZ] || shortLShapes[0];
+                    
+                    // Для rotZ=1: форма X X / X__ йде вниз-вправо, потрібен зсув вліво-вгору
+                    if (rotZ === 1) {
+                        const atBottomEdge = (gridPos.row + 1) >= gridSize.y;
+                        const atRightEdge = (gridPos.col + 1) >= gridSize.x;
+                        
+                        if (atBottomEdge && atRightEdge) {
+                            // На правому-нижньому куті - форма йде вгору-вліво, зсув вліво
+                            gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                            rotatedShape = [[0, -1], [1, -1], [0, 0]]; // X X / __X
+                        } else if (atBottomEdge) {
+                            // Нижній край - форма йде вгору, зсув вліво
+                            gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                            rotatedShape = [[0, -1], [1, -1], [0, 0]]; // X X / __X
+                        } else {
+                            // Звичайний випадок - зсув вліво і вгору
+                            gridPos = { row: gridPos.row - 1, col: gridPos.col - 1 };
+                        }
+                    }
+                    
+                    // Для rotZ=2: потрібен зсув по col, і по row якщо біля краю
+                    if (rotZ === 2) {
+                        const atTopEdge = gridPos.row <= 1;
+                        const atBottomEdge = (gridPos.row + 1) >= gridSize.y;
+                        
+                        if (atTopEdge) {
+                            // Біля верхнього краю - зсув вгору
+                            gridPos = { row: gridPos.row - 1, col: gridPos.col - 1 };
+                        } else if (atBottomEdge) {
+                            // Біля нижнього краю - зсув вгору  
+                            gridPos = { row: gridPos.row - 1, col: gridPos.col - 1 };
+                        } else {
+                            // Звичайний зсув тільки по col
+                            gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                        }
+                    }
+                    console.log('ShortL rotZ=' + rotZ + ' at', gridPos);
+                }
+                
+                // ShortT: ротація Z визначає орієнтацію
+                if (block.blockGroupType === 8) {
+                    const rotZ = Math.round((block.rotation?.z || 0) / 90) % 4;
+                    // rotZ=0: зсув вгору
+                    // rotZ=2: зсув вниз
+                    if (rotZ === 0 && gridPos.row > 0) {
+                        gridPos = { row: gridPos.row - 1, col: gridPos.col };
+                    } else if (rotZ === 2) {
+                        gridPos = { row: gridPos.row + 1, col: gridPos.col };
+                    }
+                    console.log('ShortT rotZ=' + rotZ + ' at', gridPos);
+                }
+                
+                // Double: коригування позиції залежно від ротації
+                if (block.blockGroupType === 1) {
+                    const rotZ = Math.round((block.rotation?.z || 0) / 90) % 4;
+                    // Double базова форма: X (extends up from pivot)
+                    //                      X (pivot)
+                    // rotZ=1 (90°): форма йде вправо, потрібен зсув вліво
+                    // rotZ=2 (180°): форма йде вниз, потрібен зсув вгору
+                    // rotZ=3 (270°): форма йде вліво - OK
+                    if (rotZ === 1) {
+                        // Зсуваємо вліво на 1 клітинку
+                        if (gridPos.col > 0) {
+                            gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                        }
+                    } else if (rotZ === 2) {
+                        // Зсуваємо вгору на 1 клітинку
+                        if (gridPos.row > 0) {
+                            gridPos = { row: gridPos.row - 1, col: gridPos.col };
+                        }
+                    }
+                    console.log('Double rotZ=' + rotZ + ' at', gridPos);
+                }
+                
+                // Коригуємо L форми залежно від ротації
+                const rotationNorm = Math.abs(Math.round(rotation / 90) % 4);
+                if (block.blockGroupType === 3) {
+                    // L блок: різна обробка для різних ротацій
+                    if (rotationNorm === 0) {
+                        // rotZ=0: використовуємо дзеркальну форму (X X / _X / _X) + зсув вліво
+                        rotatedShape = [[0, -1], [1, -1], [1, 0], [1, 1]];
+                        gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                    } else if (rotationNorm === 2) {
+                        // rotZ=2 (180°): використовуємо оригінальну L форму
+                        rotatedShape = [[0, -1], [0, 0], [0, 1], [1, 1]];
+                        gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                    }
+                }
+                if (block.blockGroupType === 4 && rotationNorm === 2) {
+                    gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                }
+                
+                const color = colorPalette[block.blockType] || '#999999';
+                
+                console.log(`Block ${blockIdx + 1}: type=${block.blockGroupTypeName} (${block.blockGroupType}), world=(${block.position.x.toFixed(2)}, ${block.position.y.toFixed(2)}), grid=(${gridPos.row}, ${gridPos.col}), scale=(${block.scale?.x?.toFixed(2) || 1.0}, ${block.scale?.y?.toFixed(2) || 1.0}), rotation.y=${block.rotation?.y || 0}, shape cells=${rotatedShape.length}, cells: ${rotatedShape.map(([dx, dy]) => `(${gridPos.row + dy}, ${gridPos.col + dx})`).join(', ')}`);
+                
+                // Збираємо всі клітинки блоку
+                const blockCells = [];
+                const cellSet = new Set();
+                
+                rotatedShape.forEach(([dx, dy]) => {
+                    const col = gridPos.col + dx;
+                    const row = gridPos.row + dy;
+                    
+                    if (col >= 0 && col < gridSize.x && row >= 0 && row < gridSize.y) {
+                        blockCells.push({ col, row });
+                        cellSet.add(`${col},${row}`);
+                        
+                        const cellKey = `${row},${col}`;
+                        if (drawnCells.has(cellKey)) {
+                            console.warn(`⚠️ Duplicate cell at (${row}, ${col}) for block ${blockIdx + 1}`);
+                        }
+                        drawnCells.add(cellKey);
+                        totalCellsDrawn++;
+                    }
+                });
+                
+                // Малюємо заливку для всіх клітинок
+                blockCells.forEach(({ col, row }) => {
+                    const x = padding + col * cellSize;
+                    const y = padding + row * cellSize;
+                    
+                    // Градієнт для блоку
+                    const gradient = ctx.createLinearGradient(x, y, x + cellSize, y + cellSize);
+                    gradient.addColorStop(0, color);
+                    gradient.addColorStop(1, color + 'DD');
+                    
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(x + 2, y + 2, cellSize - 4, cellSize - 4);
+                });
+                
+                // Малюємо обводку тільки на зовнішніх краях фігури
+                ctx.strokeStyle = 'rgba(0, 0, 0, 0.6)';
+                ctx.lineWidth = 2;
+                
+                blockCells.forEach(({ col, row }) => {
+                    const x = padding + col * cellSize + 2;
+                    const y = padding + row * cellSize + 2;
+                    const w = cellSize - 4;
+                    const h = cellSize - 4;
+                    
+                    // Перевіряємо кожну сторону - малюємо лінію тільки якщо немає сусіда
+                    // Верхня сторона
+                    if (!cellSet.has(`${col},${row - 1}`)) {
+                        ctx.beginPath();
+                        ctx.moveTo(x, y);
+                        ctx.lineTo(x + w, y);
+                        ctx.stroke();
+                    }
+                    // Нижня сторона
+                    if (!cellSet.has(`${col},${row + 1}`)) {
+                        ctx.beginPath();
+                        ctx.moveTo(x, y + h);
+                        ctx.lineTo(x + w, y + h);
+                        ctx.stroke();
+                    }
+                    // Ліва сторона
+                    if (!cellSet.has(`${col - 1},${row}`)) {
+                        ctx.beginPath();
+                        ctx.moveTo(x, y);
+                        ctx.lineTo(x, y + h);
+                        ctx.stroke();
+                    }
+                    // Права сторона
+                    if (!cellSet.has(`${col + 1},${row}`)) {
+                        ctx.beginPath();
+                        ctx.moveTo(x + w, y);
+                        ctx.lineTo(x + w, y + h);
+                        ctx.stroke();
+                    }
+                });
+            });
+            
+            console.log(`Total cells drawn: ${totalCellsDrawn}, Unique cells: ${drawnCells.size}`);
+            
+            // Малювання дверей (після блоків, щоб були видимі)
+            console.log(`Drawing ${level.doors.length} doors:`);
+            
+            level.doors.forEach((door, idx) => {
+                const doorPartCount = door.doorPartCount || 1;
+                const color = colorPalette[door.blockType] || '#999999';
+                
+                const worldX = door.position.x;
+                const worldY = door.position.y;
+                
+                let edge = 'unknown';
+                let doorX, doorY, doorWidth, doorHeight;
+                const doorThickness = 12;
+                const doorLength = cellSize * doorPartCount;
+                
+                // Визначаємо край по координатах (динамічно на основі розміру сітки)
+                const absX = Math.abs(worldX);
+                const absY = Math.abs(worldY);
+                
+                // Динамічні пороги для країв
+                const sideEdgeThreshold = Math.max(3.5, gridSize.x + 0.5);
+                const topBottomEdgeThreshold = Math.max(5.5, gridSize.y - 0.5);
+                
+                // СПОЧАТКУ перевіряємо бокові краї
+                if (absX >= sideEdgeThreshold) {
+                    // Лівий або правий край
+                    let doorStartRow;
+                    if (Math.abs(worldY) < 0.5) {
+                        // Центровані двері
+                        doorStartRow = Math.floor((gridSize.y - doorPartCount) / 2);
+                    } else {
+                        // Зміщені двері: конвертуємо worldY в row (так само як блоки)
+                        const offsetY = (gridSize.y - 1) / 2;
+                        const rowCenter = Math.round(-worldY / currentCellSize + offsetY);
+                        // Для сильно негативних worldY (нижня частина поля), зсув менший
+                        // Для worldY близьких до 0 або позитивних - стандартний зсув
+                        if (worldY < -2) {
+                            doorStartRow = rowCenter - Math.floor((doorPartCount - 1) / 2);
+                        } else {
+                            doorStartRow = rowCenter - Math.floor(doorPartCount / 2);
+                        }
+                    }
+                    doorStartRow = Math.max(0, Math.min(doorStartRow, gridSize.y - doorPartCount));
+                    
+                    if (worldX > 0) {
+                        edge = 'right';
+                        doorX = padding + gridSize.x * cellSize + 2;
+                    } else {
+                        edge = 'left';
+                        doorX = padding - doorThickness - 2;
+                    }
+                    doorY = padding + doorStartRow * cellSize;
+                    doorWidth = doorThickness;
+                    doorHeight = doorLength;
+                } else if (absY >= topBottomEdgeThreshold) {
+                    // Верхній або нижній край
+                    let doorStartCol;
+                    if (Math.abs(worldX) < 0.5) {
+                        // Центровані двері
+                        doorStartCol = Math.floor((gridSize.x - doorPartCount) / 2);
+                    } else {
+                        // Зміщені двері: конвертуємо worldX в col (так само як блоки)
+                        const offsetX = (gridSize.x - 1) / 2;
+                        const colCenter = Math.round(worldX / currentCellSize + offsetX);
+                        doorStartCol = colCenter - Math.floor(doorPartCount / 2);
+                    }
+                    doorStartCol = Math.max(0, Math.min(doorStartCol, gridSize.x - doorPartCount));
+                    
+                    if (worldY > 0) {
+                        edge = 'top';
+                        doorX = padding + doorStartCol * cellSize;
+                        doorY = padding - doorThickness - 2;
+                    } else {
+                        edge = 'bottom';
+                        doorX = padding + doorStartCol * cellSize;
+                        doorY = padding + gridSize.y * cellSize + 2;
+                    }
+                    doorWidth = doorLength;
+                    doorHeight = doorThickness;
+                } else {
+                    // Резервний метод: використовуємо rotation.z
+                    const rotZ = door.rotation?.z || 0;
+                    const normalizedRot = ((rotZ % 360) + 360) % 360;
+                    
+                    if (normalizedRot >= 135 && normalizedRot < 225) {
+                        edge = 'top-fallback';
+                        doorX = padding + Math.floor((gridSize.x - doorPartCount) / 2) * cellSize;
+                        doorY = padding - doorThickness - 2;
+                        doorWidth = doorLength;
+                        doorHeight = doorThickness;
+                    } else if (normalizedRot >= 45 && normalizedRot < 135) {
+                        edge = 'right-fallback';
+                        doorX = padding + gridSize.x * cellSize + 2;
+                        doorY = padding + Math.floor((gridSize.y - doorPartCount) / 2) * cellSize;
+                        doorWidth = doorThickness;
+                        doorHeight = doorLength;
+                    } else if (normalizedRot >= 225 && normalizedRot < 315) {
+                        edge = 'left-fallback';
+                        doorX = padding - doorThickness - 2;
+                        doorY = padding + Math.floor((gridSize.y - doorPartCount) / 2) * cellSize;
+                        doorWidth = doorThickness;
+                        doorHeight = doorLength;
+                    } else {
+                        edge = 'bottom-fallback';
+                        doorX = padding + Math.floor((gridSize.x - doorPartCount) / 2) * cellSize;
+                        doorY = padding + gridSize.y * cellSize + 2;
+                        doorWidth = doorLength;
+                        doorHeight = doorThickness;
+                    }
+                }
+                
+                console.log(`  Door ${idx + 1}: edge=${edge}, world=(${worldX.toFixed(1)}, ${worldY.toFixed(1)}), type=${door.blockType}, parts=${doorPartCount}, pos=(${doorX}, ${doorY}), size=${doorWidth}x${doorHeight}`);
+                
+                // Тінь для дверей
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+                ctx.shadowBlur = 6;
+                ctx.shadowOffsetX = 2;
+                ctx.shadowOffsetY = 2;
+                
+                // Заповнення дверей (напівпрозоре)
+                const gradient = ctx.createLinearGradient(doorX, doorY, doorX + doorWidth, doorY + doorHeight);
+                gradient.addColorStop(0, color + 'DD');
+                gradient.addColorStop(0.5, color + 'AA');
+                gradient.addColorStop(1, color + '88');
+                
+                ctx.fillStyle = gradient;
+                ctx.fillRect(doorX, doorY, doorWidth, doorHeight);
+                
+                // Товста рамка навколо дверей
+                ctx.shadowColor = 'transparent';
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 3;
+                ctx.strokeRect(doorX, doorY, doorWidth, doorHeight);
+                
+                // Внутрішня біла обводка для контрасту
+                ctx.strokeStyle = '#FFFFFF';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(doorX + 1, doorY + 1, doorWidth - 2, doorHeight - 2);
+                
+                // Показуємо кількість частин, якщо більше 1
+                if (doorPartCount > 1) {
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.font = 'bold 10px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(doorPartCount.toString(), doorX + doorWidth / 2, doorY + doorHeight / 2);
+                }
+            });
+        }
+        
+        // Навігація
+        function prevLevel() {
+            if (currentLevelIndex > 0) {
+                loadLevel(currentLevelIndex - 1);
+            }
+        }
+        
+        function nextLevel() {
+            if (currentLevelIndex < levels.length - 1) {
+                loadLevel(currentLevelIndex + 1);
+            }
+        }
+        
+        // Перемикання порядку (Game Order / File Order)
+        let allLevelsOriginal = null;
+        let allLevelsGameOrder = null;
+        
+        async function toggleOrder() {
+            const useGame = document.getElementById('gameOrderToggle').checked;
+            useGameOrder = useGame;
+            
+            if (!allLevelsOriginal) {
+                // Зберігаємо оригінальні дані при першому перемиканні
+                const response = await fetch('level_data/parsed_levels_complete.json');
+                allLevelsOriginal = await response.json();
+            }
+            
+            if (useGame && allLevelsGameOrder) {
+                levels = allLevelsGameOrder;
+            } else if (!useGame) {
+                levels = allLevelsOriginal;
+                levelOrder = levels.map((level, idx) => ({ level, gameIndex: idx + 1 }));
+            } else {
+                levels = allLevelsGameOrder || levels;
+            }
+            
+            document.getElementById('levelInput').max = levels.length;
+            loadLevel(0);
+        }
+        
+        // Пошук
+        function searchLevel() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query) return;
+            
+            const queryLower = query.toLowerCase();
+            let index = levels.findIndex(level => 
+                level.name.toLowerCase().includes(queryLower) ||
+                level.guid.toLowerCase().includes(queryLower)
+            );
+            
+            // Якщо "Level N" не знайдено, спробувати "Derin Level N"
+            if (index === -1) {
+                const levelMatch = query.match(/^level\s*(\d+)$/i);
+                if (levelMatch) {
+                    const num = levelMatch[1];
+                    const derinQuery = `derin level ${num}`;
+                    index = levels.findIndex(level => 
+                        level.name.toLowerCase() === derinQuery
+                    );
+                    if (index !== -1) {
+                        console.log(`"Level ${num}" not found, using "Derin Level ${num}" instead`);
+                    }
+                }
+            }
+            
+            if (index !== -1) {
+                loadLevel(index);
+                document.getElementById('searchInput').value = '';
+                hideSearchResults();
+            } else {
+                showError(`Level not found: "${query}". Note: Some levels (7, 10, 11, etc.) don't exist in APK`);
+            }
+        }
+        
+        // Обробка вводу в поле пошуку (автозаповнення)
+        function handleSearchInput(e) {
+            const query = e.target.value.trim();
+            const searchResults = document.getElementById('searchResults');
+            
+            if (query.length < 2) {
+                hideSearchResults();
+                return;
+            }
+            
+            if (e.key === 'Enter') {
+                searchLevel();
+                return;
+            }
+            
+            showSearchResults();
+            updateSearchResults(query);
+        }
+        
+        // Оновлення результатів пошуку
+        function updateSearchResults(query) {
+            const queryLower = query.toLowerCase();
+            const searchResults = document.getElementById('searchResults');
+            
+            // Знаходимо всі рівні що відповідають запиту
+            const matches = levels
+                .map((level, index) => ({ level, index }))
+                .filter(({ level }) => 
+                    level.name.toLowerCase().includes(queryLower) ||
+                    level.guid.toLowerCase().includes(queryLower)
+                )
+                .map(({ level, index }) => {
+                    // Пріоритет: точний збіг по name > початок name > GUID
+                    let priority = 0;
+                    const nameLower = level.name.toLowerCase();
+                    if (nameLower === queryLower) {
+                        priority = 3; // Точний збіг
+                    } else if (nameLower.startsWith(queryLower)) {
+                        priority = 2; // Початок назви
+                    } else if (nameLower.includes(queryLower)) {
+                        priority = 1; // Містить в назві
+                    } else {
+                        priority = 0; // Тільки GUID
+                    }
+                    return { level, index, priority };
+                })
+                .sort((a, b) => b.priority - a.priority) // Сортуємо за пріоритетом
+                .slice(0, 10); // Обмежуємо до 10 результатів
+            
+            if (matches.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item" style="color: #999; cursor: default;">No results found</div>';
+                return;
+            }
+            
+            // Функція для підсвітки збігів
+            function highlightMatch(text, query) {
+                if (!query) return text;
+                const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+                return text.replace(regex, '<mark style="background: #ffeb3b; padding: 2px 0;">$1</mark>');
+            }
+            
+            searchResults.innerHTML = matches.map(({ level, index }) => `
+                <div class="search-result-item" onclick="loadLevel(${index}); document.getElementById('searchInput').value=''; hideSearchResults();">
+                    <div class="name">${highlightMatch(level.name, query)}</div>
+                    <div class="guid">GUID: ${level.guid}</div>
+                </div>
+            `).join('');
+        }
+        
+        // Показати результати пошуку
+        function showSearchResults() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (query.length >= 2) {
+                document.getElementById('searchResults').classList.add('show');
+                updateSearchResults(query);
+            }
+        }
+        
+        // Приховати результати пошуку
+        function hideSearchResults() {
+            // Затримка щоб дати час на клік по результату
+            setTimeout(() => {
+                document.getElementById('searchResults').classList.remove('show');
+            }, 200);
+        }
+        
+        // Помилки
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Функція для визначення блоку під курсором
+        function getBlockAtPosition(mouseX, mouseY) {
+            if (!currentLevel) return null;
+            
+            const gridSize = currentLevel.gridSize;
+            const cellSize = 50;
+            const padding = 40;
+            
+            // Конвертуємо координати миші в grid координати
+            const col = Math.floor((mouseX - padding) / cellSize);
+            const row = Math.floor((mouseY - padding) / cellSize);
+            
+            if (col < 0 || col >= gridSize.x || row < 0 || row >= gridSize.y) {
+                return null;
+            }
+            
+            // Шукаємо блок, який займає цю клітинку
+            const blocksToSearch = currentLevel.gameBlocks || currentLevel.blocks || [];
+            for (const block of blocksToSearch) {
+                let gridPos = worldToGrid(block.position.x, block.position.y, gridSize);
+                const shape = blockShapes[block.blockGroupType] || [[0, 0]];
+                // Use Z rotation if non-zero, otherwise Y rotation
+                const rotation = Math.abs(block.rotation.z || 0) > 1 ? block.rotation.z : (block.rotation.y || 0);
+                let rotatedShape = rotateShape(shape, rotation);
+                
+                // Коригуємо L форми залежно від ротації
+                const rotationNorm = Math.abs(Math.round(rotation / 90) % 4);
+                if (block.blockGroupType === 3) {
+                    if (rotationNorm === 0) {
+                        rotatedShape = [[0, -1], [1, -1], [1, 0], [1, 1]];
+                        gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                    } else if (rotationNorm === 2) {
+                        rotatedShape = [[0, -1], [0, 0], [0, 1], [1, 1]];
+                        gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                    }
+                }
+                if (block.blockGroupType === 4 && rotationNorm === 2) {
+                    gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                }
+                // ShortL з ротацією 180° теж зміщуємо
+                if (block.blockGroupType === 5 && rotationNorm === 2) {
+                    gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                }
+                
+                // Перевіряємо чи ця клітинка належить блоку
+                for (const [dx, dy] of rotatedShape) {
+                    const blockCol = gridPos.col + dx;
+                    const blockRow = gridPos.row + dy;
+                    
+                    if (blockCol === col && blockRow === row) {
+                        return block;
+                    }
+                }
+            }
+            
+            return null;
+        }
+        
+        // Функція для відображення tooltip
+        function showBlockTooltip(block, mouseX, mouseY) {
+            if (!block) {
+                tooltip.classList.remove('show');
+                return;
+            }
+            
+            const colorName = ['Червоний', 'Жовтий', 'Зелений', 'Синій', 'Фіолетовий', 
+                              'Бірюзовий', 'Рожевий', 'Помаранчевий', 'Світло-рожевий', 
+                              'Темно-сірий', 'Кораловий'][block.blockType] || `Колір ${block.blockType}`;
+            
+            tooltip.innerHTML = `
+                <h3>Блок</h3>
+                <p><span class="label">blockGroupType:</span> <span class="value">${block.blockGroupType}</span></p>
+                <p><span class="label">blockType:</span> <span class="value">${block.blockType} (${colorName})</span></p>
+                <p><span class="label">blockGroupTypeName:</span> <span class="value">${block.blockGroupTypeName || 'N/A'}</span></p>
+                <p><span class="label">Position:</span> <span class="value">(${block.position.x.toFixed(2)}, ${block.position.y.toFixed(2)})</span></p>
+                <p><span class="label">Rotation:</span> <span class="value">${block.rotation.y || 0}°</span></p>
+            `;
+            
+            tooltip.classList.add('show');
+            
+            // Позиціонуємо tooltip біля курсора
+            const tooltipWidth = tooltip.offsetWidth || 250;
+            const tooltipHeight = tooltip.offsetHeight || 150;
+            const offset = 15;
+            
+            let left = mouseX + offset;
+            let top = mouseY + offset;
+            
+            // Якщо tooltip виходить за межі екрана, зміщуємо його
+            if (left + tooltipWidth > window.innerWidth) {
+                left = mouseX - tooltipWidth - offset;
+            }
+            if (top + tooltipHeight > window.innerHeight) {
+                top = mouseY - tooltipHeight - offset;
+            }
+            
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+        }
+        
+        // Налаштування обробників подій для tooltip
+        function setupTooltipHandlers() {
+            // Видаляємо старі обробники якщо є
+            canvas.removeEventListener('mousemove', handleMouseMove);
+            canvas.removeEventListener('mouseleave', handleMouseLeave);
+            
+            // Додаємо нові обробники
+            canvas.addEventListener('mousemove', handleMouseMove);
+            canvas.addEventListener('mouseleave', handleMouseLeave);
+        }
+        
+        function handleMouseMove(e) {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            const block = getBlockAtPosition(mouseX, mouseY);
+            showBlockTooltip(block, e.clientX, e.clientY);
+        }
+        
+        function handleMouseLeave() {
+            tooltip.classList.remove('show');
+        }
+        
+        // Гарячі клавіші
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevLevel();
+            if (e.key === 'ArrowRight') nextLevel();
+        });
+        
+        // Завантаження при старті
+        loadLevelsData();
+    </script>
+</body>
+</html>
+
