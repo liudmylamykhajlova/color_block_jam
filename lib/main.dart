@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'core/services/storage_service.dart';
+import 'core/services/audio_service.dart';
 import 'features/menu/menu_screen.dart';
 
 void main() async {
@@ -12,8 +13,9 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
   
-  // Initialize storage
+  // Initialize services
   await StorageService.init();
+  AudioService.init();
   
   runApp(const ColorBlockJamApp());
 }

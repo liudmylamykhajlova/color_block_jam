@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/models/game_models.dart';
 import '../../core/services/storage_service.dart';
+import '../../core/services/audio_service.dart';
 import '../game/game_screen.dart';
 
 class LevelSelectScreen extends StatefulWidget {
@@ -51,7 +52,10 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
                 child: Row(
                   children: [
                     IconButton(
-                      onPressed: () => Navigator.pop(context),
+                      onPressed: () {
+                        AudioService.playTap();
+                        Navigator.pop(context);
+                      },
                       icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
                     ),
                     const Expanded(
@@ -111,6 +115,7 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
   }
   
   void _openLevel(int levelId) {
+    AudioService.playTap();
     Navigator.push(
       context,
       MaterialPageRoute(

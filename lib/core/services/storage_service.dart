@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class StorageService {
   static const String _completedLevelsKey = 'completed_levels';
   static const String _currentLevelKey = 'current_level';
+  static const String _soundEnabledKey = 'sound_enabled';
+  static const String _hapticEnabledKey = 'haptic_enabled';
   
   static SharedPreferences? _prefs;
   
@@ -41,6 +43,33 @@ class StorageService {
     final completed = getCompletedLevels();
     if (completed.isEmpty) return 1;
     return completed.reduce((a, b) => a > b ? a : b) + 1;
+  }
+  
+  // === SOUND SETTINGS ===
+  
+  static bool getSoundEnabled() {
+    return _prefs?.getBool(_soundEnabledKey) ?? true;
+  }
+  
+  static Future<void> setSoundEnabled(bool value) async {
+    await _prefs?.setBool(_soundEnabledKey, value);
+  }
+  
+  // === HAPTIC SETTINGS ===
+  
+  static bool getHapticEnabled() {
+    return _prefs?.getBool(_hapticEnabledKey) ?? true;
+  }
+  
+  static Future<void> setHapticEnabled(bool value) async {
+    await _prefs?.setBool(_hapticEnabledKey, value);
+  }
+  
+  // === RESET PROGRESS ===
+  
+  static Future<void> resetProgress() async {
+    await _prefs?.remove(_completedLevelsKey);
+    await _prefs?.remove(_currentLevelKey);
   }
 }
 

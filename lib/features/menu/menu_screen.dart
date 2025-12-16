@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../core/services/audio_service.dart';
 import '../level_select/level_select_screen.dart';
+import '../settings/settings_screen.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -71,6 +73,7 @@ class MenuScreen extends StatelessWidget {
                 // Play Button
                 _PlayButton(
                   onTap: () {
+                    AudioService.playTap();
                     Navigator.push(
                       context,
                       PageRouteBuilder(
@@ -86,10 +89,20 @@ class MenuScreen extends StatelessWidget {
                 
                 const SizedBox(height: 24),
                 
-                // Settings button (for future)
+                // Settings button
                 TextButton.icon(
                   onPressed: () {
-                    // TODO: Settings
+                    AudioService.playTap();
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (_, __, ___) => const SettingsScreen(),
+                        transitionsBuilder: (_, animation, __, child) {
+                          return FadeTransition(opacity: animation, child: child);
+                        },
+                        transitionDuration: const Duration(milliseconds: 300),
+                      ),
+                    );
                   },
                   icon: const Icon(Icons.settings, color: Colors.white70),
                   label: const Text(

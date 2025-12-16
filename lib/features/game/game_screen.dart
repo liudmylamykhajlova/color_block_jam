@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../core/constants/colors.dart';
 import '../../core/models/game_models.dart';
 import '../../core/services/storage_service.dart';
+import '../../core/services/audio_service.dart';
+import '../../core/widgets/confetti_widget.dart';
 
 class GameScreen extends StatefulWidget {
   final int levelId;
@@ -123,7 +125,10 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
           // Home button
           _TopBarButton(
             icon: Icons.home,
-            onTap: () => Navigator.pop(context),
+            onTap: () {
+              AudioService.playTap();
+              Navigator.pop(context);
+            },
           ),
           
           // Level indicator
@@ -146,7 +151,10 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
           // Restart button
           _TopBarButton(
             icon: Icons.refresh,
-            onTap: _resetLevel,
+            onTap: () {
+              AudioService.playTap();
+              _resetLevel();
+            },
           ),
         ],
       ),
@@ -217,6 +225,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
 
     for (final block in _blocks) {
       if (block.cells.contains(cell)) {
+        AudioService.playPickup();
         setState(() {
           _selectedBlock = block;
           _lastCell = cell;
@@ -264,6 +273,9 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   }
 
   void _onPanEnd() {
+    if (_selectedBlock != null) {
+      AudioService.playDrop();
+    }
     setState(() {
       _selectedBlock = null;
       _lastCell = null;
@@ -405,6 +417,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   void _completeExit(GameLevel level) {
     if (_exitingBlock == null) return;
     
+    AudioService.playExit();
+    
     setState(() {
       _blocks.remove(_exitingBlock);
       _exitingBlock = null;
@@ -415,6 +429,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     _exitAnimationController = null;
     
     if (_blocks.isEmpty) {
+      AudioService.playWin();
       _showWinDialog();
     }
   }
@@ -428,56 +443,119 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        backgroundColor: const Color(0xFF764ba2),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Column(
-          children: [
-            Text('🎉', style: TextStyle(fontSize: 50)),
-            SizedBox(height: 8),
-            Text(
-              'Level Complete!',
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-        content: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(3, (i) => const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 4),
-            child: Icon(Icons.star, color: Color(0xFFFFD700), size: 32),
-          )),
-        ),
-        actions: [
-          Row(
+      builder: (context) => ConfettiWidget(
+        isPlaying: true,
+        child: AlertDialog(
+          backgroundColor: const Color(0xFF764ba2),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          title: Column(
             children: [
-              Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                  },
-                  child: const Text('Home', style: TextStyle(color: Colors.white70)),
-                ),
+              // Animated trophy
+              TweenAnimationBuilder<double>(
+                tween: Tween(begin: 0.0, end: 1.0),
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.elasticOut,
+                builder: (context, value, child) {
+                  return Transform.scale(
+                    scale: value,
+                    child: const Text('🏆', style: TextStyle(fontSize: 60)),
+                  );
+                },
               ),
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF4CAF50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                    _goToNextLevel();
-                  },
-                  child: const Text('Next', style: TextStyle(color: Colors.white)),
+              const SizedBox(height: 12),
+              const Text(
+                'Level Complete!',
+                style: TextStyle(
+                  color: Colors.white, 
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
                 ),
               ),
             ],
           ),
-        ],
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Animated stars
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(3, (i) => TweenAnimationBuilder<double>(
+                  tween: Tween(begin: 0.0, end: 1.0),
+                  duration: Duration(milliseconds: 400 + i * 150),
+                  curve: Curves.elasticOut,
+                  builder: (context, value, child) {
+                    return Transform.scale(
+                      scale: value,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 6),
+                        child: Icon(
+                          Icons.star,
+                          color: const Color(0xFFFFD700),
+                          size: 36,
+                          shadows: const [
+                            Shadow(
+                              color: Color(0x80FFD700),
+                              blurRadius: 10,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                )),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'Great job! 🎉',
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.8),
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            Row(
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {
+                      AudioService.playTap();
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Home', style: TextStyle(color: Colors.white70, fontSize: 16)),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF4CAF50),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    onPressed: () {
+                      AudioService.playTap();
+                      Navigator.pop(context);
+                      _goToNextLevel();
+                    },
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Next', style: TextStyle(color: Colors.white, fontSize: 16)),
+                        SizedBox(width: 4),
+                        Icon(Icons.arrow_forward, color: Colors.white, size: 18),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -832,7 +910,22 @@ class GameBoardPainter extends CustomPainter {
       offsetY = exitDeltaRow * exitProgress * cellSize * 3;
     }
 
-    final paint = Paint()..color = isSelected ? color.withOpacity(0.9) : color;
+    // Draw selection glow
+    if (isSelected) {
+      final glowPaint = Paint()
+        ..color = color.withOpacity(0.4)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 12);
+      
+      final glowPath = Path();
+      for (final cell in cells) {
+        final x = borderOffset + cell.col * cellSize + offsetX;
+        final y = borderOffset + cell.row * cellSize + offsetY;
+        glowPath.addRect(Rect.fromLTWH(x - 4, y - 4, cellSize + 8, cellSize + 8));
+      }
+      canvas.drawPath(glowPath, glowPaint);
+    }
+
+    final paint = Paint()..color = isSelected ? color.withOpacity(0.95) : color;
     
     final path = Path();
     for (final cell in cells) {
