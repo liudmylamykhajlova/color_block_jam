@@ -97,5 +97,7 @@ coverage/
 !/dev/ci/**/Gemfile.lock
 !**/ios/**/Podfile.lock
 
-# Large analysis files (optional - keep if needed)
-# res/ColorBlockJam_Analysis/xapk_extracted/
+# Large analysis files - excluded from git (exceed 100MB limit)
+*.xapk
+*.apk
+res/ColorBlockJam_Analysis/xapk_extracted/
