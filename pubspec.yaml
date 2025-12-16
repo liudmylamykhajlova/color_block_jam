@@ -1,5 +1,5 @@
 name: color_block_jam
-description: "A new Flutter project."
+description: "Color Block Jam - A colorful sliding block puzzle game"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -48,6 +48,39 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  
+  # App icon generator
+  flutter_launcher_icons: ^0.14.2
+  
+  # Native splash screen
+  flutter_native_splash: ^2.4.3
+
+# App Icon Configuration
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/branding/app_icon.png"
+  adaptive_icon_background: "#667eea"
+  adaptive_icon_foreground: "assets/branding/app_icon_foreground.png"
+  web:
+    generate: true
+    image_path: "assets/branding/app_icon.png"
+  windows:
+    generate: true
+    image_path: "assets/branding/app_icon.png"
+
+# Native Splash Screen Configuration
+flutter_native_splash:
+  color: "#667eea"
+  image: "assets/branding/splash_logo.png"
+  color_dark: "#1a1a2e"
+  image_dark: "assets/branding/splash_logo.png"
+  android_12:
+    color: "#667eea"
+    icon_background_color: "#667eea"
+    image: "assets/branding/splash_icon.png"
+  ios: true
+  web: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -63,6 +96,7 @@ flutter:
   # Game assets
   assets:
     - assets/levels/
+    - assets/branding/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
