@@ -464,6 +464,42 @@
         }
         
         // Малювання рівня
+        // Helper function to check if edge columns are mostly hidden
+        function getEdgeColumnHiddenInfo(level) {
+            const hidden = level.hiddenCoords || [];
+            const gridW = level.gridSize.x;
+            const gridH = level.gridSize.y;
+            
+            if (hidden.length === 0) {
+                return { leftHidden: false, rightHidden: false, leftCol: 0, rightCol: gridW - 1 };
+            }
+            
+            // Count hidden cells in leftmost and rightmost columns
+            let leftColHidden = 0;
+            let rightColHidden = 0;
+            
+            hidden.forEach(h => {
+                if (h.x === 0) leftColHidden++;
+                if (h.x === gridW - 1) rightColHidden++;
+            });
+            
+            // If more than 50% of cells in a column are hidden, consider it mostly hidden
+            const threshold = gridH * 0.5;
+            const leftMostlyHidden = leftColHidden >= threshold;
+            const rightMostlyHidden = rightColHidden >= threshold;
+            
+            // Determine inner boundary columns
+            const leftInnerCol = leftMostlyHidden ? 1 : 0;
+            const rightInnerCol = rightMostlyHidden ? gridW - 2 : gridW - 1;
+            
+            return { 
+                leftHidden: leftMostlyHidden, 
+                rightHidden: rightMostlyHidden,
+                leftCol: leftInnerCol,
+                rightCol: rightInnerCol
+            };
+        }
+        
         function drawLevel(level) {
             // Визначаємо cellSizeWorld для цього рівня
             currentCellSize = detectCellSize(level);
@@ -472,6 +508,10 @@
             const gridSize = level.gridSize;
             const cellSize = 50;
             const padding = 40;
+            
+            // Check edge column hidden state for dynamic door positioning
+            const edgeInfo = getEdgeColumnHiddenInfo(level);
+            console.log(`Edge info: leftHidden=${edgeInfo.leftHidden}, rightHidden=${edgeInfo.rightHidden}, leftCol=${edgeInfo.leftCol}, rightCol=${edgeInfo.rightCol}`);
             
             canvas.width = gridSize.x * cellSize + padding * 2;
             canvas.height = gridSize.y * cellSize + padding * 2;
@@ -833,13 +873,14 @@
                 const absY = Math.abs(worldY);
                 
                 // Динамічні пороги для країв
+                // Якщо краї колонки в основному приховані, використовуємо нижчий поріг
                 let sideEdgeThreshold = Math.max(3.5, gridSize.x + 0.5);
-                const topBottomEdgeThreshold = Math.max(5.5, gridSize.y - 0.5);
-                
-                // Special case: New Level 26 (Game Level 19) has side doors at x=±5 for grid 6x8
-                if (level.name === 'New Level 26') {
-                    sideEdgeThreshold = 4.9;
+                if (edgeInfo.leftHidden || edgeInfo.rightHidden) {
+                    // Знижуємо поріг, щоб двері на позиціях gridSize.x-1 розпізнавались як бокові
+                    // Наприклад, для grid 6x8: поріг 4.9 ловить двері на x=±5
+                    sideEdgeThreshold = gridSize.x - 1.1;
                 }
+                const topBottomEdgeThreshold = Math.max(5.5, gridSize.y - 0.5);
                 
                 // СПОЧАТКУ перевіряємо бокові краї
                 if (absX >= sideEdgeThreshold) {
@@ -874,17 +915,17 @@
                     
                     if (worldX > 0) {
                         edge = 'right';
-                        // Special case: New Level 26 (Game Level 19) - draw on inner boundary
-                        if (level.name === 'New Level 26') {
-                            doorX = padding + 5 * cellSize - doorThickness - 2; // Column 4 inner edge
+                        // Якщо права колонка в основному прихована, малюємо двері на внутрішній межі
+                        if (edgeInfo.rightHidden) {
+                            doorX = padding + (edgeInfo.rightCol + 1) * cellSize - doorThickness - 2;
                         } else {
                             doorX = padding + gridSize.x * cellSize + 2;
                         }
                     } else {
                         edge = 'left';
-                        // Special case: New Level 26 (Game Level 19) - draw on inner boundary
-                        if (level.name === 'New Level 26') {
-                            doorX = padding + 1 * cellSize + 2; // Column 1 inner edge
+                        // Якщо ліва колонка в основному прихована, малюємо двері на внутрішній межі
+                        if (edgeInfo.leftHidden) {
+                            doorX = padding + edgeInfo.leftCol * cellSize + 2;
                         } else {
                             doorX = padding - doorThickness - 2;
                         }

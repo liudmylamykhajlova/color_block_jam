@@ -22,13 +22,39 @@ def world_to_grid(world_x, world_y, grid_width, grid_height):
     row = js_round(-world_y / cell_size + offset_y)
     return int(row), int(col)
 
-def get_door_edge(world_x, world_y, grid_width, grid_height, level_name=""):
+def get_edge_column_hidden_info(hidden_coords, grid_width, grid_height):
+    """Check if edge columns are mostly hidden."""
+    if not hidden_coords:
+        return {'leftHidden': False, 'rightHidden': False, 'leftCol': 0, 'rightCol': grid_width - 1}
+    
+    # Count hidden cells in leftmost and rightmost columns
+    left_col_hidden = sum(1 for h in hidden_coords if h['x'] == 0)
+    right_col_hidden = sum(1 for h in hidden_coords if h['x'] == grid_width - 1)
+    
+    # If more than 50% of cells in a column are hidden, consider it mostly hidden
+    threshold = grid_height * 0.5
+    left_mostly_hidden = left_col_hidden >= threshold
+    right_mostly_hidden = right_col_hidden >= threshold
+    
+    # Determine inner boundary columns
+    left_inner_col = 1 if left_mostly_hidden else 0
+    right_inner_col = grid_width - 2 if right_mostly_hidden else grid_width - 1
+    
+    return {
+        'leftHidden': left_mostly_hidden,
+        'rightHidden': right_mostly_hidden,
+        'leftCol': left_inner_col,
+        'rightCol': right_inner_col
+    }
+
+def get_door_edge(world_x, world_y, grid_width, grid_height, edge_info=None):
     """Determine which edge a door is on."""
     side_threshold = max(3.5, grid_width + 0.5)
     
-    # Special case: "New Level 26" (Game Level 19) has side doors at x=±5 for grid 6x8
-    if level_name == "New Level 26":
-        side_threshold = 4.9
+    # If edge columns are mostly hidden, lower the threshold
+    # Use grid_width - 1.1 to catch doors at x = grid_width - 1
+    if edge_info and (edge_info['leftHidden'] or edge_info['rightHidden']):
+        side_threshold = grid_width - 1.1
     
     if abs(world_x) >= side_threshold:
         return 'left' if world_x < 0 else 'right'
@@ -82,10 +108,13 @@ def main():
                 'needsRowOffset': needs_row_offset
             })
         
+        # Get edge column hidden info for this level
+        edge_info = get_edge_column_hidden_info(level.get('hiddenCoords', []), grid_w, grid_h)
+        
         # Convert doors
         doors = []
         for d in level['doors']:
-            edge = get_door_edge(d['position']['x'], d['position']['y'], grid_w, grid_h, level['name'])
+            edge = get_door_edge(d['position']['x'], d['position']['y'], grid_w, grid_h, edge_info)
             row, col = world_to_grid(d['position']['x'], d['position']['y'], grid_w, grid_h)
             parts = d['doorPartCount']
             
@@ -111,12 +140,11 @@ def main():
                 if level['name'] == 'Level 36' and edge == 'left' and d['blockType'] == 7:
                     row = row - 1
                 
-                # Special case: New Level 26 (Game Level 19) side doors on inner boundary
-                if level['name'] == 'New Level 26':
-                    if edge == 'left':
-                        col = 1  # Inner left boundary
-                    else:
-                        col = 4  # Inner right boundary
+                # Use inner boundary if edge columns are mostly hidden
+                if edge == 'left' and edge_info['leftHidden']:
+                    col = edge_info['leftCol']
+                elif edge == 'right' and edge_info['rightHidden']:
+                    col = edge_info['rightCol']
             else:
                 # Для top/bottom дверей: row - це положення на межі (зовнішнє)
                 row = -1 if edge == 'top' else grid_h

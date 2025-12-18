@@ -2634,20 +2634,6 @@
           "edge": "top",
           "startRow": -1,
           "startCol": 2
-        },
-        {
-          "blockType": 1,
-          "partCount": 2,
-          "edge": "right",
-          "startRow": 3,
-          "startCol": 4
-        },
-        {
-          "blockType": 5,
-          "partCount": 2,
-          "edge": "left",
-          "startRow": 3,
-          "startCol": 1
         }
       ],
       "hiddenCells": [
