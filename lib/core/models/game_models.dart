@@ -126,8 +126,17 @@ class GameBlock {
           col -= 1;
         }
         break;
-      case 4:
+      case 4: // ReverseL
+        // Явні форми для кожної ротації
+        final reverseLShapes = {
+          0: [[-1, -1], [0, -1], [-1, 0], [-1, 1]],  // X X / X_ / X_
+          1: [[-1, -1], [-1, 0], [0, 0], [1, 0]],    // X__ / XXX
+          2: [[1, -1], [1, 0], [0, 1], [1, 1]],      // _X / _X / XX
+          3: [[-1, 0], [0, 0], [1, 0], [1, 1]],      // XXX / __X
+        };
+        rotatedShape = reverseLShapes[rotZ]?.map((c) => [...c]).toList() ?? rotatedShape;
         if (rotZ == 2) col -= 1;
+        else if (rotZ == 3) row -= 1;
         break;
       case 5:
         if (rotZ == 0) {

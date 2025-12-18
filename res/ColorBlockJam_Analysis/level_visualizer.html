@@ -574,8 +574,12 @@
                         const hasHiddenCells = level.hiddenCoords && level.hiddenCoords.length > 0;
                         const worldY = block.position.y;
                         
+                        // Special case: Level 36 (Game Level 21) green ShortL should be 1 cell lower
+                        if (level.name === 'Level 36' && block.blockType === 2) {
+                            gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                        }
                         // Для рівнів з hidden cells і негативним worldY - завжди зсув вгору
-                        if (hasHiddenCells && worldY < 0) {
+                        else if (hasHiddenCells && worldY < 0) {
                             gridPos = { row: gridPos.row - 1, col: gridPos.col - 1 };
                         } else if (atTopEdge) {
                             // Біля верхнього краю - зсув вгору
@@ -619,7 +623,10 @@
                         gridPos = { row: gridPos.row, col: gridPos.col - 1 };
                     } else if (rotZ === 2) {
                         // Для позитивного Y потрібен зсув вниз, для негативного - без зсуву
-                        if (block.position.y > 0) {
+                        // Special case: Level 36 (Game Level 21) orange ShortT should be 1 cell higher
+                        if (level.name === 'Level 36' && block.blockType === 7) {
+                            // No offset for this block
+                        } else if (block.position.y > 0) {
                             gridPos = { row: gridPos.row + 1, col: gridPos.col };
                         }
                     }
@@ -663,8 +670,33 @@
                         gridPos = { row: gridPos.row, col: gridPos.col - 1 };
                     }
                 }
-                if (block.blockGroupType === 4 && rotationNorm === 2) {
-                    gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                
+                // ReverseL: явні форми для кожної ротації
+                if (block.blockGroupType === 4) {
+                    // ReverseL (дзеркальна L) форми для кожної ротації:
+                    // rotZ=0: X X    rotZ=1: X _ _    rotZ=2: _ X    rotZ=3: _ _ X
+                    //         X _           X X X           _ X           X X X
+                    //         X _                           X X
+                    const reverseLShapes = {
+                        0: [[-1, -1], [0, -1], [-1, 0], [-1, 1]],  // X X / X_ / X_
+                        1: [[-1, -1], [-1, 0], [0, 0], [1, 0]],    // X__ / XXX
+                        2: [[1, -1], [1, 0], [0, 1], [1, 1]],      // _X / _X / XX
+                        3: [[-1, 0], [0, 0], [1, 0], [1, 1]]       // XXX / __X
+                    };
+                    rotatedShape = reverseLShapes[rotationNorm] || reverseLShapes[0];
+                    
+                    // Коригування позиції для кожної ротації
+                    if (rotationNorm === 0) {
+                        // Без зсуву
+                    } else if (rotationNorm === 1) {
+                        // Без зсуву
+                    } else if (rotationNorm === 2) {
+                        gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                    } else if (rotationNorm === 3) {
+                        // Зсув вгору на 1
+                        gridPos = { row: gridPos.row - 1, col: gridPos.col };
+                    }
+                    console.log('ReverseL rotZ=' + rotationNorm + ' at', gridPos);
                 }
                 
                 const color = colorPalette[block.blockType] || '#999999';
@@ -832,6 +864,11 @@
                     
                     // Special case: Level 25 (Game Level 16) right blue door should be 1 cell higher
                     if (level.name === 'Level 25' && worldX > 0 && door.blockType === 0) {
+                        doorStartRow = doorStartRow - 1;
+                    }
+                    
+                    // Special case: Level 36 (Game Level 21) left orange door should be 1 cell higher
+                    if (level.name === 'Level 36' && worldX < 0 && door.blockType === 7) {
                         doorStartRow = doorStartRow - 1;
                     }
                     
@@ -1275,7 +1312,7 @@
         
         // ========== VERIFICATION SYSTEM ==========
         // Список верифікованих рівнів (game level numbers)
-        const verifiedLevels = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
+        const verifiedLevels = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
         
         // Перевірка чи поточний рівень верифікований
         function isCurrentLevelVerified() {

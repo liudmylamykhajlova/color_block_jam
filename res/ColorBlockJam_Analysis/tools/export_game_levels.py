@@ -107,6 +107,10 @@ def main():
                 if level['name'] == 'Level 25' and edge == 'right' and d['blockType'] == 0:
                     row = row - 1
                 
+                # Special case: Level 36 (Game Level 21) left orange door should be 1 cell higher
+                if level['name'] == 'Level 36' and edge == 'left' and d['blockType'] == 7:
+                    row = row - 1
+                
                 # Special case: New Level 26 (Game Level 19) side doors on inner boundary
                 if level['name'] == 'New Level 26':
                     if edge == 'left':
