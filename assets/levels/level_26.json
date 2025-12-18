@@ -1,0 +1,278 @@
+{
+  "level": 26,
+  "originalName": "Level 48",
+  "guid": "2e86ac1f-a712-4f97-9054-226b88acd70a",
+  "gridWidth": 8,
+  "gridHeight": 12,
+  "blocks": [
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    }
+  ],
+  "doors": [
+    {
+      "edge": "bottom",
+      "startRow": 11,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 1
+    },
+    {
+      "edge": "bottom",
+      "startRow": 11,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 7
+    },
+    {
+      "edge": "bottom",
+      "startRow": 11,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 9
+    },
+    {
+      "edge": "bottom",
+      "startRow": 11,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 3
+    },
+    {
+      "edge": "bottom",
+      "startRow": 11,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 8
+    },
+    {
+      "edge": "bottom",
+      "startRow": 11,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 2
+    },
+    {
+      "edge": "bottom",
+      "startRow": 11,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 5
+    },
+    {
+      "edge": "bottom",
+      "startRow": 11,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 6
+    },
+    {
+      "edge": "bottom",
+      "startRow": 11,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 0
+    },
+    {
+      "edge": "bottom",
+      "startRow": 11,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 4
+    }
+  ],
+  "hiddenCells": [
+    {
+      "x": 6,
+      "y": 5
+    },
+    {
+      "x": 6,
+      "y": 4
+    },
+    {
+      "x": 6,
+      "y": 3
+    },
+    {
+      "x": 6,
+      "y": 2
+    },
+    {
+      "x": 6,
+      "y": -1
+    },
+    {
+      "x": 6,
+      "y": -2
+    },
+    {
+      "x": 6,
+      "y": -3
+    },
+    {
+      "x": 6,
+      "y": -4
+    },
+    {
+      "x": 7,
+      "y": 5
+    },
+    {
+      "x": 7,
+      "y": -4
+    },
+    {
+      "x": 8,
+      "y": 5
+    },
+    {
+      "x": 8,
+      "y": -4
+    },
+    {
+      "x": 9,
+      "y": 5
+    },
+    {
+      "x": 9,
+      "y": 4
+    },
+    {
+      "x": 9,
+      "y": 3
+    },
+    {
+      "x": 9,
+      "y": 2
+    },
+    {
+      "x": 9,
+      "y": -1
+    },
+    {
+      "x": 9,
+      "y": -2
+    },
+    {
+      "x": 9,
+      "y": -3
+    },
+    {
+      "x": 9,
+      "y": -4
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "level": 17,
+  "originalName": "Level 33",
+  "guid": "229b8206-0b5c-47f9-8007-b2e60d0b3957",
+  "gridWidth": 9,
+  "gridHeight": 9,
+  "blocks": [
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    }
+  ],
+  "doors": [
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 1
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 5
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 1
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 6
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 4
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 0
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 3
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 9
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 4
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 5
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 6
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 1
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 8
+    },
+    {
+      "edge": "bottom",
+      "startRow": 8,
+      "startCol": 4,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 8
+    }
+  ],
+  "hiddenCells": []
+}

@@ -1,0 +1,42 @@
+{
+  "level": 1,
+  "originalName": "Level 1",
+  "guid": "c0ae24d0-c79e-4eaf-ba41-33f36b205f7d",
+  "gridWidth": 4,
+  "gridHeight": 5,
+  "blocks": [
+    {
+      "x": 2,
+      "y": 2,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 2,
+      "y": 2,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    }
+  ],
+  "doors": [
+    {
+      "edge": "bottom",
+      "startRow": 4,
+      "startCol": 2,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 3
+    },
+    {
+      "edge": "bottom",
+      "startRow": 4,
+      "startCol": 2,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 0
+    }
+  ],
+  "hiddenCells": []
+}

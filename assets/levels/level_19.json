@@ -1,0 +1,198 @@
+{
+  "level": 19,
+  "originalName": "Derin Level 15",
+  "guid": "1efa2e3c-6ac1-4e64-864c-ea557a20f407",
+  "gridWidth": 7,
+  "gridHeight": 7,
+  "blocks": [
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    }
+  ],
+  "doors": [
+    {
+      "edge": "bottom",
+      "startRow": 6,
+      "startCol": 3,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 8
+    },
+    {
+      "edge": "bottom",
+      "startRow": 6,
+      "startCol": 3,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 8
+    },
+    {
+      "edge": "bottom",
+      "startRow": 6,
+      "startCol": 3,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 7
+    },
+    {
+      "edge": "bottom",
+      "startRow": 6,
+      "startCol": 3,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 1
+    },
+    {
+      "edge": "bottom",
+      "startRow": 6,
+      "startCol": 3,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 9
+    },
+    {
+      "edge": "bottom",
+      "startRow": 6,
+      "startCol": 3,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 6
+    },
+    {
+      "edge": "bottom",
+      "startRow": 6,
+      "startCol": 3,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 4
+    },
+    {
+      "edge": "bottom",
+      "startRow": 6,
+      "startCol": 3,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 2
+    }
+  ],
+  "hiddenCells": [
+    {
+      "x": 5,
+      "y": -3
+    },
+    {
+      "x": 6,
+      "y": -2
+    },
+    {
+      "x": 6,
+      "y": -3
+    },
+    {
+      "x": 7,
+      "y": -3
+    }
+  ]
+}

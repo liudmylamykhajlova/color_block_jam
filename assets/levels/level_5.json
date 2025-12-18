@@ -1,0 +1,87 @@
+{
+  "level": 5,
+  "originalName": "Level 5",
+  "guid": "7c275971-8e1d-4726-8211-4c2bb06ba355",
+  "gridWidth": 5,
+  "gridHeight": 6,
+  "blocks": [
+    {
+      "x": 2,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "type": "Single",
+      "colorIndex": 0,
+      "rotZ": 0
+    }
+  ],
+  "doors": [
+    {
+      "edge": "bottom",
+      "startRow": 5,
+      "startCol": 2,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 3
+    },
+    {
+      "edge": "bottom",
+      "startRow": 5,
+      "startCol": 2,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 2
+    },
+    {
+      "edge": "bottom",
+      "startRow": 5,
+      "startCol": 2,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 0
+    },
+    {
+      "edge": "bottom",
+      "startRow": 5,
+      "startCol": 2,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 7
+    },
+    {
+      "edge": "bottom",
+      "startRow": 5,
+      "startCol": 2,
+      "partCount": 1,
+      "colorIndex": 0,
+      "blockType": 8
+    }
+  ],
+  "hiddenCells": []
+}

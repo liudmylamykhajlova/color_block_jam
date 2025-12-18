@@ -200,6 +200,16 @@
             color: #999;
             margin-top: 2px;
         }
+        
+        .verified-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -448,6 +458,9 @@
             
             // Додаємо обробники подій для tooltip
             setupTooltipHandlers();
+            
+            // Оновлюємо badge верифікації
+            updateVerificationBadge();
         }
         
         // Малювання рівня
@@ -574,16 +587,39 @@
                 }
                 
                 // ShortT: ротація Z визначає орієнтацію
+                // Використовуємо явні форми для кожної ротації
                 if (block.blockGroupType === 8) {
                     const rotZ = Math.round((block.rotation?.z || 0) / 90) % 4;
-                    // rotZ=0: зсув вгору
-                    // rotZ=2: зсув вниз
-                    if (rotZ === 0 && gridPos.row > 0) {
+                    // Форми ShortT для кожної ротації:
+                    // rotZ=0: T вниз      rotZ=1: T вправо    rotZ=2: T вгору     rotZ=3: T вліво
+                    //   X X X               X                     X                   X
+                    //     X                 X X                 X X X               X X
+                    //                       X                                         X
+                    const shortTShapes = {
+                        0: [[-1, 0], [0, 0], [1, 0], [0, 1]],    // X X X / __X__ - stem down
+                        1: [[0, -1], [0, 0], [1, 0], [0, 1]],    // X / X X / X - stem right
+                        2: [[0, -1], [-1, 0], [0, 0], [1, 0]],   // __X__ / X X X - stem up
+                        3: [[0, -1], [-1, 0], [0, 0], [0, 1]]    // __X / X X / __X - stem left
+                    };
+                    rotatedShape = shortTShapes[rotZ] || shortTShapes[0];
+                    
+                    // Коригування позиції залежно від ротації
+                    // rotZ=0: зсув вгору на 1 (pivot внизу T)
+                    // rotZ=1: зсув вліво на 1 (pivot справа T)
+                    // rotZ=2: залежить від знаку Y - якщо Y > 0, зсув вниз; якщо Y < 0, без зсуву
+                    // rotZ=3: без зсуву (pivot зліва T)
+                    if (rotZ === 0) {
                         gridPos = { row: gridPos.row - 1, col: gridPos.col };
+                    } else if (rotZ === 1) {
+                        gridPos = { row: gridPos.row, col: gridPos.col - 1 };
                     } else if (rotZ === 2) {
-                        gridPos = { row: gridPos.row + 1, col: gridPos.col };
+                        // Для позитивного Y потрібен зсув вниз, для негативного - без зсуву
+                        if (block.position.y > 0) {
+                            gridPos = { row: gridPos.row + 1, col: gridPos.col };
+                        }
                     }
-                    console.log('ShortT rotZ=' + rotZ + ' at', gridPos);
+                    // rotZ=3: без зсуву
+                    console.log('ShortT rotZ=' + rotZ + ', worldY=' + block.position.y + ' at', gridPos);
                 }
                 
                 // Double: коригування позиції залежно від ротації
@@ -651,10 +687,27 @@
                     }
                 });
                 
-                // Малюємо заливку для всіх клітинок
+                // Малюємо заливку для всіх клітинок (цілісно, без пробілів між сусідніми)
                 blockCells.forEach(({ col, row }) => {
                     const x = padding + col * cellSize;
                     const y = padding + row * cellSize;
+                    
+                    // Визначаємо відступи для кожної сторони
+                    // Якщо є сусід - відступ 0, якщо немає - відступ 2
+                    const hasTop = cellSet.has(`${col},${row - 1}`);
+                    const hasBottom = cellSet.has(`${col},${row + 1}`);
+                    const hasLeft = cellSet.has(`${col - 1},${row}`);
+                    const hasRight = cellSet.has(`${col + 1},${row}`);
+                    
+                    const marginTop = hasTop ? 0 : 2;
+                    const marginBottom = hasBottom ? 0 : 2;
+                    const marginLeft = hasLeft ? 0 : 2;
+                    const marginRight = hasRight ? 0 : 2;
+                    
+                    const rectX = x + marginLeft;
+                    const rectY = y + marginTop;
+                    const rectW = cellSize - marginLeft - marginRight;
+                    const rectH = cellSize - marginTop - marginBottom;
                     
                     // Градієнт для блоку
                     const gradient = ctx.createLinearGradient(x, y, x + cellSize, y + cellSize);
@@ -662,7 +715,7 @@
                     gradient.addColorStop(1, color + 'DD');
                     
                     ctx.fillStyle = gradient;
-                    ctx.fillRect(x + 2, y + 2, cellSize - 4, cellSize - 4);
+                    ctx.fillRect(rectX, rectY, rectW, rectH);
                 });
                 
                 // Малюємо обводку тільки на зовнішніх краях фігури
@@ -670,38 +723,52 @@
                 ctx.lineWidth = 2;
                 
                 blockCells.forEach(({ col, row }) => {
-                    const x = padding + col * cellSize + 2;
-                    const y = padding + row * cellSize + 2;
-                    const w = cellSize - 4;
-                    const h = cellSize - 4;
+                    const x = padding + col * cellSize;
+                    const y = padding + row * cellSize;
+                    
+                    // Визначаємо відступи для координат обводки
+                    const hasTop = cellSet.has(`${col},${row - 1}`);
+                    const hasBottom = cellSet.has(`${col},${row + 1}`);
+                    const hasLeft = cellSet.has(`${col - 1},${row}`);
+                    const hasRight = cellSet.has(`${col + 1},${row}`);
+                    
+                    const marginTop = hasTop ? 0 : 2;
+                    const marginBottom = hasBottom ? 0 : 2;
+                    const marginLeft = hasLeft ? 0 : 2;
+                    const marginRight = hasRight ? 0 : 2;
+                    
+                    const rectX = x + marginLeft;
+                    const rectY = y + marginTop;
+                    const rectW = cellSize - marginLeft - marginRight;
+                    const rectH = cellSize - marginTop - marginBottom;
                     
                     // Перевіряємо кожну сторону - малюємо лінію тільки якщо немає сусіда
                     // Верхня сторона
-                    if (!cellSet.has(`${col},${row - 1}`)) {
+                    if (!hasTop) {
                         ctx.beginPath();
-                        ctx.moveTo(x, y);
-                        ctx.lineTo(x + w, y);
+                        ctx.moveTo(rectX, rectY);
+                        ctx.lineTo(rectX + rectW, rectY);
                         ctx.stroke();
                     }
                     // Нижня сторона
-                    if (!cellSet.has(`${col},${row + 1}`)) {
+                    if (!hasBottom) {
                         ctx.beginPath();
-                        ctx.moveTo(x, y + h);
-                        ctx.lineTo(x + w, y + h);
+                        ctx.moveTo(rectX, rectY + rectH);
+                        ctx.lineTo(rectX + rectW, rectY + rectH);
                         ctx.stroke();
                     }
                     // Ліва сторона
-                    if (!cellSet.has(`${col - 1},${row}`)) {
+                    if (!hasLeft) {
                         ctx.beginPath();
-                        ctx.moveTo(x, y);
-                        ctx.lineTo(x, y + h);
+                        ctx.moveTo(rectX, rectY);
+                        ctx.lineTo(rectX, rectY + rectH);
                         ctx.stroke();
                     }
                     // Права сторона
-                    if (!cellSet.has(`${col + 1},${row}`)) {
+                    if (!hasRight) {
                         ctx.beginPath();
-                        ctx.moveTo(x + w, y);
-                        ctx.lineTo(x + w, y + h);
+                        ctx.moveTo(rectX + rectW, rectY);
+                        ctx.lineTo(rectX + rectW, rectY + rectH);
                         ctx.stroke();
                     }
                 });
@@ -1073,6 +1140,27 @@
                 if (block.blockGroupType === 5 && rotationNorm === 2) {
                     gridPos = { row: gridPos.row, col: gridPos.col - 1 };
                 }
+                // ShortT: коригуємо позицію та форму (аналогічно до drawLevel)
+                if (block.blockGroupType === 8) {
+                    const shortTShapes = {
+                        0: [[-1, 0], [0, 0], [1, 0], [0, 1]],
+                        1: [[0, -1], [0, 0], [1, 0], [0, 1]],
+                        2: [[0, -1], [-1, 0], [0, 0], [1, 0]],
+                        3: [[0, -1], [-1, 0], [0, 0], [0, 1]]
+                    };
+                    rotatedShape = shortTShapes[rotationNorm] || shortTShapes[0];
+                    
+                    if (rotationNorm === 0) {
+                        gridPos = { row: gridPos.row - 1, col: gridPos.col };
+                    } else if (rotationNorm === 1) {
+                        gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                    } else if (rotationNorm === 2) {
+                        if (block.position.y > 0) {
+                            gridPos = { row: gridPos.row + 1, col: gridPos.col };
+                        }
+                    }
+                    // rotZ=3: без зсуву
+                }
                 
                 // Перевіряємо чи ця клітинка належить блоку
                 for (const [dx, dy] of rotatedShape) {
@@ -1159,6 +1247,29 @@
             if (e.key === 'ArrowLeft') prevLevel();
             if (e.key === 'ArrowRight') nextLevel();
         });
+        
+        // ========== VERIFICATION SYSTEM ==========
+        // Список верифікованих рівнів (game level numbers)
+        const verifiedLevels = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]);
+        
+        // Перевірка чи поточний рівень верифікований
+        function isCurrentLevelVerified() {
+            return verifiedLevels.has(currentLevelIndex + 1);
+        }
+        
+        // Оновлення badge верифікації при завантаженні рівня
+        function updateVerificationBadge() {
+            const nameEl = document.getElementById('levelName');
+            const existingBadge = nameEl.querySelector('.verified-badge');
+            if (existingBadge) existingBadge.remove();
+            
+            if (isCurrentLevelVerified()) {
+                const badge = document.createElement('span');
+                badge.className = 'verified-badge';
+                badge.textContent = '✓';
+                nameEl.appendChild(badge);
+            }
+        }
         
         // Завантаження при старті
         loadLevelsData();

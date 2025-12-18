@@ -1,7 +1,7 @@
 # Color Block Jam - Технічна Специфікація (ТЗ)
 
-> **Версія:** 1.0.0  
-> **Дата оновлення:** 2025-12-17  
+> **Версія:** 1.1.0  
+> **Дата оновлення:** 2025-12-18  
 > **Статус:** В розробці
 
 ---
@@ -62,14 +62,17 @@ lib/
 
 assets/
 └── levels/
-    └── levels_15.json            # Дані 15 рівнів
+    └── levels_27.json            # Дані 27 рівнів (18 верифікованих)
 
 res/
 └── ColorBlockJam_Analysis/       # Інструменти парсингу
     ├── tools/
-    │   ├── parse_from_unity.py
-    │   └── export_game_levels.py
-    ├── level_visualizer.html     # Візуалізатор для відладки
+    │   ├── parse_from_unity.py   # Парсер Unity assets
+    │   └── export_game_levels.py # Експорт у game JSON
+    ├── level_visualizer.html     # Візуалізатор з системою верифікації
+    ├── level_data/
+    │   ├── parsed_levels_complete.json  # Всі розпарсені рівні
+    │   └── AllLevels_guids.json  # Порядок рівнів у грі
     └── reports/
         └── RENDERING_RULES.md    # Правила рендерингу
 ```
@@ -256,5 +259,6 @@ List<List<int>> rotateShape(List<List<int>> shape, int rotZ) {
 
 | Версія | Дата | Зміни |
 |--------|------|-------|
+| 1.1.0 | 2025-12-18 | Оновлено структуру проекту, 27 рівнів (18 верифікованих) |
 | 1.0.0 | 2025-12-17 | Початкова версія документа |
 

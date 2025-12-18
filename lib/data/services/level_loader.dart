@@ -15,7 +15,7 @@ class LevelLoader {
       return _cachedLevels!;
     }
 
-    final jsonString = await rootBundle.loadString('assets/levels/levels_15.json');
+    final jsonString = await rootBundle.loadString('assets/levels/levels_27.json');
     final jsonData = json.decode(jsonString) as Map<String, dynamic>;
     final levelsJson = jsonData['levels'] as List<dynamic>;
 

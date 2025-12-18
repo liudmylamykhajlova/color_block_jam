@@ -214,7 +214,7 @@ class LevelLoader {
   static Future<List<GameLevel>> loadLevels() async {
     if (_cachedLevels != null) return _cachedLevels!;
     
-    final jsonString = await rootBundle.loadString('assets/levels/levels_15.json');
+    final jsonString = await rootBundle.loadString('assets/levels/levels_27.json');
     final data = json.decode(jsonString);
     _cachedLevels = (data['levels'] as List)
         .map((l) => GameLevel.fromJson(l))
