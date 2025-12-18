@@ -801,8 +801,13 @@
                 const absY = Math.abs(worldY);
                 
                 // Динамічні пороги для країв
-                const sideEdgeThreshold = Math.max(3.5, gridSize.x + 0.5);
+                let sideEdgeThreshold = Math.max(3.5, gridSize.x + 0.5);
                 const topBottomEdgeThreshold = Math.max(5.5, gridSize.y - 0.5);
+                
+                // Special case: New Level 26 (Game Level 19) has side doors at x=±5 for grid 6x8
+                if (level.name === 'New Level 26') {
+                    sideEdgeThreshold = 4.9;
+                }
                 
                 // СПОЧАТКУ перевіряємо бокові краї
                 if (absX >= sideEdgeThreshold) {
@@ -832,10 +837,20 @@
                     
                     if (worldX > 0) {
                         edge = 'right';
-                        doorX = padding + gridSize.x * cellSize + 2;
+                        // Special case: New Level 26 (Game Level 19) - draw on inner boundary
+                        if (level.name === 'New Level 26') {
+                            doorX = padding + 5 * cellSize - doorThickness - 2; // Column 4 inner edge
+                        } else {
+                            doorX = padding + gridSize.x * cellSize + 2;
+                        }
                     } else {
                         edge = 'left';
-                        doorX = padding - doorThickness - 2;
+                        // Special case: New Level 26 (Game Level 19) - draw on inner boundary
+                        if (level.name === 'New Level 26') {
+                            doorX = padding + 1 * cellSize + 2; // Column 1 inner edge
+                        } else {
+                            doorX = padding - doorThickness - 2;
+                        }
                     }
                     doorY = padding + doorStartRow * cellSize;
                     doorWidth = doorThickness;
@@ -1260,7 +1275,7 @@
         
         // ========== VERIFICATION SYSTEM ==========
         // Список верифікованих рівнів (game level numbers)
-        const verifiedLevels = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]);
+        const verifiedLevels = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
         
         // Перевірка чи поточний рівень верифікований
         function isCurrentLevelVerified() {

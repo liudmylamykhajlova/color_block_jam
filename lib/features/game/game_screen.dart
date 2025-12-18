@@ -301,8 +301,10 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     for (final cell in newCells) {
       final isOutside = cell.row < 0 || cell.row >= level.gridHeight ||
           cell.col < 0 || cell.col >= level.gridWidth;
+      final isHidden = level.hiddenCells.contains(cell);
       
-      if (isOutside) {
+      // Check if this cell could be an exit position (outside grid OR in hidden area near a door)
+      if (isOutside || isHidden) {
         bool canExit = false;
         
         for (final door in matchingDoors) {
@@ -318,13 +320,15 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
               break;
             }
           } 
-          else if (door.edge == 'left' && cell.col < 0) {
+          else if (door.edge == 'left' && cell.col < door.startCol) {
+            // Use door.startCol to support inner boundary doors (e.g. Level 19)
             if (cell.row >= door.startRow && cell.row < door.startRow + door.partCount) {
               canExit = true;
               break;
             }
           } 
-          else if (door.edge == 'right' && cell.col >= level.gridWidth) {
+          else if (door.edge == 'right' && cell.col > door.startCol) {
+            // Use door.startCol to support inner boundary doors (e.g. Level 19)
             if (cell.row >= door.startRow && cell.row < door.startRow + door.partCount) {
               canExit = true;
               break;
@@ -335,16 +339,12 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
         if (!canExit) return false;
       }
 
-      if (!isOutside) {
+      if (!isOutside && !isHidden) {
         for (final otherBlock in _blocks) {
           if (otherBlock == block) continue;
           if (otherBlock.cells.contains(cell)) {
             return false;
           }
-        }
-
-        if (level.hiddenCells.contains(cell)) {
-          return false;
         }
       }
     }
@@ -362,16 +362,20 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     int exitCol = 0;
     
     for (final cell in blockCells) {
+      final isHidden = level.hiddenCells.contains(cell);
+      
       if (cell.row < 0) {
         outsideCount++;
         exitRow = -1;
       } else if (cell.row >= level.gridHeight) {
         outsideCount++;
         exitRow = 1;
-      } else if (cell.col < 0) {
+      } else if (cell.col < 0 || (isHidden && cell.col == 0)) {
+        // Also count hidden cells at col 0 as left exit (for inner boundary doors)
         outsideCount++;
         exitCol = -1;
-      } else if (cell.col >= level.gridWidth) {
+      } else if (cell.col >= level.gridWidth || (isHidden && cell.col == level.gridWidth - 1)) {
+        // Also count hidden cells at rightmost col as right exit (for inner boundary doors)
         outsideCount++;
         exitCol = 1;
       }
@@ -805,12 +809,14 @@ class GameBoardPainter extends CustomPainter {
       
       // Door is drawn as a colored rectangle in the frame gap
       if (door.edge == 'left') {
-        x = borderOffset - frameThickness;
+        // Use startCol for inner boundary doors (e.g. Level 19)
+        x = borderOffset + door.startCol * cellSize - frameThickness;
         y = borderOffset + door.startRow * cellSize;
         w = frameThickness;
         h = doorLength;
       } else if (door.edge == 'right') {
-        x = borderOffset + level.gridWidth * cellSize;
+        // Use startCol for inner boundary doors (e.g. Level 19)
+        x = borderOffset + (door.startCol + 1) * cellSize;
         y = borderOffset + door.startRow * cellSize;
         w = frameThickness;
         h = doorLength;
