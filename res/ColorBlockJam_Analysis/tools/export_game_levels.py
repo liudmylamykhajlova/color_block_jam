@@ -94,9 +94,10 @@ def main():
             world_y = b['position']['y']
             
             # Прапорець для спеціальної обробки ShortL rotZ=2 в hidden levels
+            # Застосовується тільки якщо worldY < -2 (далеко від центру)
             needs_row_offset = False
             if b['blockGroupType'] == 5 and rot_z == 2:  # ShortL rotZ=2
-                if has_hidden_cells and world_y < 0:
+                if has_hidden_cells and world_y < -2:
                     needs_row_offset = True
             
             blocks.append({
@@ -121,24 +122,17 @@ def main():
             # Adjust position for doors
             if edge in ['left', 'right']:
                 col = 0 if edge == 'left' else grid_w - 1
+                offset_y = (grid_h - 1) / 2
                 if abs(d['position']['y']) < 0.5:
                     row = (grid_h - parts) // 2
                 else:
-                    offset_y = (grid_h - 1) / 2
                     row_center = js_round(-d['position']['y'] / 2.0 + offset_y)
-                    if d['position']['y'] < -2:
+                    # Поріг залежить від offset_y - двері нижче центру позиціонуються інакше
+                    if d['position']['y'] < -offset_y:
                         row = row_center - (parts - 1) // 2
                     else:
                         row = row_center - parts // 2
                 row = max(0, min(row, grid_h - parts))
-                
-                # Special case: Level 25 (Game Level 16) right blue door should be 1 cell higher
-                if level['name'] == 'Level 25' and edge == 'right' and d['blockType'] == 0:
-                    row = row - 1
-                
-                # Special case: Level 36 (Game Level 21) left orange door should be 1 cell higher
-                if level['name'] == 'Level 36' and edge == 'left' and d['blockType'] == 7:
-                    row = row - 1
                 
                 # Use inner boundary if edge columns are mostly hidden
                 if edge == 'left' and edge_info['leftHidden']:

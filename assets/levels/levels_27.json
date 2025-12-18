@@ -2933,7 +2933,7 @@
           "gridRow": 4,
           "gridCol": 1,
           "rotationZ": 2,
-          "needsRowOffset": true
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
@@ -3703,7 +3703,7 @@
           "blockType": 0,
           "partCount": 2,
           "edge": "right",
-          "startRow": 5,
+          "startRow": 4,
           "startCol": 4
         },
         {
