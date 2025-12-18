@@ -11,14 +11,16 @@
           "blockGroupType": 7,
           "gridRow": 2,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 7,
           "gridRow": 3,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -50,14 +52,16 @@
           "blockGroupType": 2,
           "gridRow": 2,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 2,
           "gridRow": 2,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -89,21 +93,24 @@
           "blockGroupType": 1,
           "gridRow": 3,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 4,
           "gridRow": 2,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 4,
           "gridRow": 3,
           "gridCol": 3,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -149,21 +156,24 @@
           "blockGroupType": 7,
           "gridRow": 2,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 7,
           "gridRow": 4,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 1,
           "gridRow": 3,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -209,35 +219,40 @@
           "blockGroupType": 7,
           "gridRow": 3,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 7,
           "gridRow": 3,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 2,
           "gridRow": 4,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 2,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 2,
           "gridRow": 1,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -290,56 +305,64 @@
           "blockGroupType": 1,
           "gridRow": 3,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 1,
           "gridRow": 3,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 2,
           "gridRow": 3,
           "gridCol": 2,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 2,
           "gridRow": 2,
           "gridCol": 3,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 2,
           "gridRow": 1,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 2,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 5,
           "gridRow": 5,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 5,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -399,70 +422,80 @@
           "blockGroupType": 4,
           "gridRow": 2,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 1,
           "gridRow": 0,
           "gridCol": 3,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 2,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 1,
           "gridRow": 3,
           "gridCol": 0,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 7,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 5,
           "gridRow": 6,
           "gridCol": 3,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 0,
           "gridRow": 5,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 1,
           "gridRow": 3,
           "gridCol": 3,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 0,
           "gridRow": 2,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 0,
           "gridRow": 0,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -557,105 +590,120 @@
           "blockGroupType": 1,
           "gridRow": 0,
           "gridCol": 4,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 0,
           "gridRow": 0,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 8,
           "gridRow": 1,
           "gridCol": 3,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 1,
           "gridRow": 3,
           "gridCol": 1,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 1,
           "gridRow": 2,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 3,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 0,
           "gridRow": 1,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 0,
           "gridRow": 2,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 4,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 0,
           "gridRow": 4,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 0,
           "gridRow": 4,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 4,
           "gridRow": 5,
           "gridCol": 4,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 5,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 0,
           "gridRow": 3,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 0,
           "gridRow": 6,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -722,63 +770,72 @@
           "blockGroupType": 1,
           "gridRow": 2,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 2,
           "gridRow": 3,
           "gridCol": 2,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 2,
           "gridRow": 2,
           "gridCol": 2,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 2,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 2,
           "gridRow": 0,
           "gridCol": 4,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 1,
           "gridRow": 3,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 2,
           "gridRow": 3,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 5,
           "gridRow": 1,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -847,42 +904,48 @@
           "blockGroupType": 2,
           "gridRow": 0,
           "gridCol": 1,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 2,
           "gridRow": 4,
           "gridCol": 1,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 2,
           "gridRow": 1,
           "gridCol": 1,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 2,
           "gridRow": 2,
           "gridCol": 1,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 2,
           "gridRow": 3,
           "gridCol": 1,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 2,
           "gridRow": 5,
           "gridCol": 1,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -942,105 +1005,120 @@
           "blockGroupType": 5,
           "gridRow": 9,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 5,
           "gridRow": 1,
           "gridCol": 1,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 5,
           "gridRow": 1,
           "gridCol": 6,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 5,
           "gridRow": 9,
           "gridCol": 6,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 7,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 7,
           "gridRow": 5,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 0,
           "gridRow": 4,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 0,
           "gridRow": 5,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 1,
           "gridRow": 0,
           "gridCol": 3,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 8,
           "gridRow": 9,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 1,
           "gridRow": 6,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 1,
           "gridRow": 4,
           "gridCol": 6,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 1,
           "gridRow": 6,
           "gridCol": 6,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 1,
           "gridRow": 4,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -1163,84 +1241,96 @@
           "blockGroupType": 7,
           "gridRow": 3,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 1,
           "gridRow": 3,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 1,
           "gridRow": 6,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 2,
           "gridRow": 1,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 2,
           "gridRow": 5,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 5,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 5,
           "gridRow": 6,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 0,
           "gridRow": 4,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 0,
           "gridRow": 3,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 0,
           "gridRow": 3,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -1314,112 +1404,128 @@
           "blockGroupType": 2,
           "gridRow": 2,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 2,
           "gridRow": 4,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 1,
           "gridRow": 2,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 1,
           "gridRow": 3,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 0,
           "gridRow": 3,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 0,
           "gridRow": 5,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 1,
           "gridRow": 4,
           "gridCol": 5,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 2,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 6,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 5,
           "gridRow": 4,
           "gridCol": 6,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 5,
           "gridRow": 5,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 5,
           "gridRow": 1,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 5,
           "gridRow": 3,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 5,
           "gridRow": 2,
           "gridCol": 6,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 1,
           "gridRow": 6,
           "gridCol": 5,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 0,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -1535,77 +1641,88 @@
           "blockGroupType": 7,
           "gridRow": 1,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 7,
           "gridRow": 1,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 2,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 2,
           "gridRow": 3,
           "gridCol": 0,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 2,
           "gridRow": 2,
           "gridCol": 2,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 2,
           "gridRow": 5,
           "gridCol": 4,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 1,
           "gridRow": 3,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 5,
           "gridRow": 4,
           "gridCol": 4,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 0,
           "gridRow": 4,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -1665,91 +1782,104 @@
           "blockGroupType": 6,
           "gridRow": 2,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 6,
           "gridRow": 6,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 8,
           "gridRow": 4,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 8,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 3,
           "gridRow": 1,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 3,
           "gridRow": 7,
           "gridCol": 1,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 5,
           "gridRow": 8,
           "gridCol": 4,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 1,
           "gridRow": 2,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 1,
           "gridRow": 0,
           "gridCol": 3,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 4,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 1,
           "gridRow": 7,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 1,
           "gridRow": 6,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -1837,105 +1967,120 @@
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 0,
           "gridRow": 0,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 5,
           "gridRow": 2,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 0,
           "gridRow": 2,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 1,
           "gridRow": 2,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 0,
           "gridRow": 2,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 0,
           "gridRow": 0,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 0,
           "gridRow": 6,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 2,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 0,
           "gridRow": 6,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 0,
           "gridRow": 6,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 0,
           "gridRow": 6,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -1971,7 +2116,7 @@
           "blockType": 0,
           "partCount": 2,
           "edge": "right",
-          "startRow": 5,
+          "startRow": 4,
           "startCol": 4
         }
       ],
@@ -2013,63 +2158,72 @@
           "blockGroupType": 1,
           "gridRow": 0,
           "gridCol": 3,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 5,
           "gridRow": 2,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 2,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 5,
           "gridRow": 6,
           "gridCol": 3,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 8,
           "gridRow": 4,
           "gridCol": 4,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 3,
           "gridRow": 2,
           "gridCol": 2,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 8,
           "gridRow": 5,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -2129,154 +2283,176 @@
           "blockGroupType": 8,
           "gridRow": 4,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 6,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 6,
           "gridRow": 6,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 4,
           "gridRow": 4,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 4,
           "gridRow": 4,
           "gridCol": 6,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 0,
           "gridRow": 4,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 7,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 2,
           "gridRow": 1,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 1,
           "gridRow": 7,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 1,
           "gridRow": 8,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 5,
           "gridRow": 4,
           "gridCol": 8,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 5,
           "gridRow": 2,
           "gridCol": 8,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 5,
           "gridRow": 8,
           "gridCol": 8,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 0,
           "gridRow": 4,
           "gridCol": 7,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 0,
           "gridRow": 5,
           "gridCol": 7,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 2,
           "gridRow": 1,
           "gridCol": 6,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 4,
           "gridRow": 7,
           "gridCol": 2,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 1,
           "gridRow": 2,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 0,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 0,
           "gridRow": 8,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 1,
           "gridRow": 6,
           "gridCol": 8,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -2392,49 +2568,56 @@
           "blockGroupType": 8,
           "gridRow": 6,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 1,
           "gridRow": 4,
           "gridCol": 4,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 1,
           "gridRow": 4,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 5,
           "gridRow": 3,
           "gridCol": 5,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 8,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 7,
           "gridRow": 2,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 5,
           "gridRow": 6,
           "gridCol": 4,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": true
         }
       ],
       "doors": [
@@ -2451,6 +2634,20 @@
           "edge": "top",
           "startRow": -1,
           "startCol": 2
+        },
+        {
+          "blockType": 1,
+          "partCount": 2,
+          "edge": "right",
+          "startRow": 3,
+          "startCol": 4
+        },
+        {
+          "blockType": 5,
+          "partCount": 2,
+          "edge": "left",
+          "startRow": 3,
+          "startCol": 1
         }
       ],
       "hiddenCells": [
@@ -2531,105 +2728,120 @@
           "blockGroupType": 2,
           "gridRow": 2,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 2,
           "gridRow": 4,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 1,
           "gridRow": 4,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 1,
           "gridRow": 3,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 0,
           "gridRow": 2,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 0,
           "gridRow": 0,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 6,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 1,
           "gridRow": 6,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 5,
           "gridRow": 4,
           "gridCol": 6,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 5,
           "gridRow": 6,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 5,
           "gridRow": 1,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 5,
           "gridRow": 3,
           "gridCol": 1,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 5,
           "gridRow": 2,
           "gridCol": 6,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 1,
           "gridRow": 4,
           "gridCol": 5,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 0,
           "gridRow": 5,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -2720,126 +2932,144 @@
           "blockGroupType": 5,
           "gridRow": 4,
           "gridCol": 1,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": true
         },
         {
           "blockType": 5,
           "blockGroupType": 4,
           "gridRow": 2,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 3,
           "gridRow": 3,
           "gridCol": 7,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 5,
           "gridRow": 4,
           "gridCol": 6,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 5,
           "gridRow": 5,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 5,
           "gridRow": 6,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 5,
           "gridRow": 7,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 1,
           "gridRow": 7,
           "gridCol": 6,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 7,
           "gridCol": 5,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 5,
           "gridRow": 1,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 8,
           "gridRow": 2,
           "gridCol": 3,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 6,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 0,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 0,
           "gridRow": 6,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 0,
           "gridRow": 3,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 0,
           "gridRow": 2,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 4,
           "gridRow": 4,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -2959,70 +3189,80 @@
           "blockGroupType": 5,
           "gridRow": 4,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 5,
           "gridRow": 4,
           "gridCol": 2,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 7,
           "gridRow": 2,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 7,
           "gridRow": 2,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 5,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 5,
           "gridRow": 5,
           "gridCol": 4,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": true
         },
         {
           "blockType": 4,
           "blockGroupType": 0,
           "gridRow": 0,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 0,
           "gridRow": 0,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 0,
           "gridRow": 0,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 0,
           "gridRow": 0,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -3093,112 +3333,128 @@
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 3,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 8,
           "gridRow": 3,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 4,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 8,
           "gridRow": 7,
           "gridCol": 3,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 3,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 2,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 7,
           "gridRow": 8,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 7,
           "gridRow": 8,
           "gridCol": 6,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 7,
           "gridRow": 1,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 7,
           "gridRow": 1,
           "gridCol": 6,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 0,
           "gridRow": 3,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 0,
           "gridRow": 3,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 0,
           "gridRow": 6,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 0,
           "gridRow": 6,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -3283,112 +3539,128 @@
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 0,
           "gridRow": 0,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 0,
           "gridRow": 2,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 1,
           "gridRow": 4,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 0,
           "gridRow": 0,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 0,
           "gridRow": 6,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 2,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 0,
           "gridRow": 6,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 0,
           "gridRow": 6,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 0,
           "gridRow": 6,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 1,
           "gridRow": 2,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 1,
           "gridRow": 4,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 1,
           "gridRow": 2,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -3469,35 +3741,40 @@
           "blockGroupType": 5,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 5,
           "gridRow": 5,
           "gridCol": 1,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 2,
           "gridRow": 3,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 1,
           "gridRow": 0,
           "gridCol": 1,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 4,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -3557,105 +3834,120 @@
           "blockGroupType": 3,
           "gridRow": 5,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 3,
           "gridRow": 7,
           "gridCol": 5,
-          "rotationZ": 1
+          "rotationZ": 1,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 1,
           "gridRow": 6,
           "gridCol": 3,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 1,
           "gridRow": 5,
           "gridCol": 5,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 7,
           "gridRow": 3,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 7,
           "gridRow": 9,
           "gridCol": 7,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 2,
           "gridRow": 5,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 2,
           "gridRow": 5,
           "gridCol": 7,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 5,
           "gridRow": 11,
           "gridCol": 7,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 7,
           "blockGroupType": 5,
           "gridRow": 9,
           "gridCol": 1,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 0,
           "blockGroupType": 5,
           "gridRow": 11,
           "gridCol": 1,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": true
         },
         {
           "blockType": 5,
           "blockGroupType": 1,
           "gridRow": 9,
           "gridCol": 4,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 3,
           "gridRow": 1,
           "gridCol": 1,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 6,
           "blockGroupType": 4,
           "gridRow": 1,
           "gridCol": 7,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 1,
           "gridRow": 9,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         }
       ],
       "doors": [
@@ -3824,84 +4116,96 @@
           "blockGroupType": 8,
           "gridRow": 3,
           "gridCol": 3,
-          "rotationZ": 2
+          "rotationZ": 2,
+          "needsRowOffset": false
         },
         {
           "blockType": 5,
           "blockGroupType": 0,
           "gridRow": 5,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 2,
           "blockGroupType": 0,
           "gridRow": 4,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 4,
           "gridRow": 3,
           "gridCol": 2,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 7,
           "gridRow": 8,
           "gridCol": 5,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 5,
           "gridRow": 6,
           "gridCol": 6,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 5,
           "gridRow": 8,
           "gridCol": 1,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 8,
           "blockGroupType": 1,
           "gridRow": 2,
           "gridCol": 6,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 9,
           "blockGroupType": 1,
           "gridRow": 9,
           "gridCol": 2,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         },
         {
           "blockType": 1,
           "blockGroupType": 1,
           "gridRow": 9,
           "gridCol": 3,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 4,
           "blockGroupType": 2,
           "gridRow": 5,
           "gridCol": 0,
-          "rotationZ": 0
+          "rotationZ": 0,
+          "needsRowOffset": false
         },
         {
           "blockType": 3,
           "blockGroupType": 1,
           "gridRow": 1,
           "gridCol": 4,
-          "rotationZ": 3
+          "rotationZ": 3,
+          "needsRowOffset": false
         }
       ],
       "doors": [

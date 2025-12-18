@@ -22,9 +22,14 @@ def world_to_grid(world_x, world_y, grid_width, grid_height):
     row = js_round(-world_y / cell_size + offset_y)
     return int(row), int(col)
 
-def get_door_edge(world_x, world_y, grid_width, grid_height):
+def get_door_edge(world_x, world_y, grid_width, grid_height, level_name=""):
     """Determine which edge a door is on."""
     side_threshold = max(3.5, grid_width + 0.5)
+    
+    # Special case: "New Level 26" (Game Level 19) has side doors at x=±5 for grid 6x8
+    if level_name == "New Level 26":
+        side_threshold = 4.9
+    
     if abs(world_x) >= side_threshold:
         return 'left' if world_x < 0 else 'right'
     else:
@@ -55,23 +60,32 @@ def main():
         grid_h = level['gridSize']['y']
         
         # Convert blocks - зберігаємо ЦЕНТР блоку (як у візуалізаторі)
+        has_hidden_cells = len(level.get('hiddenCoords', [])) > 0
         blocks = []
         for b in level['gameBlocks']:
             center_row, center_col = world_to_grid(b['position']['x'], b['position']['y'], grid_w, grid_h)
             rot_z = round(b.get('rotation', {}).get('z', 0) / 90) % 4
+            world_y = b['position']['y']
+            
+            # Прапорець для спеціальної обробки ShortL rotZ=2 в hidden levels
+            needs_row_offset = False
+            if b['blockGroupType'] == 5 and rot_z == 2:  # ShortL rotZ=2
+                if has_hidden_cells and world_y < 0:
+                    needs_row_offset = True
             
             blocks.append({
                 'blockType': b['blockType'],
                 'blockGroupType': b['blockGroupType'],
                 'gridRow': center_row,
                 'gridCol': center_col,
-                'rotationZ': rot_z
+                'rotationZ': rot_z,
+                'needsRowOffset': needs_row_offset
             })
         
         # Convert doors
         doors = []
         for d in level['doors']:
-            edge = get_door_edge(d['position']['x'], d['position']['y'], grid_w, grid_h)
+            edge = get_door_edge(d['position']['x'], d['position']['y'], grid_w, grid_h, level['name'])
             row, col = world_to_grid(d['position']['x'], d['position']['y'], grid_w, grid_h)
             parts = d['doorPartCount']
             
@@ -88,6 +102,17 @@ def main():
                     else:
                         row = row_center - parts // 2
                 row = max(0, min(row, grid_h - parts))
+                
+                # Special case: Level 25 (Game Level 16) right blue door should be 1 cell higher
+                if level['name'] == 'Level 25' and edge == 'right' and d['blockType'] == 0:
+                    row = row - 1
+                
+                # Special case: New Level 26 (Game Level 19) side doors on inner boundary
+                if level['name'] == 'New Level 26':
+                    if edge == 'left':
+                        col = 1  # Inner left boundary
+                    else:
+                        col = 4  # Inner right boundary
             else:
                 # Для top/bottom дверей: row - це положення на межі (зовнішнє)
                 row = -1 if edge == 'top' else grid_h

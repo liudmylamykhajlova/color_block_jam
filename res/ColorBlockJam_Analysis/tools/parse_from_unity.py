@@ -66,7 +66,7 @@ def is_valid_door(pos_x: float, pos_y: float, parts: int, btype: int) -> bool:
     return True
 
 
-def find_doors_in_region(data: bytes, start: int, end: int, expected_count: int = 0, grid_x: int = 5, grid_y: int = 6) -> List[Dict]:
+def find_doors_in_region(data: bytes, start: int, end: int, expected_count: int = 0, grid_x: int = 5, grid_y: int = 6, level_name: str = "") -> List[Dict]:
     """Scan for valid door entries in a memory region."""
     doors = []
     
@@ -74,6 +74,10 @@ def find_doors_in_region(data: bytes, start: int, end: int, expected_count: int 
     side_edge_threshold = max(3.5, grid_x + 0.5)
     side_edge_max = grid_x + 2
     top_bottom_edge_threshold = max(5.5, grid_y - 0.5)
+    
+    # Special case: "New Level 26" (Game Level 19) has side doors at x=±5 for grid 6x8
+    if level_name == "New Level 26":
+        side_edge_threshold = 4.9
     
     # Expand search range to find all doors (some levels have doors up to 0x870+)
     search_end = min(len(data) - 32, max(end, 0x900))
@@ -310,9 +314,9 @@ def parse_level_data(data: bytes, name_hint: str = "") -> Dict[str, Any]:
         door_region_start = 0x84
         door_region_end = min(len(data), 0x600)  # Search up to 0x600 for doors
         
-        # Find all doors (pass grid size for dynamic edge detection)
+        # Find all doors (pass grid size and level name for dynamic edge detection)
         result['doors'] = find_doors_in_region(data, door_region_start, door_region_end, door_count, 
-                                                result['gridSize']['x'], result['gridSize']['y'])
+                                                result['gridSize']['x'], result['gridSize']['y'], result['name'])
 
         # Find actual game blocks (inside playing field)
         result['gameBlocks'] = find_game_blocks(data, result['gridSize']['x'], result['gridSize']['y'])

@@ -48,6 +48,7 @@ class GameBlock {
   int gridRow;
   int gridCol;
   final int rotationZ;
+  final bool needsRowOffset;
   
   // Grid size for edge detection
   int gridWidth = 6;
@@ -59,6 +60,7 @@ class GameBlock {
     required this.gridRow,
     required this.gridCol,
     required this.rotationZ,
+    this.needsRowOffset = false,
   });
 
   factory GameBlock.fromJson(Map<String, dynamic> json) {
@@ -68,6 +70,7 @@ class GameBlock {
       gridRow: json['gridRow'],
       gridCol: json['gridCol'],
       rotationZ: json['rotationZ'],
+      needsRowOffset: json['needsRowOffset'] ?? false,
     );
   }
 
@@ -78,6 +81,7 @@ class GameBlock {
       gridRow: gridRow,
       gridCol: gridCol,
       rotationZ: rotationZ,
+      needsRowOffset: needsRowOffset,
     )..gridWidth = gridWidth..gridHeight = gridHeight;
   }
 
@@ -135,9 +139,14 @@ class GameBlock {
         } else if (rotZ == 2) {
           rotatedShape = [[0, 0], [0, 1], [1, 1]];
           col -= 1;
-          final atTopEdge = row <= 1;
-          final atBottomEdge = (row + 1) >= gridHeight;
-          if (atTopEdge || atBottomEdge) row -= 1;
+          // Apply row offset for hidden-cell levels or edge cases
+          if (needsRowOffset) {
+            row -= 1;
+          } else {
+            final atTopEdge = row <= 1;
+            final atBottomEdge = (row + 1) >= gridHeight;
+            if (atTopEdge || atBottomEdge) row -= 1;
+          }
         } else if (rotZ == 3) {
           rotatedShape = [[-1, 0], [0, -1], [0, 0]];
         }
