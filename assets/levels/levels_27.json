@@ -3984,7 +3984,7 @@
         {
           "blockType": 5,
           "blockGroupType": 1,
-          "gridRow": 9,
+          "gridRow": 8,
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false
@@ -4008,7 +4008,7 @@
         {
           "blockType": 1,
           "blockGroupType": 1,
-          "gridRow": 9,
+          "gridRow": 8,
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false
