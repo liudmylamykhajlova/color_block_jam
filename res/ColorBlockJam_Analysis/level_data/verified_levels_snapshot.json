@@ -1,0 +1,4400 @@
+{
+  "1": {
+    "id": 1,
+    "name": "Level 1",
+    "gridWidth": 4,
+    "gridHeight": 5,
+    "blocks": [
+      {
+        "blockType": 0,
+        "blockGroupType": 7,
+        "gridRow": 2,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 7,
+        "gridRow": 3,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 3,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 5,
+        "startCol": 0
+      },
+      {
+        "blockType": 0,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 1
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 300,
+    "hardness": 0
+  },
+  "2": {
+    "id": 2,
+    "name": "Level 2",
+    "gridWidth": 5,
+    "gridHeight": 5,
+    "blocks": [
+      {
+        "blockType": 2,
+        "blockGroupType": 2,
+        "gridRow": 2,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 2,
+        "gridRow": 2,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 2,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 2
+      },
+      {
+        "blockType": 7,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 5,
+        "startCol": 0
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 300,
+    "hardness": 0
+  },
+  "3": {
+    "id": 3,
+    "name": "Level 3",
+    "gridWidth": 5,
+    "gridHeight": 6,
+    "blocks": [
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 3,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 4,
+        "gridRow": 2,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 4,
+        "gridRow": 3,
+        "gridCol": 3,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 0,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 3
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 2,
+        "startCol": 0
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 2,
+        "startCol": 4
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 300,
+    "hardness": 0
+  },
+  "4": {
+    "id": 4,
+    "name": "Level 4",
+    "gridWidth": 5,
+    "gridHeight": 6,
+    "blocks": [
+      {
+        "blockType": 1,
+        "blockGroupType": 7,
+        "gridRow": 2,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 7,
+        "gridRow": 4,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 1,
+        "gridRow": 3,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 1,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 3
+      },
+      {
+        "blockType": 7,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 0,
+        "startCol": 0
+      },
+      {
+        "blockType": 7,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 4,
+        "startCol": 4
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 300,
+    "hardness": 0
+  },
+  "5": {
+    "id": 5,
+    "name": "Level 5",
+    "gridWidth": 5,
+    "gridHeight": 6,
+    "blocks": [
+      {
+        "blockType": 3,
+        "blockGroupType": 7,
+        "gridRow": 3,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 7,
+        "gridRow": 3,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 2,
+        "gridRow": 4,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 2,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 2,
+        "gridRow": 1,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 3,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 2,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      },
+      {
+        "blockType": 0,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 1
+      },
+      {
+        "blockType": 7,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 4,
+        "startCol": 0
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 4,
+        "startCol": 4
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 300,
+    "hardness": 0
+  },
+  "6": {
+    "id": 6,
+    "name": "Level 6",
+    "gridWidth": 6,
+    "gridHeight": 6,
+    "blocks": [
+      {
+        "blockType": 5,
+        "blockGroupType": 1,
+        "gridRow": 3,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 3,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 2,
+        "gridRow": 3,
+        "gridCol": 2,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 2,
+        "gridRow": 2,
+        "gridCol": 3,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 2,
+        "gridRow": 1,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 2,
+        "gridRow": 1,
+        "gridCol": 4,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 5,
+        "gridRow": 5,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 5,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 6,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 2,
+        "startCol": 0
+      },
+      {
+        "blockType": 2,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 2,
+        "startCol": 5
+      },
+      {
+        "blockType": 4,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 8,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      },
+      {
+        "blockType": 1,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 0
+      },
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 4
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 300,
+    "hardness": 0
+  },
+  "7": {
+    "id": 7,
+    "name": "Level 8",
+    "gridWidth": 5,
+    "gridHeight": 7,
+    "blocks": [
+      {
+        "blockType": 4,
+        "blockGroupType": 4,
+        "gridRow": 2,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 1,
+        "gridRow": 0,
+        "gridCol": 3,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 2,
+        "gridRow": 1,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 1,
+        "gridRow": 3,
+        "gridCol": 0,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 7,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 5,
+        "gridRow": 6,
+        "gridCol": 3,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 0,
+        "gridRow": 5,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 3,
+        "gridCol": 3,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 0,
+        "gridRow": 2,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 0,
+        "gridRow": 0,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 3,
+        "partCount": 1,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 1,
+        "partCount": 1,
+        "edge": "left",
+        "startRow": 0,
+        "startCol": 0
+      },
+      {
+        "blockType": 5,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 0,
+        "startCol": 4
+      },
+      {
+        "blockType": 4,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 1
+      },
+      {
+        "blockType": 0,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      },
+      {
+        "blockType": 7,
+        "partCount": 3,
+        "edge": "left",
+        "startRow": 4,
+        "startCol": 0
+      },
+      {
+        "blockType": 7,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 1,
+        "startCol": 4
+      },
+      {
+        "blockType": 8,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 2
+      },
+      {
+        "blockType": 1,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 4,
+        "startCol": 4
+      },
+      {
+        "blockType": 0,
+        "partCount": 3,
+        "edge": "left",
+        "startRow": 1,
+        "startCol": 0
+      },
+      {
+        "blockType": 4,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 0
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 300,
+    "hardness": 0
+  },
+  "8": {
+    "id": 8,
+    "name": "Level 9",
+    "gridWidth": 5,
+    "gridHeight": 7,
+    "blocks": [
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 0,
+        "gridCol": 4,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 0,
+        "gridRow": 0,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 8,
+        "gridRow": 1,
+        "gridCol": 3,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 1,
+        "gridRow": 3,
+        "gridCol": 1,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 1,
+        "gridRow": 2,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 3,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 0,
+        "gridRow": 1,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 0,
+        "gridRow": 2,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 4,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 0,
+        "gridRow": 4,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 0,
+        "gridRow": 4,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 4,
+        "gridRow": 5,
+        "gridCol": 4,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 5,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 0,
+        "gridRow": 3,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 0,
+        "gridRow": 6,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 8,
+        "partCount": 1,
+        "edge": "left",
+        "startRow": 0,
+        "startCol": 0
+      },
+      {
+        "blockType": 0,
+        "partCount": 3,
+        "edge": "left",
+        "startRow": 1,
+        "startCol": 0
+      },
+      {
+        "blockType": 8,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 4,
+        "startCol": 4
+      },
+      {
+        "blockType": 5,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 3,
+        "startCol": 4
+      },
+      {
+        "blockType": 2,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 2,
+        "startCol": 4
+      },
+      {
+        "blockType": 4,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 1
+      },
+      {
+        "blockType": 7,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 1
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 300,
+    "hardness": 0
+  },
+  "9": {
+    "id": 9,
+    "name": "Derin Level 7",
+    "gridWidth": 6,
+    "gridHeight": 6,
+    "blocks": [
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 2,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 2,
+        "gridRow": 3,
+        "gridCol": 2,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 2,
+        "gridRow": 2,
+        "gridCol": 2,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 2,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 2,
+        "gridRow": 0,
+        "gridCol": 4,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 3,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 2,
+        "gridRow": 3,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 5,
+        "gridRow": 1,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 6,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 2,
+        "startCol": 0
+      },
+      {
+        "blockType": 2,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 2,
+        "startCol": 5
+      },
+      {
+        "blockType": 4,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 8,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      },
+      {
+        "blockType": 1,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 1
+      },
+      {
+        "blockType": 5,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 4
+      }
+    ],
+    "hiddenCells": [
+      {
+        "row": 5,
+        "col": 0
+      },
+      {
+        "row": 5,
+        "col": 5
+      }
+    ],
+    "duration": 180,
+    "hardness": 0
+  },
+  "10": {
+    "id": 10,
+    "name": "New Level 4",
+    "gridWidth": 3,
+    "gridHeight": 7,
+    "blocks": [
+      {
+        "blockType": 9,
+        "blockGroupType": 2,
+        "gridRow": 0,
+        "gridCol": 1,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 2,
+        "gridRow": 4,
+        "gridCol": 1,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 2,
+        "gridRow": 1,
+        "gridCol": 1,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 2,
+        "gridRow": 2,
+        "gridCol": 1,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 2,
+        "gridRow": 3,
+        "gridCol": 1,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 2,
+        "gridRow": 5,
+        "gridCol": 1,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 4,
+        "partCount": 1,
+        "edge": "left",
+        "startRow": 3,
+        "startCol": 0
+      },
+      {
+        "blockType": 5,
+        "partCount": 1,
+        "edge": "left",
+        "startRow": 4,
+        "startCol": 0
+      },
+      {
+        "blockType": 9,
+        "partCount": 1,
+        "edge": "left",
+        "startRow": 5,
+        "startCol": 0
+      },
+      {
+        "blockType": 1,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 2,
+        "startCol": 2
+      },
+      {
+        "blockType": 3,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 1,
+        "startCol": 2
+      },
+      {
+        "blockType": 8,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 3,
+        "startCol": 2
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 60,
+    "hardness": 0
+  },
+  "11": {
+    "id": 11,
+    "name": "Level 45",
+    "gridWidth": 7,
+    "gridHeight": 10,
+    "blocks": [
+      {
+        "blockType": 0,
+        "blockGroupType": 5,
+        "gridRow": 9,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 5,
+        "gridRow": 1,
+        "gridCol": 1,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 5,
+        "gridRow": 1,
+        "gridCol": 6,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 5,
+        "gridRow": 9,
+        "gridCol": 6,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 7,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 7,
+        "gridRow": 5,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 0,
+        "gridRow": 4,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 0,
+        "gridRow": 5,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 1,
+        "gridRow": 0,
+        "gridCol": 3,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 4,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 8,
+        "gridRow": 9,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 6,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 4,
+        "gridCol": 6,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 1,
+        "gridRow": 6,
+        "gridCol": 6,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 1,
+        "gridRow": 4,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 4,
+        "startCol": 0
+      },
+      {
+        "blockType": 0,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 4,
+        "startCol": 6
+      },
+      {
+        "blockType": 7,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 8,
+        "startCol": 0
+      },
+      {
+        "blockType": 7,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 8,
+        "startCol": 6
+      },
+      {
+        "blockType": 3,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 0,
+        "startCol": 0
+      },
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 0,
+        "startCol": 6
+      },
+      {
+        "blockType": 6,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 10,
+        "startCol": 2
+      },
+      {
+        "blockType": 1,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 2
+      }
+    ],
+    "hiddenCells": [
+      {
+        "row": 7,
+        "col": 2
+      },
+      {
+        "row": 6,
+        "col": 2
+      },
+      {
+        "row": 3,
+        "col": 2
+      },
+      {
+        "row": 2,
+        "col": 2
+      },
+      {
+        "row": 7,
+        "col": 3
+      },
+      {
+        "row": 6,
+        "col": 3
+      },
+      {
+        "row": 3,
+        "col": 3
+      },
+      {
+        "row": 2,
+        "col": 3
+      },
+      {
+        "row": 7,
+        "col": 4
+      },
+      {
+        "row": 6,
+        "col": 4
+      },
+      {
+        "row": 3,
+        "col": 4
+      },
+      {
+        "row": 2,
+        "col": 4
+      }
+    ],
+    "duration": 100,
+    "hardness": 0
+  },
+  "12": {
+    "id": 12,
+    "name": "Level 12",
+    "gridWidth": 5,
+    "gridHeight": 7,
+    "blocks": [
+      {
+        "blockType": 2,
+        "blockGroupType": 7,
+        "gridRow": 3,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 1,
+        "gridRow": 3,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 1,
+        "gridRow": 6,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 2,
+        "gridRow": 1,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 2,
+        "gridRow": 5,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 5,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 5,
+        "gridRow": 6,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 4,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 0,
+        "gridRow": 4,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 0,
+        "gridRow": 3,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 0,
+        "gridRow": 3,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 9,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 7,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 5,
+        "startCol": 4
+      },
+      {
+        "blockType": 3,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 3
+      },
+      {
+        "blockType": 2,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      },
+      {
+        "blockType": 2,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 0
+      },
+      {
+        "blockType": 3,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 0,
+        "startCol": 0
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 0,
+        "startCol": 4
+      },
+      {
+        "blockType": 3,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 5,
+        "startCol": 0
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 75,
+    "hardness": 0
+  },
+  "13": {
+    "id": 13,
+    "name": "Level 14",
+    "gridWidth": 7,
+    "gridHeight": 7,
+    "blocks": [
+      {
+        "blockType": 4,
+        "blockGroupType": 2,
+        "gridRow": 2,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 2,
+        "gridRow": 4,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 1,
+        "gridRow": 2,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 1,
+        "gridRow": 3,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 0,
+        "gridRow": 3,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 0,
+        "gridRow": 5,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 1,
+        "gridRow": 4,
+        "gridCol": 5,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 2,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 6,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 5,
+        "gridRow": 4,
+        "gridCol": 6,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 5,
+        "gridRow": 5,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 5,
+        "gridRow": 1,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 5,
+        "gridRow": 3,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 5,
+        "gridRow": 2,
+        "gridCol": 6,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 6,
+        "gridCol": 5,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 0,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 7,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 5,
+        "startCol": 0
+      },
+      {
+        "blockType": 2,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 2,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 5
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 3,
+        "startCol": 0
+      },
+      {
+        "blockType": 5,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 0,
+        "startCol": 6
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 4
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 1,
+        "startCol": 6
+      },
+      {
+        "blockType": 0,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 1
+      },
+      {
+        "blockType": 4,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 3,
+        "startCol": 6
+      },
+      {
+        "blockType": 7,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      },
+      {
+        "blockType": 4,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 0
+      },
+      {
+        "blockType": 4,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 6
+      },
+      {
+        "blockType": 6,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 4,
+        "startCol": 6
+      },
+      {
+        "blockType": 1,
+        "partCount": 3,
+        "edge": "left",
+        "startRow": 0,
+        "startCol": 0
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 150,
+    "hardness": 0
+  },
+  "14": {
+    "id": 14,
+    "name": "Derin Level 9",
+    "gridWidth": 6,
+    "gridHeight": 6,
+    "blocks": [
+      {
+        "blockType": 5,
+        "blockGroupType": 7,
+        "gridRow": 1,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 7,
+        "gridRow": 1,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 2,
+        "gridRow": 1,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 2,
+        "gridRow": 3,
+        "gridCol": 0,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 2,
+        "gridRow": 2,
+        "gridCol": 2,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 2,
+        "gridRow": 5,
+        "gridCol": 4,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 1,
+        "gridRow": 3,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 5,
+        "gridRow": 4,
+        "gridCol": 4,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 0,
+        "gridRow": 4,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 6,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 0
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 2
+      },
+      {
+        "blockType": 0,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 4
+      },
+      {
+        "blockType": 5,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      },
+      {
+        "blockType": 7,
+        "partCount": 1,
+        "edge": "left",
+        "startRow": 4,
+        "startCol": 0
+      },
+      {
+        "blockType": 4,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 0,
+        "startCol": 5
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 120,
+    "hardness": 1
+  },
+  "15": {
+    "id": 15,
+    "name": "Level 18",
+    "gridWidth": 6,
+    "gridHeight": 9,
+    "blocks": [
+      {
+        "blockType": 6,
+        "blockGroupType": 6,
+        "gridRow": 2,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 6,
+        "gridRow": 6,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 8,
+        "gridRow": 4,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 8,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 3,
+        "gridRow": 1,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 3,
+        "gridRow": 7,
+        "gridCol": 1,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 5,
+        "gridRow": 8,
+        "gridCol": 4,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 1,
+        "gridRow": 2,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 1,
+        "gridRow": 0,
+        "gridCol": 3,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 4,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 1,
+        "gridRow": 7,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 1,
+        "gridRow": 6,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 7,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 3
+      },
+      {
+        "blockType": 5,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 0
+      },
+      {
+        "blockType": 4,
+        "partCount": 3,
+        "edge": "left",
+        "startRow": 6,
+        "startCol": 0
+      },
+      {
+        "blockType": 0,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 6,
+        "startCol": 5
+      },
+      {
+        "blockType": 6,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 0,
+        "startCol": 5
+      },
+      {
+        "blockType": 3,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 3,
+        "startCol": 5
+      },
+      {
+        "blockType": 0,
+        "partCount": 3,
+        "edge": "left",
+        "startRow": 3,
+        "startCol": 0
+      },
+      {
+        "blockType": 2,
+        "partCount": 3,
+        "edge": "left",
+        "startRow": 0,
+        "startCol": 0
+      },
+      {
+        "blockType": 8,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      },
+      {
+        "blockType": 5,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 100,
+    "hardness": 0
+  },
+  "16": {
+    "id": 16,
+    "name": "Level 25",
+    "gridWidth": 5,
+    "gridHeight": 7,
+    "blocks": [
+      {
+        "blockType": 5,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 0,
+        "gridRow": 0,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 5,
+        "gridRow": 2,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 0,
+        "gridRow": 2,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 1,
+        "gridRow": 2,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 0,
+        "gridRow": 2,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 0,
+        "gridRow": 0,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 0,
+        "gridRow": 6,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 2,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 0,
+        "gridRow": 6,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 0,
+        "gridRow": 6,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 0,
+        "gridRow": 6,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 3,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 0
+      },
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      },
+      {
+        "blockType": 8,
+        "partCount": 1,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 1
+      },
+      {
+        "blockType": 6,
+        "partCount": 1,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 0,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 4,
+        "startCol": 4
+      }
+    ],
+    "hiddenCells": [
+      {
+        "row": 3,
+        "col": 0
+      },
+      {
+        "row": 2,
+        "col": 0
+      },
+      {
+        "row": 3,
+        "col": 1
+      },
+      {
+        "row": 6,
+        "col": 2
+      },
+      {
+        "row": 0,
+        "col": 2
+      },
+      {
+        "row": 3,
+        "col": 4
+      }
+    ],
+    "duration": 80,
+    "hardness": 0
+  },
+  "17": {
+    "id": 17,
+    "name": "New Level 29",
+    "gridWidth": 5,
+    "gridHeight": 7,
+    "blocks": [
+      {
+        "blockType": 5,
+        "blockGroupType": 1,
+        "gridRow": 0,
+        "gridCol": 3,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 5,
+        "gridRow": 2,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 2,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 5,
+        "gridRow": 6,
+        "gridCol": 3,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 8,
+        "gridRow": 4,
+        "gridCol": 4,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 3,
+        "gridRow": 2,
+        "gridCol": 2,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 8,
+        "gridRow": 5,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 2,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 0
+      },
+      {
+        "blockType": 4,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      },
+      {
+        "blockType": 1,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 3
+      },
+      {
+        "blockType": 7,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 2
+      },
+      {
+        "blockType": 8,
+        "partCount": 1,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 2
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 120,
+    "hardness": 0
+  },
+  "18": {
+    "id": 18,
+    "name": "Level 33",
+    "gridWidth": 9,
+    "gridHeight": 9,
+    "blocks": [
+      {
+        "blockType": 0,
+        "blockGroupType": 8,
+        "gridRow": 4,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 6,
+        "gridRow": 1,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 6,
+        "gridRow": 6,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 4,
+        "gridRow": 4,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 4,
+        "gridRow": 4,
+        "gridCol": 6,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 0,
+        "gridRow": 4,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 7,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 2,
+        "gridRow": 1,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 1,
+        "gridRow": 7,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 1,
+        "gridRow": 8,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 5,
+        "gridRow": 4,
+        "gridCol": 8,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 5,
+        "gridRow": 2,
+        "gridCol": 8,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 5,
+        "gridRow": 8,
+        "gridCol": 8,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 0,
+        "gridRow": 4,
+        "gridCol": 7,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 0,
+        "gridRow": 5,
+        "gridCol": 7,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 2,
+        "gridRow": 1,
+        "gridCol": 6,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 4,
+        "gridRow": 7,
+        "gridCol": 2,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 2,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 0,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 0,
+        "gridRow": 8,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 1,
+        "gridRow": 6,
+        "gridCol": 8,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 1,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 5,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 6
+      },
+      {
+        "blockType": 1,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 1,
+        "startCol": 8
+      },
+      {
+        "blockType": 6,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 4,
+        "startCol": 8
+      },
+      {
+        "blockType": 4,
+        "partCount": 3,
+        "edge": "left",
+        "startRow": 5,
+        "startCol": 0
+      },
+      {
+        "blockType": 0,
+        "partCount": 3,
+        "edge": "left",
+        "startRow": 2,
+        "startCol": 0
+      },
+      {
+        "blockType": 3,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 7
+      },
+      {
+        "blockType": 9,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 5
+      },
+      {
+        "blockType": 4,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 3
+      },
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 0
+      },
+      {
+        "blockType": 6,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 4
+      },
+      {
+        "blockType": 1,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 2
+      },
+      {
+        "blockType": 8,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 0,
+        "startCol": 8
+      },
+      {
+        "blockType": 8,
+        "partCount": 1,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 120,
+    "hardness": 1
+  },
+  "19": {
+    "id": 19,
+    "name": "New Level 26",
+    "gridWidth": 6,
+    "gridHeight": 8,
+    "blocks": [
+      {
+        "blockType": 8,
+        "blockGroupType": 8,
+        "gridRow": 6,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 1,
+        "gridRow": 4,
+        "gridCol": 4,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 4,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 5,
+        "gridRow": 3,
+        "gridCol": 5,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 8,
+        "gridRow": 1,
+        "gridCol": 4,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 7,
+        "gridRow": 2,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 5,
+        "gridRow": 6,
+        "gridCol": 4,
+        "rotationZ": 2,
+        "needsRowOffset": true
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 7,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 8,
+        "startCol": 2
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 2
+      },
+      {
+        "blockType": 1,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 3,
+        "startCol": 4
+      },
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 3,
+        "startCol": 1
+      }
+    ],
+    "hiddenCells": [
+      {
+        "row": 7,
+        "col": 0
+      },
+      {
+        "row": 6,
+        "col": 0
+      },
+      {
+        "row": 4,
+        "col": 0
+      },
+      {
+        "row": 3,
+        "col": 0
+      },
+      {
+        "row": 1,
+        "col": 0
+      },
+      {
+        "row": 0,
+        "col": 0
+      },
+      {
+        "row": 7,
+        "col": 1
+      },
+      {
+        "row": 0,
+        "col": 1
+      },
+      {
+        "row": 7,
+        "col": 4
+      },
+      {
+        "row": 0,
+        "col": 4
+      },
+      {
+        "row": 7,
+        "col": 5
+      },
+      {
+        "row": 6,
+        "col": 5
+      },
+      {
+        "row": 4,
+        "col": 5
+      },
+      {
+        "row": 3,
+        "col": 5
+      },
+      {
+        "row": 1,
+        "col": 5
+      },
+      {
+        "row": 0,
+        "col": 5
+      }
+    ],
+    "duration": 100,
+    "hardness": 0
+  },
+  "20": {
+    "id": 20,
+    "name": "Derin Level 15",
+    "gridWidth": 7,
+    "gridHeight": 7,
+    "blocks": [
+      {
+        "blockType": 9,
+        "blockGroupType": 2,
+        "gridRow": 2,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 2,
+        "gridRow": 4,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 1,
+        "gridRow": 4,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 1,
+        "gridRow": 3,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 0,
+        "gridRow": 2,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 0,
+        "gridRow": 0,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 6,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 6,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 5,
+        "gridRow": 4,
+        "gridCol": 6,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 5,
+        "gridRow": 6,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 5,
+        "gridRow": 1,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 5,
+        "gridRow": 3,
+        "gridCol": 1,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 5,
+        "gridRow": 2,
+        "gridCol": 6,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 1,
+        "gridRow": 4,
+        "gridCol": 5,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 0,
+        "gridRow": 5,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 5,
+        "startCol": 0
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 5
+      },
+      {
+        "blockType": 7,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 0,
+        "startCol": 6
+      },
+      {
+        "blockType": 1,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 1,
+        "startCol": 6
+      },
+      {
+        "blockType": 9,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 0
+      },
+      {
+        "blockType": 6,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 6
+      },
+      {
+        "blockType": 4,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 4,
+        "startCol": 6
+      },
+      {
+        "blockType": 2,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      }
+    ],
+    "hiddenCells": [
+      {
+        "row": 0,
+        "col": 2
+      },
+      {
+        "row": 1,
+        "col": 3
+      },
+      {
+        "row": 0,
+        "col": 3
+      },
+      {
+        "row": 0,
+        "col": 4
+      }
+    ],
+    "duration": 140,
+    "hardness": 1
+  },
+  "21": {
+    "id": 21,
+    "name": "Level 36",
+    "gridWidth": 8,
+    "gridHeight": 8,
+    "blocks": [
+      {
+        "blockType": 2,
+        "blockGroupType": 5,
+        "gridRow": 4,
+        "gridCol": 1,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 4,
+        "gridRow": 2,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 3,
+        "gridRow": 3,
+        "gridCol": 7,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 5,
+        "gridRow": 4,
+        "gridCol": 6,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 5,
+        "gridRow": 5,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 5,
+        "gridRow": 6,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 5,
+        "gridRow": 7,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 1,
+        "gridRow": 7,
+        "gridCol": 6,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 7,
+        "gridCol": 5,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 5,
+        "gridRow": 1,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 8,
+        "gridRow": 2,
+        "gridCol": 3,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 6,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 0,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 0,
+        "gridRow": 6,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 0,
+        "gridRow": 3,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 0,
+        "gridRow": 2,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 4,
+        "gridRow": 4,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 4,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 8,
+        "startCol": 2
+      },
+      {
+        "blockType": 9,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 8,
+        "startCol": 5
+      },
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 3,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 2
+      },
+      {
+        "blockType": 2,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 4
+      },
+      {
+        "blockType": 0,
+        "partCount": 3,
+        "edge": "left",
+        "startRow": 0,
+        "startCol": 0
+      },
+      {
+        "blockType": 3,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 2,
+        "startCol": 7
+      },
+      {
+        "blockType": 7,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 4,
+        "startCol": 0
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 6,
+        "startCol": 7
+      },
+      {
+        "blockType": 6,
+        "partCount": 1,
+        "edge": "left",
+        "startRow": 3,
+        "startCol": 0
+      },
+      {
+        "blockType": 1,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 5,
+        "startCol": 7
+      }
+    ],
+    "hiddenCells": [
+      {
+        "row": 7,
+        "col": 0
+      },
+      {
+        "row": 6,
+        "col": 0
+      },
+      {
+        "row": 7,
+        "col": 1
+      },
+      {
+        "row": 0,
+        "col": 6
+      },
+      {
+        "row": 1,
+        "col": 7
+      },
+      {
+        "row": 0,
+        "col": 7
+      }
+    ],
+    "duration": 100,
+    "hardness": 1
+  },
+  "22": {
+    "id": 22,
+    "name": "Derin Level 8",
+    "gridWidth": 6,
+    "gridHeight": 6,
+    "blocks": [
+      {
+        "blockType": 5,
+        "blockGroupType": 5,
+        "gridRow": 4,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 5,
+        "gridRow": 4,
+        "gridCol": 2,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 7,
+        "gridRow": 2,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 7,
+        "gridRow": 2,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 5,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 5,
+        "gridRow": 5,
+        "gridCol": 4,
+        "rotationZ": 2,
+        "needsRowOffset": true
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 0,
+        "gridRow": 0,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 0,
+        "gridRow": 0,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 0,
+        "gridRow": 0,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 0,
+        "gridRow": 0,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 1,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 1
+      },
+      {
+        "blockType": 2,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      },
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 1
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 3
+      },
+      {
+        "blockType": 0,
+        "partCount": 1,
+        "edge": "left",
+        "startRow": 5,
+        "startCol": 1
+      },
+      {
+        "blockType": 4,
+        "partCount": 1,
+        "edge": "right",
+        "startRow": 5,
+        "startCol": 4
+      }
+    ],
+    "hiddenCells": [
+      {
+        "row": 5,
+        "col": 0
+      },
+      {
+        "row": 4,
+        "col": 0
+      },
+      {
+        "row": 0,
+        "col": 0
+      },
+      {
+        "row": 5,
+        "col": 5
+      },
+      {
+        "row": 4,
+        "col": 5
+      },
+      {
+        "row": 0,
+        "col": 5
+      }
+    ],
+    "duration": 90,
+    "hardness": 0
+  },
+  "23": {
+    "id": 23,
+    "name": "Derin Level 19",
+    "gridWidth": 7,
+    "gridHeight": 9,
+    "blocks": [
+      {
+        "blockType": 3,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 3,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 8,
+        "gridRow": 3,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 4,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 8,
+        "gridRow": 7,
+        "gridCol": 3,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 4,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 3,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 2,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 7,
+        "gridRow": 8,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 7,
+        "gridRow": 8,
+        "gridCol": 6,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 7,
+        "gridRow": 1,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 7,
+        "gridRow": 1,
+        "gridCol": 6,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 0,
+        "gridRow": 3,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 0,
+        "gridRow": 3,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 0,
+        "gridRow": 6,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 0,
+        "gridRow": 6,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 9,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 5
+      },
+      {
+        "blockType": 2,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 2
+      },
+      {
+        "blockType": 0,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 2
+      },
+      {
+        "blockType": 8,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 0
+      },
+      {
+        "blockType": 3,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 6
+      }
+    ],
+    "hiddenCells": [
+      {
+        "row": 5,
+        "col": 0
+      },
+      {
+        "row": 4,
+        "col": 0
+      },
+      {
+        "row": 3,
+        "col": 0
+      },
+      {
+        "row": 5,
+        "col": 6
+      },
+      {
+        "row": 4,
+        "col": 6
+      },
+      {
+        "row": 3,
+        "col": 6
+      }
+    ],
+    "duration": 100,
+    "hardness": 1
+  },
+  "24": {
+    "id": 24,
+    "name": "Derin Level 30",
+    "gridWidth": 5,
+    "gridHeight": 7,
+    "blocks": [
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 0,
+        "gridRow": 0,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 0,
+        "gridRow": 2,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 1,
+        "gridRow": 4,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 0,
+        "gridRow": 0,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 0,
+        "gridRow": 6,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 2,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 0,
+        "gridRow": 6,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 0,
+        "gridRow": 6,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 0,
+        "gridRow": 6,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 1,
+        "gridRow": 2,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 1,
+        "gridRow": 4,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 1,
+        "gridRow": 2,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 8,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 0
+      },
+      {
+        "blockType": 5,
+        "partCount": 1,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 4
+      },
+      {
+        "blockType": 6,
+        "partCount": 1,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 0,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 4,
+        "startCol": 4
+      },
+      {
+        "blockType": 3,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 7,
+        "startCol": 4
+      },
+      {
+        "blockType": 4,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 5,
+        "startCol": 0
+      }
+    ],
+    "hiddenCells": [
+      {
+        "row": 3,
+        "col": 0
+      },
+      {
+        "row": 2,
+        "col": 0
+      },
+      {
+        "row": 0,
+        "col": 2
+      },
+      {
+        "row": 3,
+        "col": 4
+      },
+      {
+        "row": 2,
+        "col": 4
+      }
+    ],
+    "duration": 150,
+    "hardness": 1
+  },
+  "25": {
+    "id": 25,
+    "name": "Level 27",
+    "gridWidth": 5,
+    "gridHeight": 6,
+    "blocks": [
+      {
+        "blockType": 2,
+        "blockGroupType": 5,
+        "gridRow": 1,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 5,
+        "gridRow": 5,
+        "gridCol": 1,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 2,
+        "gridRow": 3,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 1,
+        "gridRow": 0,
+        "gridCol": 1,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 4,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 1,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 3
+      },
+      {
+        "blockType": 2,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 0
+      },
+      {
+        "blockType": 4,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 3
+      },
+      {
+        "blockType": 7,
+        "partCount": 1,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 2
+      },
+      {
+        "blockType": 7,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 6,
+        "startCol": 2
+      }
+    ],
+    "hiddenCells": [],
+    "duration": 85,
+    "hardness": 0
+  },
+  "26": {
+    "id": 26,
+    "name": "Level 48",
+    "gridWidth": 8,
+    "gridHeight": 12,
+    "blocks": [
+      {
+        "blockType": 4,
+        "blockGroupType": 3,
+        "gridRow": 5,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 3,
+        "gridRow": 6,
+        "gridCol": 5,
+        "rotationZ": 1,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 1,
+        "gridRow": 6,
+        "gridCol": 3,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 1,
+        "gridRow": 5,
+        "gridCol": 5,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 7,
+        "gridRow": 3,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 7,
+        "gridRow": 9,
+        "gridCol": 7,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 2,
+        "gridRow": 5,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 2,
+        "gridRow": 5,
+        "gridCol": 7,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 0,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 1,
+        "gridRow": 0,
+        "gridCol": 6,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 5,
+        "gridRow": 11,
+        "gridCol": 7,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 7,
+        "blockGroupType": 5,
+        "gridRow": 9,
+        "gridCol": 1,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 5,
+        "gridRow": 11,
+        "gridCol": 1,
+        "rotationZ": 2,
+        "needsRowOffset": true
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 1,
+        "gridRow": 9,
+        "gridCol": 4,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 0,
+        "blockGroupType": 1,
+        "gridRow": 0,
+        "gridCol": 4,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 3,
+        "gridRow": 1,
+        "gridCol": 1,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 6,
+        "blockGroupType": 4,
+        "gridRow": 1,
+        "gridCol": 7,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 1,
+        "gridRow": 11,
+        "gridCol": 3,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 11,
+        "gridCol": 5,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 9,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 1,
+        "partCount": 3,
+        "edge": "left",
+        "startRow": 8,
+        "startCol": 0
+      },
+      {
+        "blockType": 7,
+        "partCount": 3,
+        "edge": "left",
+        "startRow": 1,
+        "startCol": 0
+      },
+      {
+        "blockType": 9,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 8,
+        "startCol": 7
+      },
+      {
+        "blockType": 3,
+        "partCount": 3,
+        "edge": "right",
+        "startRow": 1,
+        "startCol": 7
+      },
+      {
+        "blockType": 8,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 12,
+        "startCol": 0
+      },
+      {
+        "blockType": 2,
+        "partCount": 2,
+        "edge": "bottom",
+        "startRow": 12,
+        "startCol": 6
+      },
+      {
+        "blockType": 5,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      },
+      {
+        "blockType": 6,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 6
+      },
+      {
+        "blockType": 0,
+        "partCount": 2,
+        "edge": "left",
+        "startRow": 5,
+        "startCol": 0
+      },
+      {
+        "blockType": 4,
+        "partCount": 2,
+        "edge": "right",
+        "startRow": 5,
+        "startCol": 7
+      }
+    ],
+    "hiddenCells": [
+      {
+        "row": 10,
+        "col": 2
+      },
+      {
+        "row": 9,
+        "col": 2
+      },
+      {
+        "row": 8,
+        "col": 2
+      },
+      {
+        "row": 7,
+        "col": 2
+      },
+      {
+        "row": 4,
+        "col": 2
+      },
+      {
+        "row": 3,
+        "col": 2
+      },
+      {
+        "row": 2,
+        "col": 2
+      },
+      {
+        "row": 1,
+        "col": 2
+      },
+      {
+        "row": 10,
+        "col": 3
+      },
+      {
+        "row": 1,
+        "col": 3
+      },
+      {
+        "row": 10,
+        "col": 4
+      },
+      {
+        "row": 1,
+        "col": 4
+      },
+      {
+        "row": 10,
+        "col": 5
+      },
+      {
+        "row": 9,
+        "col": 5
+      },
+      {
+        "row": 8,
+        "col": 5
+      },
+      {
+        "row": 7,
+        "col": 5
+      },
+      {
+        "row": 4,
+        "col": 5
+      },
+      {
+        "row": 3,
+        "col": 5
+      },
+      {
+        "row": 2,
+        "col": 5
+      },
+      {
+        "row": 1,
+        "col": 5
+      }
+    ],
+    "duration": 100,
+    "hardness": 0
+  },
+  "27": {
+    "id": 27,
+    "name": "Level 28",
+    "gridWidth": 7,
+    "gridHeight": 9,
+    "blocks": [
+      {
+        "blockType": 9,
+        "blockGroupType": 8,
+        "gridRow": 2,
+        "gridCol": 3,
+        "rotationZ": 2,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 5,
+        "blockGroupType": 0,
+        "gridRow": 4,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 2,
+        "blockGroupType": 0,
+        "gridRow": 3,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 4,
+        "gridRow": 2,
+        "gridCol": 2,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 7,
+        "gridRow": 7,
+        "gridCol": 5,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 5,
+        "gridRow": 5,
+        "gridCol": 6,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 5,
+        "gridRow": 7,
+        "gridCol": 1,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 8,
+        "blockGroupType": 1,
+        "gridRow": 1,
+        "gridCol": 6,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 9,
+        "blockGroupType": 1,
+        "gridRow": 8,
+        "gridCol": 2,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 1,
+        "blockGroupType": 1,
+        "gridRow": 8,
+        "gridCol": 3,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 4,
+        "blockGroupType": 2,
+        "gridRow": 4,
+        "gridCol": 0,
+        "rotationZ": 0,
+        "needsRowOffset": false
+      },
+      {
+        "blockType": 3,
+        "blockGroupType": 1,
+        "gridRow": 0,
+        "gridCol": 4,
+        "rotationZ": 3,
+        "needsRowOffset": false
+      }
+    ],
+    "doors": [
+      {
+        "blockType": 2,
+        "partCount": 1,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 5
+      },
+      {
+        "blockType": 1,
+        "partCount": 1,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 6
+      },
+      {
+        "blockType": 9,
+        "partCount": 3,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 2
+      },
+      {
+        "blockType": 8,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 0
+      },
+      {
+        "blockType": 3,
+        "partCount": 3,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 4
+      },
+      {
+        "blockType": 5,
+        "partCount": 1,
+        "edge": "bottom",
+        "startRow": 9,
+        "startCol": 3
+      },
+      {
+        "blockType": 4,
+        "partCount": 2,
+        "edge": "top",
+        "startRow": -1,
+        "startCol": 0
+      }
+    ],
+    "hiddenCells": [
+      {
+        "row": 5,
+        "col": 2
+      },
+      {
+        "row": 4,
+        "col": 2
+      },
+      {
+        "row": 3,
+        "col": 2
+      },
+      {
+        "row": 5,
+        "col": 3
+      },
+      {
+        "row": 5,
+        "col": 4
+      },
+      {
+        "row": 4,
+        "col": 4
+      },
+      {
+        "row": 3,
+        "col": 4
+      }
+    ],
+    "duration": 130,
+    "hardness": 0
+  }
+}

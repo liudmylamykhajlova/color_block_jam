@@ -949,7 +949,8 @@
                 let edge = 'unknown';
                 let doorX, doorY, doorWidth, doorHeight;
                 const doorThickness = 12;
-                const doorLength = cellSize * doorPartCount;
+                const doorGap = 3; // Gap between adjacent doors for visual clarity
+                const doorLength = cellSize * doorPartCount - doorGap * 2; // Shorter to show gaps
                 
                 // Визначаємо край по координатах (динамічно на основі розміру сітки)
                 const absX = Math.abs(worldX);
@@ -963,7 +964,11 @@
                     // Наприклад, для grid 6x8: поріг 4.9 ловить двері на x=±5
                     sideEdgeThreshold = gridSize.x - 1.1;
                 }
-                const topBottomEdgeThreshold = Math.max(5.5, gridSize.y - 1.0);
+                // For grids >= 9, use lower threshold to catch doors at y = grid_y - 1
+                // (some doors have y=8.999994 instead of 9.0)
+                const topBottomEdgeThreshold = originalGridHeight >= 9 
+                    ? Math.max(5.5, originalGridHeight - 1.1) 
+                    : Math.max(5.5, originalGridHeight - 0.5);
                 
                 // СПОЧАТКУ перевіряємо бокові краї
                 if (absX >= sideEdgeThreshold) {
@@ -1007,7 +1012,7 @@
                             doorX = padding - doorThickness - 2;
                         }
                     }
-                    doorY = padding + doorStartRow * cellSize;
+                    doorY = padding + doorStartRow * cellSize + doorGap;
                     doorWidth = doorThickness;
                     doorHeight = doorLength;
                 } else if (absY >= topBottomEdgeThreshold) {
@@ -1026,11 +1031,11 @@
                     
                     if (worldY > 0) {
                         edge = 'top';
-                        doorX = padding + doorStartCol * cellSize;
+                        doorX = padding + doorStartCol * cellSize + doorGap;
                         doorY = padding - doorThickness - 2;
                     } else {
                         edge = 'bottom';
-                        doorX = padding + doorStartCol * cellSize;
+                        doorX = padding + doorStartCol * cellSize + doorGap;
                         doorY = padding + gridSize.y * cellSize + 2;
                     }
                     doorWidth = doorLength;
@@ -1042,25 +1047,25 @@
                     
                     if (normalizedRot >= 135 && normalizedRot < 225) {
                         edge = 'top-fallback';
-                        doorX = padding + Math.floor((gridSize.x - doorPartCount) / 2) * cellSize;
+                        doorX = padding + Math.floor((gridSize.x - doorPartCount) / 2) * cellSize + doorGap;
                         doorY = padding - doorThickness - 2;
                         doorWidth = doorLength;
                         doorHeight = doorThickness;
                     } else if (normalizedRot >= 45 && normalizedRot < 135) {
                         edge = 'right-fallback';
                         doorX = padding + gridSize.x * cellSize + 2;
-                        doorY = padding + Math.floor((gridSize.y - doorPartCount) / 2) * cellSize;
+                        doorY = padding + Math.floor((gridSize.y - doorPartCount) / 2) * cellSize + doorGap;
                         doorWidth = doorThickness;
                         doorHeight = doorLength;
                     } else if (normalizedRot >= 225 && normalizedRot < 315) {
                         edge = 'left-fallback';
                         doorX = padding - doorThickness - 2;
-                        doorY = padding + Math.floor((gridSize.y - doorPartCount) / 2) * cellSize;
+                        doorY = padding + Math.floor((gridSize.y - doorPartCount) / 2) * cellSize + doorGap;
                         doorWidth = doorThickness;
                         doorHeight = doorLength;
                     } else {
                         edge = 'bottom-fallback';
-                        doorX = padding + Math.floor((gridSize.x - doorPartCount) / 2) * cellSize;
+                        doorX = padding + Math.floor((gridSize.x - doorPartCount) / 2) * cellSize + doorGap;
                         doorY = padding + gridSize.y * cellSize + 2;
                         doorWidth = doorLength;
                         doorHeight = doorThickness;

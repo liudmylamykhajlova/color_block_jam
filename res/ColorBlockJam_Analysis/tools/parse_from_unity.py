@@ -84,7 +84,9 @@ def find_doors_in_region(data: bytes, start: int, end: int, expected_count: int 
     if edges_mostly_hidden:
         side_edge_threshold = grid_x - 1.1
     side_edge_max = grid_x + 2
-    top_bottom_edge_threshold = max(5.5, grid_y - 0.5)  # Standard threshold for top/bottom doors
+    # For grids >= 9, use lower threshold to catch doors at y = grid_y - 1
+    # (e.g., Level 28 has doors at y=8.999994 with grid_y=10)
+    top_bottom_edge_threshold = max(5.5, grid_y - 1.1) if grid_y >= 9 else max(5.5, grid_y - 0.5)
     
     # Expand search range to find all doors (some levels have doors up to 0x870+)
     search_end = min(len(data) - 32, max(end, 0x900))

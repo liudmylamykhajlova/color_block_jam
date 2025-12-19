@@ -4316,6 +4316,27 @@
       ],
       "doors": [
         {
+          "blockType": 2,
+          "partCount": 1,
+          "edge": "top",
+          "startRow": -1,
+          "startCol": 5
+        },
+        {
+          "blockType": 1,
+          "partCount": 1,
+          "edge": "top",
+          "startRow": -1,
+          "startCol": 6
+        },
+        {
+          "blockType": 9,
+          "partCount": 3,
+          "edge": "top",
+          "startRow": -1,
+          "startCol": 2
+        },
+        {
           "blockType": 8,
           "partCount": 3,
           "edge": "bottom",
@@ -4335,6 +4356,13 @@
           "edge": "bottom",
           "startRow": 9,
           "startCol": 3
+        },
+        {
+          "blockType": 4,
+          "partCount": 2,
+          "edge": "top",
+          "startRow": -1,
+          "startCol": 0
         }
       ],
       "hiddenCells": [
