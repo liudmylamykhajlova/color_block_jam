@@ -92,6 +92,30 @@
             margin: 5px 0;
         }
         
+        .hardness-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        
+        .hardness-normal {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .hardness-hard {
+            background: #FF9800;
+            color: white;
+        }
+        
+        .hardness-veryhard {
+            background: #F44336;
+            color: white;
+        }
+        
         #canvas {
             border: 3px solid #333;
             border-radius: 8px;
@@ -247,7 +271,8 @@
         
         <div id="levelInfo" class="level-info" style="display: none;">
             <h2 id="levelName"></h2>
-            <p><strong>Grid Size:</strong> <span id="gridSize"></span></p>
+            <p><strong>Grid Size:</strong> <span id="gridSize"></span> <span id="hardnessBadge"></span></p>
+            <p><strong>Duration:</strong> <span id="levelDuration"></span></p>
             <p><strong>Game Blocks:</strong> <span id="blockCount"></span></p>
             <p><strong>Doors:</strong> <span id="doorCount"></span> <span id="doorDetails" style="color: #667eea;"></span></p>
             <p><strong>GUID:</strong> <span id="levelGuid"></span></p>
@@ -263,6 +288,7 @@
     <script>
         let levels = [];
         let levelOrder = []; // Порядок рівнів з AllLevels_guids.json
+        let levelHardness = {}; // Hardness дані для кожного GUID
         let currentLevelIndex = 0;
         let currentLevel = null; // Зберігаємо поточний рівень для tooltip
         let useGameOrder = true; // Використовувати порядок з гри
@@ -363,6 +389,17 @@
                     useGameOrder = false;
                 }
                 
+                // Завантажуємо дані про hardness
+                try {
+                    const hardnessResponse = await fetch('level_data/level_hardness.json');
+                    if (hardnessResponse.ok) {
+                        levelHardness = await hardnessResponse.json();
+                        console.log('Loaded hardness data for ' + Object.keys(levelHardness).length + ' levels');
+                    }
+                } catch (e) {
+                    console.warn('Could not load hardness data:', e);
+                }
+                
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('canvas').style.display = 'block';
                 document.getElementById('levelInput').max = levels.length;
@@ -452,6 +489,26 @@
             document.getElementById('doorDetails').textContent = doorDetails ? `(${doorDetails})` : '';
             
             document.getElementById('levelGuid').textContent = level.guid;
+            
+            // Показуємо hardness інформацію
+            const hardnessInfo = levelHardness[level.guid];
+            const hardnessBadge = document.getElementById('hardnessBadge');
+            const durationEl = document.getElementById('levelDuration');
+            
+            if (hardnessInfo) {
+                const hardnessType = hardnessInfo.hardnessType || 'Normal';
+                hardnessBadge.textContent = hardnessType;
+                hardnessBadge.className = 'hardness-badge hardness-' + hardnessType.toLowerCase().replace(' ', '');
+                // Форматуємо duration як хвилини:секунди
+                const minutes = Math.floor(hardnessInfo.duration / 60);
+                const seconds = hardnessInfo.duration % 60;
+                durationEl.textContent = minutes + ':' + seconds.toString().padStart(2, '0');
+            } else {
+                hardnessBadge.textContent = 'Unknown';
+                hardnessBadge.className = 'hardness-badge';
+                hardnessBadge.style.background = '#999';
+                durationEl.textContent = '?';
+            }
             
             // Візуалізація
             drawLevel(level);

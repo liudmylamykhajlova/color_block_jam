@@ -1,0 +1,8062 @@
+{
+  "c0ae24d0-c79e-4eaf-ba41-33f36b205f7d": {
+    "duration": 300,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ef63d451-a590-4e98-a494-68cf9503ac97": {
+    "duration": 300,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "58e0d42b-128a-4a9d-b7c3-cd427799bd97": {
+    "duration": 300,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1725e4c7-4b0f-4aff-b21f-57aec888d896": {
+    "duration": 300,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7c275971-8e1d-4726-8211-4c2bb06ba355": {
+    "duration": 300,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0a2f6c23-ce7f-45c4-81e7-a4b99ec20b2c": {
+    "duration": 300,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "40a764e0-14b9-4ac9-b439-0f0f914cb328": {
+    "duration": 300,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3c58d44f-e16e-4ea0-94a3-3bd366d89b57": {
+    "duration": 300,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f318ee10-a802-41a6-ac25-451417bceafa": {
+    "duration": 180,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1e2059f8-405b-44bf-aa18-cc2939ea38b5": {
+    "duration": 60,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d8b1e2af-262b-42ff-9dca-eb7dd6a2e5a1": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cb4b2c35-cae9-4f91-918d-85a9cb938659": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0afe5c8c-334e-4954-bf8a-22cb74af5a9e": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9cc25b89-3b9d-4c03-8af3-40c6fda38f0a": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a467fc02-02d0-4d95-867f-ca0685deb536": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7d2130f2-824e-48b6-baf5-b04227377452": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f508f68b-e0df-409b-b221-578208f76061": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "229b8206-0b5c-47f9-8007-b2e60d0b3957": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "48160a52-d055-4f6f-97f2-9f79753a1d8a": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1efa2e3c-6ac1-4e64-864c-ea557a20f407": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "48bc4afa-3688-49c3-aaff-5d9387e312e9": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "7e156907-2640-462a-bb97-7ec56657e235": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "94d61224-2edc-4708-adbc-12571f47aa4b": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "bcc1f047-99f7-41da-b88c-6fd0e5394623": {
+    "duration": 150,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "dc425097-ca28-452c-9931-c8e7200762e6": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2e86ac1f-a712-4f97-9054-226b88acd70a": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7d14fe35-6239-4e93-99e0-7b2849fe1492": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3a21dc2a-95ed-42b1-aa96-24af7ffae92a": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "648d6ef2-8c27-4583-8fca-4e03d8e16557": {
+    "duration": 170,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7bf81a57-669f-4969-a86f-44e1c99a4c72": {
+    "duration": 200,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ad8c6c0e-f2cf-41b9-b6e8-fcf8008c481e": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "96b8ad13-5f4c-454a-ac4e-4e4332c55c05": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "21d3d868-2581-4ab1-aad0-8d77f23cb68c": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "aca64fc4-ef77-4f3d-af93-a9cb1b79803d": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "eb4861b6-f71a-4e1f-a43e-feb3af2bd03f": {
+    "duration": 60,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5671a3c3-e850-45a7-bd0c-98a4af0daaa7": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9ca4182f-1ad0-4e57-a8b8-fec33521ab87": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "12b67cd4-da50-49ad-9952-78d35abac0a7": {
+    "duration": 170,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d06da23f-91e6-4192-b734-1d869a565235": {
+    "duration": 210,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "fa263821-cfc3-4685-b39a-4d5dafeeb0ba": {
+    "duration": 240,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "654ac917-3986-40d2-9344-0a37639e7a63": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "df5becc8-31b0-4e97-bb91-8600cbe29f77": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "46e218d6-c56e-473a-828c-59be1f45b1e5": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "af72ed77-ba03-4aa9-b00f-4d1033d0c5e2": {
+    "duration": 160,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b6dae09a-c5e7-4981-8cf3-b44188c6cd9b": {
+    "duration": 180,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "69526d2c-1602-43b5-8d5a-b7873ccb1e42": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "760c42b2-c852-4e15-b5a0-2da7165eb1e5": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "513bfa94-b956-4f1e-9808-001ab0d5058a": {
+    "duration": 200,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "015926e1-6cdf-4ee2-b015-f734f628c20d": {
+    "duration": 200,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1ff2fc50-a679-4cf4-9655-0b1e6d641a4f": {
+    "duration": 200,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "fd9c2f54-c09a-4138-aad4-c7863f56ae3b": {
+    "duration": 250,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7e9eca59-ed6d-416b-b938-f42a7557ed01": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6a5c5d12-3a1d-4697-96c2-3188844e43a5": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c26d9a8e-a76f-4373-8928-092b296e27f9": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7b6c8d7a-42ff-4686-8148-8b889cf968d8": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "321615fd-0f7a-4302-ae04-993398561a87": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f8285a82-3d2a-4790-b5dc-a7af7dc6ee23": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2cc890c7-4c28-4ee2-a348-eb9b991b05c2": {
+    "duration": 230,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "5f4c958d-76eb-4f66-97e0-192a351ec3df": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "883d84b7-4b80-47a5-ac1b-38af578d9b2a": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0663583b-6169-45e4-9748-0085ae1c11b9": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7662b871-b485-4290-9f60-4c0f9e015092": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4e38dd7d-3a36-4e0c-98ee-514c2ab3174a": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3cd4a0fa-666b-4366-a24b-12e64f57ad1b": {
+    "duration": 170,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "84f30b0b-cbbe-4a01-a8a6-2fa8fb74d430": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "17cb266f-f596-4f34-8539-d281aa72f5cc": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c403bb72-e462-4fe7-95b6-60c6d59393ea": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f41d87de-0440-4fbd-8b07-7c350c0160e1": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8f808c9c-e0a7-4086-ad30-9874ea0929ee": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d8ad49f4-d76a-410c-84fc-17b5f550ff77": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d4b193d5-748b-4381-8119-395ab7a1e130": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "332b3dfb-a079-4d1f-89c5-20f4cb9c18a9": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f0cdcccb-148d-4bec-ad1c-a7afdead2caf": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1681c405-9153-4574-9901-48c902653261": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "25115108-8d33-4602-b8a4-141c1fe85f2d": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4f1848b0-0df0-44b4-afeb-b51065e2682b": {
+    "duration": 145,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "e52028b7-4ea6-46af-a0f7-10fdc25420b1": {
+    "duration": 180,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "36c36827-6493-46c6-a1a2-ac021068082e": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d4fd798d-b4ab-4b26-b782-ab18503ced0b": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6e7ea745-fb30-498e-b5b6-0d10f92929c4": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "35f2c5c7-ebea-45bb-a43f-722cbc255a5d": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "00bbf80e-f8b1-41b6-a2c5-25bb9e0fadd9": {
+    "duration": 180,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "638cbde4-734c-4b95-95eb-ad3b44faab18": {
+    "duration": 70,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e2f40eef-bebc-41e8-9580-9458e6f4f6a3": {
+    "duration": 275,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f53d4beb-d560-4775-9ecb-7aa4d54ce859": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "507eb7dc-812f-4b9c-9bbc-1760411d821e": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "64793129-4ece-40ed-bffd-5af38f054d68": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2ab78eeb-d0fb-4f8c-94ef-bcb7cf3af560": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0c67f7a7-455c-42e7-bb5c-2071ffa40264": {
+    "duration": 70,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0261618a-70cb-4954-b24d-c4435aeae2c3": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "965e91ad-e262-4fee-a26f-30c46e025734": {
+    "duration": 60,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1af2a4d3-0945-4cbf-81aa-ecce7fe60a89": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1cb55c0c-b1a6-42e1-bb04-be0c821fa384": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e3b0da4f-9144-4a06-93ba-343ea56f7078": {
+    "duration": 60,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9108f31f-d68f-491b-beb4-54fc601bb3c8": {
+    "duration": 210,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ad9e2118-cd07-451b-8476-e13404712d90": {
+    "duration": 60,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "0fb5212d-c2ba-416e-8c9d-ddce2f7c8246": {
+    "duration": 45,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cb9cb388-04ce-4ef4-865a-9c8fc0425143": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7a09531d-b76c-405a-8dfd-43aae3488964": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "0b8da26e-8682-4fe6-8fb5-b690633b7f0a": {
+    "duration": 45,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8d65f607-71a9-4c03-83d5-2f0f020564bc": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f9ef825c-2225-4dbc-8134-b5dd0b7303e5": {
+    "duration": 60,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a7e36710-9943-441a-bca9-5549831b256c": {
+    "duration": 60,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "376e50f9-67b9-49e4-b3c5-5c41a5dc0f01": {
+    "duration": 170,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cb0f1ee0-8848-43c5-8198-36e4595d910c": {
+    "duration": 160,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9920b819-1aa2-4eec-a3a9-9ac35851e18f": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1f3630a2-8b6e-42a8-8bf9-093b20075224": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a50c8896-1fdf-42fc-932a-970d229e8d0d": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "10fe2fe2-ce1e-4c5d-a3a4-e9a3f386c46c": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a19b2e91-ea73-489e-922c-8efe52ae2d93": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "be2df413-1eb2-4935-b588-68cc224b38be": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c4b7fa54-601d-4247-852f-0941c769b969": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "81017d14-7061-4bb2-b49e-c8423e1692d3": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e297321a-da16-429e-94bf-094565e1b45b": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9945ed17-05ee-49cc-b76d-a579e3ac7374": {
+    "duration": 55,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c34772e7-81b3-45e2-a773-aed5b39b800d": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "db1eb967-0bf4-4416-8cd1-ebf7eaf78a68": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5a90c5cb-26fe-427f-9585-c36f3bbe0d40": {
+    "duration": 95,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "995d22ed-380f-4005-8ede-fb3bea32741a": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f3d46dd3-5959-4861-8346-40bffe6eb7cc": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "31cd3046-6f4d-4ed6-a16b-0ef847fb9a57": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "8a600566-3bbf-4ce0-9251-bd357a9addc8": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f23205af-9bc3-4f98-b5ec-939cb74e8f1e": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e6790c72-3e86-4bc2-aead-3069e0f27e2d": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "595ac6b0-7182-49eb-9fc4-350606b97770": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "617f9c84-d4fb-4ba4-bcce-9f8b22463940": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "509cdbf7-f319-448a-94dc-599931a157b2": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3dfe8478-789e-4662-b660-bc2d768e4fa0": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "289c6e6e-14d7-48b3-a949-b8a954583643": {
+    "duration": 85,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "70ff6923-bb9f-4a2b-b180-6f7c7a0717a5": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "004b41aa-4a8a-4562-ab68-dba42f5adeaf": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ec267b80-65b5-49c9-8fa0-5e422b69be50": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "11049483-91ab-4a57-83b3-ff1eeae47316": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c8b08260-4b11-46e0-ab3f-1bed0810231d": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "94f545a4-9b49-41c8-9b0b-1add4b54f1d1": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e8438dab-21d1-45a0-b55a-9e6eac1dc154": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7862e21a-948e-47a0-9f3d-6a0cf52c3a3a": {
+    "duration": 70,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bbd80706-1555-452a-9d2f-2072bb1cabf1": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1d4e8047-d06f-4e2f-9a06-40628c12735d": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e8705d43-5337-4a92-98d9-499bb9dbfa46": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c18cf206-548a-4521-9cf4-080fdad5687e": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "933e43ac-7eec-4356-9d85-6fc463b66fc2": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "16ef9f99-1ed8-4a98-b9e4-44fb7cdd7eeb": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a3e5219d-4eea-40c7-b91b-41a9c2202f55": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6a4a0d72-aa10-420e-818e-3be0c5fd53be": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c88b05c8-b186-45f1-9f48-d29c2e4d5ff9": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "87bebe97-5a99-404e-8892-c4de784e9b64": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ff294d70-8065-4078-9cc3-4c6c575df1de": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "617e764f-2485-41f5-9e60-576978e7ce27": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "895c4832-f72e-4e0c-8c2e-62e8c962c174": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4153592a-21eb-4d26-a813-80ca14b7dbfa": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "708e85c4-1501-4936-8774-69096fdbff2e": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3b8f0e5c-1d9d-4dea-b05b-763b3ad06344": {
+    "duration": 180,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e385ecb8-1912-4516-8af5-6f00cb4325ee": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1fc9daf2-aa3e-4de2-b989-593a379d01b3": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8241c639-4f94-49cd-adbe-94a75a95bcce": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8eb1550f-1e43-49bb-88d0-6ce0e9e86773": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8c1033e4-3acf-435e-be8d-b58179030637": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9cd1048b-e00e-444b-b67c-3eec005ddf96": {
+    "duration": 65,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e664e2df-5387-49c4-8926-c7420f135658": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9a11af7c-24c7-45c1-8539-9697e06a8e8a": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ae940b32-4d92-4987-8ace-e69dd9f60b8c": {
+    "duration": 180,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8eeaa17e-4837-4faf-ad12-d2e81c12b878": {
+    "duration": 175,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a2fc17e7-929f-4bfa-814a-32f8cc25c232": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "aae92a8c-0e2f-44d5-b803-ceb6582f6a7e": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8eec1ba3-e829-47ff-8702-d4503f1d1400": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "e55ab08d-c1bb-4973-892e-d4b19b1b458c": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "da11e9af-59fe-44b4-a271-cf751a7e41f5": {
+    "duration": 160,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7a08bab3-1ac8-4bf3-abd9-247aa96e17ae": {
+    "duration": 200,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d9b4a9a5-9e90-48a9-9a25-55531d82e89c": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b8ce9689-ef23-4fab-a678-79d96667c9aa": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "506e9399-19a4-49e0-aa08-9c0a5696db1c": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2ca627ad-dc05-4771-8040-71030d5ada56": {
+    "duration": 190,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bfdd5392-b498-41d6-8945-4cb1ab82bfd3": {
+    "duration": 165,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "fdc45a43-8059-41bf-a0bc-451f5e13f392": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "62188149-d688-438b-81c8-05a7a0a573d1": {
+    "duration": 215,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "430c588a-2b6c-419b-8974-d1d3d0c27bf8": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5d6e0420-3154-4cc0-8d4a-345ba3937211": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "03f0d41c-b5b2-42fd-a30f-597d7b202ec4": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "704e66a6-f02b-44ca-a79c-969338b4b5a1": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1868f646-908c-4cfe-b6f4-fdc4241666ba": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "84729b97-e209-4a9b-b826-a228430f26ab": {
+    "duration": 170,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "28dd962c-de5b-4ec3-bce9-2bfd52b693a7": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "94a3c168-a173-44e7-bb31-14880cd3047f": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "e5d06397-755d-4691-a9ec-7496b7a4b3ee": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "953d3419-faff-4103-a7c4-1728dfd28f3c": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "cd19c472-c5fc-434e-9387-1e3261d736bc": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9c551e84-41db-4a02-9b64-4ec6aaedc3bf": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f590d93d-7225-4118-937f-2d3d216c6078": {
+    "duration": 95,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d8f25044-d051-4b10-bb05-85a59894daa8": {
+    "duration": 160,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6ce399fd-4687-47b7-9390-68b3727000e6": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "24adf2f3-495c-406d-a8b5-c02f2c522e80": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8bd647ab-29c6-4f4d-8db8-aaf06b135ff5": {
+    "duration": 240,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a049b51c-3f7b-40b9-8d5f-4dcf8bbbcb06": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "18deb234-15a9-4a1e-b907-98dae2ccbb77": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "442da0fd-fd0c-4a98-af6e-39211663a069": {
+    "duration": 215,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ee37679d-8a13-4d9b-8454-05d8ea642b36": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "37fed330-9fa6-4bc1-b374-b4a54f06db72": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "be29fdc9-1d64-4d8c-8659-ef57e90c783b": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "67f2a907-4e5d-416d-84a1-1082238abc28": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "31ad6f95-48d0-4c1d-aaa4-a4cd16a60393": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1283e8c8-da58-470c-a623-a68528780587": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "4065e8cb-985f-4297-83b9-2b75ab5723f1": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "88a54d63-8469-4075-9ec4-20bb6aeed438": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "cb9821c6-8d65-45c7-8253-cc020cf84980": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "dec8828b-8040-47d7-b745-c649156ef32d": {
+    "duration": 80,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "980cb9d6-19cd-4428-ac06-145a9b0b70c4": {
+    "duration": 150,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "63035500-9079-4573-891e-2f9803d9ec15": {
+    "duration": 250,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e1a020b8-487c-4e11-b22a-c378b0ecb207": {
+    "duration": 85,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c6759825-d532-4c9e-96ff-6fb0ecd59c30": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "5d91260c-8129-4eab-8967-47b5d399ef2b": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1eaf560b-23c5-4363-b504-4fe9167d2fe4": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bc3825dd-e3fb-46e0-ba4b-08ad5f4282a3": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cd563d8b-43c1-447c-b59e-3b354a3e8caf": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "77165372-f6c4-45c3-b409-e8286aaca7a7": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ea7977d0-85c3-4ab0-bc6f-4686edeaae6e": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cf9188ae-2ca7-4dad-8db8-10d956826fc0": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4b9f913a-d508-492e-bd35-b739258721d6": {
+    "duration": 100,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "88204b88-3277-46f9-877f-8918873cacdf": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "7db18553-6bcd-4b31-a2d5-cbb5059dcff4": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c8b80bb4-b380-4ad3-bcdc-f6b9bba90d30": {
+    "duration": 95,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "fc2e9c4f-23bf-439c-9733-23126be4f235": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "79a73431-a7cf-4df3-bc1b-59b6f115d7d2": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7400a3fc-2e89-4b79-8f35-e49430dfb31b": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e760240a-8bfb-4065-b8aa-fd41e243b48f": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "54f2be78-3a61-40a1-943a-4c2b6d052d37": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f6e14bb8-47a6-4b0b-a227-5036400ed5ba": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b1626fc9-10df-4323-8202-059c15637db6": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5949deae-8e3f-4669-8301-7876ed71763f": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "5958622a-599f-44b7-a46c-468f1d49ddd7": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d6567db1-b317-45b6-a502-bb0c6cc587ae": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7ead4f0f-79c6-40a3-a7f2-005bd58f3e80": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5ac8052b-733e-4904-b35c-cc4f6b9f40bd": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e9eb113e-c13d-455a-88d2-a4d8dbae11ac": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cf03f8b4-09b2-4720-a4d3-c9edee404b71": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3217f3a8-9ee4-47af-a441-d8ded319cf49": {
+    "duration": 60,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "606c3c84-1ca4-49af-a76b-3cc10cae5a9a": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ce4f7295-6bca-4ca2-8747-bb9db5ad1079": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "21d2157b-14b0-474e-995c-7a6c54049071": {
+    "duration": 90,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9ceee0bd-0d6d-4d62-b55c-2a23001c9bcb": {
+    "duration": 165,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b819bf1f-7f31-4cf5-9461-8ea574e96efd": {
+    "duration": 170,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "e9c339f7-d49c-4000-a278-2fca1d126333": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ba8ffe3e-6ba9-4596-be87-fc41710aac36": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cd5048ec-61ea-4a3b-8502-9b6b7b0a7812": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0ec77b21-cf0f-4105-8b1f-f72550ba3d59": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2caba925-1e01-4e7e-b5fe-94331e56fac8": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "71d6d07d-e661-4562-8b98-cae2815dbe4f": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "65ed97c0-9236-47ce-bb12-082f37cdf69a": {
+    "duration": 65,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c0f28202-5e56-4748-8019-6ab2f68e5e0b": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b5b1b5b8-d666-4df5-a5e4-642a6afa094f": {
+    "duration": 175,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "710d8228-a643-4280-a82e-810d6156ce5d": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f8e42b83-8eb7-4789-b96f-9066ed75c65d": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "bc76655d-54bd-47be-bd2f-28b51aef4713": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5ec75a14-a024-4149-a083-9aa14a55b795": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "625e2eef-7a6d-4743-a1d3-93e0525951f9": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "282c17fb-802b-440e-9ba6-c4d0d32a2f7c": {
+    "duration": 90,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "1cf77b85-74a0-47e1-85ac-1a4aa8b38b6f": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c3f7ac7a-ce7e-45ae-92e2-de23b26c5d7e": {
+    "duration": 145,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "29c8b8ef-53a9-4560-a452-267e10e7a907": {
+    "duration": 180,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4f3b8cf9-b816-47c9-a327-fb1a4a0e191f": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1411822f-0425-4fd4-b230-e6dcb4c51f3d": {
+    "duration": 190,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "22fba3d7-2661-4624-bffa-92c024c818b6": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d0330624-b978-4234-b5e9-b4dfe80af440": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0ac283cb-1da2-4ba5-813e-05634636aa4e": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "ff81293b-4bd2-455f-b7f6-1813c669999c": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "aad64139-d6c2-47ce-856e-9fc54f291894": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "27871f9d-2f7d-4dbb-9f0c-43f181c5550b": {
+    "duration": 65,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "2a3ec992-b024-42d6-9fe7-6843ac95a4ad": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "80bc2555-dd9f-43bb-9acb-a83c391e9c22": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3ef6a3a2-8141-423b-85cc-ccf9de93a827": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "50dab145-f63b-4983-a43b-40233df60ffb": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cfff4ff5-6db2-48da-9a28-b5ed54d1dd10": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "db54e90c-1aa8-4c55-8886-3a6a75528f83": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "42717e1b-6a4c-4d70-9f14-4f9a02a33107": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7be335bb-dccf-42dd-b9e7-70e920e705bc": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3412762d-8151-4fa3-a6c4-ac9021ceaae2": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d14f9084-8236-4796-8920-d9d8bf9942e7": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "2f992f8d-684c-44a4-b9c6-6dd2cdace57a": {
+    "duration": 165,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "49633b4b-b4ff-431b-9a81-1e0223ece820": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ecfe1e12-ad80-4b3e-8992-5b364955a5d7": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "5c1602b4-a55e-4766-9d63-e454370a9103": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2c8e4b0f-1b04-4e6c-9f38-74beaecbcb2d": {
+    "duration": 165,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "2d420f43-4e03-4727-9201-8b422c753842": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c974e66f-297b-4735-8f30-c526816484f0": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c9cafb05-8de2-4b95-a39f-cb1cc35c6653": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6b52b7cb-11cf-4dbc-8168-ec6c2fe8392a": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "8edbe2de-9f55-4a22-998d-e5ab850713fe": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1621781f-f0d9-457e-b426-83732f69306b": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b4ad5300-319d-4cdb-ad0b-795637653868": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9d8ea0cd-873f-457e-8dab-4a5ec8df4ba0": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bb033d16-40dc-43c3-a0c3-66a23d463b3b": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "5d222815-2568-42e9-acac-0a4dc514db0e": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "584dee2f-4dad-4e7a-9f07-9501f9169530": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e098ca9b-f9f4-4af6-9771-3529b7277c41": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "74bde487-9930-442c-9093-f630237aa053": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "6f886f88-8e9b-4355-9444-c3829c62d1ca": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1580a65e-491c-459f-a88a-d73aa6bfe403": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "6eb31c9c-69bc-4f50-8e2c-b4b712edbb6a": {
+    "duration": 200,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7f317f3a-cf8a-4c0e-9e7f-6695dd4fbf46": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "75692c5a-912c-4158-abf6-b5c2715c6ce3": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "08cf04d8-ff78-46c7-a3a1-b5f1d27b3319": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f1a2de06-c259-480e-ad48-66a53ace8e71": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "4c2e9688-63ab-46c4-a7ca-affdb1e17197": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "28dbe659-3416-4d41-937e-7d58592625e2": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "1efa345f-c6b3-47f4-8a34-fd9dc76c265a": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "51f8b19d-f694-4c7a-a324-3d9508c1ce9e": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a31a6857-6c76-4010-afed-f87eba7e5da2": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a93cc6a0-7fab-456e-9aba-d02aba005dee": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d56e8698-57ff-4440-abfe-2a77beb81358": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d659e94f-3f05-4707-987f-a00b694b6b49": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3589b35f-32d4-4324-a23c-030768f81c46": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "bf3f2ce4-1bb0-4c5e-8a3e-595d33ce9bbe": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "37282030-bd16-4d3f-8896-5d15c10c8e05": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "abdfdd25-59ed-4c63-b4a3-562221eb1289": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "ed0e9c12-5b9f-4e73-961f-1e002e2f87b7": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "74de8b82-ec72-46ba-93ed-02ef0f6a7b81": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6bc47719-9230-4dc0-b384-5173bc467b4f": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "6633a411-21f0-4960-a495-c74eb96e3c89": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "98ea3dc7-f46c-4c42-9df3-ebb89cbccebf": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "af8ecac9-ef9b-4424-8875-d9caf7e9a941": {
+    "duration": 160,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d58cf1fa-6d82-4dfa-b632-7d0fcb7cea62": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "24c587b1-462d-44b4-b262-98634bd3ef77": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6d201445-3b18-4f3c-9184-511a64aa1201": {
+    "duration": 180,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "82c84582-1094-4447-a4f0-4d445b3969e7": {
+    "duration": 190,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "660dd9d0-6ea7-4876-beaf-04f1883b89a9": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6e439449-d0f0-49ef-a3d5-e58aeabb5013": {
+    "duration": 160,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "0c40e0f2-730b-4979-8275-e24877cb341f": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "2e35bbaf-5782-4546-be9c-9386711eba00": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "56c8bbd2-831f-4f86-afd0-3901b8f4ab89": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e6fe89be-d50c-4b08-8d04-0125628fc70f": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e7f107aa-8952-4db5-ba91-ce8a383944fd": {
+    "duration": 180,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "8e77625a-d86f-46a9-b369-becc251fbb9b": {
+    "duration": 150,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "39462bd0-02b6-4041-8484-6a690e819c37": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2ef8c53e-384f-4db1-a887-0b05d63ceace": {
+    "duration": 170,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "16dec164-6b6d-495f-8887-f6719882b9c7": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2c2beedf-2f65-4b5d-aed3-f951d030fd87": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bc6e86bc-e91f-4672-b5d7-81278243f12c": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "8f1a5be1-45ea-4faa-be2f-952dfa11f1f7": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cf4e1757-42b7-49dc-86ac-2da0b5ab64bd": {
+    "duration": 160,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "fe0d6b67-259e-45b9-ac9f-cbfc982b82c1": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "6b055816-fc2f-44ce-9519-1000cc946f3f": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "302a916f-277d-4eaf-8036-9ff96dd5ee96": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7b32ef92-87fa-4ed8-bc29-1fe2848d0020": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "fc7ae863-5b64-4be1-a6e1-9ed05b2e1475": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "054adf91-9b06-4bb9-8434-26d068aff86a": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "88607de0-ac93-40b8-9a36-5dbb6bf3d891": {
+    "duration": 215,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bed2e40e-9a27-4470-aee3-5fc650283a19": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7a01c02a-c2fc-4a3c-8092-639ee2360a57": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1d0bb675-c7bc-4e5a-9902-59a0a17630fc": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1b2ec93f-0f72-4ab3-afbb-fd9dca825b06": {
+    "duration": 80,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "6498e278-6571-4bcc-b4b2-a3dcf1bc0ae8": {
+    "duration": 165,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1374ff94-c5f4-4586-82a5-f20841bf0a02": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "05756789-a197-4ffd-a67f-ccfe9d43ef7c": {
+    "duration": 215,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e79e4bac-83ab-42d2-8e08-81caee7a8bc9": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "74729915-8206-4f9a-8025-f1ae1975cbc1": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "38448e93-38c8-418d-839e-b339f33c13fe": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1461478a-9258-4cec-988c-9b8e94aa4941": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d8a3c13a-22d9-401b-837b-d0abdb08358f": {
+    "duration": 165,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8f607bac-efe7-4210-9a6b-039baaf8408b": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cd8361f6-dcd8-45bc-b44f-97d84a8b6e7a": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8508a7df-127d-49ef-9878-ee93bc5b3f61": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5a4f931e-6253-4875-9d02-f6fe6a75f376": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1507333c-bbdd-47d6-a269-b62e1dbdf343": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "ec166d7d-d4f3-410e-885f-641a782de395": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a2854b98-e3d2-4aa3-8252-482487425dfb": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "dd24ba3c-b9c4-4cdf-92ac-eb9d978181fa": {
+    "duration": 165,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "5a0e344b-f0f9-43f9-a51e-d27a74c5d1b3": {
+    "duration": 90,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "ee57a207-4b56-44f5-b84b-c6c406f48f2a": {
+    "duration": 215,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9747d7c5-31da-42c3-8584-6758b76bf9b0": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "952f6fbf-0855-416b-a5e1-2b06abeeaaa9": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e422f1f5-d14a-4ecf-a154-1499d64eecfb": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bc32f7d0-3a36-4563-a6ea-011d5668599c": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "afa4c6fb-bde4-4551-934f-80f8c03f05fa": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7908a385-fe0e-46b2-9157-65400654419f": {
+    "duration": 95,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e0bf56f0-9a97-4e1a-8a2d-f950abf3234e": {
+    "duration": 170,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "19b11b5b-f812-4f34-a5a5-a88ecbaa00f7": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "535cd72f-cbf6-47d0-8ffb-67ad7a88f5d1": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "80b7b373-56ca-4b0a-9925-a2c983451194": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e77779be-829a-47ca-b544-5d9a8bb168fc": {
+    "duration": 200,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b4718c78-de60-471d-9047-f02edfd9a200": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8acbc801-9479-49ff-8f20-31e73c6fa3dd": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bdb1c1d6-dc03-43c7-a76e-f6544d7de57b": {
+    "duration": 200,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a808b708-76b3-40b5-b0e9-8602fddabba5": {
+    "duration": 170,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d3650161-f67b-4d40-be2e-0006cad25d53": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "12897151-38bc-405c-ac0a-d87533f705c6": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d982d58e-6854-4e78-b0b1-2f37ce9e9244": {
+    "duration": 80,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "6f69e644-b704-40da-baba-90cda2133778": {
+    "duration": 65,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f62afb15-9111-44c0-b2e3-abd5b834814d": {
+    "duration": 170,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "44f48bb3-1891-4094-8250-79bf8a3a1845": {
+    "duration": 90,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9c725343-ab0d-49dc-a062-0bdf9a1411a3": {
+    "duration": 180,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1477b911-5730-4143-bb31-46e58fda9d4f": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8f5e9385-2f12-4e87-a358-625a2051a4cb": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b237ce1d-4593-4c65-b67b-2ba38c004262": {
+    "duration": 180,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f2145c40-d9b9-4b66-b0fe-f82d57a97b76": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5ac283bd-23ce-4501-b0c0-6158c87c835f": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "eeb8f2d7-5693-4f02-9088-e6fe2b888140": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c29614d0-1086-4a6b-8143-9af88d7bf050": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f571411c-7df6-4334-b39a-1b6e7e16418f": {
+    "duration": 175,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ebe90068-ac51-4a1b-accc-908c0e2a31dc": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "abf50458-c12e-4d4d-8ce9-a01519866d78": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3bcc0b4b-1d86-4053-9c8a-0a15e2264b32": {
+    "duration": 160,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "360c23e2-12ba-4065-ac4a-715029eef6ea": {
+    "duration": 90,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "684a8fd4-7cb6-4c24-a525-6181fdbf61b1": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "b07a0943-450b-482e-ac78-edbaa06a976d": {
+    "duration": 165,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "844218c9-703c-470a-ad1c-586c831906cd": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c4a5f67f-1422-40e0-ba57-cae42276f1b7": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9623eaaf-1aca-4ddd-8805-c2f931be8ca1": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "2838211a-d590-46e5-a16a-d2c2f1587ac5": {
+    "duration": 145,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d6906038-0e44-4474-8607-0f7a452f1650": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "56fc7048-f4bf-4832-8469-ec7f27998396": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "ae96780b-17a3-46a5-ace0-0cc50b38a9c3": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e9673287-3a6a-46ba-be10-a5414dc656b8": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "4e61cb81-38bc-4cf7-a877-7a2f0f548779": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1ee4f125-b975-47dc-a622-987bf0db008e": {
+    "duration": 100,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "b68a2af5-6c3f-401a-ad8f-7342ba02592d": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9bbb7e29-3e89-4515-9b5f-5cc1cf157811": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cd06701f-d780-4d9f-a329-2fe5821c5d1d": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e7367fdd-5d99-474f-ab3d-5804be4594f0": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "8d89b81f-080d-422a-b8c1-2f709ef39364": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "789755aa-7ea6-4f11-83d5-52ecf516da22": {
+    "duration": 150,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3a17ff30-91a5-4eb8-8e21-41a71407c5f7": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bda19fad-46f6-4ab4-807b-0b50aaac8267": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "57041f3e-6040-4f5e-be6d-53d4fe144138": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "09f9e0dc-470c-4598-ba20-1d718543163e": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b7a71fe9-5c82-4a5f-8fc0-2f6db1819eea": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d712a802-739d-4e70-b640-fc5448b12281": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e9dca8b7-69fc-41a7-a21f-009762c8f628": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7121eeee-ff93-44c4-a456-18e72bf4eba3": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8f79099d-5b17-43ac-9c02-6a66527c1835": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2b587f40-9515-4fda-8a20-08df80fafdd8": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c4ac8702-a671-42d5-9e10-f52bd8b7764b": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "12ef554c-7fc9-4937-a586-47b3ce9fc626": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "904f3b58-7424-4009-9190-88e6fc25e52e": {
+    "duration": 165,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ede801df-d739-44c2-a78d-df45473b0f6a": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "92e830ee-e959-4b66-bd78-5fa8609af945": {
+    "duration": 160,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "cbc1979b-7e20-46fc-81b7-4367bb8e6f34": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d2a90a1a-1df2-4e24-a18f-0bec98ce20a1": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ca267e2b-8008-4d7a-b655-448bb2929fdf": {
+    "duration": 65,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6c0e2d2b-a7a6-4eb4-9c1d-1cd80843646c": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "16ca8b33-6adb-4498-b674-6d75b192c929": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "40455118-1c38-4860-88ca-9a04729e23f8": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d210e043-3ad1-485e-8cab-27dcfe0bcc73": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "22a78886-baff-4548-bf3c-8d504a8b73f1": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7a5063c7-b780-4d5a-9cb3-d5c70cec3092": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "8c90edb3-a2b7-4282-8f30-da88636e9a6b": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d25c2ee1-718c-48dd-bcaf-00ecaffaa823": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e9ba8011-3e1a-486a-aeea-1ee5d549a828": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "be185f42-3ad6-4dd5-a8b0-14e591e662ee": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "28d0b63c-7b47-4210-b642-b0f99ed5d9a6": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c3c3d498-0b38-43b5-8244-357993dde607": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9818e6f1-7223-4320-8c8b-41522deafc2c": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "98fb0ac3-5c12-47f2-8423-966d02dc9190": {
+    "duration": 75,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "cde1c766-94e3-4a3c-a3ba-b700b4e05ae8": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "36f2e90e-7b00-4541-bc21-18e4687726d1": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4bfcadfc-8a18-4ee4-8338-3e545b917efd": {
+    "duration": 90,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "0328ef6a-5546-4b5f-951c-e9067f87e493": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "448c2b78-f775-4c45-bb52-98f904665b45": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f332f5ee-bfd5-4f9a-b93a-ad12b0c3d6bd": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "bfb9e31c-0633-4fde-b899-ec09f3bb2f0c": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7571eb83-fdb8-4d3f-bbae-0efee06e599b": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "24298d4f-08c0-46c3-9dd0-fd14e6cbcab7": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0b6797a0-6710-4c48-a9fe-3bae16ef419d": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c8a501ad-957d-40d1-8803-fbfac431c5c2": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "88bc71aa-6d1f-4612-81f3-19920f9f33e9": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "322889a4-172c-4a90-8f58-9584b5eee2ae": {
+    "duration": 155,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "6771cf6b-f578-4787-8c3c-ab18435bd3b6": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8657e700-ed6c-4cf7-a91e-4eb8dcd6a850": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c1a10c9b-f492-4f9f-a84e-f4d6fd5dc5c3": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cbbff384-7fc3-4da5-abd9-15042b62eec2": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "97501f35-a647-47db-9c6b-b12e045c95dc": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c39f6e90-3f54-46bf-978e-ed7438069378": {
+    "duration": 80,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "55f887c6-12cb-40b1-af6b-8c31c4d2ab93": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "aafbc580-b1d9-43cf-bbd0-60a0c8453c30": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bed49a9c-e1c7-4259-837a-52bde936a8a8": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3ad3ebd0-e7dc-4a00-8a30-0fb96a967f3e": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b06aca3c-1f1f-43de-811c-933aec867ebd": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1597cab1-791f-4260-b559-5474c631937d": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3d3a3288-cc31-47bc-b43b-872d57d2b5ae": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "82c6962f-df27-4bf4-9a6d-84bbf7b3c667": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "fee42060-0b12-4b71-ab1f-b9a92a7685db": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "271234f0-d395-4555-8bce-26fa84d16f3d": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d1e08452-46b3-42c2-b42b-cfbea18aa8ac": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "92d4e709-990b-470e-ba17-6b9c14a031b1": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b858be7d-8dab-451f-8f6f-5d0a6e3c293b": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2dd88cc6-c718-48f7-b688-061107906d73": {
+    "duration": 165,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "947cbad7-3b71-416f-b3a2-3c34bc42f009": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "387e379a-0a32-4dad-9278-460aac4023fb": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "1126b894-fec6-43d2-8160-f33513450cc2": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f0574205-4391-439c-a8d4-1d491e47b0a5": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "782ecd2c-e9f6-4488-b2f6-efe3041c7d0e": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "8eacf2eb-7c1c-45ad-914a-c8528b549db4": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "59c3ec40-1d98-4441-9194-ac897b0b370a": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b032cf3d-4ddb-4e86-ba2b-9445076e4795": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b5e679ec-e550-458e-b8d9-a0ca73b708ea": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7557e709-bd0e-4e5e-883c-30e529435acb": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "39e9a0d6-05ed-4c28-bd3e-401b06e1316e": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b01cf758-2f55-466c-a581-cb5a836d4435": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e4b3e8fc-958a-44c9-8dc9-dbcc0f4c0474": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "47e7d742-337f-4ff1-8c58-9dd18bb2b933": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cba5fbc5-491a-4958-85cf-79303c862e29": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "124163b9-4d63-4f9d-86c8-3df1bad480ed": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "58c3ec97-6956-475d-a3fb-8c260850d56c": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "0dd557ec-a682-4720-a94b-1738da0e0a6f": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "056a49c8-d612-4190-8fb9-8a9e65000b1b": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c0c418d1-1295-485d-97c2-19be3eb69f76": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9b5e65e5-1af1-4b2b-8220-439ef028d9fd": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b4cb56ca-1ae5-42b3-8749-af1aa23d0af6": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "05fa7059-e541-4e98-8d38-21d7d89cfd5c": {
+    "duration": 175,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "48c91e6c-c302-42c9-8d4e-6597bee2f2a4": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d110e04a-cf33-4dfe-8156-03e44dfe9198": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "24897b2b-1d90-49ad-ab30-ced92a86afc2": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b5cfcdc9-f7ba-44d4-ba5c-6a3b2b6e8ac7": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8d20df9c-4c48-42d3-851b-833dac0a3428": {
+    "duration": 160,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6cca71e4-b0ae-47c2-ab3f-db5eb4cccfb5": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "8092fdf8-e151-44bc-900c-2cdb0bacf915": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "417d88d2-815c-4711-a45f-82ebc97e68e5": {
+    "duration": 180,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "b6dc652b-d94b-4723-a6ba-ec38909dd5ad": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "14fa1d58-e0eb-4a94-880b-e7accb7eee64": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "897185a2-321a-4fbc-82a3-1bbb56e20bf5": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "843a101d-b61a-47cd-baa7-80fff46676d5": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4f6de577-e8f5-4298-8343-c4e22bd1042b": {
+    "duration": 160,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "280caef5-dd62-4b05-ac6c-9f3c9da921bf": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "da702d1a-0496-4630-84f2-e843b5b031cc": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d6d309b6-1fcd-4ba1-b58f-911805effbd5": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "07fa3632-bee0-497f-a903-4177704aa7cc": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d7b4cbc8-b4c6-40f4-ad16-3248b169324b": {
+    "duration": 145,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "63c088c7-a80e-4e80-af26-3096a3d5d4a9": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b1b43582-b2bf-4beb-b297-52e4b428f298": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "71da5895-2638-409f-a65c-4c2a48fb91e9": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a8105ffa-daac-4de3-8c8e-ba8bec9057d1": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "61805dd2-1a7c-44df-9bd2-a621a7f45553": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1d0a0a24-a864-4711-acbd-29b3b7ad18b1": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "00e84306-a9cd-4909-a4d9-dc25edc03df3": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1843876b-ed7b-46f8-b827-e51dea0bd7e6": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c6b9a38f-3cdb-4011-a6cc-777ef41c69a8": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2eca29c1-19c5-43d3-b0ae-01824ae80804": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "43548434-dc56-4abc-8ef9-53d87fdebb5d": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "882da234-52cc-4f14-b62c-d158a8746836": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "57233ede-101f-40df-9307-757c62da1eff": {
+    "duration": 150,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3404aaa9-ea64-4474-9cbb-94a52232efa0": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f8245409-b6fd-4f09-afbc-58bd3cc8e718": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "95d5144a-0dbf-4b6c-9d93-4889c644fd75": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "1ebbe159-d158-4261-8801-b36e83a5a372": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "96e834f5-03fe-48a1-b635-bc15b565a194": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7d72dc20-453d-4d36-b66e-5433d2e98189": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1f5f4954-d3b4-4c58-a3ed-8da51a9370f2": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "45521c8b-f26a-460c-b281-f543defe1a9a": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "431c39ef-38b8-405f-a206-6653f96efd51": {
+    "duration": 160,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "35755ef2-713d-4c9f-9fb0-4bea928fd4fd": {
+    "duration": 170,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "0339a397-25f9-4824-a507-25ecd87ac12c": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "061b5ab9-0bca-4394-bf7f-9cf44e7a4ca3": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4bc39182-71b2-474d-9407-124db246e3f8": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e43dfaad-d004-45db-b8b8-9db2d19b8b58": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "32f5c3ee-ea85-4cd5-9315-1d831c84b0ab": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ea10f105-8df3-4342-8966-8b6fb29660bb": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3d3fbeb5-c820-4b3b-b739-b58e73ce09f0": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "70f6e107-1079-4413-8e0c-1f832c702469": {
+    "duration": 145,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "5d1151fd-6c3f-4cdb-b87f-792de42aef09": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "62eeb96b-17f7-4f7f-b5ff-b82edb083ad1": {
+    "duration": 150,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7a05dfa1-85ea-458a-94f2-28e881c18503": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d0bb9394-9579-4550-8f99-45c2f758be77": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "001faa0e-73dc-4338-89d9-17982e9c75e7": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b6251491-ea51-47aa-9a98-5fccbf80e6d0": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d9152597-7dbc-4748-bf69-31abc97e0fb5": {
+    "duration": 200,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "882fb575-dd08-47a6-ab2b-b71b6e559dae": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f0ba9952-0fc3-4650-929c-943762e3f80f": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d6464a4d-86e9-4a5e-aaec-c77aa2600022": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a33e4e3a-ae00-4069-aeba-9fecaaae2bec": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a89dab1b-b647-44d4-9e16-ea5e8b4731a7": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ed248f8a-379e-4e24-aa46-4ae8ab84b971": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "67d4d12a-c5ef-45e6-934a-5d54e77eba83": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "dcc890fa-9242-4d22-8a57-a0fde14eacd8": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f3b7f44e-8fcc-4695-ad9e-12ffb0c36e46": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d6b73af4-441e-424d-96dc-f4edffac82ac": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d8ce0232-3673-4826-8bb3-599297ab602a": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c997c447-9174-4b5a-8f8c-cb638bef21b3": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "5d816bb1-113b-42b7-a892-be291cbab5e4": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "fe9054ff-a006-4744-a863-15374a9dd016": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "58b06b60-3070-4d2f-8e89-e3f49b304905": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "534d0ec0-7bd7-4120-b85a-e2fd5a2eb6f0": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f8c3a86c-3cfd-496a-8e40-f5780cb49efb": {
+    "duration": 180,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "39aa1999-036b-4d5e-8f30-4e206d27b1fd": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e1d37928-e1a7-42e0-8157-0915925d040e": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "045ee2a6-b025-4668-9016-d9744c12d13a": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4eb0eed4-035e-4888-a3f4-b7275fd71f78": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0de719c2-e1e1-4065-85c8-d1f801b691b6": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c246b367-fa4f-40b8-9577-5875973ba7b4": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "4e6bd0e4-91bf-4bfa-87bb-e78f21368d62": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f953233c-ee25-4fa2-ab82-f963bf641400": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "111cc312-9547-4c84-9796-cd9a9b157f71": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "2955fc15-c6dc-412c-b8c8-69c987fcdf18": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "28e32519-eadc-40ec-9bc1-e72b94496503": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5cfcf958-0c1e-47c1-acde-58f40623cb09": {
+    "duration": 160,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "936f7da4-a452-4f48-888d-774080f72d7c": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f4d5b3c9-93ee-49f8-bf08-f343e1ef61f8": {
+    "duration": 160,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f6d61e0f-e087-4af4-b05e-9b37c6480be4": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a612322b-29c5-4ac7-b838-f8c26af1e53e": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5656ebc2-1a5a-4354-95c8-d7697465e602": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "64d89065-74ea-4a34-a011-5223317ce905": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9891969c-6f69-44e0-834c-912ced8cd9a0": {
+    "duration": 150,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "0a07cb73-16cb-46a5-b02b-1fbb2cb02a52": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f84f75ac-37e7-4cd4-a57b-9af0e80cd70e": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9558ccd2-941d-4d3a-9e12-d5c38de5087e": {
+    "duration": 155,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "49b95f94-9046-4a3b-bb5f-07857f55cce7": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9e1dcea3-f6b8-4d4b-be06-fc05fa9af7d4": {
+    "duration": 85,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "deb658a3-b5e8-457d-9afa-0e456866c173": {
+    "duration": 175,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f00ebe00-f9d2-4a13-abd8-865d14b07551": {
+    "duration": 165,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d4ed2970-da3e-4c81-96da-dd24be90ea44": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2a204d5d-733b-49af-a78e-d841ef11637d": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "57bb041b-4e2c-43fe-906f-1c97c72fa9ec": {
+    "duration": 155,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d75175af-054f-4d0a-84de-d23ddf6bb066": {
+    "duration": 95,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "14ba3d8a-1fa0-4a2e-abc3-20b26ad9635d": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9188787d-73b3-4a9a-882a-bdfe2cfa5bfe": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5a849b5a-b90f-4d22-b2b1-4cbebd7137f2": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "74397d8a-1e2a-431d-9905-204eeb04487c": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c7b27582-78c0-43ad-b178-aaf37e3af3c8": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "5d649cac-3af4-4b82-ab02-5871934c9a5e": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f542e22b-5a2b-4b07-822e-4b10f0e91c27": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c92bce6a-9bc5-4242-a1aa-001570b1cdab": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e63f4017-00f2-43d9-aeb1-f2a069f7d62b": {
+    "duration": 150,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "2aef65a8-f261-465f-96e2-0254df972367": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2dd35176-bcfc-4acb-88a4-c6f4157e02dd": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ad33f849-638d-45f8-9b2b-8c5eb83b3a14": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "703e3c7e-df74-4c85-86ea-ad60e4e691ff": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c4b0e290-078a-402b-89d8-e3b9356b13be": {
+    "duration": 180,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "907bf7f2-78a5-435e-a7d5-2b50d88118c9": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ac972892-dbae-4b92-af31-84fa3378d118": {
+    "duration": 165,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "5980d1d6-2e2b-42c3-8d06-6c2de614a4c6": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "2e877a3c-aa38-4f64-921d-fe991329f5de": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "68626743-9365-441e-afbc-62f9fbf41230": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "903dc7ed-1008-4b63-8a9c-6662c8354ced": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "69affbce-d97d-43df-a5c4-2b183b9d1a01": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "20b28200-719f-436d-b8d8-1f6758613646": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b8e5a0e8-7461-4061-9d91-09a34af99f7d": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b5063bf4-7323-4762-a47c-020dcf58f67e": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "355dbeaf-793f-456e-8300-c04d3921cb5c": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "cbccde85-df99-4e3b-a9ed-d8749fe98980": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "05f80336-2dac-4f2f-9bd2-7ff491135b7b": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "3da98900-7c16-467e-8927-9f392cd983f4": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b2fa0d60-f61b-447d-9375-25184b06fbf8": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "ee236aeb-2430-4722-ad85-ddd2189e0be8": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "064421a9-f364-4c78-95c6-562e536b8e7a": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "671e41b4-29fb-4c05-9925-d26b332e8528": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "92481905-45dc-4234-9f59-376177f1d51f": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "9ed1801c-3757-483c-9068-b2db07553438": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c3a906fd-2dd3-4e20-ab75-330f3aaac152": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "a905c082-4668-470a-9dcc-4186c39915cd": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ff039a1a-6715-47c1-98b0-fb7872063685": {
+    "duration": 175,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7397a600-8fd8-4279-8998-b522642fd53d": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "91a915d4-2fc7-43c0-9d44-a2fb86202080": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "377d73a1-e2b3-422d-80cd-a4d3d446d32f": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "160dde2c-5690-4a8d-8fba-8d426a740711": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d8800b39-3413-4be9-af4d-807879da7941": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "783ebf09-0ab0-45b3-a515-4e62944604f4": {
+    "duration": 155,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "a89badcc-f23a-43af-8c7e-3a970eb69afc": {
+    "duration": 150,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "bb66b00b-01d9-453c-b5b5-a7cbf55f2390": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f83006f8-b08d-4493-9d97-8c8418106ca9": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "82c5236e-9f28-4550-a513-7cb6a0a8ca40": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f1ed8d54-9487-4243-a62b-d7bf37093adb": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "9bd89f2b-6449-4ee5-a5b7-f99e075d805e": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e99dc2d7-8fbc-471b-a5f4-078041526af6": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "15dba0c5-7398-4a2a-8df0-90d08d65a470": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7bb65aef-ef76-4359-aa6b-ee668da6738f": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "cbb9973d-1bca-43e0-ad50-3e4f7c609b95": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "61a5d001-59fc-47dd-88a1-9006bf879261": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ccb0d67b-9814-43c6-b687-de24ad6df8ae": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "22117860-09ae-44a6-b948-2aafd8eabf15": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "36d7166e-2968-4e80-9207-1b4086bcce9b": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "e181d1ec-ef3a-4ccf-b5d6-404453cd895d": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2e860634-51f9-49b8-9109-3434fec315ba": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9d3fdd78-595c-4580-b956-f7232bb0a4ef": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "27d4c2d9-c477-46cf-aef2-4e58bddda7cf": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "48b18d63-8f35-4990-b062-f290d941c894": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e9b12e36-c7d7-482e-87e4-cf3a630849c8": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "85fc3c07-3d17-40f9-a280-aff1d9dcd1c5": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ca54e054-93af-46c2-b341-a3553e84d6a3": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "2ebfdd94-98d7-4bb5-b7b1-6e673a304ad7": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "72762d1f-8d5e-43c3-8767-4c88f6438f0e": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "08038f5d-c46a-4be2-894e-14767bd62bd6": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f4d9b903-23b9-4c37-acf9-10f444210204": {
+    "duration": 155,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "55ea0f17-00df-4988-9857-d9123bde625d": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "28ce92f4-e562-4023-9ea7-13dc40c838f3": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "dd207e3b-90bd-412f-9d2a-ec30ce1fb902": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d0b6a971-9a89-41a5-af62-80f2a3436279": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3470c342-adfc-4df9-87be-29b2a376d246": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "62b47ce4-4109-446d-bee0-9b57b63f9a65": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "caf2f808-a225-4b4e-8de5-64a15651df10": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e4bebda7-8fcc-4f79-987a-c31d70959523": {
+    "duration": 190,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "69ef5727-c391-45d3-a8a5-2cd20ed32b8e": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "730eac92-f53e-4259-8e04-a92744494a00": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5809d57d-f1a9-43e5-b86b-0ef0ae2c6eb8": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7c2f489d-9d8d-4c29-a3a4-2acfcfde22b1": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "362ffae0-7622-4963-a6ef-433b960f7fa1": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "42eea953-cb3c-4472-87ad-701cfd9cddd5": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "76377b20-fe19-49d0-98cb-731d89009439": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "97250698-5640-47e2-9e1d-188b75b9b589": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b6a1959b-2f6d-4e6f-aad4-59a7b967617f": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5f0c2cac-a99e-4fd1-8136-9c26f4db6a59": {
+    "duration": 165,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "73fbc291-6919-4469-9ddd-0a3e324f3ab4": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "73fea465-39d0-4b34-9f81-dc5ba673bb17": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ad3337b1-24cd-4330-a5d2-314c0844cf46": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "531ac177-93f3-45c6-a265-3cd6398021db": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "19bc5fb4-2d50-4498-b5e4-2ce793c092f9": {
+    "duration": 145,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d5bfda1c-efcc-49d6-94f7-117ecbc45fcb": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a72e7e0c-7ac4-4db0-a248-a2c30d19bd01": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ab2082d0-491f-41de-9fa1-43a63fa73cb5": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9eb1deb1-5317-42b2-8106-0b604ed4b5b1": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f8fc1b89-895f-414a-883d-ba3f94917eb9": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bbab28e4-f9ec-448d-89f3-2e1333657a86": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "35301500-9a8d-4800-a807-7423cc2cb97f": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f881be84-d705-42cc-8154-881ca5e5d34f": {
+    "duration": 170,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9ffef318-4a67-4655-a6ba-a00b658e8cc2": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d7711440-a014-46f8-b976-a55a9ee58d45": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "59f31e7b-bc19-4c63-a9eb-80ee19e34d83": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7fe52ab5-dd30-421c-8d45-8a2e15c62456": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "1338604c-33c9-43fb-a360-26d63690d11e": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e883247a-e44d-4b3d-8ae5-18296270b546": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "23b5cf43-33d1-4e7a-9c43-57ef0ca1d8a2": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b30dd558-542d-4ac1-8d0e-81cca0bc36c4": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "1101a5df-5be6-4684-a35b-5ef7c8fd3919": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f1ce443f-f095-4551-8370-8600e45db56b": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ef71f0ab-9e1d-4c5a-bc28-f061e6eeb2ec": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "9b76c4b8-9def-4244-8b23-d69ac089119b": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c69d265b-e5b7-4281-9a0e-ba98ed15f9a0": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2361adc5-c452-45ad-9ccd-c3fd4981541f": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "733890a8-9bd2-41a4-a5f4-e693195aff68": {
+    "duration": 145,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "dc3cb0c7-5261-4fe9-9301-32c735172fa8": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c76d6181-845b-43c7-ba10-9d09c6722f36": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a3d31547-1565-426b-afc2-fb2e6078bb95": {
+    "duration": 190,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "82fba1e5-8320-4f8e-bdce-87404eac91e9": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b714683a-c6f9-4efb-a46c-c7305d9f3ec6": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8aedc347-bf91-42b5-a22d-aa143c07b50d": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "6a844f1e-6918-423b-81ad-0ced85fd1689": {
+    "duration": 205,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "67c39fc6-4cb4-4644-8ec8-736dbbf57675": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "99890465-c79d-4cfc-a84d-5bc0b46de176": {
+    "duration": 185,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ac75f99b-e0ff-4be4-b9f9-d6746c48152c": {
+    "duration": 160,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9ac18bcb-cdbd-47a8-bbfa-62f7ab84b839": {
+    "duration": 170,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "106cfe0b-6da8-4c9d-aa47-3f0064272e93": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a9248ad8-b444-44db-abf3-5de5495d7365": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "10ac3f8b-2fd9-4ff8-95eb-5f8f689d4ee6": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "835fe1a6-156b-4b46-9118-63fd88dbe3aa": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "46c84b5f-3856-4f48-b723-03ad432db797": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "2e1cef69-de1b-4554-ba41-c3490443a7f7": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "bd4fb8d2-23c2-4bb4-b6dc-3a56b1f2a121": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "090f9c5b-15bb-4e58-b7e2-107c8e7f1a2d": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9df499c0-b218-4cda-8215-cb74f72934b8": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "374fafc3-fbe0-4ab5-99f8-fc7d8679cde9": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9f92d455-30a3-4ed8-a02e-0805aa97114f": {
+    "duration": 145,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "68559df8-0f30-4d27-b73c-a318e94d0dbb": {
+    "duration": 145,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "fd983f9d-e447-49a1-9a10-b7bf49bc4601": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "cd2afefb-ee36-48d8-b30b-e16c75e8f2bc": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f24e5e6b-1c3e-4666-82ea-bacf15a5962d": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "ea0a2d34-5636-45c8-83d5-0bd59fbfe2d2": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5c23672e-5767-40d0-b0be-889d4dd1ffa9": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7a596bb7-d7c8-4c1e-a505-9471b592c934": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bb40753f-552e-4a1d-ad25-4df66d8633f5": {
+    "duration": 165,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "e890ca33-0a43-4c91-9f88-d3872383c2a6": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8d8503bf-df52-454d-8ca3-cf2024469fb0": {
+    "duration": 145,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "6d819a11-7798-4be2-ab2e-e80a56eac472": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ce03ce60-42e7-41a8-b1b4-3cef68bd91cb": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "aee06317-f43e-416e-9b3d-fceba879b6e0": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3ca6482d-ce6a-4fe4-9ceb-8aa4c89b9350": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "989b5667-98a1-4f83-904b-a6cb4d37fba2": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d23710aa-b9f1-4e14-a087-570881de540b": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f2a4b072-57cc-47fc-ba90-6d614bc37a15": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e2d3e1ca-338f-495e-ae5d-86c2a48b848d": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "2a29e774-2cae-425f-bca5-9cd7a85746ce": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ea1b1181-6ccd-4426-a304-2639dd4aad00": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "974b69bd-16ca-4ff0-95f7-cde5ff35df07": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3c8e8d0c-0e04-4adc-9248-ab5d881eb79f": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "8aeccfe1-3e16-43df-a1fb-d255c6bdcd0b": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3c4a8aa5-27b3-4fab-a6f0-fe51d4d4c156": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "7ef11fa7-a4a1-469b-bf96-f17ad84f2e1d": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "cf50d4fd-b7fa-41c7-810f-429a24dbc138": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "39b76a84-23a2-4bfb-a4f3-422f0b7e9bd5": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "483e9831-689e-4804-99f8-0948e5bcfab7": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "4e023a7a-487c-4d4c-81bc-85a379205da5": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "75e42895-05c2-4f55-8dcb-b6074003aa8c": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "608938c3-cdec-4298-81e8-bad396480378": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f159d467-eeb1-450e-a5f1-e84a8469c77c": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "cec16e84-9ae7-4839-a1a7-b121a705e043": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5777a6a4-499f-42ad-ad17-2cbfdced2f76": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "a01e58c6-856e-4919-8b81-425667f40fc0": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4bb9733b-c458-45f4-a690-fb326057afa4": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "809205dd-92d5-49e3-947d-c08ee6ab4777": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e1e47d91-56c0-48f3-a87d-c3859803b1aa": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ff5f215c-a8b2-4020-be64-97f206d40d1a": {
+    "duration": 170,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b2f71278-2b8d-4c0f-a847-daba96facb7d": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5fc00aaf-9c7c-4b04-a6f2-d5f2e2dd5dbc": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8cd6e9ec-d390-449b-9534-ced3f78a9945": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "b72004ba-2e83-4795-a235-007a0901e954": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "12df753e-1499-4c6b-9fc6-202462293f2d": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0a1865b2-81b7-432b-abe0-54790a09d2cf": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3bf76496-b5eb-48cc-8ff1-5fc675b22130": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "59ca7dc4-7d40-4f93-96e2-b55e3f3eebf1": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c8facd1d-447e-4891-909e-85b514663f3e": {
+    "duration": 165,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e5bc2602-a3ef-4c48-beb5-7f9014b99cf9": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "94c28d4a-88cb-4f32-bca9-6a92e79969a6": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "436d8ac4-c68e-464f-a8bd-352b81afd8c1": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "b445443f-0a95-4683-98d8-34ba90a826e1": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5391a862-9f93-42c7-b58f-3cf25b07e123": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bf15a308-e98c-41e8-a4b4-7d1fe0a24eaf": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bc5f9c68-993b-4b0f-88e6-cb42c7dbaf7d": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c4aab51d-0885-4e36-a635-379eca22804d": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1b219163-ff53-4aa0-aa8a-87cc65f21203": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8c7192ce-871a-46dd-8445-761cff753be0": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "111dc271-df2f-445a-b08f-1f62f696654f": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ae6d65b0-2e11-437d-af30-da063965f056": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5d2793dc-c2dc-42d5-989d-753395f7f6a7": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "95832b19-6685-426b-bc35-ff54274588a5": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "227c4f29-4699-44a9-96ec-25aeb78d86c9": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2fa9356c-0ce0-473f-ba35-4aed0e4a39fe": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "52fb6754-c224-4cce-9e9e-26d421d23ba9": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "27cd1278-a08b-4036-8c39-909f123f808a": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d6619cb7-1599-4745-891f-8c43deadfe0c": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "7af8492a-92a6-4843-8d6a-2da43d03015e": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d13a29d2-6ab9-4eb2-a859-445bcc6818be": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "56c9df28-8ffb-475d-aa9b-261a62f3845a": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b6089f49-ccbc-4ac7-9368-f0a9d4fee685": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "564410ce-85b6-49e0-b57d-7e3f90294fda": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b3983b63-1f0a-4949-9eb0-20552e5e035a": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d13be251-f645-418f-a20b-9a9871264176": {
+    "duration": 150,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f71e4a7d-b887-4709-a444-bedd4599d0f4": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "08c28b5b-c6fd-49a7-ace7-d99d0b8682f1": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "4c2f4c7f-3f65-47e2-8c18-e3e600f64874": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d2a9fa41-8095-4861-aa03-29cf95df3a88": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a1292ae9-e53d-4aef-a242-95c8a96095a0": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "83497be1-7a6e-4824-972b-6acbac3e7df8": {
+    "duration": 155,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ec893c70-d62a-4609-b31d-0137e8a4a68e": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "db78f5b7-2df8-4572-876e-a9198f7260fd": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ac8e35b5-152f-4fc0-837d-14fc2e10eeea": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0c353bc2-e1da-4d3a-bef3-d6137e537115": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7900630d-011d-477d-bfb2-722c53a31492": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "af49d751-87da-419d-8289-baff57eb8fd7": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6bcb5c6d-9614-4895-89fc-73f6c0f869d3": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "08932e55-d155-462d-917b-56e36d6c4ad2": {
+    "duration": 155,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ee6bf5d7-b06c-45b2-bcc2-9acd9381c446": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "29d204d5-10ae-455d-9ca5-ba80d6249499": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2177c80b-7126-45ae-98a2-eb7b502cfffb": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "82b0e647-0d63-4c53-bafb-b433ca567867": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e15b70db-5711-41f9-9c7f-a6138eafe332": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8cafae2c-4f2d-4541-9df0-c3e639e9c351": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7caff08d-ecf6-4e7e-809a-5ed2ffec87d2": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "85d30815-60ab-4036-abfa-b38a60e0d132": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d75b4502-90df-4958-9c03-a9cf2d29a010": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e903774f-79a3-4d07-8fff-854680008423": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "07a1ba5f-ade1-42c6-ac9b-05c0acdcb8c5": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7b293dc2-0e96-410a-aa6f-ed1b66c3a5cf": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "03d29dc1-b17c-41ae-871c-712b33279006": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "866bd33e-f2e7-43fd-ae91-caa850f36409": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "180e14ea-f946-458b-9eb7-ff96ae31aeab": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "572b00b6-77a5-4255-80d7-3127a0fc38a5": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "650fca8f-f8f9-4721-83e7-f9c7b07af286": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "16b65e16-bffa-4b0b-9b92-8a049f26bffb": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "0c443b73-78a9-4379-a0d4-73695a01a358": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "da607c81-323f-4da4-b2ac-0d91bea206d4": {
+    "duration": 200,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "15ea32b5-325f-44db-8bca-56a60585759f": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f82dccf0-278d-40be-8f0e-134b404fb4bd": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "45f67f92-46e3-444b-a733-01be8b5730fd": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "72d63226-2a08-4011-aac7-ef97471b6c0a": {
+    "duration": 175,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "e2f790a5-3c88-43ca-9d8f-4723b7f6809c": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "700e9c15-6c13-46c1-9149-0610f17a15dd": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "761399d8-aafc-4ad8-9f13-0c8bc767febe": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "08951cc9-4d3c-4521-85c4-7efd345abe63": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "54cc9b1c-0a85-4249-9aa6-245371417028": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ff4eadb6-8eef-43e6-a02f-490286a549cb": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "196cfe70-cf1f-465a-a135-6a92eb69b52a": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7342d890-161d-429d-857e-9f374354580b": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3fa42bab-2ecd-496e-aa25-fbfd23945d41": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "dadbfac6-9e2f-4696-bd98-7a087cfb4c09": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a55a6412-ec9a-4fc0-a04a-31543b7188e9": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5c924077-4752-43e1-b84d-a831463cfcc9": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ba502d3b-e551-4865-8230-632314dbd6f1": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "97ca350e-356f-4c55-b642-659ad2ae83c8": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3f4b180b-1bf9-4533-9c68-08e8a6c9180a": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "19836c2d-8593-450b-b3ea-190811910ed0": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7216c3ef-9b85-4c8f-be3a-a0f8edc37221": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b06064f0-fafc-4e7c-b32f-fb2078a5eb4d": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0e4cec70-72e0-47e2-b8ea-5521e61c313c": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "daa9c4e9-7c36-4812-8bce-e2d82f2612e3": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "faa48bef-53d0-4deb-b3c3-b2ffd54f7ea9": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3dc054c7-d0c8-46ff-8d4c-ad143de73c85": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8f665b1d-7dec-4e69-8acc-8abb5b4b6f7a": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "357ffb19-3d03-4d31-8540-ee27fea0a8be": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "7cc61c5e-4b2b-445d-9df1-4eb251350994": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b1c7b6f3-1fd7-4d8e-ac6b-d0df562e6ecc": {
+    "duration": 85,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "5cda0a22-79da-4046-a6a4-e6d488bcb37b": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "98e18ab2-bb37-40d4-ba6f-5ad460f5cf9e": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "a3e1450a-2cfb-44b1-8b95-091fcc1542fe": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e5341cb3-7e4e-44f5-9bc3-af105e00bd34": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d65b1969-87ab-4209-8282-6a6256b66de2": {
+    "duration": 170,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "e899aca8-6636-42be-8c79-3ba30a0005fb": {
+    "duration": 75,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "bfa248a3-d8ef-428d-a90e-44e0e1711283": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3d510bd7-22c7-495c-af72-4ab6b3d8f954": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8f519ef0-bc16-4c53-9e97-4a6bf1f6dccf": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "35c814b8-c749-4601-9c56-b0ad602bbb09": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "82d39f2a-64a9-46a9-aaa3-c7ff85adf069": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a5f9696e-4c01-4587-9f0b-f4dfe68ce046": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b27639dc-f9ec-4212-a3df-9608bc362c25": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "99adf508-2b41-4571-bdf4-03c30828645a": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "83d46642-7ad5-405d-b8d3-b32d7b7ff8dc": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d67cd6ad-45fc-47d2-85c6-8a3b450b5918": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "13e4464c-2310-4a36-9f2a-cf57cef8e858": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e1cd0543-3d8f-4ec0-9122-9ec0412b904d": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "177f2360-1bd5-4330-8cf8-74c665efd19f": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "86d87ff9-242e-43eb-ad40-950f04e62345": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c1810b3a-ddb2-4c80-8e26-1e8c49fbf7bd": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b99505a1-4775-4e27-a4db-dadfcd9c18cd": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "129a4e78-21e6-4006-b5bd-90391dd2226d": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "fce3300e-db95-4083-8463-287ec66488b2": {
+    "duration": 170,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ddfd231b-b083-4bb6-ac2f-b1567c782943": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "a71549c9-9af0-4c94-ae7f-f7eddcef611b": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bfdcdbc4-a435-4c2b-9b2a-bf5821272dc4": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9daa9c0c-3008-4a4e-b94a-9a8a525f5c59": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "95904c8f-4138-4bd4-b54f-5fa237d0c175": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "99fde58a-69ad-4682-a3f5-bfa4c3a2f66e": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "772d5c34-b187-4150-898c-543265c8455b": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "dec16961-398f-44b3-90e5-617ede70575e": {
+    "duration": 95,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d2322af1-e8dd-47ca-9262-fb8ff54817bf": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9827f691-4fee-4c0c-ad1c-bdc35bdd5bc7": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "46dbdf59-f908-46d1-bc4c-848f46b1bec3": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "65a52945-b7f4-4dbc-980d-293391451b00": {
+    "duration": 200,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "8e45c7d5-2ede-4a78-8b28-7bcb14ccef70": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ad4c1740-b347-41a1-bcec-dae538cbc81f": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ecc186a2-5f91-4713-9b62-e4a74d031189": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "806456a1-e7d7-4263-9c2c-f103b9e0c12d": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9f7e5b74-dc9d-4da3-81d4-9ba01292046e": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "7f727154-baf8-4d57-8d37-c9c01999356a": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "0e9114d2-ecf2-4d5a-8667-ae85e81a608f": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1546a8d0-80e2-4695-9ab9-db73c6f1fe05": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "501ea322-13a2-456b-b5ce-44b2d9363a24": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "eb7e7715-7506-478c-8e5b-f0315c77a3b1": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "39027753-a6d0-40ae-812c-3d860180afeb": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "82b044d8-b9d7-439b-b1e3-a5699bb0412b": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "52109bde-da0c-404c-9864-abf259805b09": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f437006e-b819-4ce6-9c21-808794e26e88": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "022ba260-19ff-4868-9b03-fbfa51dfd750": {
+    "duration": 90,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c292100b-85dc-4592-b3a4-0188aaf5c58f": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e198b674-9324-4390-806b-7097b8d10dcb": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e03cd536-a1de-4d2f-a97f-57806483a988": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f5f80af7-19a8-45cb-939e-7ca16b2de016": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2a899b0f-45c6-4fbc-844f-ce1724a07d70": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cb07df98-2f2f-4140-bc8e-3c306c112831": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c6b2cb22-c30d-4b7b-81fb-1924dc60b448": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "a28ff043-a987-4cb3-b7aa-7ccd13621670": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "775c86de-cbe0-4f0a-b4cc-2e59ef7fcc3a": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a0b57f91-0461-4cd8-a7fa-e109f8d538a7": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1d9a994f-18c4-4264-8338-1f8a5eba889f": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "5a3f9752-a8e5-416d-8096-bb53595ac8ea": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c3a11825-6859-42d7-a194-ba404a792f97": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8decf8b6-7546-41e4-8847-e1b98d339c06": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c5972b05-01aa-4f0b-811d-d533f272bc0c": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "5656734f-9489-431e-a164-2827233b4225": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e535d121-0919-4f59-93c4-370eb9c0ee2a": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "076674c6-271a-42b6-9901-256dd3938891": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "41a8c5c4-291c-428c-a8f6-3211ae273fd3": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d8d116a7-36e3-4d9f-8892-6ba9a46237a1": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f3e3cc71-8124-4a8d-8832-3f806e0b26f5": {
+    "duration": 90,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "167d8c87-110a-495f-a489-5be943061b61": {
+    "duration": 145,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9dbb11f1-06e1-4563-8ee4-2d7c9ec4a427": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a6f18832-9e20-4425-afa4-bb13f9e585ee": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f51b2d97-7d35-41fd-ac39-d2635aa9d592": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f1e2976b-8646-4a3a-ab1f-cbb6f754214c": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "1c978af9-faa2-481e-af56-c82530e5385a": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a347d39d-3558-4782-a500-8ab5d168faba": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "38724ec6-00dd-4f7c-ae1a-8e3f1a8b858d": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "42dcc000-873a-4f34-93be-cd448db29811": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4d002050-3cff-4ecc-b26b-f7db06bfbc3c": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e84ad294-8584-4e73-9459-0342777573dc": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "4aa27aea-c175-409b-8def-72152d9b65cb": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ea0d0dde-42ab-4939-9183-c40b9eef2c2d": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b1d68898-83ca-4e15-b827-412da2746dbf": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "eccded29-85c9-4331-92eb-657c3e4c4a76": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "947876cd-74d2-4e6e-a9f9-aec4170f2268": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "8cbaf1f8-2370-4ec9-ae8b-c79c5f927e2d": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c454b420-8e7b-4605-9bb8-582163f1ec92": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3bd42afe-6626-4463-8c05-ca69529155a2": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9a40ceee-50be-4d03-bd58-d2f5f265b11a": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4bdbcd6b-915f-41c2-8c3f-0b32c8572c2b": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "de1b7cd2-71f0-4be9-968a-b98929e20ba8": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3f79b09e-bd57-4649-a681-1596f12418a2": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2d42376e-2de9-4973-8d88-90075fe7e1c9": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "1c86f515-4ea0-492f-aba8-2332eef05a08": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d63ae629-fda9-4d7f-a433-302b1ecc7717": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "db3a5d6a-caab-49b9-837d-124ba2ebad18": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e837750e-b86d-4927-846a-ea1ae2724778": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "e6bcb6ef-dabb-4800-a038-4ea6aaaf51ed": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "fa169a66-db35-4ecf-afe5-1aa2e4635dc2": {
+    "duration": 70,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c085d0f2-7b43-4b02-a80b-f0d5121394c1": {
+    "duration": 50,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "cb4ee46b-9822-4361-b95c-3bf639a05264": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "382e5f9f-e907-4202-90e0-5631d249b4d8": {
+    "duration": 60,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cd0dbf11-34f8-4132-a8c1-d5955f7b37be": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b878763d-7571-49c7-80f2-9e7cf83a8507": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "81bb4fb7-0116-4594-a1ee-5a764df07516": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "0e0209d3-9b76-4bf4-a84a-829a670a72f5": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6b17304e-513a-4435-8f02-48683d80fe66": {
+    "duration": 30,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5116c9c2-5012-44e8-a2b0-389961288a39": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "8e56eb60-c76d-4805-b676-32bf4b86dc3f": {
+    "duration": 95,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "0570f888-610d-40b0-ad5c-f8536cb4b58a": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a0952fe7-7eac-48ac-8480-afb5a461e6f7": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "30ff0028-d63a-4c91-97e1-b25bb71fd782": {
+    "duration": 55,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "44fac5c6-6e39-48ad-81ba-6f36a38651ec": {
+    "duration": 55,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "6ba672ad-df85-4be6-b07e-399c4f81992a": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0c209563-1b52-4093-b6ea-22bd73573ab3": {
+    "duration": 75,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "084ecbc2-f4b8-4873-b08b-0491029ef458": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "1ae5815f-e345-4072-8d74-60fd30db19b7": {
+    "duration": 55,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6177223c-8190-4958-9e8f-cd0c8628dd5c": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4c629de8-4720-4d12-be26-8d83f84f7484": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d153c668-fef6-4dc2-8389-78263bd2a96a": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "efeefa94-aa58-47a1-a3e6-6c31307dc504": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d818d245-6451-4557-8003-eef41c701763": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "8e57c77a-0ff3-4633-9f82-7bd76fb94610": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2ae02e16-51ab-4189-802e-1b34fb4216c4": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "e82cc860-6da5-46e5-8049-b0f7bf1148f3": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "bb430796-4537-41b1-844a-944fc62f5e8b": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1465dc28-ae43-42ff-a409-e5e25d5f61ab": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a2509e60-942c-44d2-83e2-40767a003896": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "fac5cc66-d6bf-4675-922f-02c9c5dbee74": {
+    "duration": 20,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "fef7cf14-d2af-4d27-8958-2dd8351d3ecd": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "fbc5401f-42bb-4b18-bb2b-8532228be196": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "937ee10c-2cff-4119-9c4f-4ae9f8426581": {
+    "duration": 30,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "0f8a7a0b-4776-46fa-81ff-ad6eac157541": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "648ff684-73d7-4411-8afc-b2867b912df4": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "228cbb8b-b148-4001-a091-b869dd0cc0ab": {
+    "duration": 60,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "48419e86-dbe4-40a0-bfd9-bac3b7bd90aa": {
+    "duration": 55,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a75dc360-5af8-4346-8ebb-5af7fddc7803": {
+    "duration": 55,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9fd4a610-8a3b-401d-870c-2c4e79668621": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d7af7ffe-9ddd-42f5-bb33-03342c504d94": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "64177343-eb2b-447f-8fa3-3d33eec121be": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d5e9d1f6-e34a-4866-bd1c-8fe9c1d1dd16": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e4272320-d9b6-4367-a11f-28957d1d699e": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "93c0d761-8295-4290-a5cd-31f9c1db80dd": {
+    "duration": 55,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1b3cf5e0-6874-4b6a-9c69-a371d5852f5d": {
+    "duration": 90,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "33f670d4-7085-460e-bd6e-37e096122fd4": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "99e14cfb-0b68-4cdd-a2ab-4cdc83ba1165": {
+    "duration": 60,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a1874bef-0a18-4ac7-9c98-0f2229e4f59d": {
+    "duration": 60,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "a6455ae9-bd70-49bf-90da-f33aed678a41": {
+    "duration": 50,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "455ebc98-be6f-4a34-bd7f-50953979ff33": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "55ecddff-17ed-4c64-abdb-83f660ca7fae": {
+    "duration": 100,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "86aa4614-8e1c-47b6-8ade-5b0e331e6c6c": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ca6b7e94-95af-49a8-a3e7-fdc2f1c6570e": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "bcd720d9-8ff2-4414-9318-f0c8702ac4f6": {
+    "duration": 70,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "76799c72-9d90-401d-9f54-d3d4853be5e4": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "098f383b-72dc-4936-8194-276e02cd4ab1": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "75d73d25-0d10-4f9c-9d28-7493c27b1672": {
+    "duration": 85,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "cae731c5-82c8-4335-9211-76ba602bb4ac": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3552f919-72b3-4797-925d-0b34dd170457": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e60a85fb-e019-465c-9d5a-f993d8d5204d": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "67058de0-0456-45a4-af24-9dc792123fae": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "229c6203-2d2a-474a-8c53-d281e2726441": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "39652040-aff6-4b2f-ba56-19cc6ba06e08": {
+    "duration": 195,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ba7c4381-9525-4fc2-970c-0b6ffb7b4d53": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "fdff10f4-9426-48fb-9b12-aa5927beed1a": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bf3e7b87-5aee-4ceb-a441-5b3a31551926": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b2c59025-b726-4059-8f08-daae557e59f3": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "77bbd532-e3df-476b-a92d-43c3f8c9fecd": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "90122d42-6770-431d-b9d3-a26f4431a148": {
+    "duration": 40,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "64f94982-c44d-4c8e-ac26-9c7603bc41bd": {
+    "duration": 75,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7a365428-2408-4f08-a9fe-2d5c4eb48e17": {
+    "duration": 100,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d71c7b20-47c4-4b17-a602-bc965b873a02": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4cb62e36-bca6-4e96-ae09-10846b926ea2": {
+    "duration": 95,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "57e357b5-e3c8-48e7-8a8d-6aecbae19663": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5450ff0a-a042-4179-8f50-b78d7ae8c2de": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f85a664d-93cc-4af5-bf96-970afc3689e0": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7dcf92db-da3e-4c68-8478-15957ddd9ec9": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "3a5926b6-880b-4f5e-823d-6d32e3958dba": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b31f7675-4bba-42b5-b356-5855b4b68de0": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "cb619ece-29a4-458a-b343-2e507a750d13": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "8a2648f8-9833-4988-9497-aa1a966732f6": {
+    "duration": 95,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "ce688815-7c09-4f2c-b459-0fa9771b4a70": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d4b58877-8eed-41c1-b3e7-0131961e44c2": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "93ed2032-5308-4a11-b5f7-fe4370da948b": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "11428910-9e3b-4d6c-8fca-f876d1de0386": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "653c805a-bb43-4703-9c17-53a44d861958": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "7ec00c6b-ec4e-4d35-a49a-8cf6707ea722": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d87348f0-d47e-4287-a2ff-4004639f640b": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "91a2f266-293f-4703-b51a-6d31d13f69e2": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "5c7af4c1-c32f-4d08-afa3-fda0c2d49cd3": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3112bbc0-329b-4482-80cc-17fb3079002a": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "eca7ce94-ae5d-4129-8202-ec95b94aa67b": {
+    "duration": 195,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "433e46ae-8ae5-489b-a8e6-fda5af4260a4": {
+    "duration": 45,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c65077d7-a35d-48ad-b3db-f1227aa79f5c": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9c6d8601-b63a-44a5-8c2a-cc291f2f16f1": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f852e207-e8b5-4dbe-bc4a-2f05a9e165c3": {
+    "duration": 70,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f9f94880-96d1-4278-8dce-31dd449e636f": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "272023cb-2d4d-4d22-a069-96164cb3d043": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d467e308-23b4-4731-98ce-56d64b902717": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "99afe6b3-f55e-4270-bd70-017dfbc3d5f0": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b5ce5279-ef34-4aa0-aa2c-01b5ea3d1d19": {
+    "duration": 65,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "53ac60cb-8602-4670-a238-41acccdf116d": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "304eb8a6-a7d1-4913-97c9-d7ae5547dc51": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c09dd96d-f783-4716-bcc5-ef5c4db9e52c": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a9d3adcb-4915-419c-80ce-f60dc08daf5b": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d506e13d-cc9b-4df6-9645-27f23ca7ba8b": {
+    "duration": 145,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "60ed71c7-2605-4f8b-8e2e-7094957b3259": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "9978a9a7-426f-4861-9b4e-690ae8d2276b": {
+    "duration": 65,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "82ce47a2-da07-481b-997c-0c81a25ae2c7": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "87e80137-6d8f-4a23-8e98-8e61bbf27c51": {
+    "duration": 100,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "a4de5b7a-7c1b-4ed4-897f-d86a1be53d8a": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7803a83c-bc4e-463c-a75c-3a817ad432c4": {
+    "duration": 35,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d5b8bbd1-4fb2-4ad0-be03-d5f01bf56964": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8a325196-87bb-433d-9836-00dd97615a7c": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cde228a0-9b47-47c1-815d-4c97a1230078": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "81868f13-7ba1-42cc-918a-bf34a158126a": {
+    "duration": 70,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5d04f1ab-4539-42f6-9ed2-e1026f3c3c23": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a3b9da47-4c18-4f54-927c-a2d713ba8254": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "8aa2611a-4984-44fa-8ef1-7066f890c633": {
+    "duration": 50,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3a3fc099-da6c-4619-b573-e5c1a7c4d569": {
+    "duration": 100,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d79d46f2-d2ff-4df1-8f14-e399808a9a7c": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ea0d9155-6d42-4620-831a-220926ede104": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "94527193-c38c-42f1-8bc0-2f31d6fd6022": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "7414d186-1090-409f-bc4d-9e2eed1e745f": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "49947662-8a87-4aa9-bc82-ba273bbafdad": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ca6c84ef-7e60-432f-a470-81d6045dae7f": {
+    "duration": 95,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "8ad52e5d-4a49-42ca-bb7a-9bb7a7ad7e7c": {
+    "duration": 155,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "cda766ce-0c4b-4016-a5e2-3c3c8cd758e8": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1dd9c5cc-0273-4d96-b32b-cab7b5d047be": {
+    "duration": 80,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a73b843d-b937-4691-9572-99a6d272a889": {
+    "duration": 95,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "9f613aad-cc10-4e88-8af3-7cc01c2a3754": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a84e5017-a5e1-4914-898f-20613259f0ce": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9713e77e-ff0d-4e95-9025-3259601caf31": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7b131d5c-eb74-45ca-8f45-db59d893a27d": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d0cc42ce-e680-415d-a01c-61b40f9364ca": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3e631606-a485-4d21-9aff-b57de21494f3": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "0fde3425-fd1f-422f-92d4-8b44d64ebfd8": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5b59948b-52ac-40db-85f6-d5f9efa6f1be": {
+    "duration": 70,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "82603d3a-f97d-4b08-8528-5365bd83435c": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c71b6ee0-2202-48ee-b383-90fb46684773": {
+    "duration": 95,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "a67ada64-7f1b-489b-8519-bda50c59195d": {
+    "duration": 85,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "221b47ff-33ed-42ad-9c40-88297c5799ce": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "809065ca-4279-47c0-b06a-9a86695352a5": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "002ea1e0-38ec-4e76-94b0-169a876c8fb9": {
+    "duration": 80,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e96fd311-c60d-4834-a4db-9f5ce10feab3": {
+    "duration": 70,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c99bc467-84e6-48a1-81a1-4eb7c83f5d79": {
+    "duration": 50,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ee679c30-3c3d-4c63-8800-4988e873aa46": {
+    "duration": 90,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "df7d4fa7-8557-4e83-aa8d-a79b5c070a6f": {
+    "duration": 95,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a71f0f23-a992-4cbb-9bfa-81c5f366736a": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9da48842-c056-47ee-87cd-4844ef41b8bd": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2e1d9ff4-d0db-4ef0-b2b7-5c4435bdcd21": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "938269d1-c81c-433e-abbf-cf5ea704925f": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f073a87e-8124-47a6-88d8-1ee329975e37": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b191dea9-f045-448a-b821-9dcb1f373d78": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7eb7c760-ea32-417f-9500-963d5db089c5": {
+    "duration": 150,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "89339939-d461-4a99-9922-e8cfb297574f": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b6058443-51fb-4732-b80b-548a0a257b9b": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3d2be7f5-2220-4239-8ee3-10beb22f3417": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "27f77fad-9593-4492-a29e-bbc4dbe712d2": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3a84935c-b001-475f-b7ec-58e0c6751c4a": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "56c9a06b-0a0a-4217-b26a-ce91ec9f99e3": {
+    "duration": 60,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c1d08593-8b25-4a96-b0f8-cd68594bc03e": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1a101787-291b-4f1b-a7d2-c3c3436822c5": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "eebbef4c-f08e-46c8-9449-a3e5be9abb15": {
+    "duration": 55,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f0a2a3b4-f338-4a55-b68c-593a1e423562": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7fe62495-e1d8-4187-8b73-05168de2455b": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "4bb7a832-1e1a-4672-b0d4-0e5efd214505": {
+    "duration": 100,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "76b17d23-d7e8-444f-9c36-628eecd0af97": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "df8b20a0-26bd-4743-b333-94a7dc1b81f4": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "1136af99-0713-4a76-bfe1-088ff223f0f5": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "37aea443-e402-43da-a962-74021af43765": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "823769f7-8764-4fb3-b3d9-46e729b16202": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "20ae3f81-198d-4ac7-b835-8f55ed70e302": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "88c669e1-429a-4d7d-817a-fefe3f418112": {
+    "duration": 45,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "5f1b62be-a3aa-4fdb-bd41-5c604291aaac": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "ccb2331e-584a-4c91-9bea-edebb21d5713": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5ba9c07f-e209-4465-9956-bc3606f785b1": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "262e5f72-92a1-43f1-902e-e77f701edeb6": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e66192cf-f878-4b56-a567-657d81c6f127": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c9931834-e49d-41da-bb47-62fc17166088": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6016a521-87c1-472e-ba49-b0d0654793e7": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "1d3c04e3-7d6c-429d-96a5-7d52b9083b93": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b19004e0-7cbb-458b-9e61-4ecb0f8849ed": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6a31b874-b77f-409b-8f6d-6ee6acabc5ff": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e8d376c8-abeb-440d-a3f7-662f801e0dae": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "e6d276d3-6079-45df-a7fd-84ffb92e3def": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4964f221-1d22-4c08-81c0-8acdd4ceda97": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "33824093-0213-48c9-bf56-4ba85f2407c2": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "128ae94c-0e75-47f3-bcae-7df36a0a5b0b": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "acf37a1e-e2d9-48b3-af63-c61f1a86b079": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "4ea9f39f-2bb6-4cce-940a-e10976d62160": {
+    "duration": 155,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c38a5a3d-11fd-45ad-aaf6-8994dfb69a2c": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "5ab72d10-f1ae-404a-bd75-178f984fc608": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f69599e7-ea07-41f4-8cf0-36ecef25fbf4": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "512f0744-cbef-4c71-8b46-c5b9ad283c5a": {
+    "duration": 155,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "7019d227-b3b2-4a95-8515-6f07469fdcdb": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "a61bbdf7-bec3-43c5-8778-9f108c925c4a": {
+    "duration": 170,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "cbdfcb54-fd55-4c7c-9cf7-5bfbf504e38a": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c1374c2b-e25f-47c2-8f3d-1946d9702708": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ab509b85-4610-44a2-a360-b91238f4e76a": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6014372b-c107-4a5c-9b97-3c72db2a04f3": {
+    "duration": 165,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bab06932-d8a9-4374-9ddb-04d4abf6b16d": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "87b6f386-91e2-42c7-a003-5678ec31e26f": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "04010c70-a43d-4d63-bd34-1ee8ce99f05e": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b71560a9-e9f9-44a0-ac59-d27300330119": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3a6ac07f-346f-4f86-b675-67c91ac689c9": {
+    "duration": 165,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "734cf9c1-d3ab-4adc-a265-f30490bf1ea7": {
+    "duration": 50,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "dc0a108f-7ac7-4859-a642-7e123efb9c56": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3cc884c6-2243-42d2-917c-6dcc858fa9b0": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d96efd14-f2de-4cb7-a0e2-cc170914f01b": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "abbc0a1b-8b00-450c-8dda-46a4cb86e987": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "55365bce-a483-4cdf-90df-1299b87011b5": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d1149de0-5652-4231-bce8-082c4d32235f": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "313235c8-9be9-4f96-bf40-982de221b321": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "831ee70a-2a6c-4ab0-9eb4-1ae1c741783b": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "2edecc40-a704-49ab-9742-b22809348fd1": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3da5ae0b-4ac5-4cc0-a20a-24d14b7e1aa6": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "959dd9c1-25fa-4a75-a25e-7e12145db871": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "094ec236-0744-46a2-acdc-af62ed03ccb6": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "05f144cc-d5a3-41dd-b62b-4d8314bfaf07": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c42c056e-460d-493f-b8f2-ad4e0e8c8378": {
+    "duration": 55,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "0e106d97-736b-4043-912c-160ad4670853": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "0c427fb8-a30d-4334-b098-8a425b009352": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0936bc76-6c8e-40ee-bdb3-5b6ce8feb5ac": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "25cfbd3e-7f32-4c0c-8f13-c632e59b324f": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "311fd9e1-1b1b-4577-a4f5-8cd4754be242": {
+    "duration": 65,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2b864684-b195-42f6-a9c2-a782291961fc": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b5aa2ec8-0914-49b7-8806-90607a04843d": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "496e6e14-8a9d-41e6-b4e2-f291cd676b59": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "830e39a9-1012-40af-ad5b-b07b525b4c34": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "885a9b4e-4413-41d2-aaea-9c4b3fb28c1d": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a4211086-8457-4560-a896-672784687131": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8178f409-5e95-4af5-98ee-ee6de6612c91": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d3ea876a-1800-41ce-bc0e-7200d7a08697": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c6fc3817-ec64-4483-a99b-32cb2e934f32": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "8643b09b-d589-4d6f-b371-a28a4dfc4f1e": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "91f7520a-c145-4f8a-887a-f2665d7dd6c0": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "8302ceee-9815-4867-a3ce-6b5752235b9a": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "65a4c2dc-93f9-4575-8a9c-6466fc27a166": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "6c4fc557-75ea-4a2d-bab3-f3702e196cd1": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "82ecee20-7958-4115-ad74-e63ea0ac0e72": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c9cb94d6-cf52-4cb6-85a8-3007551aa7bb": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2448c312-e530-43d8-a788-9f39458613fe": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "bfa9bd19-1a50-4b3f-9b3a-fad270895c53": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "766566e3-5b6a-493b-a21e-84c3e8acfa3c": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a8a92912-c6d5-4c7d-82fd-5104870f5373": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b7dcc093-2e39-44ae-b25e-18a82cbd04c7": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d563b2c9-3ad9-4a5e-b9c4-e0d57102b490": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "57249f80-2720-458a-9d3b-993edcea2226": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "952352fb-24ec-487b-b10d-0439c80dba39": {
+    "duration": 55,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d0e52569-bda4-4977-83a4-e1e7ade7e581": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a7080938-0779-4ff1-9932-62704ea25258": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "5396d2f8-23a7-42f7-ae94-1fef5247c142": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c19b761d-2032-44ce-aff3-7744bacef710": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d9655fbb-4b44-4ce8-b31a-b7f540a2a1c7": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "87943f62-a53e-4afd-8826-1753c59d79c1": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2db7420f-d95c-48c2-9a02-c31851c93e96": {
+    "duration": 55,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e9379783-0645-4762-82e0-50550d8e4607": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b9e83783-9055-4457-9180-4b487e7de2fd": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "9d055a1e-0917-404a-8a27-eb3c29425e3e": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d05033b5-7a89-4973-a81d-2cf6297e3d1f": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ee2be3f7-41f7-40af-9a3f-111bd0832611": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e26e3c3f-8cfd-47f3-9c75-3a199219b659": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2c060b07-a7ab-4d3f-92e1-276c7e537893": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ac1e77eb-95da-4161-8512-073eee70c3fe": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9a99aa39-3b6b-4f95-955b-916ebd2fe1a7": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "93774423-32a9-4009-b328-ea3b25569728": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f667fb00-e50f-4191-8b43-b7c8b780f054": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c5eafbce-0857-4fae-9f9c-c8c96f350536": {
+    "duration": 185,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "615be083-f705-4767-9168-53b1724d33ea": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "844de581-0fbc-4f69-bb10-27a06a86ba3a": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2087bf67-871d-498d-9ee0-837384bc2c10": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "dfd96065-eecb-4df2-b382-63b7876a36b5": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "04362609-7095-41c4-a103-fb33206f4364": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "1cc7c7e7-7779-4d4c-aa71-83b448bb92fb": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "05d68354-9ca5-4982-81df-a914c2ebdd7e": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "050034ac-aa3c-4181-a692-0f516890b77b": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "41de9782-0560-4025-9a6f-36668f442ccf": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "26521819-cea3-459b-b533-f552d4163d5c": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2c396c9a-d3d1-4329-be65-e302cf125b7e": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "cc4b04de-b336-4a17-9a3c-0f25ffefdff0": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "834d7de7-487c-401c-8f2d-198749db1a61": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6b938d0a-e0a3-4178-b01b-afe8f2ab53d9": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "197c3636-498e-4159-a869-0ea8310dd568": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a16c8dd6-7db7-4a4c-9a57-c770be8cfbf3": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c0dd47da-fd16-4535-b949-5d27d04c2b40": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5b79240c-02f7-4b7a-b85a-6c4e6546ef9d": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "875d148b-0d43-4a95-bcc7-f1b9f883ffda": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9b3ff868-7fac-4754-98e4-1eb41ff4eeff": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "3fa9982c-bee1-437a-97d8-e044d3654057": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7712b446-23a6-4f8a-8d8e-fe0a6e54f000": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7919e97c-12ff-4429-9ca7-dc651ade0e5f": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a2cd327f-20ac-4a40-ac03-692fe0a264b2": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bae6a346-5ad0-4b65-bda3-f15869a288cd": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a2f3ebdc-edfa-4184-b7ef-4498bc92bff5": {
+    "duration": 50,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "69079ea7-ff49-443e-9281-a7eef32ed007": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "89f0a260-01c6-47a2-8b8f-1a680b6a17ce": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "67e39d64-9bcd-4d7a-8f58-8267378fa4e4": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "47e9fe79-e50c-45e2-a9b9-e1708c6479eb": {
+    "duration": 80,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f0ece2e6-918a-448f-b4db-91b3d944ffaf": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "b0e79bc4-bbac-45bd-9460-7db12dd0be78": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9aae39c6-8865-4e83-b6f7-20ebd81921a9": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "cea745bb-b8c2-45b1-9141-7a63b559424e": {
+    "duration": 70,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "b08d7a0e-76a2-40d2-82d7-11fa01c7bf65": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "916e7f63-3cf1-4f6d-8687-3c548187c1e0": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "5d3a2313-9e0c-488c-bae0-decc2b5c9e87": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "de187dae-8142-476b-a427-70780e175716": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "02058e27-05c7-47af-baea-178e226d4a6b": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6097eeae-eafd-4daf-bc3a-6c5bd94070dc": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "366936d9-7053-4430-a195-f0b2539ce802": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bb2d2eda-9b16-4289-b592-8202560f21a0": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9607a6c9-d47d-4be7-a4c0-bd38254a8e9e": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d102b30c-7721-4637-b9ad-17ff2bd2da94": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "aa343f0d-c564-489e-9854-15d7a4d8542b": {
+    "duration": 45,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c704454d-f363-40b6-9e1d-ba88bf501c6a": {
+    "duration": 100,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "dc131767-1656-4c77-aa40-af327d2a6d3d": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d09281ed-c846-45dc-b19d-5f6f5ed82997": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "124e11f0-0282-4f14-aaf4-2319615313c8": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "392e3a24-2584-442f-a1da-f1538e85b28d": {
+    "duration": 70,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c4c35d46-391a-473a-9ee7-ce49def1df1e": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c586f30a-15ae-4f70-bfd4-c442c449bf6d": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "529fa0c7-493e-4f38-99dd-22d456e99b2b": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f1112e76-cf9d-45ae-aedf-54dedbb8082a": {
+    "duration": 100,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "bdb4689f-77be-4e8c-a5d3-7c5727eea3d4": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cf727841-c970-48c5-867f-8f182a490d6d": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "20e364b5-165b-4dfb-bba9-8f72b8e538a4": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d9e875c6-52cb-4ec5-822a-ea7a6a08964c": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2a9d7948-b0ac-4074-b660-6d452c10dfd4": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "898eaecf-a8bc-4997-9aa2-b23808a8d27f": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "658a7db5-3322-4bd2-a6dc-1be152f25237": {
+    "duration": 75,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e28c13a8-2a69-443d-9f31-4bbe56f6c1b4": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bb028863-3ebf-4621-a9cf-5c6d9dedb88c": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a5ae79bd-8180-482e-a308-d95efae1c6a9": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "26020947-b164-4510-89d8-7692500a2729": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "90c3216d-5403-42ba-8337-e835ce9ceff2": {
+    "duration": 80,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "9441cae7-5e9e-4167-9a4c-1667eb0ff9a7": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "45333293-49f9-484f-8d06-173f5c8c2d6f": {
+    "duration": 95,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "abf977a2-4718-4bb8-acfa-06916477d9f3": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "390260a4-c9cd-4438-b86e-e0311ece0d50": {
+    "duration": 95,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3669ce2d-716c-471a-9833-64310192bae9": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "755fe21b-89b2-4995-a1e3-692d567a85c0": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "ef5369be-5b7d-438a-b8a0-9317feae9de5": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "66a5309e-939f-4d64-8277-848a98159d66": {
+    "duration": 145,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "363c44d4-dbc1-44a0-a8ec-48f0804b4fbb": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "8471dc4a-f5a8-4069-a241-f9c8e4d284f7": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d8aeead0-6e3a-4c19-988c-f552a2da3f31": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "b42198c9-9030-480c-aeb6-ff4fe2a35980": {
+    "duration": 65,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "368b0195-0290-472f-9718-00ec7f587c25": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cd944b7d-2386-4d91-89f1-a7203571e8ce": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "192596d8-fee5-427e-93f7-2ecbcf6bcaea": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d9ac91c3-b276-46fd-bc7f-622114ec79fc": {
+    "duration": 85,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d7a83f98-5702-459a-93d6-1e479bd2ffd2": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c3040c18-3504-497d-a6d9-cb5fb3cbfe03": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d17ec864-8058-42b4-b632-5a049bae91fb": {
+    "duration": 90,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "89050034-86e2-47a6-a8db-27ff0b93f620": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f09606d9-b1e6-468a-af2d-4618b424ec57": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e59a7d12-6d71-4ba3-9432-333c2a42a582": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "96904948-bd98-417f-9e20-4157cf7dac1f": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "66de1c52-734e-4a27-a609-ff90f2c18ae6": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "31107b3f-38c1-405f-bbba-a2edbff08644": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "444c1da3-1899-42c3-ab4e-2001424eb5b1": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "066ee1a1-881b-4a2e-bb95-372125151ec1": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "822c0735-e95b-4179-b27b-25aa423caa06": {
+    "duration": 80,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7e81c2fa-8741-49f2-b0a7-2bf1dd86410c": {
+    "duration": 90,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "23f83802-de10-4f25-875f-181cf6284aff": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b3eb4de5-7f0c-41d2-a8ae-e8407ff276b7": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5abbef8c-f4d1-40f2-8782-b14850856a98": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "8f5ffc77-165b-48c6-a158-80f3f33b6df7": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ba529629-9f48-4a8f-91e0-268196963d4e": {
+    "duration": 120,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9b7f4ee5-07a2-428c-ae93-70b526b84db4": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "cddfeffe-3a96-454b-9ec2-7263a1ef2116": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "ca719fd9-0b7d-49ae-92e7-0a2afd14f7e2": {
+    "duration": 105,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "d386cce9-d3e9-4825-8312-c11cb2d92d1a": {
+    "duration": 90,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "abd3022e-bec9-4bac-8478-1dc35f0177c9": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "2baa76da-a192-4ee3-b5ff-66db699c464d": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "29eeae14-2a59-4fe2-ae3d-d87f3dc3b2db": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "da64f8aa-1aa2-497d-ba55-f6e4345203d5": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "9832c29b-0423-4fa3-a5f0-6c9484f1701c": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6f734cca-5702-4b85-a37b-d1cec6628dd0": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3e184c75-9013-4e44-9593-dc5caa13ca5d": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "210bc4c1-cdf1-4485-8b3a-c59d38eae6bb": {
+    "duration": 65,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "71d03e63-520b-401a-86e5-d24a7ceb4a18": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "752b08f9-b49b-40f6-aea3-2befa6333e60": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6c5fcc84-9e52-494a-8c83-e9378cc32b4d": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a66f4df8-b701-44a5-a0bd-28b4a7ca037b": {
+    "duration": 160,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "bc9260fa-9001-405e-b5d6-43c1e09b61cf": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d1816b13-f3a2-49e9-ae3e-9c8fec38ecd5": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f26259a6-486a-4799-86b5-538edeea0d7e": {
+    "duration": 50,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3f91b0df-cfec-4f5c-9b7b-bcf32f318cdb": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ff85ba13-3fb5-4630-bdfc-b9cf92d88907": {
+    "duration": 75,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a77b31d6-98a9-4d30-be6d-c4f5dac1e7de": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "64ce1ab7-212b-46f3-bcd0-290d040d8847": {
+    "duration": 90,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f3c6bc65-3292-4740-a447-85d51202c599": {
+    "duration": 180,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a0b6c139-8f67-4d9a-bb5e-c38fb3a82cf5": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2c743848-fd7b-4bda-bb59-c0346fa93d1b": {
+    "duration": 65,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9c74698a-3981-4fd6-a865-163f573966bc": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9ffbd778-2ecd-4a8c-a573-36c10658c5e6": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f25b7dc1-022e-4467-9e7c-e6a408387b7e": {
+    "duration": 75,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "75b7dc9b-a047-4f0c-a1d6-28334b5c025a": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "cdd2f161-b1a2-4254-b1e4-8936aa90a23c": {
+    "duration": 90,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "fd781d26-504f-4434-b3f5-fb5557bf56f4": {
+    "duration": 90,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "70f254a9-f3c5-4688-90a8-6376f099c167": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "80f5f894-970c-459f-a464-f77feeec3732": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c8dcc8ac-7f3b-4d23-8373-fc9d36d96521": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "283c727e-ba97-430d-adc0-3d5319eecd8f": {
+    "duration": 150,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e1ff869c-3425-431d-98ab-06713fff97e2": {
+    "duration": 85,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "46341bd8-cb29-4076-8dcd-d0173376f9f2": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "90d5073d-0873-42ea-a477-ae7b399da52d": {
+    "duration": 210,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c56cac88-f87a-460c-8e4c-2d501dd072af": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ae552ebd-ea8f-404f-a57a-9259742754e6": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3001150a-cdbd-4d05-b01b-b0a42a84df44": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "35f299e7-523c-4fab-9435-59610a2a2af2": {
+    "duration": 85,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d2abee65-6eb4-451e-ac0e-83b6e263ed05": {
+    "duration": 90,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "3ef49439-c187-4449-9df0-1c13bcba5914": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "be7d5692-b024-4f10-ade6-cb0d149f0570": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8e520a21-194f-4269-b8d4-6dac98b18412": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "bddbd43e-0130-4ada-ad3c-ea43270ff58b": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e0324d62-9bb1-4998-942a-4c9aad1e212b": {
+    "duration": 70,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "90b30522-0d7b-4830-bdc6-f44f270ab31d": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "566e1451-61c4-4302-99f9-5e94f81bea75": {
+    "duration": 90,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7f0772c7-425e-4464-8549-fbc430f9a514": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f4244d6e-cc08-4710-b853-0399c9d17868": {
+    "duration": 145,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "d144b2c6-5aa1-4ad8-af90-722b78a29f5f": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d4f16819-2873-47a6-8a1b-f80fbad66877": {
+    "duration": 250,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "959f9852-4dd1-4814-b4e7-ef4c33eadb26": {
+    "duration": 290,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b342cc4c-0ed9-41a7-80d0-83a103519980": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "382a5b7d-42a3-4b8c-ae18-ecb32c320372": {
+    "duration": 210,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f0cc54b9-449a-4869-8642-8b7dfdd53b1c": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "09c291b4-b1bc-431b-ac79-64e59b739ecb": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d02e3eae-29e1-4736-9596-cb2fc82c6640": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "513628c2-157c-431f-8a7d-3575b56a6050": {
+    "duration": 70,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "38baf3ae-89d3-4558-9ce4-169e42d9bf35": {
+    "duration": 95,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f8041bd3-9ed7-476c-8283-a32a759b3b3c": {
+    "duration": 200,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "0e6aec7a-0e9c-44e9-8950-79cc4233e660": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "aee24f0e-dc1a-48d2-bda2-eadf8a840c83": {
+    "duration": 180,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2ad48a93-5339-4cdf-ab53-24fed1eb1fe3": {
+    "duration": 95,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "01e5387a-7a5f-4235-a808-6eee9b8b08ca": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "227f45a0-900a-4c13-9ca2-00a3f122031f": {
+    "duration": 130,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "10d92ff8-2c60-4f2c-bf9c-6e40db1074d8": {
+    "duration": 85,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "49fb2399-76c8-48e2-8300-613c11a44f0d": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "1332f426-aa22-4e2b-95fc-595d6b38019d": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "4cc2b560-116c-4207-aa73-2d0675984f06": {
+    "duration": 90,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ee9cd5b9-d81a-4bce-94c4-d392540df2fc": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "59cc92f0-75a1-4b93-b3c2-a938772a16e0": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f5ccb5d0-710b-4129-af93-1418fb702fb9": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f7752168-2140-4b89-bf36-f48598a4ada1": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "19504ac1-58f0-4d3d-8e4b-5aa4f7cbebf9": {
+    "duration": 90,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "0aace9b1-3edf-47e1-bd3c-00a54a33081e": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a7bb251c-93cf-4308-910f-0fd2268cf73c": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "36bb7f5a-7850-4d8a-a9f6-8556e907ab1c": {
+    "duration": 150,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b60fdedf-f7a9-4507-9813-8867ef5977bd": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b57fe3e2-3d10-45dd-87f9-558130913f1e": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "eefc1b1f-6c07-4b6e-854c-d5f6fc6ec2c8": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b26e2cec-7fb4-41e5-ad30-dafdbb3f8c12": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a9053c52-de93-46e1-9fb7-a4060b394b5f": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "32cfd1e4-8190-4770-afa3-2912911aed73": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "51314215-e83a-41e1-a325-12407067f3ac": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5065fbec-4105-460c-8d38-48b9e9c1f306": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "12034c9a-e9b6-428f-b1b7-8f71d88c625b": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "67749667-4966-426c-83cf-31fe7ffde348": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c93405da-7650-485c-8f62-a1d5c6eab22b": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "99a76a69-78c4-40f9-b113-b0e5ef6beb08": {
+    "duration": 115,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7c59c466-41ce-4881-99ab-88d3e86301ea": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "45a1759b-65a7-4920-9b4b-e2511132b3c1": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "765ae504-bc27-40c1-ae1d-cdc1c1ff69cc": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0be1f93f-55a8-4321-a338-6a15c8948608": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "305809e7-3959-4236-8d34-6061f3ab17d7": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "fb61f86f-c323-4873-b212-489c7b9c9625": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f9aca375-41bd-48c2-8347-f888417992f4": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f2742f5e-0ee4-42ec-8557-0a02fbe3d261": {
+    "duration": 125,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "96189405-f4a3-4019-a2ee-fcc748650553": {
+    "duration": 155,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "0459a3d8-86f8-47a1-b89a-3d7a8152139d": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "bb6b857f-46ea-4a93-bf8b-aed55e3c9b35": {
+    "duration": 105,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "82911f85-a625-4d2a-9404-a3dd27621442": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7eab3227-3dc6-4a90-a38f-b2cfa5f0533e": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2acd8aaa-9a3a-4b98-acc5-97799ec3fd39": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "aeae8386-5143-4e2a-bcfc-97b3d9cba59a": {
+    "duration": 110,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f6fdac12-9879-4c84-b36e-f8b1c84c35af": {
+    "duration": 150,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "89729efd-2668-47ed-980e-f521e513f900": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b2881110-943c-469b-8265-a34457885c6c": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "23c5a7df-a419-42c2-86fb-eb53b2940b33": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c1e780de-c3da-4865-8c1c-aa35da81c2a6": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d4289750-910d-4ef5-9214-68f554a26da7": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c5f33838-618d-4259-90c4-236dc8870aa2": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "41cf9f98-0d02-437c-a51d-b83429be29fa": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "716b4532-23f9-4c74-95d4-e13dd8d12fd1": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "9bcc7e4e-10de-4145-9fb7-7a3c96a23552": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a22781c4-3ab7-4e16-9c2e-a91dd63521af": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f81eebc0-911a-4397-9703-545d8ba7a76e": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "2f2f5d67-8697-455c-a907-a181c78f0255": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "65cef7a3-effc-4c18-8ca3-ce0bb2091049": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "7676cc55-4932-4b27-9443-5b47f0a0cf43": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "91129826-6aae-4f24-8010-d9e601ccafbf": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "99cd8c31-61a0-4f57-9d19-037b0934f7e2": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "761cfe2c-ee19-4259-b92f-44c4b3b0b346": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "46d72307-2695-40e0-86e0-1bbbef831c2a": {
+    "duration": 120,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "972a3306-a9ff-435a-a8b3-c1589f2466bc": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "4441b202-815f-4f02-92cc-b30d3415dc47": {
+    "duration": 125,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "469d0791-8742-4010-a897-cb9e65dc8638": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2b660c36-bdff-487f-a325-3cad84c0e506": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f7456859-c285-4b5f-a753-b636c486e1ca": {
+    "duration": 270,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b1cbb574-1d4d-4072-babf-cc886ff0484c": {
+    "duration": 110,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "146213c6-8994-4f8d-981b-fd5247625e59": {
+    "duration": 80,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "c34d2124-b3b2-4a59-ac50-8e2c63508d00": {
+    "duration": 100,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ea3e436d-07f5-4f1f-bcc2-4add80b33646": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f33315c6-eb4f-4be2-9a01-4be93ee17a60": {
+    "duration": 70,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bd8522e2-c206-41cc-8d2e-cde7a08b735a": {
+    "duration": 100,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "1d722854-e04a-4e8e-96b2-9b5055a995e3": {
+    "duration": 95,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "a7dd0d01-dab4-429a-962f-ed8de51d2371": {
+    "duration": 100,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "461e8ae6-969f-4717-acfc-b7b74049f405": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5aa2e87e-03bd-49d2-88a4-74a96deec86f": {
+    "duration": 165,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e5e4ad30-469e-4a5d-b363-a434b233f2ea": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1a14d145-11db-4132-9b86-b13eff210cc6": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7c01fdca-67ba-4c01-8839-9de10a1bc138": {
+    "duration": 175,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ecb7d49d-596b-4d35-b4d8-bc82e6e9ca5b": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "190a36fb-899a-4d83-a4e0-39a6a7a76d0b": {
+    "duration": 150,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f17a05ce-fae3-4bf2-977b-15df7ac3bbd2": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4ae7149a-e07e-4006-b777-9aa380fd8bd8": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b20160a5-a512-4a45-90a5-594c6ccddbb8": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "016222f4-8ab0-4017-ba27-181e3668bf03": {
+    "duration": 170,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "f9425dea-a2c9-478c-9606-a0087e903a95": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6b17f0de-2c21-4bac-ab9a-c71a3d43ca1f": {
+    "duration": 160,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "22655d2e-c203-4106-9c6b-7090bda5bb97": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7602a805-2059-4adc-ac2f-9509ea1129cb": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "fb3b5eac-5a87-4f91-8ac5-5aa45e2d2583": {
+    "duration": 115,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "33c37bef-7b03-400c-ae92-e0c69826e09e": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "9867092d-653e-47bb-912a-b50963ef7913": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7bc5eab0-4592-4990-97e8-93836225c6d1": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "686f7b3a-4441-418e-8287-2a16d60c4cbb": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3c5daf32-e1fa-4f90-be53-9b6020333c2a": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ebecb3fc-999a-4e5b-97e1-55c234ec88d2": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "10eb2d1c-d1de-49b6-905b-148504492558": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b1a81ec4-ca08-44aa-94cd-62b200dfde72": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "026e9150-0078-449d-82d1-1ec6f32d88fe": {
+    "duration": 180,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "74f46660-5f95-47f4-8998-7a6f8b644c11": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ae6fdc50-68b6-4475-8dce-52bbd447685e": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "20466e8a-78e1-4c66-961b-c0411732dbd0": {
+    "duration": 155,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "db7da218-6276-437b-ad72-b5e5a8f9652b": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b230cba9-ef71-4fb7-a90a-5190ebfd90e4": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "99369549-b48d-45fc-ad22-1ba2f7fbae6c": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b37d5002-f0f5-4b8d-81fe-73474bce491b": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "7bf1d8a1-dd81-4ff9-b5ba-e3e9458db87d": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8e679ace-5a22-40ba-a026-dec98fd9c497": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2c5e0905-d8fb-4862-9611-b461b1395efc": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "d5209aa6-7e26-4bf5-b875-ffb3858f1962": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "43854a93-16da-4562-9a8c-e2556c61a0a9": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "07b374fd-2a32-41b0-a2c0-c698080c719c": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "555eba21-3fd6-4fb1-a0ec-c0cbdb14f0bc": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "aa012e23-a1ee-4da3-be73-ed8516a5f436": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2b8d19ca-36d9-4ae4-8256-8f8eef8f5c0e": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0b55855f-52a8-4eb2-872b-a173ed3a9aea": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "f0a1820c-cdab-4278-b8e6-f666b7f32496": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "061edc16-e514-4657-87b0-75d34393e48d": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b96955c5-c439-45a0-bfc1-801a85ed2558": {
+    "duration": 140,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "fa877861-051f-4a6b-a5b7-252bb9044c63": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "7495ed27-188b-4e58-8c19-2b84644a512e": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "37d6c975-8062-4a0c-a910-add6ff0f27dc": {
+    "duration": 125,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "4d411ec2-7fd8-4bc1-8321-7a5b24c83981": {
+    "duration": 145,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "6aabbf08-cf86-4c67-8fdf-63edbda25e67": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "275f669c-4bd2-4cb5-a51e-3e7510191da5": {
+    "duration": 140,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "076e360b-fc70-489b-a7b8-91d8f09bdfaf": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b6967382-4359-40d1-8092-c21a867e3b91": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3be06126-6349-4d8f-bbd1-85d190caa7ea": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b97fb313-c996-4fd0-801c-68f7131de2ad": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8d4bd88b-5a43-4562-a87a-534a32824840": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0bcd3129-a131-422d-8ba4-2497febff112": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "11f77f39-b1b7-4732-b4ba-f7ae5d20a15f": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "da211f06-9828-4ec7-96b5-fc3fb0a139bb": {
+    "duration": 135,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "c954c7c9-e68c-45a1-ac7b-14947d63d4c6": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "552659fb-c1b2-42d0-b134-d8690f4f54c4": {
+    "duration": 170,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "a76e9517-0005-4c84-88cd-3b882b204a58": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c9edb6ee-b71e-47f6-9d51-702205b893e2": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "b59765f3-2355-4abd-be6c-fdcae21c8413": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "77fd5e75-d9b2-4ce3-9ced-58d59e75bf3b": {
+    "duration": 155,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "ec5b75af-1b70-446c-bf4b-63cc3ada2549": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a45372c9-e372-4d7b-b810-9ea0547c3eaf": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "63390b4d-8a89-4aea-9019-51cb033d08b8": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "1b146e30-55f0-4710-885d-7f052da67cc0": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "3372230a-31e7-493c-ac93-1c38780b8839": {
+    "duration": 135,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "e48c9411-2cfb-4d32-99ab-3f54e90646d3": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "984bd5ec-02b8-4ebe-90e7-7d183c39e04e": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "6a05572b-2e93-4b7e-a2f6-95d76522cd2d": {
+    "duration": 160,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "dc26a7a3-09e2-41ed-962a-5ad21bdb13ff": {
+    "duration": 150,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "32940bd2-cb80-4815-860d-3c29a4b6e033": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "487057c6-a1c6-4c97-9e8a-7b1149754deb": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5eed37c1-a345-46ea-97cc-f8876cbdff04": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cb631e12-8b2a-46f8-b221-86defc1cca5f": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "33a6b6c8-b686-467e-92aa-1c1a3be0d578": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8e3641aa-5bce-443b-9e4e-7f0f560c9186": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a8cfd309-e008-4594-84bb-deb59361e1eb": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "bbacedce-1e07-4472-9075-754701768f2e": {
+    "duration": 145,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "f1742e25-5389-4ce9-bb93-0c3f5ba1a9d0": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "cc59cf45-8577-452d-bf41-9179f1665009": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "e944e626-cfe2-443f-a74e-86f13d1a79da": {
+    "duration": 175,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "097e2ea0-6c38-4f30-8f42-2c8610c6e2fb": {
+    "duration": 155,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "6d6f5672-cf3a-48ab-bcac-4b2fe3a35966": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "defb53bc-5cc4-4244-82ab-caaa5a4ddb94": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2e9b64a6-c989-42a1-9de9-9ad94bbe76d3": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b65aba01-fdde-46d2-a675-84691e389db5": {
+    "duration": 160,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "dc074bb2-26f3-4da3-9048-79011e6dc2aa": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5f1e7852-2832-4c2a-92ad-306f5dd951a5": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3cdb5918-9dac-4a53-943d-e6f5cbfeb5e4": {
+    "duration": 130,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0b5dd0cd-12d7-4464-af12-93a4cd8f9728": {
+    "duration": 160,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "5f0c26a5-691b-46d8-8c92-498ea876b5e9": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b73857ad-616f-4c10-8805-83d3fb7cd2b2": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b90dd0ec-d5ae-4a71-bce3-8b8a34f943d0": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "72db665b-09b0-431a-b121-f0a5c20d78a6": {
+    "duration": 155,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "384c2ec2-5205-4361-864a-c68a50664518": {
+    "duration": 155,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  },
+  "a99b3998-02d4-4ec7-8d67-d3f8964fac5d": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3249715c-ac1f-4f17-8e3c-f9cbaf7ad7de": {
+    "duration": 150,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "0ed7c844-5b1c-4e31-8840-2807f4b56d51": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "a8e154c7-0020-4344-90ae-ba0bad2bf7d7": {
+    "duration": 140,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "3fbb7c0d-6a88-4bd6-a4de-cf377a2d4ec3": {
+    "duration": 0,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "18d8511f-fe1c-450e-91bb-0d70838a06e6": {
+    "duration": 80,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "2d38e063-a913-46fc-9ea6-2218f001f8e6": {
+    "duration": 95,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "c52c2f53-48ed-40e5-b074-cf170bb48cbe": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8283b96d-cdfc-4ac9-9330-c8dbc71b0639": {
+    "duration": 105,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "58a5b818-1a11-4078-9f5b-cfedd5b5ea9a": {
+    "duration": 135,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "b31befe6-806f-4569-98ff-4bd22ed58cb8": {
+    "duration": 120,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "8ba207b7-f040-4112-afcf-db5977615dd0": {
+    "duration": 150,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "b1a696f0-66ce-4306-98fe-0d85cc3c325b": {
+    "duration": 110,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "ac5e9376-a812-41b3-9f0e-d8e6c4a6b939": {
+    "duration": 130,
+    "hardness": 2,
+    "hardnessType": "VeryHard"
+  },
+  "07dd1236-e775-4c39-84de-90c614985bb1": {
+    "duration": 115,
+    "hardness": 0,
+    "hardnessType": "Normal"
+  },
+  "210b932f-f679-4922-b6a5-a2c5eb4cf1f7": {
+    "duration": 100,
+    "hardness": 1,
+    "hardnessType": "Hard"
+  }
+}
