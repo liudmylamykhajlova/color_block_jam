@@ -4215,12 +4215,12 @@
       "id": 27,
       "name": "Level 28",
       "gridWidth": 7,
-      "gridHeight": 9,
+      "gridHeight": 10,
       "blocks": [
         {
           "blockType": 9,
           "blockGroupType": 8,
-          "gridRow": 1,
+          "gridRow": 3,
           "gridCol": 3,
           "rotationZ": 2,
           "needsRowOffset": false
@@ -4228,7 +4228,7 @@
         {
           "blockType": 5,
           "blockGroupType": 0,
-          "gridRow": 4,
+          "gridRow": 5,
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false
@@ -4236,7 +4236,7 @@
         {
           "blockType": 2,
           "blockGroupType": 0,
-          "gridRow": 3,
+          "gridRow": 4,
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false
@@ -4244,7 +4244,7 @@
         {
           "blockType": 8,
           "blockGroupType": 4,
-          "gridRow": 2,
+          "gridRow": 3,
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false
@@ -4252,7 +4252,7 @@
         {
           "blockType": 4,
           "blockGroupType": 7,
-          "gridRow": 6,
+          "gridRow": 8,
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false
@@ -4260,7 +4260,7 @@
         {
           "blockType": 9,
           "blockGroupType": 5,
-          "gridRow": 4,
+          "gridRow": 6,
           "gridCol": 6,
           "rotationZ": 3,
           "needsRowOffset": false
@@ -4268,7 +4268,7 @@
         {
           "blockType": 3,
           "blockGroupType": 5,
-          "gridRow": 6,
+          "gridRow": 8,
           "gridCol": 1,
           "rotationZ": 3,
           "needsRowOffset": false
@@ -4276,7 +4276,7 @@
         {
           "blockType": 8,
           "blockGroupType": 1,
-          "gridRow": 1,
+          "gridRow": 2,
           "gridCol": 6,
           "rotationZ": 3,
           "needsRowOffset": false
@@ -4284,7 +4284,7 @@
         {
           "blockType": 9,
           "blockGroupType": 1,
-          "gridRow": 8,
+          "gridRow": 9,
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false
@@ -4292,7 +4292,7 @@
         {
           "blockType": 1,
           "blockGroupType": 1,
-          "gridRow": 7,
+          "gridRow": 9,
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false
@@ -4300,7 +4300,7 @@
         {
           "blockType": 4,
           "blockGroupType": 2,
-          "gridRow": 4,
+          "gridRow": 5,
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false
@@ -4308,7 +4308,7 @@
         {
           "blockType": 3,
           "blockGroupType": 1,
-          "gridRow": -1,
+          "gridRow": 1,
           "gridCol": 4,
           "rotationZ": 3,
           "needsRowOffset": false
@@ -4319,33 +4319,45 @@
           "blockType": 0,
           "partCount": 2,
           "edge": "right",
-          "startRow": 2,
+          "startRow": 4,
           "startCol": 6
         },
         {
           "blockType": 8,
           "partCount": 3,
           "edge": "bottom",
-          "startRow": 9,
+          "startRow": 10,
           "startCol": 0
         },
         {
           "blockType": 3,
           "partCount": 3,
           "edge": "bottom",
-          "startRow": 9,
+          "startRow": 10,
           "startCol": 4
         },
         {
           "blockType": 5,
           "partCount": 1,
           "edge": "bottom",
-          "startRow": 9,
+          "startRow": 10,
           "startCol": 3
         }
       ],
       "hiddenCells": [
         {
+          "row": 0,
+          "col": 0
+        },
+        {
+          "row": 0,
+          "col": 1
+        },
+        {
+          "row": 6,
+          "col": 2
+        },
+        {
           "row": 5,
           "col": 2
         },
@@ -4354,14 +4366,22 @@
           "col": 2
         },
         {
-          "row": 3,
+          "row": 0,
           "col": 2
         },
         {
-          "row": 5,
+          "row": 6,
           "col": 3
         },
         {
+          "row": 0,
+          "col": 3
+        },
+        {
+          "row": 6,
+          "col": 4
+        },
+        {
           "row": 5,
           "col": 4
         },
@@ -4370,8 +4390,16 @@
           "col": 4
         },
         {
-          "row": 3,
+          "row": 0,
           "col": 4
+        },
+        {
+          "row": 0,
+          "col": 5
+        },
+        {
+          "row": 0,
+          "col": 6
         }
       ],
       "duration": 130,
