@@ -757,6 +757,16 @@
                         // rotZ=0: використовуємо дзеркальну форму (X X / _X / _X) + зсув вліво
                         rotatedShape = [[0, -1], [1, -1], [1, 0], [1, 1]];
                         gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                    } else if (rotationNorm === 1) {
+                        // rotZ=1 (90°): на високих гридах (>=12 рядків) потрібен зсув вгору
+                        // коли row_calc закінчується на .5
+                        if (gridSize.y >= 12) {
+                            const offsetY = (gridSize.y - 1) / 2;
+                            const rowCalc = -block.position.y / 2.0 + offsetY;
+                            if (rowCalc % 1 === 0.5) {
+                                gridPos = { row: gridPos.row - 1, col: gridPos.col };
+                            }
+                        }
                     } else if (rotationNorm === 2) {
                         // rotZ=2 (180°): використовуємо оригінальну L форму
                         rotatedShape = [[0, -1], [0, 0], [0, 1], [1, 1]];
@@ -1330,9 +1340,10 @@
                 return;
             }
             
-            const colorName = ['Червоний', 'Жовтий', 'Зелений', 'Синій', 'Фіолетовий', 
-                              'Бірюзовий', 'Рожевий', 'Помаранчевий', 'Світло-рожевий', 
-                              'Темно-сірий', 'Кораловий'][block.blockType] || `Колір ${block.blockType}`;
+            // Має відповідати colorPalette: 0-Blue, 1-DarkBlue, 2-Green, 3-Pink, 4-Purple, 5-Yellow, 6-DarkGreen, 7-Orange, 8-Red, 9-Cyan, 10-Coral, 11-Brown
+            const colorName = ['Блакитний', 'Темно-синій', 'Зелений', 'Рожевий', 'Фіолетовий', 
+                              'Жовтий', 'Темно-зелений', 'Помаранчевий', 'Червоний', 
+                              'Бірюзовий', 'Кораловий', 'Коричневий'][block.blockType] || `Колір ${block.blockType}`;
             
             tooltip.innerHTML = `
                 <h3>Блок</h3>
@@ -1397,7 +1408,7 @@
         
         // ========== VERIFICATION SYSTEM ==========
         // Список верифікованих рівнів (game level numbers)
-        const verifiedLevels = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
+        const verifiedLevels = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]);
         
         // Перевірка чи поточний рівень верифікований
         function isCurrentLevelVerified() {

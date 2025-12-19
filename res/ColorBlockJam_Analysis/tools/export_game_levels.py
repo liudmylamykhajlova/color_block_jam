@@ -104,6 +104,14 @@ def main():
             rot_z = round(b.get('rotation', {}).get('z', 0) / 90) % 4
             world_y = b['position']['y']
             
+            # Для L блоків (groupType=3) з rotZ=1 на високих гридах,
+            # коли row_calc закінчується на .5, використовуємо floor замість round
+            if b['blockGroupType'] == 3 and rot_z == 1 and grid_h >= 12:
+                offset_y = (grid_h - 1) / 2
+                row_calc = -world_y / 2.0 + offset_y
+                if row_calc % 1 == 0.5:
+                    center_row = int(row_calc)  # floor
+            
             # Прапорець для спеціальної обробки ShortL rotZ=2 в hidden levels
             # Застосовується тільки якщо worldY < -2 (далеко від центру)
             needs_row_offset = False

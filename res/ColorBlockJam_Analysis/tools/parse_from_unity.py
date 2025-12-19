@@ -181,8 +181,8 @@ def find_game_blocks(data: bytes, grid_x: int, grid_y: int) -> List[Dict]:
             py = read_float(data, offset + 8)
             pz = read_float(data, offset + 12)
             
-            # Position should be inside field (not edge)
-            if abs(px) <= 8 and abs(py) <= 8 and abs(pz) <= 3:
+            # Position should be inside field (allow larger values for tall grids)
+            if abs(px) <= 12 and abs(py) <= 12 and abs(pz) <= 3:
                 # Check for valid groupType at +28 (offset + 4 + 24)
                 group_type = read_int32(data, offset + 4 + 24)
                 block_type = read_int32(data, offset + 4 + 28)
@@ -214,8 +214,8 @@ def find_game_blocks(data: bytes, grid_x: int, grid_y: int) -> List[Dict]:
         py = read_float(data, offset + 4)
         pz = read_float(data, offset + 8)
         
-        # Skip invalid positions
-        if abs(px) > 10 or abs(py) > 10:
+        # Skip invalid positions (allow larger values for tall grids like 8x12)
+        if abs(px) > 15 or abs(py) > 15:
             continue
             
         # Read rotation

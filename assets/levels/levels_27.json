@@ -3904,7 +3904,7 @@
         {
           "blockType": 4,
           "blockGroupType": 3,
-          "gridRow": 7,
+          "gridRow": 6,
           "gridCol": 5,
           "rotationZ": 1,
           "needsRowOffset": false
@@ -3958,6 +3958,22 @@
           "needsRowOffset": false
         },
         {
+          "blockType": 8,
+          "blockGroupType": 1,
+          "gridRow": 0,
+          "gridCol": 2,
+          "rotationZ": 3,
+          "needsRowOffset": false
+        },
+        {
+          "blockType": 4,
+          "blockGroupType": 1,
+          "gridRow": 0,
+          "gridCol": 6,
+          "rotationZ": 3,
+          "needsRowOffset": false
+        },
+        {
           "blockType": 3,
           "blockGroupType": 5,
           "gridRow": 11,
@@ -3990,6 +4006,14 @@
           "needsRowOffset": false
         },
         {
+          "blockType": 0,
+          "blockGroupType": 1,
+          "gridRow": 0,
+          "gridCol": 4,
+          "rotationZ": 3,
+          "needsRowOffset": false
+        },
+        {
           "blockType": 5,
           "blockGroupType": 3,
           "gridRow": 1,
@@ -4003,6 +4027,22 @@
           "gridRow": 1,
           "gridCol": 7,
           "rotationZ": 2,
+          "needsRowOffset": false
+        },
+        {
+          "blockType": 2,
+          "blockGroupType": 1,
+          "gridRow": 11,
+          "gridCol": 3,
+          "rotationZ": 3,
+          "needsRowOffset": false
+        },
+        {
+          "blockType": 8,
+          "blockGroupType": 1,
+          "gridRow": 11,
+          "gridCol": 5,
+          "rotationZ": 3,
           "needsRowOffset": false
         },
         {
