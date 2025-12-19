@@ -134,6 +134,31 @@ def find_doors_in_region(data: bytes, start: int, end: int, expected_count: int 
 GAME_BLOCK_SIZE = 0x9C  # 156 bytes per game block
 
 
+def get_fully_hidden_top_rows(hidden_coords, grid_width, grid_height):
+    """
+    Check if top row(s) are fully hidden and should be removed.
+    Returns number of rows to remove from top.
+    
+    In Unity coords: y=grid_height-1 is the top row.
+    """
+    if not hidden_coords:
+        return 0
+    
+    rows_to_remove = 0
+    for check_y in range(grid_height - 1, -1, -1):  # Start from top (y=grid_h-1)
+        # Count hidden cells in this row
+        row_hidden = sum(1 for h in hidden_coords if h['y'] == check_y)
+        
+        if row_hidden == grid_width:
+            # Entire row is hidden
+            rows_to_remove += 1
+        else:
+            # Found a row that's not fully hidden, stop
+            break
+    
+    return rows_to_remove
+
+
 def find_frame_data(data: bytes, search_start: int = 0x150) -> tuple:
     """Find frame element count and offset (decorative blocks)."""
     for offset in range(search_start, min(len(data) - 100, 0x800), 4):
@@ -346,6 +371,35 @@ def parse_level_data(data: bytes, name_hint: str = "") -> Dict[str, Any]:
                     f"Unknown({block['blockGroupType']})"
                 )
                 result['frameElements'].append(block)
+
+        # Check for fully hidden top rows and remove them
+        grid_w = result['gridSize']['x']
+        grid_h = result['gridSize']['y']
+        top_rows_to_remove = get_fully_hidden_top_rows(result['hiddenCoords'], grid_w, grid_h)
+        
+        if top_rows_to_remove > 0:
+            # Adjust grid height
+            result['gridSize']['y'] = grid_h - top_rows_to_remove
+            
+            # Filter out hidden coords from removed rows
+            result['hiddenCoords'] = [
+                h for h in result['hiddenCoords'] 
+                if h['y'] < grid_h - top_rows_to_remove
+            ]
+            
+            # Adjust block positions (shift up by 2 world units per row)
+            shift_y = 2.0 * top_rows_to_remove
+            for block in result['gameBlocks']:
+                block['position']['y'] = round(block['position']['y'] + shift_y, 4)
+            
+            # Adjust door positions
+            for door in result['doors']:
+                door['position']['y'] = round(door['position']['y'] + shift_y, 4)
+            
+            # Adjust camera position
+            result['camera']['position']['y'] = round(
+                result['camera']['position']['y'] + shift_y, 4
+            )
 
     except Exception as e:
         result['error'] = str(e)
