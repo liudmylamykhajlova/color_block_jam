@@ -3,6 +3,7 @@ import '../../core/constants/colors.dart';
 import '../../core/models/game_models.dart';
 import '../../core/services/storage_service.dart';
 import '../../core/services/audio_service.dart';
+import '../../core/services/game_logger.dart';
 import '../../core/widgets/confetti_widget.dart';
 
 class GameScreen extends StatefulWidget {
@@ -44,6 +45,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   }
 
   Future<void> _loadLevel() async {
+    GameLogger.info('Loading level ${widget.levelId}...', 'INIT');
     final levels = await LevelLoader.loadLevels();
     final level = levels.firstWhere((l) => l.id == widget.levelId);
     setState(() {
@@ -52,6 +54,14 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
       _isLoading = false;
       _initBlocks();
     });
+    GameLogger.levelLoaded(
+      level.id, 
+      level.name, 
+      level.blocks.length, 
+      level.doors.length,
+      level.hardnessText.isEmpty ? 'Normal' : level.hardnessText,
+      level.duration,
+    );
     _startTimer();
   }
   
@@ -67,6 +77,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
         setState(() {
           _remainingSeconds--;
         });
+        GameLogger.timerTick(_remainingSeconds);
         if (_remainingSeconds <= 0) {
           _onTimeUp();
         }
@@ -76,6 +87,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   
   void _onTimeUp() {
     _timerActive = false;
+    GameLogger.timerExpired(widget.levelId);
     // For now just show a message - can add game over logic later
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -111,6 +123,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   }
 
   void _resetLevel() {
+    GameLogger.levelReset(widget.levelId);
     _timerActive = false;
     setState(() {
       _initBlocks();
@@ -419,6 +432,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     for (final block in _blocks) {
       if (block.cells.contains(cell)) {
         AudioService.playPickup();
+        GameLogger.blockSelected(block.blockType, block.gridRow, block.gridCol);
         setState(() {
           _selectedBlock = block;
           _lastCell = cell;
@@ -456,11 +470,18 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     }
 
     if (_canMove(_selectedBlock!, moveRow, moveCol, level)) {
+      final fromRow = _selectedBlock!.gridRow;
+      final fromCol = _selectedBlock!.gridCol;
       setState(() {
         _selectedBlock!.gridRow += moveRow;
         _selectedBlock!.gridCol += moveCol;
         _lastCell = Point(_lastCell!.row + moveRow, _lastCell!.col + moveCol);
       });
+      GameLogger.blockMoved(
+        _selectedBlock!.blockType, 
+        fromRow, fromCol, 
+        _selectedBlock!.gridRow, _selectedBlock!.gridCol
+      );
       _checkDoorExit(level);
     }
   }
@@ -614,6 +635,14 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   void _completeExit(GameLevel level) {
     if (_exitingBlock == null) return;
     
+    // Determine exit direction
+    String exitEdge = 'unknown';
+    if (_exitDeltaRow < 0) exitEdge = 'top';
+    else if (_exitDeltaRow > 0) exitEdge = 'bottom';
+    else if (_exitDeltaCol < 0) exitEdge = 'left';
+    else if (_exitDeltaCol > 0) exitEdge = 'right';
+    
+    GameLogger.blockExited(_exitingBlock!.blockType, exitEdge);
     AudioService.playExit();
     
     setState(() {
@@ -625,6 +654,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     _exitAnimationController?.dispose();
     _exitAnimationController = null;
     
+    GameLogger.info('Blocks remaining: ${_blocks.length}', 'GAME');
+    
     if (_blocks.isEmpty) {
       AudioService.playWin();
       _showWinDialog();
@@ -633,6 +664,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
 
   void _showWinDialog() async {
     _timerActive = false; // Stop the timer on win
+    GameLogger.levelCompleted(widget.levelId, _remainingSeconds);
     await StorageService.markLevelCompleted(widget.levelId);
     widget.onLevelComplete?.call();
     

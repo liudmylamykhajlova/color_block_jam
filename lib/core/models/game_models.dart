@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 // ============ DATA MODELS ============
@@ -256,13 +257,24 @@ class LevelLoader {
   static List<GameLevel>? _cachedLevels;
   
   static Future<List<GameLevel>> loadLevels() async {
-    if (_cachedLevels != null) return _cachedLevels!;
+    if (_cachedLevels != null) {
+      if (kDebugMode) debugPrint('🎮 LEVEL ℹ️ Using cached levels (${_cachedLevels!.length})');
+      return _cachedLevels!;
+    }
     
+    if (kDebugMode) debugPrint('🎮 LEVEL ℹ️ Loading levels from assets...');
     final jsonString = await rootBundle.loadString('assets/levels/levels_27.json');
     final data = json.decode(jsonString);
     _cachedLevels = (data['levels'] as List)
         .map((l) => GameLevel.fromJson(l))
         .toList();
+    
+    if (kDebugMode) {
+      debugPrint('🎮 LEVEL ✅ Loaded ${_cachedLevels!.length} levels');
+      final hardLevels = _cachedLevels!.where((l) => l.isHard).length;
+      debugPrint('🎮 LEVEL ℹ️ Hard levels: $hardLevels');
+    }
+    
     return _cachedLevels!;
   }
 }
