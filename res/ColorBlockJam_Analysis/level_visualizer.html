@@ -421,21 +421,27 @@
         let currentCellSize = 2.0; // Буде оновлюватись при завантаженні рівня
         
         // Конвертація світових координат в grid координати
-        function worldToGrid(worldX, worldY, gridSize) {
+        function worldToGrid(worldX, worldY, gridSize, originalGridHeight = null, removedTopRows = 0) {
             // Game block coordinates:
             // - World (0, 0) is the center of the grid
             // - Positive Y is up in world, but row 0 is at top of grid
             
             const cellSizeWorld = currentCellSize;
             
+            // Use original grid height for world->grid conversion if provided
+            const gridH = originalGridHeight || gridSize.y;
+            
             // Центруємо сітку
             const offsetX = (gridSize.x - 1) / 2;
-            const offsetY = (gridSize.y - 1) / 2;
+            const offsetY = (gridH - 1) / 2;
             
             let col = Math.round(worldX / cellSizeWorld + offsetX);
             let row = Math.round(-worldY / cellSizeWorld + offsetY);
             
-            // Clamp to grid bounds
+            // Apply row offset for removed top rows
+            row -= removedTopRows;
+            
+            // Clamp to grid bounds (use actual gridSize.y for clamping)
             row = Math.max(0, Math.min(row, gridSize.y - 1));
             col = Math.max(0, Math.min(col, gridSize.x - 1));
             
@@ -566,6 +572,13 @@
             const cellSize = 50;
             const padding = 40;
             
+            // Get original grid height and removed rows for world->grid conversion
+            const originalGridHeight = level.originalGridHeight || gridSize.y;
+            const removedTopRows = level.removedTopRows || 0;
+            if (removedTopRows > 0) {
+                console.log(`Level has ${removedTopRows} removed top rows, originalGridHeight=${originalGridHeight}, gridSize.y=${gridSize.y}`);
+            }
+            
             // Check edge column hidden state for dynamic door positioning
             const edgeInfo = getEdgeColumnHiddenInfo(level);
             console.log(`Edge info: leftHidden=${edgeInfo.leftHidden}, rightHidden=${edgeInfo.rightHidden}, leftCol=${edgeInfo.leftCol}, rightCol=${edgeInfo.rightCol}`);
@@ -619,7 +632,7 @@
             const drawnCells = new Set(); // Для відстеження дублікатів
             
             blocksToRender.forEach((block, blockIdx) => {
-                let gridPos = worldToGrid(block.position.x, block.position.y, gridSize);
+                let gridPos = worldToGrid(block.position.x, block.position.y, gridSize, originalGridHeight, removedTopRows);
                 let shape = blockShapes[block.blockGroupType] || [[0, 0]];
                 // Use Z rotation if non-zero, otherwise Y rotation
                 const rotation = Math.abs(block.rotation.z || 0) > 1 ? block.rotation.z : (block.rotation.y || 0);
@@ -760,8 +773,8 @@
                     } else if (rotationNorm === 1) {
                         // rotZ=1 (90°): на високих гридах (>=12 рядків) потрібен зсув вгору
                         // коли row_calc закінчується на .5
-                        if (gridSize.y >= 12) {
-                            const offsetY = (gridSize.y - 1) / 2;
+                        if (originalGridHeight >= 12) {
+                            const offsetY = (originalGridHeight - 1) / 2;
                             const rowCalc = -block.position.y / 2.0 + offsetY;
                             if (rowCalc % 1 === 0.5) {
                                 gridPos = { row: gridPos.row - 1, col: gridPos.col };
@@ -926,6 +939,13 @@
                 const worldX = door.position.x;
                 const worldY = door.position.y;
                 
+                // Filter out doors that are too far from the grid bounds
+                const maxSideX = gridSize.x + 1.5;
+                if (Math.abs(worldX) > maxSideX) {
+                    console.log(`  Door ${idx + 1}: SKIPPED (x=${worldX.toFixed(1)} is outside grid bounds)`);
+                    return; // Skip this door
+                }
+                
                 let edge = 'unknown';
                 let doorX, doorY, doorWidth, doorHeight;
                 const doorThickness = 12;
@@ -949,10 +969,11 @@
                 if (absX >= sideEdgeThreshold) {
                     // Лівий або правий край
                     let doorStartRow;
-                    const offsetY = (gridSize.y - 1) / 2;
+                    // Use original grid height for calculations
+                    const offsetY = (originalGridHeight - 1) / 2;
                     if (Math.abs(worldY) < 0.5) {
                         // Центровані двері
-                        doorStartRow = Math.floor((gridSize.y - doorPartCount) / 2);
+                        doorStartRow = Math.floor((originalGridHeight - doorPartCount) / 2);
                     } else {
                         // Зміщені двері: конвертуємо worldY в row (так само як блоки)
                         const rowCenter = Math.round(-worldY / currentCellSize + offsetY);
@@ -964,6 +985,8 @@
                             doorStartRow = rowCenter - Math.floor(doorPartCount / 2);
                         }
                     }
+                    // Apply row offset for removed top rows
+                    doorStartRow -= removedTopRows;
                     doorStartRow = Math.max(0, Math.min(doorStartRow, gridSize.y - doorPartCount));
                     
                     
@@ -1262,6 +1285,10 @@
             const cellSize = 50;
             const padding = 40;
             
+            // Get original grid height and removed rows
+            const originalGridHeight = currentLevel.originalGridHeight || gridSize.y;
+            const removedTopRows = currentLevel.removedTopRows || 0;
+            
             // Конвертуємо координати миші в grid координати
             const col = Math.floor((mouseX - padding) / cellSize);
             const row = Math.floor((mouseY - padding) / cellSize);
@@ -1273,7 +1300,7 @@
             // Шукаємо блок, який займає цю клітинку
             const blocksToSearch = currentLevel.gameBlocks || currentLevel.blocks || [];
             for (const block of blocksToSearch) {
-                let gridPos = worldToGrid(block.position.x, block.position.y, gridSize);
+                let gridPos = worldToGrid(block.position.x, block.position.y, gridSize, originalGridHeight, removedTopRows);
                 const shape = blockShapes[block.blockGroupType] || [[0, 0]];
                 // Use Z rotation if non-zero, otherwise Y rotation
                 const rotation = Math.abs(block.rotation.z || 0) > 1 ? block.rotation.z : (block.rotation.y || 0);
@@ -1285,6 +1312,12 @@
                     if (rotationNorm === 0) {
                         rotatedShape = [[0, -1], [1, -1], [1, 0], [1, 1]];
                         gridPos = { row: gridPos.row, col: gridPos.col - 1 };
+                    } else if (rotationNorm === 1 && originalGridHeight >= 12) {
+                        const offsetY = (originalGridHeight - 1) / 2;
+                        const rowCalc = -block.position.y / 2.0 + offsetY;
+                        if (rowCalc % 1 === 0.5) {
+                            gridPos = { row: gridPos.row - 1, col: gridPos.col };
+                        }
                     } else if (rotationNorm === 2) {
                         rotatedShape = [[0, -1], [0, 0], [0, 1], [1, 1]];
                         gridPos = { row: gridPos.row, col: gridPos.col - 1 };
@@ -1312,7 +1345,8 @@
                     } else if (rotationNorm === 1) {
                         gridPos = { row: gridPos.row, col: gridPos.col - 1 };
                     } else if (rotationNorm === 2) {
-                        if (block.position.y > 0) {
+                        const hasHiddenCells = currentLevel.hiddenCoords && currentLevel.hiddenCoords.length > 0;
+                        if (block.position.y > 0 && !hasHiddenCells) {
                             gridPos = { row: gridPos.row + 1, col: gridPos.col };
                         }
                     }
@@ -1408,7 +1442,7 @@
         
         // ========== VERIFICATION SYSTEM ==========
         // Список верифікованих рівнів (game level numbers)
-        const verifiedLevels = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]);
+        const verifiedLevels = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]);
         
         // Перевірка чи поточний рівень верифікований
         function isCurrentLevelVerified() {

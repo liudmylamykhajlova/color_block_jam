@@ -96,21 +96,29 @@ def main():
         grid_w = level['gridSize']['x']
         grid_h = level['gridSize']['y']
         
+        # Use original grid height for world->grid conversion, then apply row offset
+        original_grid_h = level.get('originalGridHeight', grid_h)
+        removed_top_rows = level.get('removedTopRows', 0)
+        
         # Convert blocks - зберігаємо ЦЕНТР блоку (як у візуалізаторі)
         has_hidden_cells = len(level.get('hiddenCoords', [])) > 0
         blocks = []
         for b in level['gameBlocks']:
-            center_row, center_col = world_to_grid(b['position']['x'], b['position']['y'], grid_w, grid_h)
+            # Use original grid height for world->grid conversion
+            center_row, center_col = world_to_grid(b['position']['x'], b['position']['y'], grid_w, original_grid_h)
             rot_z = round(b.get('rotation', {}).get('z', 0) / 90) % 4
             world_y = b['position']['y']
             
             # Для L блоків (groupType=3) з rotZ=1 на високих гридах,
             # коли row_calc закінчується на .5, використовуємо floor замість round
-            if b['blockGroupType'] == 3 and rot_z == 1 and grid_h >= 12:
-                offset_y = (grid_h - 1) / 2
+            if b['blockGroupType'] == 3 and rot_z == 1 and original_grid_h >= 12:
+                offset_y = (original_grid_h - 1) / 2
                 row_calc = -world_y / 2.0 + offset_y
                 if row_calc % 1 == 0.5:
                     center_row = int(row_calc)  # floor
+            
+            # Apply row offset for removed top rows
+            center_row -= removed_top_rows
             
             # Прапорець для спеціальної обробки ShortL rotZ=2 в hidden levels
             # Застосовується тільки якщо worldY < -2 (далеко від центру)
@@ -128,29 +136,44 @@ def main():
                 'needsRowOffset': needs_row_offset
             })
         
-        # Get edge column hidden info for this level
-        edge_info = get_edge_column_hidden_info(level.get('hiddenCoords', []), grid_w, grid_h)
+        # Get edge column hidden info for this level (use original grid height for calculation)
+        edge_info = get_edge_column_hidden_info(level.get('hiddenCoords', []), grid_w, original_grid_h)
         
         # Convert doors
         doors = []
         for d in level['doors']:
-            edge = get_door_edge(d['position']['x'], d['position']['y'], grid_w, grid_h, edge_info)
-            row, col = world_to_grid(d['position']['x'], d['position']['y'], grid_w, grid_h)
+            world_x = d['position']['x']
+            world_y = d['position']['y']
+            
+            # Filter out doors that are too far from the grid bounds
+            # Normal side doors should be at approximately grid_w for right, -grid_w for left
+            # With some tolerance (1.5 units)
+            max_side_x = grid_w + 1.5
+            if abs(world_x) > max_side_x:
+                # Door is too far from the grid - skip it
+                continue
+            
+            edge = get_door_edge(world_x, world_y, grid_w, original_grid_h, edge_info)
+            row, col = world_to_grid(world_x, world_y, grid_w, original_grid_h)
             parts = d['doorPartCount']
             
             # Adjust position for doors
             if edge in ['left', 'right']:
                 col = 0 if edge == 'left' else grid_w - 1
-                offset_y = (grid_h - 1) / 2
-                if abs(d['position']['y']) < 0.5:
-                    row = (grid_h - parts) // 2
+                offset_y = (original_grid_h - 1) / 2
+                if abs(world_y) < 0.5:
+                    row = (original_grid_h - parts) // 2
                 else:
-                    row_center = js_round(-d['position']['y'] / 2.0 + offset_y)
+                    row_center = js_round(-world_y / 2.0 + offset_y)
                     # Поріг залежить від offset_y - двері нижче центру позиціонуються інакше
-                    if d['position']['y'] < -offset_y:
+                    if world_y < -offset_y:
                         row = row_center - (parts - 1) // 2
                     else:
                         row = row_center - parts // 2
+                row = max(0, min(row, original_grid_h - parts))
+                
+                # Apply row offset for removed top rows
+                row -= removed_top_rows
                 row = max(0, min(row, grid_h - parts))
                 
                 # Use inner boundary if edge columns are mostly hidden
@@ -161,11 +184,11 @@ def main():
             else:
                 # Для top/bottom дверей: row - це положення на межі (зовнішнє)
                 row = -1 if edge == 'top' else grid_h
-                if abs(d['position']['x']) < 0.5:
+                if abs(world_x) < 0.5:
                     col = (grid_w - parts) // 2
                 else:
                     offset_x = (grid_w - 1) / 2
-                    col_center = js_round(d['position']['x'] / 2.0 + offset_x)
+                    col_center = js_round(world_x / 2.0 + offset_x)
                     col = col_center - parts // 2
                 col = max(0, min(col, grid_w - parts))
             
@@ -177,11 +200,11 @@ def main():
                 'startCol': int(col)
             })
         
-        # Convert hidden coords
+        # Convert hidden coords (use current grid_h since hiddenCoords already filtered)
         hidden = []
         for h in level.get('hiddenCoords', []):
             hidden.append({
-                'row': grid_h - 1 - h['y'],
+                'row': grid_h - 1 - h['y'],  # grid_h is already adjusted
                 'col': h['x']
             })
         

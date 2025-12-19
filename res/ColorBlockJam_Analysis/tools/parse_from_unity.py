@@ -84,7 +84,7 @@ def find_doors_in_region(data: bytes, start: int, end: int, expected_count: int 
     if edges_mostly_hidden:
         side_edge_threshold = grid_x - 1.1
     side_edge_max = grid_x + 2
-    top_bottom_edge_threshold = max(5.5, grid_y - 0.5)
+    top_bottom_edge_threshold = max(5.5, grid_y - 1.5)  # -1.5 to catch doors at y=grid_y-1
     
     # Expand search range to find all doors (some levels have doors up to 0x870+)
     search_end = min(len(data) - 32, max(end, 0x900))
@@ -132,6 +132,31 @@ def find_doors_in_region(data: bytes, start: int, end: int, expected_count: int 
 
 
 GAME_BLOCK_SIZE = 0x9C  # 156 bytes per game block
+
+
+def get_fully_hidden_top_rows(hidden_coords, grid_width, grid_height):
+    """
+    Check if top row(s) are fully hidden and should be removed.
+    Returns number of rows to remove from top.
+    
+    In Unity coords: y=grid_height-1 is the top row.
+    """
+    if not hidden_coords:
+        return 0
+    
+    rows_to_remove = 0
+    for check_y in range(grid_height - 1, -1, -1):  # Start from top (y=grid_h-1)
+        # Count hidden cells in this row
+        row_hidden = sum(1 for h in hidden_coords if h['y'] == check_y)
+        
+        if row_hidden == grid_width:
+            # Entire row is hidden
+            rows_to_remove += 1
+        else:
+            # Found a row that's not fully hidden, stop
+            break
+    
+    return rows_to_remove
 
 
 def find_frame_data(data: bytes, search_start: int = 0x150) -> tuple:
@@ -346,6 +371,30 @@ def parse_level_data(data: bytes, name_hint: str = "") -> Dict[str, Any]:
                     f"Unknown({block['blockGroupType']})"
                 )
                 result['frameElements'].append(block)
+
+        # Check for fully hidden top rows
+        # Store original grid height and number of removed rows for export script
+        grid_w = result['gridSize']['x']
+        grid_h = result['gridSize']['y']
+        top_rows_to_remove = get_fully_hidden_top_rows(result['hiddenCoords'], grid_w, grid_h)
+        
+        # Store original grid height for world->grid conversion
+        result['originalGridHeight'] = grid_h
+        result['removedTopRows'] = top_rows_to_remove
+        
+        if top_rows_to_remove > 0:
+            # Adjust grid height
+            result['gridSize']['y'] = grid_h - top_rows_to_remove
+            
+            # Filter out hidden coords from removed rows (y >= grid_h - top_rows_to_remove)
+            result['hiddenCoords'] = [
+                h for h in result['hiddenCoords'] 
+                if h['y'] < grid_h - top_rows_to_remove
+            ]
+            
+            # DO NOT modify world coordinates of blocks/doors!
+            # The export script will use originalGridHeight for conversion
+            # and then apply row offset based on removedTopRows
 
     except Exception as e:
         result['error'] = str(e)
