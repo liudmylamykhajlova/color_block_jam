@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
-"""Exports first 15 levels to game-friendly JSON format."""
+"""Exports levels to game-friendly JSON format with hardness and duration."""
 
 import json
 import os
 
 import math
+
+def load_hardness_data(base_dir):
+    """Load hardness and duration data from level_hardness.json."""
+    hardness_path = os.path.join(base_dir, 'level_data', 'level_hardness.json')
+    if os.path.exists(hardness_path):
+        with open(hardness_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
 
 def js_round(x):
     """JavaScript-style rounding (0.5 rounds up, not banker's rounding)."""
@@ -71,6 +79,9 @@ def main():
     
     with open(os.path.join(base_dir, 'level_data/AllLevels_guids.json'), 'r', encoding='utf-8') as f:
         guids_data = json.load(f)
+    
+    # Load hardness data
+    hardness_data = load_hardness_data(base_dir)
     
     guids = guids_data['level_guids']
     guid_to_level = {level['guid']: level for level in levels_data}
@@ -166,6 +177,12 @@ def main():
                 'col': h['x']
             })
         
+        # Get hardness and duration for this level
+        level_guid = guids[i]
+        hardness_info = hardness_data.get(level_guid, {})
+        duration = hardness_info.get('duration', 120)  # Default 2 minutes
+        hardness = hardness_info.get('hardness', 0)  # 0=Normal, 1=Hard, 2=VeryHard
+        
         game_levels.append({
             'id': i + 1,
             'name': level['name'],
@@ -173,7 +190,9 @@ def main():
             'gridHeight': grid_h,
             'blocks': blocks,
             'doors': doors,
-            'hiddenCells': hidden
+            'hiddenCells': hidden,
+            'duration': duration,
+            'hardness': hardness
         })
     
     # Save - go up 2 levels from ColorBlockJam_Analysis to project root
@@ -186,8 +205,11 @@ def main():
         json.dump({'levels': game_levels}, f, indent=2, ensure_ascii=False)
     
     print(f'Exported {len(game_levels)} levels to {output_path}')
+    hardness_names = {0: 'Normal', 1: 'Hard', 2: 'VeryHard'}
     for lvl in game_levels:
-        print(f"  Level {lvl['id']}: {lvl['name']} ({lvl['gridWidth']}x{lvl['gridHeight']}, {len(lvl['blocks'])} blocks, {len(lvl['doors'])} doors)")
+        h_name = hardness_names.get(lvl['hardness'], 'Normal')
+        h_marker = '[H]' if lvl['hardness'] == 1 else '[VH]' if lvl['hardness'] == 2 else '   '
+        print(f"  {h_marker} Level {lvl['id']:2d}: {lvl['name'][:20]:20s} ({lvl['gridWidth']}x{lvl['gridHeight']}, {len(lvl['blocks'])} blocks, {lvl['duration']:3d}s {h_name})")
 
 if __name__ == '__main__':
     main()

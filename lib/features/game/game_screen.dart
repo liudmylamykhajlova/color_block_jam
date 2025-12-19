@@ -32,6 +32,10 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   int _exitDeltaRow = 0;
   int _exitDeltaCol = 0;
   double _exitProgress = 0.0;
+  
+  // Timer
+  int _remainingSeconds = 0;
+  bool _timerActive = false;
 
   @override
   void initState() {
@@ -44,9 +48,54 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     final level = levels.firstWhere((l) => l.id == widget.levelId);
     setState(() {
       _level = level;
+      _remainingSeconds = level.duration;
       _isLoading = false;
       _initBlocks();
     });
+    _startTimer();
+  }
+  
+  void _startTimer() {
+    _timerActive = true;
+    _tickTimer();
+  }
+  
+  void _tickTimer() async {
+    while (_timerActive && _remainingSeconds > 0 && mounted) {
+      await Future.delayed(const Duration(seconds: 1));
+      if (_timerActive && mounted) {
+        setState(() {
+          _remainingSeconds--;
+        });
+        if (_remainingSeconds <= 0) {
+          _onTimeUp();
+        }
+      }
+    }
+  }
+  
+  void _onTimeUp() {
+    _timerActive = false;
+    // For now just show a message - can add game over logic later
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Time\'s up! Try again'),
+          backgroundColor: Colors.orange,
+        ),
+      );
+      _resetLevel();
+      setState(() {
+        _remainingSeconds = _level?.duration ?? 120;
+      });
+      _startTimer();
+    }
+  }
+  
+  String get _formattedTime {
+    final minutes = _remainingSeconds ~/ 60;
+    final seconds = _remainingSeconds % 60;
+    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
   }
   
   void _initBlocks() {
@@ -62,13 +111,17 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   }
 
   void _resetLevel() {
+    _timerActive = false;
     setState(() {
       _initBlocks();
+      _remainingSeconds = _level?.duration ?? 120;
     });
+    _startTimer();
   }
 
   @override
   void dispose() {
+    _timerActive = false;
     _exitAnimationController?.dispose();
     super.dispose();
   }
@@ -117,36 +170,22 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   }
   
   Widget _buildTopBar() {
+    final isHard = _level?.isHard ?? false;
+    final hardnessText = _level?.hardnessText ?? '';
+    
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Home button
-          _TopBarButton(
-            icon: Icons.home,
-            onTap: () {
-              AudioService.playTap();
-              Navigator.pop(context);
-            },
-          ),
+          // Level indicator with difficulty badge
+          _buildLevelBadge(isHard, hardnessText),
           
-          // Level indicator
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Text(
-              'Level ${widget.levelId}',
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+          const Spacer(),
+          
+          // Timer
+          _buildTimer(),
+          
+          const Spacer(),
           
           // Restart button
           _TopBarButton(
@@ -155,6 +194,160 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
               AudioService.playTap();
               _resetLevel();
             },
+          ),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildLevelBadge(bool isHard, String hardnessText) {
+    final hardness = _level?.hardness ?? LevelHardness.normal;
+    
+    // Colors based on difficulty (matching original game)
+    Color badgeColor;
+    Color textColor = Colors.white;
+    
+    switch (hardness) {
+      case LevelHardness.hard:
+        badgeColor = const Color(0xFF9C27B0); // Purple for hard
+        break;
+      case LevelHardness.veryHard:
+        badgeColor = const Color(0xFF7B1FA2); // Darker purple for very hard
+        break;
+      default:
+        badgeColor = const Color(0xFF5C6BC0); // Blue for normal
+    }
+    
+    return GestureDetector(
+      onTap: () {
+        AudioService.playTap();
+        Navigator.pop(context);
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: badgeColor,
+          borderRadius: BorderRadius.circular(25),
+          border: Border.all(
+            color: Colors.white.withOpacity(0.3),
+            width: 2,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: badgeColor.withOpacity(0.4),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Skull icon for hard levels
+            if (isHard) ...[
+              const Text('💀', style: TextStyle(fontSize: 16)),
+              const SizedBox(width: 6),
+            ],
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Level',
+                  style: TextStyle(
+                    color: textColor.withOpacity(0.8),
+                    fontSize: 10,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Text(
+                  '${widget.levelId}',
+                  style: TextStyle(
+                    color: textColor,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    height: 1,
+                  ),
+                ),
+                if (hardnessText.isNotEmpty)
+                  Container(
+                    margin: const EdgeInsets.only(top: 2),
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(
+                      hardnessText,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  
+  Widget _buildTimer() {
+    // Color changes based on remaining time
+    Color timerColor;
+    Color bgColor;
+    
+    if (_remainingSeconds <= 10) {
+      timerColor = const Color(0xFFFF5252); // Red when critical
+      bgColor = const Color(0xFFFF5252).withOpacity(0.2);
+    } else if (_remainingSeconds <= 30) {
+      timerColor = const Color(0xFFFFB74D); // Orange when low
+      bgColor = const Color(0xFFFFB74D).withOpacity(0.2);
+    } else {
+      timerColor = const Color(0xFFFFD54F); // Gold/yellow normally
+      bgColor = const Color(0xFFFFD54F).withOpacity(0.15);
+    }
+    
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: timerColor.withOpacity(0.5),
+          width: 2,
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Clock icon
+          Icon(
+            Icons.access_time_filled,
+            color: timerColor,
+            size: 20,
+          ),
+          const SizedBox(width: 6),
+          Text(
+            'Time',
+            style: TextStyle(
+              color: timerColor.withOpacity(0.8),
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(width: 8),
+          // Timer value
+          Text(
+            _formattedTime,
+            style: TextStyle(
+              color: timerColor,
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'monospace',
+            ),
           ),
         ],
       ),
@@ -439,6 +632,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   }
 
   void _showWinDialog() async {
+    _timerActive = false; // Stop the timer on win
     await StorageService.markLevelCompleted(widget.levelId);
     widget.onLevelComplete?.call();
     

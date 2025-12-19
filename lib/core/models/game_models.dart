@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 
 // ============ DATA MODELS ============
 
+// Difficulty enum
+enum LevelHardness { normal, hard, veryHard }
+
 class GameLevel {
   final int id;
   final String name;
@@ -11,6 +14,8 @@ class GameLevel {
   final List<GameBlock> blocks;
   final List<GameDoor> doors;
   final List<Point> hiddenCells;
+  final int duration; // in seconds
+  final LevelHardness hardness;
 
   GameLevel({
     required this.id,
@@ -20,9 +25,16 @@ class GameLevel {
     required this.blocks,
     required this.doors,
     required this.hiddenCells,
+    this.duration = 120,
+    this.hardness = LevelHardness.normal,
   });
 
   factory GameLevel.fromJson(Map<String, dynamic> json) {
+    LevelHardness hardness = LevelHardness.normal;
+    final hardnessValue = json['hardness'] ?? 0;
+    if (hardnessValue == 1) hardness = LevelHardness.hard;
+    else if (hardnessValue == 2) hardness = LevelHardness.veryHard;
+    
     return GameLevel(
       id: json['id'],
       name: json['name'],
@@ -38,7 +50,21 @@ class GameLevel {
               ?.map((h) => Point(h['row'], h['col']))
               .toList() ??
           [],
+      duration: json['duration'] ?? 120,
+      hardness: hardness,
     );
+  }
+  
+  /// Check if this is a hard level (Hard or VeryHard)
+  bool get isHard => hardness != LevelHardness.normal;
+  
+  /// Get display string for hardness
+  String get hardnessText {
+    switch (hardness) {
+      case LevelHardness.hard: return 'HARD';
+      case LevelHardness.veryHard: return 'VERY HARD';
+      default: return '';
+    }
   }
 }
 
