@@ -99,7 +99,12 @@ def find_doors_in_region(data: bytes, start: int, end: int, expected_count: int 
         # Check if this could be a door position (on grid edge)
         is_side_edge = side_edge_threshold <= abs(pos_x) <= side_edge_max
         is_top_bottom_edge = abs(pos_y) >= top_bottom_edge_threshold and abs(pos_x) < side_edge_threshold
-        if (is_side_edge or is_top_bottom_edge) and abs(pos_x) < 20 and abs(pos_y) < 20 and abs(pos_z) < 5:
+        
+        # Filter out corner positions - side doors should not be at top/bottom edge
+        # This prevents false positives at grid corners
+        is_corner = is_side_edge and abs(pos_y) >= top_bottom_edge_threshold
+        
+        if (is_side_edge or is_top_bottom_edge) and not is_corner and abs(pos_x) < 20 and abs(pos_y) < 20 and abs(pos_z) < 5:
             # Look for parts and type at expected offsets
             parts = read_int32(data, offset + 24)
             btype = read_int32(data, offset + 28)

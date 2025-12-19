@@ -519,17 +519,10 @@
           "startCol": 0
         },
         {
-          "blockType": 1,
-          "partCount": 1,
-          "edge": "left",
-          "startRow": 0,
-          "startCol": 0
-        },
-        {
-          "blockType": 5,
+          "blockType": 0,
           "partCount": 1,
           "edge": "right",
-          "startRow": 0,
+          "startRow": 3,
           "startCol": 4
         },
         {
@@ -728,13 +721,6 @@
         }
       ],
       "doors": [
-        {
-          "blockType": 8,
-          "partCount": 1,
-          "edge": "left",
-          "startRow": 0,
-          "startCol": 0
-        },
         {
           "blockType": 0,
           "partCount": 3,
@@ -1608,13 +1594,6 @@
           "edge": "left",
           "startRow": 3,
           "startCol": 0
-        },
-        {
-          "blockType": 5,
-          "partCount": 1,
-          "edge": "right",
-          "startRow": 0,
-          "startCol": 6
         },
         {
           "blockType": 8,
@@ -2612,13 +2591,6 @@
         {
           "blockType": 8,
           "partCount": 1,
-          "edge": "right",
-          "startRow": 0,
-          "startCol": 8
-        },
-        {
-          "blockType": 8,
-          "partCount": 1,
           "edge": "top",
           "startRow": -1,
           "startCol": 3
@@ -2931,13 +2903,6 @@
           "edge": "top",
           "startRow": -1,
           "startCol": 5
-        },
-        {
-          "blockType": 7,
-          "partCount": 1,
-          "edge": "right",
-          "startRow": 0,
-          "startCol": 6
         },
         {
           "blockType": 1,
