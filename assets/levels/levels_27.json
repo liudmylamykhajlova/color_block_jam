@@ -519,10 +519,17 @@
           "startCol": 0
         },
         {
-          "blockType": 0,
+          "blockType": 1,
+          "partCount": 1,
+          "edge": "left",
+          "startRow": 0,
+          "startCol": 0
+        },
+        {
+          "blockType": 5,
           "partCount": 1,
           "edge": "right",
-          "startRow": 3,
+          "startRow": 0,
           "startCol": 4
         },
         {
@@ -580,13 +587,6 @@
           "edge": "bottom",
           "startRow": 7,
           "startCol": 0
-        },
-        {
-          "blockType": 5,
-          "partCount": 1,
-          "edge": "top",
-          "startRow": -1,
-          "startCol": 3
         }
       ],
       "hiddenCells": [],
@@ -722,6 +722,13 @@
       ],
       "doors": [
         {
+          "blockType": 8,
+          "partCount": 1,
+          "edge": "left",
+          "startRow": 0,
+          "startCol": 0
+        },
+        {
           "blockType": 0,
           "partCount": 3,
           "edge": "left",
@@ -762,13 +769,6 @@
           "edge": "bottom",
           "startRow": 7,
           "startCol": 1
-        },
-        {
-          "blockType": 8,
-          "partCount": 1,
-          "edge": "top",
-          "startRow": -1,
-          "startCol": 4
         }
       ],
       "hiddenCells": [],
@@ -1008,13 +1008,6 @@
           "edge": "right",
           "startRow": 3,
           "startCol": 2
-        },
-        {
-          "blockType": 9,
-          "partCount": 2,
-          "edge": "top",
-          "startRow": -1,
-          "startCol": 0
         }
       ],
       "hiddenCells": [],
@@ -1418,13 +1411,6 @@
           "edge": "left",
           "startRow": 5,
           "startCol": 0
-        },
-        {
-          "blockType": 7,
-          "partCount": 1,
-          "edge": "bottom",
-          "startRow": 7,
-          "startCol": 2
         }
       ],
       "hiddenCells": [],
@@ -1594,6 +1580,13 @@
           "edge": "left",
           "startRow": 3,
           "startCol": 0
+        },
+        {
+          "blockType": 5,
+          "partCount": 1,
+          "edge": "right",
+          "startRow": 0,
+          "startCol": 6
         },
         {
           "blockType": 8,
@@ -2307,13 +2300,6 @@
           "edge": "top",
           "startRow": -1,
           "startCol": 2
-        },
-        {
-          "blockType": 5,
-          "partCount": 1,
-          "edge": "top",
-          "startRow": -1,
-          "startCol": 3
         }
       ],
       "hiddenCells": [],
@@ -2587,6 +2573,13 @@
           "edge": "bottom",
           "startRow": 9,
           "startCol": 2
+        },
+        {
+          "blockType": 8,
+          "partCount": 1,
+          "edge": "right",
+          "startRow": 0,
+          "startCol": 8
         },
         {
           "blockType": 8,
@@ -2903,6 +2896,13 @@
           "edge": "top",
           "startRow": -1,
           "startCol": 5
+        },
+        {
+          "blockType": 7,
+          "partCount": 1,
+          "edge": "right",
+          "startRow": 0,
+          "startCol": 6
         },
         {
           "blockType": 1,
@@ -4316,27 +4316,6 @@
       ],
       "doors": [
         {
-          "blockType": 2,
-          "partCount": 1,
-          "edge": "top",
-          "startRow": -1,
-          "startCol": 5
-        },
-        {
-          "blockType": 1,
-          "partCount": 1,
-          "edge": "top",
-          "startRow": -1,
-          "startCol": 6
-        },
-        {
-          "blockType": 9,
-          "partCount": 3,
-          "edge": "top",
-          "startRow": -1,
-          "startCol": 2
-        },
-        {
           "blockType": 8,
           "partCount": 3,
           "edge": "bottom",
@@ -4356,13 +4335,6 @@
           "edge": "bottom",
           "startRow": 9,
           "startCol": 3
-        },
-        {
-          "blockType": 4,
-          "partCount": 2,
-          "edge": "top",
-          "startRow": -1,
-          "startCol": 0
         }
       ],
       "hiddenCells": [

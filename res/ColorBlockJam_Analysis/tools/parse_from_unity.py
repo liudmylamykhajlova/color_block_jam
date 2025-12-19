@@ -84,7 +84,7 @@ def find_doors_in_region(data: bytes, start: int, end: int, expected_count: int 
     if edges_mostly_hidden:
         side_edge_threshold = grid_x - 1.1
     side_edge_max = grid_x + 2
-    top_bottom_edge_threshold = max(5.5, grid_y - 1.5)  # -1.5 to catch doors at y=grid_y-1
+    top_bottom_edge_threshold = max(5.5, grid_y - 0.5)  # Standard threshold for top/bottom doors
     
     # Expand search range to find all doors (some levels have doors up to 0x870+)
     search_end = min(len(data) - 32, max(end, 0x900))
@@ -100,11 +100,13 @@ def find_doors_in_region(data: bytes, start: int, end: int, expected_count: int 
         is_side_edge = side_edge_threshold <= abs(pos_x) <= side_edge_max
         is_top_bottom_edge = abs(pos_y) >= top_bottom_edge_threshold and abs(pos_x) < side_edge_threshold
         
-        # Filter out corner positions - side doors should not be at top/bottom edge
-        # This prevents false positives at grid corners
-        is_corner = is_side_edge and abs(pos_y) >= top_bottom_edge_threshold
+        # Filter out false positive: first door entry (offset 0x84) that is side edge with high Y
+        # This pattern appears in some levels where binary data is misinterpreted
+        is_first_entry_false_positive = (offset == start and is_side_edge and 
+                                          abs(pos_y) >= top_bottom_edge_threshold and
+                                          abs(pos_y) < grid_y + 0.5)  # Not at exact edge
         
-        if (is_side_edge or is_top_bottom_edge) and not is_corner and abs(pos_x) < 20 and abs(pos_y) < 20 and abs(pos_z) < 5:
+        if (is_side_edge or is_top_bottom_edge) and not is_first_entry_false_positive and abs(pos_x) < 20 and abs(pos_y) < 20 and abs(pos_z) < 5:
             # Look for parts and type at expected offsets
             parts = read_int32(data, offset + 24)
             btype = read_int32(data, offset + 28)
