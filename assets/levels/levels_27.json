@@ -13,7 +13,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -22,7 +23,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -58,7 +60,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -67,7 +70,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -103,7 +107,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -112,7 +117,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -121,7 +127,8 @@
           "gridCol": 3,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -171,7 +178,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -180,7 +188,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -189,7 +198,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -239,7 +249,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -248,7 +259,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -257,7 +269,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -266,7 +279,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -275,7 +289,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -332,7 +347,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -341,7 +357,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -350,7 +367,8 @@
           "gridCol": 2,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -359,7 +377,8 @@
           "gridCol": 3,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -368,7 +387,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -377,7 +397,8 @@
           "gridCol": 4,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -386,7 +407,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -395,7 +417,8 @@
           "gridCol": 2,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -459,7 +482,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 1
+          "moveDirection": 1,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -468,7 +492,8 @@
           "gridCol": 3,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -477,7 +502,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 1
+          "moveDirection": 1,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -486,7 +512,8 @@
           "gridCol": 0,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 1
+          "moveDirection": 1,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -495,7 +522,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -504,7 +532,8 @@
           "gridCol": 3,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -513,7 +542,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -522,7 +552,8 @@
           "gridCol": 3,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -531,7 +562,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -540,7 +572,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -639,7 +672,8 @@
           "gridCol": 4,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -648,7 +682,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -657,7 +692,8 @@
           "gridCol": 3,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -666,7 +702,8 @@
           "gridCol": 1,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -675,7 +712,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -684,7 +722,8 @@
           "gridCol": 3,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -693,7 +732,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -702,7 +742,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 1
+          "moveDirection": 1,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -711,7 +752,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -720,7 +762,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -729,7 +772,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -738,7 +782,8 @@
           "gridCol": 4,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -747,7 +792,8 @@
           "gridCol": 2,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 1
+          "moveDirection": 1,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -756,7 +802,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -765,7 +812,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -836,7 +884,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -845,7 +894,8 @@
           "gridCol": 2,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -854,7 +904,8 @@
           "gridCol": 2,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -863,7 +914,8 @@
           "gridCol": 2,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -872,7 +924,8 @@
           "gridCol": 4,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -881,7 +934,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -890,7 +944,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -899,7 +954,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -908,7 +964,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -981,7 +1038,8 @@
           "gridCol": 1,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -990,7 +1048,8 @@
           "gridCol": 1,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -999,7 +1058,8 @@
           "gridCol": 1,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -1008,7 +1068,8 @@
           "gridCol": 1,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -1017,7 +1078,8 @@
           "gridCol": 1,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -1026,7 +1088,8 @@
           "gridCol": 1,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -1090,7 +1153,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -1099,7 +1163,8 @@
           "gridCol": 1,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -1108,7 +1173,8 @@
           "gridCol": 6,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -1117,7 +1183,8 @@
           "gridCol": 6,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -1126,7 +1193,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -1135,7 +1203,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -1144,7 +1213,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -1153,7 +1223,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -1162,7 +1233,8 @@
           "gridCol": 3,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -1171,7 +1243,8 @@
           "gridCol": 4,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -1180,7 +1253,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -1189,7 +1263,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -1198,7 +1273,8 @@
           "gridCol": 6,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -1207,7 +1283,8 @@
           "gridCol": 6,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -1216,7 +1293,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -1343,7 +1421,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -1352,7 +1431,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -1361,7 +1441,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -1370,7 +1451,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -1379,7 +1461,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -1388,7 +1471,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -1397,7 +1481,8 @@
           "gridCol": 2,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -1406,7 +1491,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -1415,7 +1501,8 @@
           "gridCol": 4,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -1424,7 +1511,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -1433,7 +1521,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -1442,7 +1531,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -1520,7 +1610,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -1529,7 +1620,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -1538,7 +1630,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -1547,7 +1640,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -1556,7 +1650,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -1565,7 +1660,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -1574,7 +1670,8 @@
           "gridCol": 5,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -1583,7 +1680,8 @@
           "gridCol": 2,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -1592,7 +1690,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -1601,7 +1700,8 @@
           "gridCol": 6,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -1610,7 +1710,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -1619,7 +1720,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -1628,7 +1730,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -1637,7 +1740,8 @@
           "gridCol": 6,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -1646,7 +1750,8 @@
           "gridCol": 5,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -1655,7 +1760,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -1775,7 +1881,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -1784,7 +1891,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -1793,7 +1901,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -1802,7 +1911,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -1811,7 +1921,8 @@
           "gridCol": 0,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -1820,7 +1931,8 @@
           "gridCol": 2,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -1829,7 +1941,8 @@
           "gridCol": 4,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -1838,7 +1951,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -1847,7 +1961,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -1856,7 +1971,8 @@
           "gridCol": 4,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -1865,7 +1981,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -1929,7 +2046,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 7
         },
         {
           "blockType": 0,
@@ -1938,7 +2056,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 3
         },
         {
           "blockType": 3,
@@ -1947,7 +2066,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 0
         },
         {
           "blockType": 0,
@@ -1956,7 +2076,8 @@
           "gridCol": 2,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 3
         },
         {
           "blockType": 6,
@@ -1965,7 +2086,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 8
         },
         {
           "blockType": 5,
@@ -1974,7 +2096,8 @@
           "gridCol": 1,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 4
         },
         {
           "blockType": 4,
@@ -1983,7 +2106,8 @@
           "gridCol": 4,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 7
         },
         {
           "blockType": 2,
@@ -1992,7 +2116,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -2001,7 +2126,8 @@
           "gridCol": 3,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -2010,7 +2136,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -2019,7 +2146,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -2028,7 +2156,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -2037,7 +2166,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -2129,7 +2259,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -2138,7 +2269,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -2147,7 +2279,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -2156,7 +2289,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -2165,7 +2299,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -2174,7 +2309,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -2183,7 +2319,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -2192,7 +2329,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -2201,7 +2339,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -2210,7 +2349,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -2219,7 +2359,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -2228,7 +2369,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -2237,7 +2379,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -2246,7 +2389,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -2255,7 +2399,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -2337,7 +2482,8 @@
           "gridCol": 3,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -2346,7 +2492,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 4
         },
         {
           "blockType": 7,
@@ -2355,7 +2502,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 1
+          "moveDirection": 1,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -2364,7 +2512,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 1
+          "moveDirection": 1,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -2373,7 +2522,8 @@
           "gridCol": 3,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -2382,7 +2532,8 @@
           "gridCol": 4,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 5
         },
         {
           "blockType": 5,
@@ -2391,7 +2542,8 @@
           "gridCol": 2,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -2400,7 +2552,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -2409,7 +2562,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 2
         }
       ],
       "doors": [
@@ -2473,7 +2627,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 4
         },
         {
           "blockType": 1,
@@ -2482,7 +2637,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 5
         },
         {
           "blockType": 1,
@@ -2491,7 +2647,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -2500,7 +2657,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -2509,7 +2667,8 @@
           "gridCol": 6,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -2518,7 +2677,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -2527,7 +2687,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 5
         },
         {
           "blockType": 5,
@@ -2536,7 +2697,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -2545,7 +2707,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -2554,7 +2717,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -2563,7 +2727,8 @@
           "gridCol": 8,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -2572,7 +2737,8 @@
           "gridCol": 8,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -2581,7 +2747,8 @@
           "gridCol": 8,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -2590,7 +2757,8 @@
           "gridCol": 7,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -2599,7 +2767,8 @@
           "gridCol": 7,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -2608,7 +2777,8 @@
           "gridCol": 6,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -2617,7 +2787,8 @@
           "gridCol": 2,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -2626,7 +2797,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 1
+          "moveDirection": 1,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -2635,7 +2807,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -2644,7 +2817,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -2653,7 +2827,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -2662,7 +2837,8 @@
           "gridCol": 8,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 1
+          "moveDirection": 1,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -2782,7 +2958,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -2791,7 +2968,8 @@
           "gridCol": 4,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -2800,7 +2978,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -2809,7 +2988,8 @@
           "gridCol": 5,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -2818,7 +2998,8 @@
           "gridCol": 4,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -2827,7 +3008,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -2836,7 +3018,8 @@
           "gridCol": 4,
           "rotationZ": 2,
           "needsRowOffset": true,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -2951,7 +3134,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -2960,7 +3144,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -2969,7 +3154,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -2978,7 +3164,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -2987,7 +3174,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -2996,7 +3184,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -3005,7 +3194,8 @@
           "gridCol": 6,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -3014,7 +3204,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -3023,7 +3214,8 @@
           "gridCol": 6,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -3032,7 +3224,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -3041,7 +3234,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -3050,7 +3244,8 @@
           "gridCol": 1,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -3059,7 +3254,8 @@
           "gridCol": 6,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -3068,7 +3264,8 @@
           "gridCol": 5,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -3077,7 +3274,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -3172,7 +3370,8 @@
           "gridCol": 1,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -3181,7 +3380,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 0
         },
         {
           "blockType": 3,
@@ -3190,7 +3390,8 @@
           "gridCol": 7,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 2
         },
         {
           "blockType": 9,
@@ -3199,7 +3400,8 @@
           "gridCol": 6,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 4
         },
         {
           "blockType": 0,
@@ -3208,7 +3410,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -3217,7 +3420,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 1
+          "moveDirection": 1,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -3226,7 +3430,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -3235,7 +3440,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -3244,7 +3450,8 @@
           "gridCol": 6,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -3253,7 +3460,8 @@
           "gridCol": 5,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -3262,7 +3470,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -3271,7 +3480,8 @@
           "gridCol": 3,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": 0
         },
         {
           "blockType": 0,
@@ -3280,7 +3490,8 @@
           "gridCol": 6,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -3289,7 +3500,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -3298,7 +3510,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -3307,7 +3520,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -3316,7 +3530,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -3325,7 +3540,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 0
+          "moveDirection": 0,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -3449,7 +3665,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -3458,7 +3675,8 @@
           "gridCol": 2,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -3467,7 +3685,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -3476,7 +3695,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -3485,7 +3705,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -3494,7 +3715,8 @@
           "gridCol": 4,
           "rotationZ": 2,
           "needsRowOffset": true,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -3503,7 +3725,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -3512,7 +3735,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -3521,7 +3745,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -3530,7 +3755,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -3619,7 +3845,8 @@
           "gridCol": 3,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -3628,7 +3855,8 @@
           "gridCol": 2,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -3637,7 +3865,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -3646,7 +3875,8 @@
           "gridCol": 4,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -3655,7 +3885,8 @@
           "gridCol": 3,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -3664,7 +3895,8 @@
           "gridCol": 4,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -3673,7 +3905,8 @@
           "gridCol": 3,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -3682,7 +3915,8 @@
           "gridCol": 2,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -3691,7 +3925,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -3700,7 +3935,8 @@
           "gridCol": 6,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -3709,7 +3945,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -3718,7 +3955,8 @@
           "gridCol": 6,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -3727,7 +3965,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 1
+          "moveDirection": 1,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -3736,7 +3975,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 1
+          "moveDirection": 1,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -3745,7 +3985,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -3754,7 +3995,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -3843,7 +4085,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -3852,7 +4095,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -3861,7 +4105,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -3870,7 +4115,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -3879,7 +4125,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -3888,7 +4135,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -3897,7 +4145,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -3906,7 +4155,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -3915,7 +4165,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -3924,7 +4175,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -3933,7 +4185,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -3942,7 +4195,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -3951,7 +4205,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -3960,7 +4215,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -3969,7 +4225,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -3978,7 +4235,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -4063,7 +4321,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -4072,7 +4331,8 @@
           "gridCol": 1,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -4081,7 +4341,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -4090,7 +4351,8 @@
           "gridCol": 1,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -4099,7 +4361,8 @@
           "gridCol": 4,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -4163,7 +4426,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -4172,7 +4436,8 @@
           "gridCol": 5,
           "rotationZ": 1,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -4181,7 +4446,8 @@
           "gridCol": 3,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -4190,7 +4456,8 @@
           "gridCol": 5,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -4199,7 +4466,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -4208,7 +4476,8 @@
           "gridCol": 7,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -4217,7 +4486,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -4226,7 +4496,8 @@
           "gridCol": 7,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -4235,7 +4506,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -4244,7 +4516,8 @@
           "gridCol": 6,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -4253,7 +4526,8 @@
           "gridCol": 7,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 7,
@@ -4262,7 +4536,8 @@
           "gridCol": 1,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -4271,7 +4546,8 @@
           "gridCol": 1,
           "rotationZ": 2,
           "needsRowOffset": true,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -4280,7 +4556,8 @@
           "gridCol": 4,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 0,
@@ -4289,7 +4566,8 @@
           "gridCol": 4,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -4298,7 +4576,8 @@
           "gridCol": 1,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 6,
@@ -4307,7 +4586,8 @@
           "gridCol": 7,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -4316,7 +4596,8 @@
           "gridCol": 3,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -4325,7 +4606,8 @@
           "gridCol": 5,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -4334,7 +4616,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [
@@ -4507,7 +4790,8 @@
           "gridCol": 3,
           "rotationZ": 2,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 5,
@@ -4516,7 +4800,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 2,
@@ -4525,7 +4810,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -4534,7 +4820,8 @@
           "gridCol": 2,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -4543,7 +4830,8 @@
           "gridCol": 5,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -4552,7 +4840,8 @@
           "gridCol": 6,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -4561,7 +4850,8 @@
           "gridCol": 1,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 8,
@@ -4570,7 +4860,8 @@
           "gridCol": 6,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 9,
@@ -4579,7 +4870,8 @@
           "gridCol": 2,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 1,
@@ -4588,7 +4880,8 @@
           "gridCol": 3,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 4,
@@ -4597,7 +4890,8 @@
           "gridCol": 0,
           "rotationZ": 0,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         },
         {
           "blockType": 3,
@@ -4606,7 +4900,8 @@
           "gridCol": 4,
           "rotationZ": 3,
           "needsRowOffset": false,
-          "moveDirection": 2
+          "moveDirection": 2,
+          "innerBlockType": -1
         }
       ],
       "doors": [

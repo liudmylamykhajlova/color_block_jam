@@ -92,8 +92,8 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
                           itemBuilder: (context, index) {
                             final level = _levels![index];
                             final isCompleted = _completedLevels.contains(level.id);
-                            final isUnlocked = level.id == 1 || 
-                                _completedLevels.contains(level.id - 1);
+                            // TODO: Для тестування всі рівні відкриті
+                            final isUnlocked = true; // level.id == 1 || _completedLevels.contains(level.id - 1);
                             
                             return _LevelCard(
                               levelId: level.id,

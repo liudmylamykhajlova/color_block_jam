@@ -298,14 +298,32 @@ def find_game_blocks(data: bytes, grid_x: int, grid_y: int) -> List[Dict]:
         else:
             move_direction = 2  # BOTH
         
-        blocks.append({
+        # Read inner layer flag (offset +96) and color (offset +100)
+        # off96 = 1 means inner layer exists, 0 = no inner layer
+        has_inner_flag = read_int32(data, offset + 96)
+        inner_block_type = read_int32(data, offset + 100)
+        
+        if has_inner_flag != 1:
+            inner_block_type = -1  # No inner layer
+        elif inner_block_type < 0 or inner_block_type > 11:
+            inner_block_type = -1  # Invalid color
+        elif inner_block_type == block_type:
+            inner_block_type = -1  # Same as outer, no visible inner layer
+        
+        block_data = {
             'position': {'x': round(px, 4), 'y': round(py, 4), 'z': round(pz, 4)},
             'rotation': {'x': round(rx, 4), 'y': round(ry, 4), 'z': round(rz, 4)},
             'blockGroupType': group_type,
             'blockType': block_type,
             'blockGroupTypeName': BLOCK_GROUP_TYPES.get(group_type, f"Unknown({group_type})"),
             'moveDirection': move_direction  # 0=HORIZ, 1=VERT, 2=BOTH
-        })
+        }
+        
+        # Add inner layer only if present
+        if inner_block_type >= 0:
+            block_data['innerBlockType'] = inner_block_type
+        
+        blocks.append(block_data)
     
     return blocks
 

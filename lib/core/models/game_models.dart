@@ -84,6 +84,10 @@ class GameBlock {
   final int rotationZ;
   final bool needsRowOffset;
   final MoveDirection moveDirection;
+  final int innerBlockType; // -1 = no inner layer, 0-9 = inner color
+  
+  /// Чи зруйновано зовнішній шар (для багатошарових блоків)
+  bool outerLayerDestroyed = false;
   
   // Grid size for edge detection
   int gridWidth = 6;
@@ -97,7 +101,14 @@ class GameBlock {
     required this.rotationZ,
     this.needsRowOffset = false,
     this.moveDirection = MoveDirection.both,
+    this.innerBlockType = -1,
   });
+  
+  /// Чи є внутрішній шар (і він ще не оголений)
+  bool get hasInnerLayer => innerBlockType >= 0 && innerBlockType <= 9 && !outerLayerDestroyed;
+  
+  /// Поточний активний колір блоку (для виходу через двері)
+  int get activeBlockType => outerLayerDestroyed ? innerBlockType : blockType;
 
   factory GameBlock.fromJson(Map<String, dynamic> json) {
     // Parse moveDirection: 0=horiz, 1=vert, 2=both
@@ -122,6 +133,7 @@ class GameBlock {
       rotationZ: json['rotationZ'],
       needsRowOffset: json['needsRowOffset'] ?? false,
       moveDirection: direction,
+      innerBlockType: json['innerBlockType'] ?? -1,
     );
   }
 
@@ -134,7 +146,8 @@ class GameBlock {
       rotationZ: rotationZ,
       needsRowOffset: needsRowOffset,
       moveDirection: moveDirection,
-    )..gridWidth = gridWidth..gridHeight = gridHeight;
+      innerBlockType: innerBlockType,
+    )..gridWidth = gridWidth..gridHeight = gridHeight..outerLayerDestroyed = outerLayerDestroyed;
   }
 
   /// Get all cells occupied by this block with complex rotation/offset logic
@@ -213,8 +226,17 @@ class GameBlock {
         }
         break;
       case 8:
+        // ShortT shape with explicit rotated forms
+        final shortTShapes = {
+          0: [[-1, 0], [0, 0], [1, 0], [0, 1]],    // stem down
+          1: [[0, -1], [0, 0], [1, 0], [0, 1]],    // stem right
+          2: [[0, -1], [-1, 0], [0, 0], [1, 0]],   // stem up
+          3: [[0, -1], [-1, 0], [0, 0], [0, 1]]    // stem left
+        };
+        rotatedShape = shortTShapes[rotZ]?.map((c) => [...c]).toList() ?? rotatedShape;
         if (rotZ == 0) row -= 1;
-        else if (rotZ == 2) row += 1;
+        else if (rotZ == 1) col -= 1;
+        // rotZ == 2 and 3: no offset
         break;
     }
 

@@ -134,7 +134,8 @@ def main():
                 'gridCol': center_col,
                 'rotationZ': rot_z,
                 'needsRowOffset': needs_row_offset,
-                'moveDirection': b.get('moveDirection', 2)  # 0=HORIZ, 1=VERT, 2=BOTH
+                'moveDirection': b.get('moveDirection', 2),  # 0=HORIZ, 1=VERT, 2=BOTH
+                'innerBlockType': b.get('innerBlockType', -1)  # -1 = no inner layer
             })
         
         # Get edge column hidden info for this level (use original grid height for calculation)

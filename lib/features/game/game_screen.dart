@@ -482,7 +482,15 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
         fromRow, fromCol, 
         _selectedBlock!.gridRow, _selectedBlock!.gridCol
       );
-      _checkDoorExit(level);
+      // Спочатку перевіряємо руйнування шару при торканні дверей
+      if (!_checkLayerDestruction(_selectedBlock!, level)) {
+        // Якщо шар не зруйновано - перевіряємо вихід
+        _checkDoorExit(level);
+      }
+    } else {
+      // Рух заблоковано, але перевіряємо чи потрібно руйнувати шар
+      // (якщо блок вже на краю і користувач тягне в бік дверей)
+      _checkLayerDestructionOnPush(_selectedBlock!, moveRow, moveCol, level);
     }
   }
 
@@ -518,12 +526,19 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
 
     final newCells = tempBlock.cells;
     
-    final matchingDoors = level.doors.where((d) => d.blockType == block.blockType).toList();
+    // Використовуємо activeBlockType для багатошарових блоків
+    final matchingDoors = level.doors.where((d) => d.blockType == block.activeBlockType).toList();
 
     for (final cell in newCells) {
       final isOutside = cell.row < 0 || cell.row >= level.gridHeight ||
           cell.col < 0 || cell.col >= level.gridWidth;
       final isHidden = level.hiddenCells.contains(cell);
+      
+      // Блок з внутрішнім шаром не може виходити за межі сітки
+      // (він може тільки торкатись краю, де шар руйнується)
+      if (isOutside && block.innerBlockType >= 0 && !block.outerLayerDestroyed) {
+        return false;
+      }
       
       // Check if this cell could be an exit position (outside grid OR in hidden area near a door)
       if (isOutside || isHidden) {
@@ -572,6 +587,115 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     }
 
     return true;
+  }
+
+  /// Перевіряє руйнування шару коли блок вже на краю і користувач тягне в бік дверей.
+  void _checkLayerDestructionOnPush(GameBlock block, int pushRow, int pushCol, GameLevel level) {
+    // Тільки для блоків з внутрішнім шаром, який ще не зруйновано
+    if (block.innerBlockType < 0 || block.outerLayerDestroyed) {
+      return;
+    }
+    
+    final blockCells = block.cells;
+    
+    // Знаходимо двері з зовнішнім кольором блоку
+    final outerColorDoors = level.doors.where((d) => d.blockType == block.blockType).toList();
+    
+    // Перевіряємо чи блок на краю і користувач тягне в бік дверей
+    for (final cell in blockCells) {
+      for (final door in outerColorDoors) {
+        bool pushesTowardsDoor = false;
+        
+        if (door.edge == 'top' && cell.row == 0 && pushRow < 0) {
+          // Блок на верхньому краю, тягнуть вгору
+          if (cell.col >= door.startCol && cell.col < door.startCol + door.partCount) {
+            pushesTowardsDoor = true;
+          }
+        } else if (door.edge == 'bottom' && cell.row == level.gridHeight - 1 && pushRow > 0) {
+          // Блок на нижньому краю, тягнуть вниз
+          if (cell.col >= door.startCol && cell.col < door.startCol + door.partCount) {
+            pushesTowardsDoor = true;
+          }
+        } else if (door.edge == 'left' && cell.col == 0 && pushCol < 0) {
+          // Блок на лівому краю, тягнуть вліво
+          if (cell.row >= door.startRow && cell.row < door.startRow + door.partCount) {
+            pushesTowardsDoor = true;
+          }
+        } else if (door.edge == 'right' && cell.col == level.gridWidth - 1 && pushCol > 0) {
+          // Блок на правому краю, тягнуть вправо
+          if (cell.row >= door.startRow && cell.row < door.startRow + door.partCount) {
+            pushesTowardsDoor = true;
+          }
+        }
+        
+        if (pushesTowardsDoor) {
+          // Руйнуємо зовнішній шар
+          GameLogger.info('Outer layer destroyed (on push) for block ${block.blockType} -> ${block.innerBlockType}', 'GAME');
+          AudioService.playExit();
+          
+          setState(() {
+            block.outerLayerDestroyed = true;
+          });
+          return;
+        }
+      }
+    }
+  }
+
+  /// Перевіряє чи блок торкається дверей свого зовнішнього кольору.
+  /// Якщо так і є внутрішній шар - руйнує його і повертає true.
+  bool _checkLayerDestruction(GameBlock block, GameLevel level) {
+    // Тільки для блоків з внутрішнім шаром, який ще не зруйновано
+    if (block.innerBlockType < 0 || block.outerLayerDestroyed) {
+      return false;
+    }
+    
+    final blockCells = block.cells;
+    
+    // Знаходимо двері з зовнішнім кольором блоку
+    final outerColorDoors = level.doors.where((d) => d.blockType == block.blockType).toList();
+    
+    // Перевіряємо чи блок торкається краю сітки біля дверей
+    for (final cell in blockCells) {
+      for (final door in outerColorDoors) {
+        bool touchesDoor = false;
+        
+        if (door.edge == 'top' && cell.row == 0) {
+          // Блок на верхньому краю
+          if (cell.col >= door.startCol && cell.col < door.startCol + door.partCount) {
+            touchesDoor = true;
+          }
+        } else if (door.edge == 'bottom' && cell.row == level.gridHeight - 1) {
+          // Блок на нижньому краю
+          if (cell.col >= door.startCol && cell.col < door.startCol + door.partCount) {
+            touchesDoor = true;
+          }
+        } else if (door.edge == 'left' && cell.col == 0) {
+          // Блок на лівому краю
+          if (cell.row >= door.startRow && cell.row < door.startRow + door.partCount) {
+            touchesDoor = true;
+          }
+        } else if (door.edge == 'right' && cell.col == level.gridWidth - 1) {
+          // Блок на правому краю
+          if (cell.row >= door.startRow && cell.row < door.startRow + door.partCount) {
+            touchesDoor = true;
+          }
+        }
+        
+        if (touchesDoor) {
+          // Руйнуємо зовнішній шар
+          GameLogger.info('Outer layer destroyed for block ${block.blockType} -> ${block.innerBlockType}', 'GAME');
+          AudioService.playExit();
+          
+          setState(() {
+            block.outerLayerDestroyed = true;
+          });
+          return true;
+        }
+      }
+    }
+    
+    return false;
   }
 
   void _checkDoorExit(GameLevel level) {
@@ -650,7 +774,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     else if (_exitDeltaCol < 0) exitEdge = 'left';
     else if (_exitDeltaCol > 0) exitEdge = 'right';
     
-    GameLogger.blockExited(_exitingBlock!.blockType, exitEdge);
+    // Блок повністю виходить
+    GameLogger.blockExited(_exitingBlock!.activeBlockType, exitEdge);
     AudioService.playExit();
     
     setState(() {
@@ -1138,7 +1263,6 @@ class GameBoardPainter extends CustomPainter {
   }
 
   void _drawBlock(Canvas canvas, GameBlock block, double borderOffset) {
-    final color = GameColors.getColor(block.blockType);
     final isSelected = block == selectedBlock;
     final isExiting = block == exitingBlock;
     final cells = block.cells;
@@ -1149,11 +1273,32 @@ class GameBoardPainter extends CustomPainter {
       offsetX = exitDeltaCol * exitProgress * cellSize * 3;
       offsetY = exitDeltaRow * exitProgress * cellSize * 3;
     }
+    
+    // Визначаємо кольори для блоку
+    final Color fillColor;
+    final Color borderColor;
+    final bool showOuterBorder;
+    
+    if (block.outerLayerDestroyed) {
+      // Зовнішній шар зруйновано - блок тепер повністю кольору inner layer
+      fillColor = GameColors.getColor(block.innerBlockType);
+      borderColor = fillColor;
+      showOuterBorder = false;
+    } else if (block.hasInnerLayer) {
+      // Inner layer: заливка = innerBlockType, обводка = blockType
+      fillColor = GameColors.getColor(block.innerBlockType);
+      borderColor = GameColors.getColor(block.blockType);
+      showOuterBorder = true;
+    } else {
+      fillColor = GameColors.getColor(block.blockType);
+      borderColor = fillColor;
+      showOuterBorder = false;
+    }
 
     // Draw selection glow
     if (isSelected) {
       final glowPaint = Paint()
-        ..color = color.withOpacity(0.4)
+        ..color = fillColor.withOpacity(0.4)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 12);
       
       final glowPath = Path();
@@ -1164,8 +1309,8 @@ class GameBoardPainter extends CustomPainter {
       }
       canvas.drawPath(glowPath, glowPaint);
     }
-
-    final paint = Paint()..color = isSelected ? color.withOpacity(0.95) : color;
+    
+    final paint = Paint()..color = isSelected ? fillColor.withOpacity(0.95) : fillColor;
     
     final path = Path();
     for (final cell in cells) {
@@ -1175,11 +1320,44 @@ class GameBoardPainter extends CustomPainter {
     }
     canvas.drawPath(path, paint);
 
+    // Товста обводка для inner layer блоків (якщо зовнішній шар не зруйновано)
+    if (showOuterBorder) {
+      final borderWidth = cellSize * 0.12;
+      final cellSet = cells.toSet();
+      
+      for (final cell in cells) {
+        final x = borderOffset + cell.col * cellSize + offsetX;
+        final y = borderOffset + cell.row * cellSize + offsetY;
+        
+        final borderPaint = Paint()
+          ..color = borderColor
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = borderWidth;
+        
+        // Малюємо обводку тільки на зовнішніх краях
+        if (!cellSet.contains(Point(cell.row - 1, cell.col))) {
+          canvas.drawLine(Offset(x, y + borderWidth/2), Offset(x + cellSize, y + borderWidth/2), borderPaint);
+        }
+        if (!cellSet.contains(Point(cell.row + 1, cell.col))) {
+          canvas.drawLine(Offset(x, y + cellSize - borderWidth/2), Offset(x + cellSize, y + cellSize - borderWidth/2), borderPaint);
+        }
+        if (!cellSet.contains(Point(cell.row, cell.col - 1))) {
+          canvas.drawLine(Offset(x + borderWidth/2, y), Offset(x + borderWidth/2, y + cellSize), borderPaint);
+        }
+        if (!cellSet.contains(Point(cell.row, cell.col + 1))) {
+          canvas.drawLine(Offset(x + cellSize - borderWidth/2, y), Offset(x + cellSize - borderWidth/2, y + cellSize), borderPaint);
+        }
+      }
+    }
+    
+    // LEGO stud (маленький круг по центру)
     final studRadius = cellSize * 0.2;
+    final studColor = fillColor;
+    
     final studPaintLight = Paint()
-      ..color = Color.lerp(color, Colors.white, 0.25)!;
+      ..color = Color.lerp(studColor, Colors.white, 0.25)!;
     final studPaintDark = Paint()
-      ..color = Color.lerp(color, Colors.black, 0.1)!
+      ..color = Color.lerp(studColor, Colors.black, 0.1)!
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.5;
     
@@ -1191,7 +1369,7 @@ class GameBoardPainter extends CustomPainter {
       canvas.drawCircle(Offset(cx, cy), studRadius, studPaintDark);
     }
 
-    _drawBlockOutline(canvas, cells, borderOffset, color, isSelected, offsetX, offsetY);
+    _drawBlockOutline(canvas, cells, borderOffset, fillColor, isSelected, offsetX, offsetY);
     
     // Малюємо стрілки напрямку руху
     if (block.moveDirection != MoveDirection.both) {
