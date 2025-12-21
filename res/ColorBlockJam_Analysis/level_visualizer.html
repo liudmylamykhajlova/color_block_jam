@@ -925,6 +925,127 @@
                         ctx.stroke();
                     }
                 });
+                
+                // Draw move direction arrows if block has restriction
+                const moveDir = block.moveDirection;
+                if (moveDir !== undefined && moveDir !== 2) {
+                    // Find center for arrow placement
+                    let centerX, centerY;
+                    const gt = block.blockGroupType;
+                    
+                    // For L-shaped blocks (gt 3-6), find center of the long part
+                    if (gt >= 3 && gt <= 6 && blockCells.length >= 4) {
+                        // Find the cell that has 2 neighbors (corner of L)
+                        // Then find the middle of the 3-cell line
+                        const cellSet = new Set(blockCells.map(c => `${c.col},${c.row}`));
+                        
+                        // Count neighbors for each cell
+                        let cornerCell = null;
+                        blockCells.forEach(cell => {
+                            const neighbors = [
+                                `${cell.col-1},${cell.row}`,
+                                `${cell.col+1},${cell.row}`,
+                                `${cell.col},${cell.row-1}`,
+                                `${cell.col},${cell.row+1}`
+                            ].filter(n => cellSet.has(n)).length;
+                            if (neighbors === 2) cornerCell = cell;
+                        });
+                        
+                        if (cornerCell) {
+                            // Find the direction of the long part (3 cells including corner)
+                            // Check horizontal and vertical lines through corner
+                            const inRow = blockCells.filter(c => c.row === cornerCell.row);
+                            const inCol = blockCells.filter(c => c.col === cornerCell.col);
+                            
+                            let longPart;
+                            if (inRow.length >= 2) {
+                                // Long part is horizontal
+                                longPart = inRow;
+                            } else if (inCol.length >= 2) {
+                                // Long part is vertical
+                                longPart = inCol;
+                            } else {
+                                longPart = blockCells;
+                            }
+                            
+                            // Find center of long part
+                            let sumCol = 0, sumRow = 0;
+                            longPart.forEach(c => { sumCol += c.col; sumRow += c.row; });
+                            centerX = padding + (sumCol / longPart.length + 0.5) * cellSize;
+                            centerY = padding + (sumRow / longPart.length + 0.5) * cellSize;
+                        } else {
+                            // Fallback to bounding box center
+                            let minCol = Infinity, maxCol = -Infinity;
+                            let minRow = Infinity, maxRow = -Infinity;
+                            blockCells.forEach(({ col, row }) => {
+                                minCol = Math.min(minCol, col); maxCol = Math.max(maxCol, col);
+                                minRow = Math.min(minRow, row); maxRow = Math.max(maxRow, row);
+                            });
+                            centerX = padding + (minCol + maxCol + 1) / 2 * cellSize;
+                            centerY = padding + (minRow + maxRow + 1) / 2 * cellSize;
+                        }
+                    } else {
+                        // For other blocks, use bounding box center
+                        let minCol = Infinity, maxCol = -Infinity;
+                        let minRow = Infinity, maxRow = -Infinity;
+                        blockCells.forEach(({ col, row }) => {
+                            minCol = Math.min(minCol, col); maxCol = Math.max(maxCol, col);
+                            minRow = Math.min(minRow, row); maxRow = Math.max(maxRow, row);
+                        });
+                        centerX = padding + (minCol + maxCol + 1) / 2 * cellSize;
+                        centerY = padding + (minRow + maxRow + 1) / 2 * cellSize;
+                    }
+                    
+                    const arrowSize = cellSize * 0.3;
+                    
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                    ctx.lineWidth = 2;
+                    
+                    if (moveDir === 0) {
+                        // HORIZ - draw left/right arrows
+                        // Left arrow
+                        ctx.beginPath();
+                        ctx.moveTo(centerX - arrowSize, centerY);
+                        ctx.lineTo(centerX - arrowSize * 0.3, centerY - arrowSize * 0.4);
+                        ctx.lineTo(centerX - arrowSize * 0.3, centerY + arrowSize * 0.4);
+                        ctx.closePath();
+                        ctx.fill();
+                        // Right arrow
+                        ctx.beginPath();
+                        ctx.moveTo(centerX + arrowSize, centerY);
+                        ctx.lineTo(centerX + arrowSize * 0.3, centerY - arrowSize * 0.4);
+                        ctx.lineTo(centerX + arrowSize * 0.3, centerY + arrowSize * 0.4);
+                        ctx.closePath();
+                        ctx.fill();
+                        // Line between
+                        ctx.beginPath();
+                        ctx.moveTo(centerX - arrowSize * 0.3, centerY);
+                        ctx.lineTo(centerX + arrowSize * 0.3, centerY);
+                        ctx.stroke();
+                    } else if (moveDir === 1) {
+                        // VERT - draw up/down arrows
+                        // Up arrow
+                        ctx.beginPath();
+                        ctx.moveTo(centerX, centerY - arrowSize);
+                        ctx.lineTo(centerX - arrowSize * 0.4, centerY - arrowSize * 0.3);
+                        ctx.lineTo(centerX + arrowSize * 0.4, centerY - arrowSize * 0.3);
+                        ctx.closePath();
+                        ctx.fill();
+                        // Down arrow
+                        ctx.beginPath();
+                        ctx.moveTo(centerX, centerY + arrowSize);
+                        ctx.lineTo(centerX - arrowSize * 0.4, centerY + arrowSize * 0.3);
+                        ctx.lineTo(centerX + arrowSize * 0.4, centerY + arrowSize * 0.3);
+                        ctx.closePath();
+                        ctx.fill();
+                        // Line between
+                        ctx.beginPath();
+                        ctx.moveTo(centerX, centerY - arrowSize * 0.3);
+                        ctx.lineTo(centerX, centerY + arrowSize * 0.3);
+                        ctx.stroke();
+                    }
+                }
             });
             
             console.log(`Total cells drawn: ${totalCellsDrawn}, Unique cells: ${drawnCells.size}`);

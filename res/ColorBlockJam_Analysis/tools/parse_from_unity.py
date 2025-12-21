@@ -267,12 +267,44 @@ def find_game_blocks(data: bytes, grid_x: int, grid_y: int) -> List[Dict]:
         if block_type < 0 or block_type > 15:
             continue
         
+        # Read movement restriction flags (offset +32 and +40)
+        off32 = read_int32(data, offset + 32)
+        off40 = read_int32(data, offset + 40)
+        
+        # Determine moveDirection:
+        # 0 = HORIZ only, 1 = VERT only, 2 = BOTH
+        # Logic:
+        # (1, 1) → direction SAME as block orientation (based on rotation)
+        # (1, 0) → direction PERPENDICULAR to block orientation
+        # (0, 0) or (0, 1) → BOTH
+        rz_normalized = round(rz) % 360
+        
+        if off32 == 1 and off40 == 1:
+            # Direction same as block orientation
+            # rotation 0 or 180 = vertical block = moves vertically
+            # rotation 90 or 270 = horizontal block = moves horizontally
+            if rz_normalized in [0, 180]:
+                move_direction = 1  # VERT
+            else:
+                move_direction = 0  # HORIZ
+        elif off32 == 1 and off40 == 0:
+            # Direction perpendicular to block orientation
+            # rotation 0 or 180 = vertical block = moves horizontally
+            # rotation 90 or 270 = horizontal block = moves vertically
+            if rz_normalized in [0, 180]:
+                move_direction = 0  # HORIZ
+            else:
+                move_direction = 1  # VERT
+        else:
+            move_direction = 2  # BOTH
+        
         blocks.append({
             'position': {'x': round(px, 4), 'y': round(py, 4), 'z': round(pz, 4)},
             'rotation': {'x': round(rx, 4), 'y': round(ry, 4), 'z': round(rz, 4)},
             'blockGroupType': group_type,
             'blockType': block_type,
-            'blockGroupTypeName': BLOCK_GROUP_TYPES.get(group_type, f"Unknown({group_type})")
+            'blockGroupTypeName': BLOCK_GROUP_TYPES.get(group_type, f"Unknown({group_type})"),
+            'moveDirection': move_direction  # 0=HORIZ, 1=VERT, 2=BOTH
         })
     
     return blocks

@@ -100,4 +100,7 @@ coverage/
 # Large analysis files - excluded from git (exceed 100MB limit)
 *.xapk
 *.apk
+*.ab
+*.tar
 res/ColorBlockJam_Analysis/xapk_extracted/
+res/ColorBlockJam_Analysis/phone_cache/
