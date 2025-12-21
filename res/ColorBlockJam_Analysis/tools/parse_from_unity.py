@@ -271,6 +271,11 @@ def find_game_blocks(data: bytes, grid_x: int, grid_y: int) -> List[Dict]:
         off32 = read_int32(data, offset + 32)
         off40 = read_int32(data, offset + 40)
         
+        # Read ice/freeze count (offset +44) - number of blocks to destroy before unfreezing
+        ice_count = read_int32(data, offset + 44)
+        if ice_count < 0 or ice_count > 20:
+            ice_count = 0  # Invalid value, treat as not frozen
+        
         # Determine moveDirection:
         # 0 = HORIZ only, 1 = VERT only, 2 = BOTH
         # Logic:
@@ -316,7 +321,8 @@ def find_game_blocks(data: bytes, grid_x: int, grid_y: int) -> List[Dict]:
             'blockGroupType': group_type,
             'blockType': block_type,
             'blockGroupTypeName': BLOCK_GROUP_TYPES.get(group_type, f"Unknown({group_type})"),
-            'moveDirection': move_direction  # 0=HORIZ, 1=VERT, 2=BOTH
+            'moveDirection': move_direction,  # 0=HORIZ, 1=VERT, 2=BOTH
+            'iceCount': ice_count  # 0 = not frozen, >0 = frozen for N block exits
         }
         
         # Add inner layer only if present
