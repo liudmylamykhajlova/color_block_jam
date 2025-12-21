@@ -1,7 +1,7 @@
 # Color Block Jam - Технічна Специфікація (ТЗ)
 
-> **Версія:** 1.1.0  
-> **Дата оновлення:** 2025-12-18  
+> **Версія:** 1.2.0  
+> **Дата оновлення:** 2025-12-21  
 > **Статус:** В розробці
 
 ---
@@ -113,12 +113,19 @@ class GameLevel {
 
 ### 3.2 GameBlock
 ```dart
+enum MoveDirection {
+  horizontal,  // 0 - тільки горизонтально (←→)
+  vertical,    // 1 - тільки вертикально (↑↓)
+  both,        // 2 - в обидва напрямки
+}
+
 class GameBlock {
   final int blockType;        // Колір (0-9)
   final int blockGroupType;   // Форма (0-11)
   int gridRow;                // Позиція Y
   int gridCol;                // Позиція X
   final int rotationZ;        // Поворот (0-3)
+  final MoveDirection moveDirection;  // Обмеження напрямку руху
   
   List<Point> get cells;      // Обчислені клітинки
 }
@@ -158,6 +165,9 @@ class GameDoor {
 ### 4.1 Collision Detection
 ```dart
 bool _canMove(GameBlock block, int deltaRow, int deltaCol, GameLevel level) {
+  // 0. Перевірити обмеження напрямку руху (moveDirection)
+  //    - horizontal: блокувати вертикальний рух (deltaRow != 0)
+  //    - vertical: блокувати горизонтальний рух (deltaCol != 0)
   // 1. Обчислити нові позиції клітинок
   // 2. Перевірити межі поля
   // 3. Перевірити двері (дозволити вихід за межі якщо є двері)
@@ -259,6 +269,7 @@ List<List<int>> rotateShape(List<List<int>> shape, int rotZ) {
 
 | Версія | Дата | Зміни |
 |--------|------|-------|
+| 1.2.0 | 2025-12-21 | Додано MoveDirection - обмеження напрямку руху блоків |
 | 1.1.2 | 2025-12-18 | Верифіковано 21 рівень, універсальний алгоритм ReverseL |
 | 1.1.1 | 2025-12-18 | Виправлено Level 16 (двері), Level 19 (ShortL, двері) |
 | 1.1.0 | 2025-12-18 | Оновлено структуру проекту, 27 рівнів (18 верифікованих) |
