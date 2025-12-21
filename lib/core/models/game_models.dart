@@ -69,6 +69,13 @@ class GameLevel {
   }
 }
 
+/// Напрямок руху блока
+enum MoveDirection {
+  horizontal, // 0 - тільки горизонтально
+  vertical,   // 1 - тільки вертикально
+  both,       // 2 - в обидва напрямки
+}
+
 class GameBlock {
   final int blockType;
   final int blockGroupType;
@@ -76,6 +83,7 @@ class GameBlock {
   int gridCol;
   final int rotationZ;
   final bool needsRowOffset;
+  final MoveDirection moveDirection;
   
   // Grid size for edge detection
   int gridWidth = 6;
@@ -88,9 +96,24 @@ class GameBlock {
     required this.gridCol,
     required this.rotationZ,
     this.needsRowOffset = false,
+    this.moveDirection = MoveDirection.both,
   });
 
   factory GameBlock.fromJson(Map<String, dynamic> json) {
+    // Parse moveDirection: 0=horiz, 1=vert, 2=both
+    final moveDir = json['moveDirection'] ?? 2;
+    MoveDirection direction;
+    switch (moveDir) {
+      case 0:
+        direction = MoveDirection.horizontal;
+        break;
+      case 1:
+        direction = MoveDirection.vertical;
+        break;
+      default:
+        direction = MoveDirection.both;
+    }
+    
     return GameBlock(
       blockType: json['blockType'],
       blockGroupType: json['blockGroupType'],
@@ -98,6 +121,7 @@ class GameBlock {
       gridCol: json['gridCol'],
       rotationZ: json['rotationZ'],
       needsRowOffset: json['needsRowOffset'] ?? false,
+      moveDirection: direction,
     );
   }
 
@@ -109,6 +133,7 @@ class GameBlock {
       gridCol: gridCol,
       rotationZ: rotationZ,
       needsRowOffset: needsRowOffset,
+      moveDirection: moveDirection,
     )..gridWidth = gridWidth..gridHeight = gridHeight;
   }
 

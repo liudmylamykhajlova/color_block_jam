@@ -497,6 +497,14 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   }
 
   bool _canMove(GameBlock block, int deltaRow, int deltaCol, GameLevel level) {
+    // Перевірка обмеження напрямку руху
+    if (block.moveDirection == MoveDirection.horizontal && deltaRow != 0) {
+      return false; // Горизонтальний блок не може рухатись вертикально
+    }
+    if (block.moveDirection == MoveDirection.vertical && deltaCol != 0) {
+      return false; // Вертикальний блок не може рухатись горизонтально
+    }
+    
     final newRow = block.gridRow + deltaRow;
     final newCol = block.gridCol + deltaCol;
 
@@ -1184,6 +1192,193 @@ class GameBoardPainter extends CustomPainter {
     }
 
     _drawBlockOutline(canvas, cells, borderOffset, color, isSelected, offsetX, offsetY);
+    
+    // Малюємо стрілки напрямку руху
+    if (block.moveDirection != MoveDirection.both) {
+      _drawMoveDirectionArrows(canvas, block, cells, borderOffset, offsetX, offsetY);
+    }
+  }
+  
+  void _drawMoveDirectionArrows(Canvas canvas, GameBlock block, List<Point> cells,
+      double borderOffset, double offsetX, double offsetY) {
+    // Знаходимо центр для розміщення стрілок
+    double centerX, centerY;
+    final gt = block.blockGroupType;
+    final cellSet = cells.map((c) => '${c.col},${c.row}').toSet();
+    
+    // Спеціальна обробка для різних типів блоків
+    final isLShape = (gt >= 3 && gt <= 4) && cells.length >= 4; // L і ReverseL
+    final isShortL = gt == 5 && cells.length >= 3; // ShortL
+    final isTShape = gt == 8 && cells.length >= 4; // ShortT
+    
+    if (isShortL) {
+      // Для ShortL: розміщуємо стрілку на частині, що відповідає напрямку руху
+      final rows = <int, List<Point>>{};
+      final cols = <int, List<Point>>{};
+      for (final c in cells) {
+        rows.putIfAbsent(c.row, () => []).add(c);
+        cols.putIfAbsent(c.col, () => []).add(c);
+      }
+      
+      // Знаходимо найдовші горизонтальні та вертикальні лінії
+      List<Point> horizPart = [];
+      List<Point> vertPart = [];
+      for (final rowCells in rows.values) {
+        if (rowCells.length > horizPart.length) horizPart = rowCells;
+      }
+      for (final colCells in cols.values) {
+        if (colCells.length > vertPart.length) vertPart = colCells;
+      }
+      
+      // Обираємо частину на основі moveDirection
+      List<Point> targetPart;
+      if (block.moveDirection == MoveDirection.vertical) {
+        targetPart = vertPart.length >= 2 ? vertPart : cells;
+      } else {
+        targetPart = horizPart.length >= 2 ? horizPart : cells;
+      }
+      
+      double sumCol = 0, sumRow = 0;
+      for (final c in targetPart) {
+        sumCol += c.col;
+        sumRow += c.row;
+      }
+      centerX = borderOffset + (sumCol / targetPart.length + 0.5) * cellSize + offsetX;
+      centerY = borderOffset + (sumRow / targetPart.length + 0.5) * cellSize + offsetY;
+      
+    } else if (isLShape || isTShape) {
+      // Знаходимо клітинку з найбільшою кількістю сусідів (кут L або центр T)
+      Point? pivotCell;
+      int maxNeighbors = 0;
+      
+      for (final cell in cells) {
+        final neighbors = [
+          '${cell.col - 1},${cell.row}',
+          '${cell.col + 1},${cell.row}',
+          '${cell.col},${cell.row - 1}',
+          '${cell.col},${cell.row + 1}',
+        ].where((n) => cellSet.contains(n)).length;
+        
+        // Для L: кут має 2 сусіди
+        // Для T: центр має 3 сусіди
+        if (isLShape && neighbors == 2) {
+          pivotCell = cell;
+        } else if (isTShape && neighbors >= maxNeighbors) {
+          maxNeighbors = neighbors;
+          pivotCell = cell;
+        }
+      }
+      
+      if (pivotCell != null) {
+        // Знаходимо довгу частину (3 клітинки в лінію)
+        final inRow = cells.where((c) => c.row == pivotCell!.row).toList();
+        final inCol = cells.where((c) => c.col == pivotCell!.col).toList();
+        
+        List<Point> longPart;
+        if (inRow.length >= 3) {
+          longPart = inRow;
+        } else if (inCol.length >= 3) {
+          longPart = inCol;
+        } else if (inRow.length >= 2) {
+          longPart = inRow;
+        } else if (inCol.length >= 2) {
+          longPart = inCol;
+        } else {
+          longPart = cells;
+        }
+        
+        double sumCol = 0, sumRow = 0;
+        for (final c in longPart) {
+          sumCol += c.col;
+          sumRow += c.row;
+        }
+        centerX = borderOffset + (sumCol / longPart.length + 0.5) * cellSize + offsetX;
+        centerY = borderOffset + (sumRow / longPart.length + 0.5) * cellSize + offsetY;
+      } else {
+        // Fallback до центру bounding box
+        int minCol = cells.first.col, maxCol = cells.first.col;
+        int minRow = cells.first.row, maxRow = cells.first.row;
+        for (final c in cells) {
+          if (c.col < minCol) minCol = c.col;
+          if (c.col > maxCol) maxCol = c.col;
+          if (c.row < minRow) minRow = c.row;
+          if (c.row > maxRow) maxRow = c.row;
+        }
+        centerX = borderOffset + (minCol + maxCol + 1) / 2 * cellSize + offsetX;
+        centerY = borderOffset + (minRow + maxRow + 1) / 2 * cellSize + offsetY;
+      }
+    } else {
+      // Для інших блоків використовуємо центр bounding box
+      int minCol = cells.first.col, maxCol = cells.first.col;
+      int minRow = cells.first.row, maxRow = cells.first.row;
+      for (final c in cells) {
+        if (c.col < minCol) minCol = c.col;
+        if (c.col > maxCol) maxCol = c.col;
+        if (c.row < minRow) minRow = c.row;
+        if (c.row > maxRow) maxRow = c.row;
+      }
+      centerX = borderOffset + (minCol + maxCol + 1) / 2 * cellSize + offsetX;
+      centerY = borderOffset + (minRow + maxRow + 1) / 2 * cellSize + offsetY;
+    }
+    
+    final arrowSize = cellSize * 0.3;
+    
+    final arrowFillPaint = Paint()
+      ..color = Colors.white.withOpacity(0.9);
+    final arrowStrokePaint = Paint()
+      ..color = Colors.white.withOpacity(0.9)
+      ..strokeWidth = 2
+      ..style = PaintingStyle.stroke;
+    
+    if (block.moveDirection == MoveDirection.horizontal) {
+      // HORIZ - малюємо стрілки вліво/вправо
+      // Ліва стрілка
+      final leftPath = Path();
+      leftPath.moveTo(centerX - arrowSize, centerY);
+      leftPath.lineTo(centerX - arrowSize * 0.3, centerY - arrowSize * 0.4);
+      leftPath.lineTo(centerX - arrowSize * 0.3, centerY + arrowSize * 0.4);
+      leftPath.close();
+      canvas.drawPath(leftPath, arrowFillPaint);
+      
+      // Права стрілка
+      final rightPath = Path();
+      rightPath.moveTo(centerX + arrowSize, centerY);
+      rightPath.lineTo(centerX + arrowSize * 0.3, centerY - arrowSize * 0.4);
+      rightPath.lineTo(centerX + arrowSize * 0.3, centerY + arrowSize * 0.4);
+      rightPath.close();
+      canvas.drawPath(rightPath, arrowFillPaint);
+      
+      // Лінія між стрілками
+      canvas.drawLine(
+        Offset(centerX - arrowSize * 0.3, centerY),
+        Offset(centerX + arrowSize * 0.3, centerY),
+        arrowStrokePaint,
+      );
+    } else if (block.moveDirection == MoveDirection.vertical) {
+      // VERT - малюємо стрілки вгору/вниз
+      // Верхня стрілка
+      final upPath = Path();
+      upPath.moveTo(centerX, centerY - arrowSize);
+      upPath.lineTo(centerX - arrowSize * 0.4, centerY - arrowSize * 0.3);
+      upPath.lineTo(centerX + arrowSize * 0.4, centerY - arrowSize * 0.3);
+      upPath.close();
+      canvas.drawPath(upPath, arrowFillPaint);
+      
+      // Нижня стрілка
+      final downPath = Path();
+      downPath.moveTo(centerX, centerY + arrowSize);
+      downPath.lineTo(centerX - arrowSize * 0.4, centerY + arrowSize * 0.3);
+      downPath.lineTo(centerX + arrowSize * 0.4, centerY + arrowSize * 0.3);
+      downPath.close();
+      canvas.drawPath(downPath, arrowFillPaint);
+      
+      // Лінія між стрілками
+      canvas.drawLine(
+        Offset(centerX, centerY - arrowSize * 0.3),
+        Offset(centerX, centerY + arrowSize * 0.3),
+        arrowStrokePaint,
+      );
+    }
   }
 
   void _drawBlockOutline(Canvas canvas, List<Point> cells, double borderOffset,
