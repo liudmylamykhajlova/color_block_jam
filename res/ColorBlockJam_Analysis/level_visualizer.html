@@ -932,15 +932,17 @@
                     // Find center for arrow placement
                     let centerX, centerY;
                     const gt = block.blockGroupType;
+                    const cellSet = new Set(blockCells.map(c => `${c.col},${c.row}`));
                     
-                    // For L-shaped blocks (gt 3-6), find center of the long part
-                    if (gt >= 3 && gt <= 6 && blockCells.length >= 4) {
-                        // Find the cell that has 2 neighbors (corner of L)
-                        // Then find the middle of the 3-cell line
-                        const cellSet = new Set(blockCells.map(c => `${c.col},${c.row}`));
+                    // For L-shaped blocks (gt 3-6) and T-shaped blocks (gt 8), find center of the long part
+                    const isLShape = gt >= 3 && gt <= 6 && blockCells.length >= 4;
+                    const isTShape = gt === 8 && blockCells.length >= 4;
+                    
+                    if (isLShape || isTShape) {
+                        // Find the cell that has most neighbors (corner of L or center of T)
+                        let pivotCell = null;
+                        let maxNeighbors = 0;
                         
-                        // Count neighbors for each cell
-                        let cornerCell = null;
                         blockCells.forEach(cell => {
                             const neighbors = [
                                 `${cell.col-1},${cell.row}`,
@@ -948,21 +950,33 @@
                                 `${cell.col},${cell.row-1}`,
                                 `${cell.col},${cell.row+1}`
                             ].filter(n => cellSet.has(n)).length;
-                            if (neighbors === 2) cornerCell = cell;
+                            
+                            // For L: corner has 2 neighbors
+                            // For T: center has 3 neighbors
+                            if (isLShape && neighbors === 2) {
+                                pivotCell = cell;
+                            } else if (isTShape && neighbors >= maxNeighbors) {
+                                maxNeighbors = neighbors;
+                                pivotCell = cell;
+                            }
                         });
                         
-                        if (cornerCell) {
-                            // Find the direction of the long part (3 cells including corner)
-                            // Check horizontal and vertical lines through corner
-                            const inRow = blockCells.filter(c => c.row === cornerCell.row);
-                            const inCol = blockCells.filter(c => c.col === cornerCell.col);
+                        if (pivotCell) {
+                            // Find the long part (3 cells in a line)
+                            const inRow = blockCells.filter(c => c.row === pivotCell.row);
+                            const inCol = blockCells.filter(c => c.col === pivotCell.col);
                             
                             let longPart;
-                            if (inRow.length >= 2) {
-                                // Long part is horizontal
+                            if (inRow.length >= 3) {
+                                // Long part is horizontal (3 cells in row)
+                                longPart = inRow;
+                            } else if (inCol.length >= 3) {
+                                // Long part is vertical (3 cells in column)
+                                longPart = inCol;
+                            } else if (inRow.length >= 2) {
+                                // For L: long part might be 2 cells
                                 longPart = inRow;
                             } else if (inCol.length >= 2) {
-                                // Long part is vertical
                                 longPart = inCol;
                             } else {
                                 longPart = blockCells;
