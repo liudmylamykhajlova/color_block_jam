@@ -271,10 +271,15 @@ def find_game_blocks(data: bytes, grid_x: int, grid_y: int) -> List[Dict]:
         off32 = read_int32(data, offset + 32)
         off40 = read_int32(data, offset + 40)
         
-        # Read ice/freeze count (offset +44) - number of blocks to destroy before unfreezing
-        ice_count = read_int32(data, offset + 44)
-        if ice_count < 0 or ice_count > 20:
-            ice_count = 0  # Invalid value, treat as not frozen
+        # Read ice/freeze data:
+        # offset +44 = isFrozen flag (1 = frozen, 0 = not frozen)
+        # offset +48 = iceCount (number of blocks to destroy before unfreezing)
+        is_frozen = read_int32(data, offset + 44)
+        ice_count = 0
+        if is_frozen == 1:
+            ice_count = read_int32(data, offset + 48)
+            if ice_count < 0 or ice_count > 20:
+                ice_count = 0  # Invalid value
         
         # Determine moveDirection:
         # 0 = HORIZ only, 1 = VERT only, 2 = BOTH

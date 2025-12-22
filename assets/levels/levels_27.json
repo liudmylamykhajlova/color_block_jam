@@ -4614,7 +4614,7 @@
           "needsRowOffset": false,
           "moveDirection": 2,
           "innerBlockType": -1,
-          "iceCount": 1
+          "iceCount": 3
         },
         {
           "blockType": 1,
@@ -4625,7 +4625,7 @@
           "needsRowOffset": false,
           "moveDirection": 2,
           "innerBlockType": -1,
-          "iceCount": 1
+          "iceCount": 2
         }
       ],
       "doors": [
@@ -4702,7 +4702,7 @@
           "needsRowOffset": false,
           "moveDirection": 2,
           "innerBlockType": -1,
-          "iceCount": 1
+          "iceCount": 2
         },
         {
           "blockType": 7,
@@ -4735,7 +4735,7 @@
           "needsRowOffset": false,
           "moveDirection": 2,
           "innerBlockType": -1,
-          "iceCount": 1
+          "iceCount": 15
         },
         {
           "blockType": 6,
@@ -5075,7 +5075,7 @@
           "needsRowOffset": false,
           "moveDirection": 2,
           "innerBlockType": -1,
-          "iceCount": 1
+          "iceCount": 4
         },
         {
           "blockType": 5,
