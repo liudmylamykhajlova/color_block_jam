@@ -1,6 +1,6 @@
 # Color Block Jam - QA Checklist
 
-> **Version:** 1.0.0  
+> **Version:** 1.1.0  
 > **Date:** 2025-12-23  
 > **Status:** Active
 
