@@ -1,104 +1,124 @@
-# Color Block Jam - Технічна Специфікація (ТЗ)
+# Color Block Jam - Technical Specification
 
-> **Версія:** 1.5.0  
-> **Дата оновлення:** 2025-12-23  
-> **Статус:** В розробці
+> **Version:** 2.0.0  
+> **Date:** 2025-12-23  
+> **Status:** In Development
 
 ---
 
-## 1. Загальний Опис
+## 1. Overview
 
-### 1.1 Назва проекту
-**Color Block Jam** - мобільна головоломка на основі переміщення кольорових блоків.
+### 1.1 Project Name
+**Color Block Jam** - Mobile puzzle game based on sliding colored blocks.
 
-### 1.2 Платформи
-| Платформа | Статус | Мін. версія |
-|-----------|--------|-------------|
-| Android | ✅ Підтримується | API 21 (Android 5.0) |
-| iOS | ✅ Підтримується | iOS 12.0 |
-| Web | 🔄 Експериментально | Сучасні браузери |
-| Windows | 🔄 Для розробки | Windows 10+ |
+### 1.2 Platforms
 
-### 1.3 Технологічний стек
-| Компонент | Технологія | Версія |
-|-----------|------------|--------|
+| Platform | Status | Min Version |
+|----------|--------|-------------|
+| Android | Supported | API 21 (5.0) |
+| iOS | Supported | iOS 12.0 |
+| Web | Experimental | Modern browsers |
+| Windows | Dev only | Windows 10+ |
+
+### 1.3 Tech Stack
+
+| Component | Technology | Version |
+|-----------|------------|---------|
 | Framework | Flutter | 3.x |
-| Мова | Dart | 3.x |
-| State Management | setState (StatefulWidget) | - |
-| Локальне сховище | shared_preferences | 2.2.x |
-| Рендеринг | CustomPainter | - |
+| Language | Dart | 3.x |
+| State | setState | - |
+| Storage | shared_preferences | 2.2.x |
+| Rendering | CustomPainter | - |
 
 ---
 
-## 2. Архітектура
+## 2. Architecture
 
-### 2.1 Структура проекту
+### 2.1 Layer Diagram
+
+```
++------------------------------------------+
+|          Presentation Layer              |
+|  +----------------+  +----------------+  |
+|  | GameScreen     |  | AnimationSystem|  |
+|  | (UI Widget)    |  | (Tween)        |  |
+|  +----------------+  +----------------+  |
++------------------------------------------+
+                    |
++------------------------------------------+
+|           Domain Layer                   |
+|  +----------------+  +----------------+  |
+|  | LevelState     |  | Block/Door     |  |
+|  | (Immutable)    |  | (Models)       |  |
+|  +----------------+  +----------------+  |
+|  +----------------+  +----------------+  |
+|  | GameLogic      |  | CollisionSystem|  |
+|  | (Pure)         |  | (Grid-based)   |  |
+|  +----------------+  +----------------+  |
++------------------------------------------+
+                    |
++------------------------------------------+
+|            Data Layer                    |
+|  +----------------+  +----------------+  |
+|  | LevelLoader    |  | StorageService |  |
+|  | (JSON)         |  | (Prefs)        |  |
+|  +----------------+  +----------------+  |
++------------------------------------------+
+```
+
+### 2.2 Project Structure
+
 ```
 lib/
-├── main.dart                      # Entry point
-├── core/                          # Ядро застосунку
+├── main.dart
+├── core/
 │   ├── constants/
-│   │   ├── colors.dart           # Палітра кольорів блоків
-│   │   └── block_shapes.dart     # Визначення форм блоків
+│   │   ├── colors.dart          # Block color palette
+│   │   └── block_shapes.dart    # Shape definitions
 │   ├── models/
-│   │   └── game_models.dart      # GameBlock, GameDoor, GameLevel, Point
+│   │   └── game_models.dart     # GameBlock, GameDoor, GameLevel
 │   ├── services/
-│   │   ├── storage_service.dart  # Збереження прогресу
-│   │   └── audio_service.dart    # Звуки та вібрація
+│   │   ├── storage_service.dart # Progress saving
+│   │   └── audio_service.dart   # Sound & haptics
 │   └── widgets/
-│       └── confetti_widget.dart  # Візуальні ефекти
+│       └── confetti_widget.dart
 ├── data/
 │   └── services/
-│       └── level_loader.dart     # Завантаження рівнів з JSON
-└── features/                      # Екрани
+│       └── level_loader.dart    # JSON level loading
+└── features/
     ├── menu/
-    │   └── menu_screen.dart
     ├── level_select/
-    │   └── level_select_screen.dart
     ├── game/
-    │   └── game_screen.dart      # Основний ігровий екран
+    │   └── game_screen.dart     # Main game screen
     └── settings/
-        └── settings_screen.dart
 
 assets/
 └── levels/
-    └── levels_27.json            # Дані 27 рівнів (18 верифікованих)
+    └── levels_27.json           # 27 levels data
 
 res/
-└── ColorBlockJam_Analysis/       # Інструменти парсингу
+└── ColorBlockJam_Analysis/
     ├── tools/
-    │   ├── parse_from_unity.py   # Парсер Unity assets
-    │   └── export_game_levels.py # Експорт у game JSON
-    ├── level_visualizer.html     # Візуалізатор з системою верифікації
-    ├── level_data/
-    │   ├── parsed_levels_complete.json  # Всі розпарсені рівні
-    │   └── AllLevels_guids.json  # Порядок рівнів у грі
-    └── reports/
-        └── RENDERING_RULES.md    # Правила рендерингу
+    │   ├── parse_from_unity.py
+    │   └── export_game_levels.py
+    └── level_visualizer.html
 ```
 
-### 2.2 Потік даних
+### 2.3 Data Flow
+
 ```
-┌─────────────┐     ┌──────────────┐     ┌─────────────┐
-│ levels.json │────▶│ LevelLoader  │────▶│  GameLevel  │
-└─────────────┘     └──────────────┘     └─────────────┘
-                                               │
-                                               ▼
-┌─────────────┐     ┌──────────────┐     ┌─────────────┐
-│   Canvas    │◀────│ BoardPainter │◀────│ GameScreen  │
-└─────────────┘     └──────────────┘     └─────────────┘
-                                               │
-                                               ▼
-                    ┌──────────────┐     ┌─────────────┐
-                    │StorageService│◀────│   Win/Loss  │
-                    └──────────────┘     └─────────────┘
+levels.json -> LevelLoader -> GameLevel -> GameScreen -> Canvas
+                                              |
+                                              v
+                                        StorageService
 ```
 
 ---
 
-## 3. Моделі Даних
+## 3. Data Models
 
 ### 3.1 GameLevel
+
 ```dart
 class GameLevel {
   final int id;
@@ -112,199 +132,243 @@ class GameLevel {
 ```
 
 ### 3.2 GameBlock
+
 ```dart
 enum MoveDirection {
-  horizontal,  // 0 - тільки горизонтально (←→)
-  vertical,    // 1 - тільки вертикально (↑↓)
-  both,        // 2 - в обидва напрямки
+  horizontal,  // 0 - only left-right
+  vertical,    // 1 - only up-down
+  both,        // 2 - any direction
 }
 
 class GameBlock {
-  final int blockType;        // Колір (0-9)
-  final int blockGroupType;   // Форма (0-11)
-  int gridRow;                // Позиція Y
-  int gridCol;                // Позиція X
-  final int rotationZ;        // Поворот (0-3)
-  final MoveDirection moveDirection;  // Обмеження напрямку руху
-  final int innerBlockType;   // Внутрішній шар (-1 = немає, 0-9 = колір)
-  int iceCount;               // Заморозка (0 = не заморожений, >0 = кількість блоків до розморозки)
+  final int blockType;           // Color (0-9)
+  final int blockGroupType;      // Shape (0-11)
+  int gridRow;                   // Y position
+  int gridCol;                   // X position
+  final int rotationZ;           // Rotation (0-3)
+  final MoveDirection moveDirection;
+  final int innerBlockType;      // Inner layer (-1 = none)
+  int iceCount;                  // Freeze count (0 = unfrozen)
+  bool outerLayerDestroyed;      // Multi-layer state
   
-  List<Point> get cells;      // Обчислені клітинки
-  bool get hasInnerLayer;     // Чи є внутрішній шар
-  bool get isFrozen;          // Чи заморожений блок
+  List<Point> get cells;         // Calculated cells
+  bool get hasInnerLayer;
+  bool get isFrozen;
+  int get activeBlockType;       // Current active color
 }
 ```
 
 ### 3.3 GameDoor
+
 ```dart
 class GameDoor {
-  final int blockType;        // Колір
-  final int partCount;        // Розмір (1-4)
-  final String edge;          // top/bottom/left/right
+  final int blockType;           // Color
+  final int partCount;           // Size (1-4)
+  final String edge;             // top/bottom/left/right
   final int startRow;
   final int startCol;
 }
 ```
 
-### 3.4 Типи блоків (blockGroupType)
-| ID | Назва | Форма |
-|----|-------|-------|
-| 0 | Single | ▪ |
-| 1 | Double | ▪▪ |
-| 2 | Triple | ▪▪▪ |
-| 3 | Quad | ▪▪▪▪ |
-| 4 | ShortL | ▪▪ ▪ |
-| 5 | ShortT | ▪▪▪ ▪ |
-| 6 | Square | ▪▪ ▪▪ |
-| 7 | L | ▪▪▪ ▪ |
-| 8 | ReverseL | ▪▪▪ ▪ (mirror) |
-| 9 | T | ▪▪▪ ▪ |
-| 10 | S | ▪▪ ▪▪ (zigzag) |
-| 11 | Z | ▪▪ ▪▪ (reverse zigzag) |
+### 3.4 Block Shapes (blockGroupType)
+
+| ID | Name | Shape | Cells |
+|----|------|-------|-------|
+| 0 | One | `#` | 1 |
+| 1 | Two | `##` | 2 |
+| 2 | Three | `###` | 3 |
+| 3 | L | L-shape | 4 |
+| 4 | ReverseL | Mirrored L | 4 |
+| 5 | ShortL | Short L | 3 |
+| 6 | ReverseShortL | Mirrored short L | 3 |
+| 7 | TwoSquare | 2x2 | 4 |
+| 8 | ShortT | T-shape | 4 |
+| 9 | Plus | Cross | 5 |
+| 10 | Z | Z-shape | 4 |
+| 11 | ReverseZ | S-shape | 4 |
 
 ---
 
-## 4. Ключові Алгоритми
+## 4. Core Algorithms
 
 ### 4.1 Collision Detection
+
 ```dart
 bool _canMove(GameBlock block, int deltaRow, int deltaCol, GameLevel level) {
-  // 0. Перевірити заморозку (isFrozen) - заморожені блоки не рухаються
-  // 1. Перевірити обмеження напрямку руху (moveDirection)
-  //    - horizontal: блокувати вертикальний рух (deltaRow != 0)
-  //    - vertical: блокувати горизонтальний рух (deltaCol != 0)
-  // 2. Обчислити нові позиції клітинок
-  // 3. Перевірити межі поля
-  // 4. Перевірити двері (дозволити вихід за межі якщо є двері)
-  // 5. Перевірити колізії з іншими блоками
-  // 6. Перевірити hidden cells
+  // 1. Check freeze (isFrozen) - frozen blocks can't move
+  if (block.isFrozen) return false;
+  
+  // 2. Check movement direction restriction
+  if (block.moveDirection == MoveDirection.horizontal && deltaRow != 0)
+    return false;
+  if (block.moveDirection == MoveDirection.vertical && deltaCol != 0)
+    return false;
+  
+  // 3. Calculate new cell positions
+  // 4. Check grid boundaries
+  // 5. Check doors (allow exit if matching color)
+  // 6. Check collisions with other blocks
+  // 7. Check hidden cells
 }
 ```
 
 ### 4.2 Door Exit Detection
+
 ```dart
 void _checkDoorExit(GameLevel level) {
-  // 1. Підрахувати клітинки блоку за межами поля
-  // 2. Якщо >= 50% клітинок за межами:
-  //    - Запустити анімацію виходу
-  //    - Видалити блок
-  // 3. Якщо всі блоки вийшли -> перемога
+  // 1. Count cells outside grid
+  // 2. If >= 50% cells outside:
+  //    - Start exit animation
+  //    - Remove block
+  //    - Decrease ice count for all frozen blocks
+  // 3. If all blocks exited -> win
 }
 ```
 
-### 4.2.1 Багатошарові блоки (Multi-layer Blocks)
-Блоки з `innerBlockType >= 0` мають два шари кольору: зовнішній (`blockType`) та внутрішній (`innerBlockType`).
+### 4.3 Multi-layer Block Destruction
 
-**Візуалізація:**
-- Зовнішній шар відображається як товста обводка блоку
-- Внутрішній шар заповнює середину блоку та LEGO-стади
-
-**Механіка виходу:**
 ```dart
 void _checkLayerDestruction(GameBlock block, GameLevel level) {
-  // 1. Якщо блок торкається дверей з кольором ЗОВНІШНЬОГО шару:
-  //    - Руйнується зовнішній шар (outerLayerDestroyed = true)
-  //    - Блок залишається на полі з кольором ВНУТРІШНЬОГО шару
-  //    - Блок НЕ заходить в двері
-  // 2. Після руйнування зовнішнього шару:
-  //    - Блок може вийти тільки через двері ВНУТРІШНЬОГО кольору
-  //    - При виході через правильні двері - блок видаляється повністю
+  // 1. If block touches door of OUTER color:
+  //    - Destroy outer layer (outerLayerDestroyed = true)
+  //    - Block stays on field with INNER color
+  //    - Block does NOT enter door
+  // 2. After outer layer destroyed:
+  //    - Block can only exit through INNER color door
 }
 ```
 
-**Властивості GameBlock для багатошарових блоків:**
-- `innerBlockType`: колір внутрішнього шару (-1 = немає)
-- `outerLayerDestroyed`: чи зруйновано зовнішній шар
-- `activeBlockType`: повертає поточний активний колір (зовнішній або внутрішній)
-- `hasInnerLayer`: чи є активний внутрішній шар
+### 4.4 Ice/Freeze Mechanic
 
-### 4.2.2 Заморожені блоки (Frozen Blocks)
-Блоки з `iceCount > 0` заморожені і не можуть рухатись.
-
-**Візуалізація:**
-- Напівпрозорий блакитний шар поверх блоку
-- Діагональний кристалічний візерунок
-- Білий круг з числом iceCount по центру
-
-**Механіка розморозки:**
 ```dart
 void _decreaseIceCountForAll() {
-  // При виході БУДЬ-ЯКОГО блоку через двері:
-  // - Зменшити iceCount для ВСІХ заморожених блоків на 1
-  // - Коли iceCount = 0, блок розморожується і може рухатись
+  // When ANY block exits through door:
+  // - Decrease iceCount for ALL frozen blocks by 1
+  // - When iceCount = 0, block unfreezes
 }
 ```
 
-**Властивості GameBlock для заморожених блоків:**
-- `iceCount`: кількість блоків до розморозки (0 = не заморожений)
-- `isFrozen`: геттер, повертає `iceCount > 0`
+### 4.5 Block Movement Animation
 
-### 4.3 Block Shape Rotation
 ```dart
-List<List<int>> rotateShape(List<List<int>> shape, int rotZ) {
-  // rotZ: 0 = 0°, 1 = 90°, 2 = 180°, 3 = 270°
-  // Застосувати матрицю повороту до кожної клітинки
+void _animateBlockMove(Block block, Point from, Point to) {
+  // Duration: 200-300ms per step
+  // Easing: Curves.easeOutCubic
+  // Animate each step separately (not one big move)
 }
 ```
 
 ---
 
-## 5. Сервіси
+## 5. Visual Design
 
-### 5.1 StorageService
-| Метод | Опис |
-|-------|------|
-| `init()` | Ініціалізація SharedPreferences |
-| `getCompletedLevels()` | Отримати завершені рівні |
-| `markLevelCompleted(id)` | Позначити рівень завершеним |
-| `getSoundEnabled()` | Статус звуку |
-| `getHapticEnabled()` | Статус вібрації |
-| `resetProgress()` | Скинути прогрес |
+### 5.1 Color Palette (10 colors)
 
-### 5.2 AudioService
-| Метод | Опис |
-|-------|------|
-| `lightTap()` | Легка вібрація (кнопки) |
-| `mediumTap()` | Середня вібрація (pickup) |
-| `heavyTap()` | Сильна вібрація (drop) |
-| `success()` | Вібрація перемоги |
-| `playPickup()` | Звук підняття блоку |
-| `playDrop()` | Звук опускання блоку |
-| `playWin()` | Звук перемоги |
+| ID | Name | HEX |
+|----|------|-----|
+| 0 | Blue | #03a5ef |
+| 1 | Dark Blue | #143cf6 |
+| 2 | Green | #48aa1a |
+| 3 | Pink | #b844c8 |
+| 4 | Purple | #7343db |
+| 5 | Yellow | #fbb32d |
+| 6 | Dark Green | #09521d |
+| 7 | Orange | #f2772b |
+| 8 | Red | #b8202c |
+| 9 | Cyan | #0facae |
+
+### 5.2 Block Visual Style
+
+- **Shape:** 3D cubes with rounded corners (8-12px radius)
+- **Shadow:** Drop shadow blur 4-6px, offset (2, 2)
+- **Gradient:** Linear gradient light to dark
+- **Outline:** 1-2px darker shade border
+- **Stud:** LEGO-style circle in center of each cell
+
+### 5.3 Block Animations
+
+| Animation | Duration | Easing |
+|-----------|----------|--------|
+| Pickup | 50ms | easeOut |
+| Move | 200-300ms | easeOutCubic |
+| Drop | 100ms | bounceOut |
+| Exit | 300ms | easeIn |
+| Collision | 200ms | shake |
+
+### 5.4 Special Effects
+
+**Ice Overlay:**
+- Semi-transparent cyan layer
+- Diagonal crystal pattern (white lines)
+- Ice count number in white circle
+
+**Multi-layer:**
+- Thick outline of outer color
+- Fill with inner color
+- Studs in inner color
+
+**Movement Arrows:**
+- White arrows on restricted blocks
+- `↔` for horizontal only
+- `↕` for vertical only
 
 ---
 
-## 6. Інтеграції
+## 6. Services
 
-### 6.1 Поточні
-- **SharedPreferences** - локальне збереження
+### 6.1 StorageService
 
-### 6.2 Заплановані
-- [ ] Firebase Analytics
-- [ ] Firebase Crashlytics
-- [ ] AdMob (rewarded ads)
-- [ ] In-App Purchases
+| Method | Description |
+|--------|-------------|
+| `init()` | Initialize SharedPreferences |
+| `getCompletedLevels()` | Get completed level IDs |
+| `markLevelCompleted(id)` | Mark level as complete |
+| `getSoundEnabled()` | Sound toggle state |
+| `getHapticEnabled()` | Haptic toggle state |
+| `resetProgress()` | Reset all progress |
+
+### 6.2 AudioService
+
+| Method | Description |
+|--------|-------------|
+| `lightTap()` | Light haptic (buttons) |
+| `mediumTap()` | Medium haptic (pickup) |
+| `heavyTap()` | Heavy haptic (drop) |
+| `success()` | Win haptic pattern |
+| `playPickup()` | Block pickup sound |
+| `playDrop()` | Block drop sound |
+| `playWin()` | Win sound |
 
 ---
 
-## 7. Вимоги до Продуктивності
+## 7. Performance Requirements
 
-| Метрика | Ціль |
-|---------|------|
+| Metric | Target |
+|--------|--------|
 | Startup time | < 2s |
 | Frame rate | 60 FPS |
 | Memory usage | < 100 MB |
 | APK size | < 20 MB |
-| Battery drain | Мінімальний |
+| Frame time | < 16.67ms |
+
+### 7.1 Optimizations
+
+- Use `RepaintBoundary` for isolated repaints
+- Cache `Paint` objects
+- Minimize allocations in paint methods
+- Use `shouldRepaint` for conditional repaints
+- Keep coordinate maps/sets for fast lookups
 
 ---
 
-## 8. Тестування
+## 8. Testing
 
 ### 8.1 Unit Tests
 - [ ] GameBlock.cells calculation
 - [ ] Collision detection
 - [ ] Door matching
+- [ ] Multi-layer destruction
+- [ ] Ice count decrease
 
 ### 8.2 Widget Tests
 - [ ] Menu navigation
@@ -313,20 +377,57 @@ List<List<int>> rotateShape(List<List<int>> shape, int rotZ) {
 
 ### 8.3 Integration Tests
 - [ ] Complete level flow
-- [ ] Progress saving
+- [ ] Progress saving/loading
+- [ ] All mechanics combined
 
 ---
 
-## Історія Змін
+## 9. Acceptance Criteria
 
-| Версія | Дата | Зміни |
-|--------|------|-------|
-| 1.5.0 | 2025-12-23 | Додано iceCount - заморожені блоки (візуалізація + механіка розморозки) |
-| 1.4.0 | 2025-12-21 | Механіка багатошарових блоків: руйнування шарів при торканні дверей |
-| 1.3.0 | 2025-12-21 | Додано innerBlockType - багатошарові блоки |
-| 1.2.0 | 2025-12-21 | Додано MoveDirection - обмеження напрямку руху блоків |
-| 1.1.2 | 2025-12-18 | Верифіковано 21 рівень, універсальний алгоритм ReverseL |
-| 1.1.1 | 2025-12-18 | Виправлено Level 16 (двері), Level 19 (ShortL, двері) |
-| 1.1.0 | 2025-12-18 | Оновлено структуру проекту, 27 рівнів (18 верифікованих) |
-| 1.0.0 | 2025-12-17 | Початкова версія документа |
+### Functionality
+- [x] Blocks move on swipe
+- [x] Blocks stop at collisions
+- [x] Blocks exit through matching doors
+- [x] Win detection works
+- [x] Movement direction restrictions
+- [x] Frozen blocks mechanic
+- [x] Multi-layer blocks mechanic
+- [ ] Timer system
+- [ ] Lives system
 
+### Visual
+- [x] Blocks have 3D appearance
+- [x] Doors visually distinct
+- [x] Smooth animations (60 FPS)
+- [x] Ice overlay effect
+- [x] Multi-layer visualization
+- [ ] UI doesn't overlap game
+
+### Performance
+- [x] Stable 60 FPS
+- [x] No memory leaks
+- [x] Fast level loading (< 1s)
+
+---
+
+## 10. Future Integrations
+
+### Planned
+- [ ] Firebase Analytics
+- [ ] Firebase Crashlytics
+- [ ] AdMob (rewarded + interstitial)
+- [ ] In-App Purchases
+- [ ] Push Notifications
+
+---
+
+## Change History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 2.0.0 | 2025-12-23 | Merged with CORE_MECHANICS, added visual design |
+| 1.5.0 | 2025-12-23 | Added iceCount (frozen blocks) |
+| 1.4.0 | 2025-12-21 | Multi-layer block mechanics |
+| 1.3.0 | 2025-12-21 | Added innerBlockType |
+| 1.2.0 | 2025-12-21 | Added MoveDirection |
+| 1.0.0 | 2025-12-17 | Initial version |
