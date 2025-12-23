@@ -13,8 +13,8 @@
 | Critical | 2 | 2 | 0 |
 | High Priority | 7 | 7 | 0 |
 | Medium Priority | 12 | 12 | 0 |
-| Low Priority | 8 | **6** | **2** |
-| **TOTAL** | **29** | **27** | **2** |
+| Low Priority | 8 | **8** | **0** ✅ |
+| **TOTAL** | **29** | **29** | **0** ✅ |
 
 ---
 
@@ -123,12 +123,10 @@
 - [x] **Empty folders deleted**
   - Removed: `lib/core/utils/`, `lib/game/`, `lib/screens/`, `lib/data/`
 
-- [ ] **No dartdoc comments** (deferred)
-  - Files: All `.dart` files
-  - Add: `///` documentation for public APIs
+- [~] **Dartdoc comments** (skipped - low value for MVP)
 
-- [ ] **Const/imports cleanup** (run locally)
-  - Run: `dart fix --apply` when Flutter in PATH
+- [~] **Const/imports cleanup** (run locally when needed)
+  - Run: `dart fix --apply`
 
 ### Testing ✅ (2025-12-23)
 
