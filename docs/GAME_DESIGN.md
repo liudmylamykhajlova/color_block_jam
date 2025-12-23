@@ -271,13 +271,14 @@ Pre-game boosters (Level Start):
 - [x] Frozen blocks (ice)
 - [x] Multi-layer blocks
 - [x] Level visualizer
+- [x] Timer system (countdown, color changes)
+- [x] Lives system (5 max, 30 min refill)
+- [x] Fail dialog (broken heart, retry)
 
 ### Next (Phase 2)
-- [ ] Timer system
-- [ ] Lives system
-- [ ] Boosters
-- [ ] Fail dialog
+- [ ] Boosters (clock, hammer)
 - [ ] Win dialog improvements
+- [ ] Coins system
 
 ### Future
 - [ ] Shop
