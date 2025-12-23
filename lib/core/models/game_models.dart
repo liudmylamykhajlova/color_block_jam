@@ -312,26 +312,86 @@ class Point {
 class LevelLoader {
   static List<GameLevel>? _cachedLevels;
   
+  /// Load all levels from JSON asset
+  /// Throws [LevelLoadException] if loading fails
   static Future<List<GameLevel>> loadLevels() async {
     if (_cachedLevels != null) {
       if (kDebugMode) debugPrint('🎮 LEVEL ℹ️ Using cached levels (${_cachedLevels!.length})');
       return _cachedLevels!;
     }
     
-    if (kDebugMode) debugPrint('🎮 LEVEL ℹ️ Loading levels from assets...');
-    final jsonString = await rootBundle.loadString('assets/levels/levels_27.json');
-    final data = json.decode(jsonString);
-    _cachedLevels = (data['levels'] as List)
-        .map((l) => GameLevel.fromJson(l))
-        .toList();
-    
-    if (kDebugMode) {
-      debugPrint('🎮 LEVEL ✅ Loaded ${_cachedLevels!.length} levels');
-      final hardLevels = _cachedLevels!.where((l) => l.isHard).length;
-      debugPrint('🎮 LEVEL ℹ️ Hard levels: $hardLevels');
+    try {
+      if (kDebugMode) debugPrint('🎮 LEVEL ℹ️ Loading levels from assets...');
+      final jsonString = await rootBundle.loadString('assets/levels/levels_27.json');
+      
+      final dynamic data;
+      try {
+        data = json.decode(jsonString);
+      } catch (e) {
+        throw LevelLoadException('Failed to parse levels JSON: $e');
+      }
+      
+      if (data is! Map<String, dynamic>) {
+        throw LevelLoadException('Invalid levels format: expected Map, got ${data.runtimeType}');
+      }
+      
+      final levels = data['levels'];
+      if (levels is! List) {
+        throw LevelLoadException('Invalid levels format: "levels" key missing or not a List');
+      }
+      
+      _cachedLevels = levels
+          .map((l) => GameLevel.fromJson(l as Map<String, dynamic>))
+          .toList();
+      
+      if (_cachedLevels!.isEmpty) {
+        throw LevelLoadException('No levels found in JSON');
+      }
+      
+      if (kDebugMode) {
+        debugPrint('🎮 LEVEL ✅ Loaded ${_cachedLevels!.length} levels');
+        final hardLevels = _cachedLevels!.where((l) => l.isHard).length;
+        debugPrint('🎮 LEVEL ℹ️ Hard levels: $hardLevels');
+      }
+      
+      return _cachedLevels!;
+    } on LevelLoadException {
+      rethrow;
+    } catch (e) {
+      throw LevelLoadException('Failed to load levels: $e');
     }
-    
-    return _cachedLevels!;
   }
+  
+  /// Get a specific level by ID
+  /// Returns null if level not found
+  static Future<GameLevel?> getLevel(int levelId) async {
+    final levels = await loadLevels();
+    try {
+      return levels.firstWhere((l) => l.id == levelId);
+    } catch (_) {
+      return null;
+    }
+  }
+  
+  /// Clear cached levels (useful for memory management)
+  static void clearCache() {
+    _cachedLevels = null;
+    if (kDebugMode) debugPrint('🎮 LEVEL ℹ️ Cache cleared');
+  }
+  
+  /// Check if levels are cached
+  static bool get isCached => _cachedLevels != null;
+  
+  /// Get cached level count (or 0 if not cached)
+  static int get cachedCount => _cachedLevels?.length ?? 0;
+}
+
+/// Exception thrown when level loading fails
+class LevelLoadException implements Exception {
+  final String message;
+  LevelLoadException(this.message);
+  
+  @override
+  String toString() => 'LevelLoadException: $message';
 }
 

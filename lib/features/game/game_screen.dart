@@ -20,7 +20,7 @@ class GameScreen extends StatefulWidget {
   State<GameScreen> createState() => _GameScreenState();
 }
 
-class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
+class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, WidgetsBindingObserver {
   GameLevel? _level;
   List<GameBlock> _blocks = [];
   GameBlock? _selectedBlock;
@@ -37,6 +37,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   // Timer
   int _remainingSeconds = 0;
   bool _timerActive = false;
+  DateTime? _pausedAt; // Track when timer was paused
   
   // Lives
   int _lives = 5;
@@ -44,29 +45,91 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this); // Listen to app lifecycle
     _lives = StorageService.getLives();
     _loadLevel();
+  }
+  
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    
+    if (state == AppLifecycleState.paused || state == AppLifecycleState.inactive) {
+      // App going to background - pause timer
+      if (_timerActive) {
+        _pausedAt = DateTime.now();
+        _timerActive = false;
+        GameLogger.info('Timer paused (app backgrounded)', 'TIMER');
+      }
+    } else if (state == AppLifecycleState.resumed) {
+      // App coming back - resume timer
+      if (_pausedAt != null && _remainingSeconds > 0) {
+        // Calculate time spent in background
+        final backgroundDuration = DateTime.now().difference(_pausedAt!).inSeconds;
+        _remainingSeconds = (_remainingSeconds - backgroundDuration).clamp(0, _level?.duration ?? 120);
+        _pausedAt = null;
+        
+        GameLogger.info('Timer resumed, remaining: $_remainingSeconds seconds', 'TIMER');
+        
+        if (_remainingSeconds <= 0) {
+          _onTimeUp();
+        } else {
+          _startTimer();
+        }
+      }
+    }
   }
 
   Future<void> _loadLevel() async {
     GameLogger.info('Loading level ${widget.levelId}...', 'INIT');
-    final levels = await LevelLoader.loadLevels();
-    final level = levels.firstWhere((l) => l.id == widget.levelId);
-    setState(() {
-      _level = level;
-      _remainingSeconds = level.duration;
-      _isLoading = false;
-      _initBlocks();
-    });
-    GameLogger.levelLoaded(
-      level.id, 
-      level.name, 
-      level.blocks.length, 
-      level.doors.length,
-      level.hardnessText.isEmpty ? 'Normal' : level.hardnessText,
-      level.duration,
+    
+    try {
+      final level = await LevelLoader.getLevel(widget.levelId);
+      
+      if (level == null) {
+        GameLogger.info('Level ${widget.levelId} not found!', 'ERROR');
+        if (mounted) {
+          _showErrorAndGoBack('Level ${widget.levelId} not found');
+        }
+        return;
+      }
+      
+      setState(() {
+        _level = level;
+        _remainingSeconds = level.duration;
+        _isLoading = false;
+        _initBlocks();
+      });
+      GameLogger.levelLoaded(
+        level.id, 
+        level.name, 
+        level.blocks.length, 
+        level.doors.length,
+        level.hardnessText.isEmpty ? 'Normal' : level.hardnessText,
+        level.duration,
+      );
+      _startTimer();
+    } on LevelLoadException catch (e) {
+      GameLogger.info('Failed to load level: $e', 'ERROR');
+      if (mounted) {
+        _showErrorAndGoBack('Failed to load level');
+      }
+    } catch (e) {
+      GameLogger.info('Unexpected error loading level: $e', 'ERROR');
+      if (mounted) {
+        _showErrorAndGoBack('Something went wrong');
+      }
+    }
+  }
+  
+  void _showErrorAndGoBack(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.red,
+      ),
     );
-    _startTimer();
+    Navigator.pop(context);
   }
   
   void _startTimer() {
@@ -276,6 +339,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this); // Clean up observer
     _timerActive = false;
     _exitAnimationController?.dispose();
     super.dispose();

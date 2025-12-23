@@ -11,10 +11,10 @@
 | Category | Total | Done | Remaining |
 |----------|-------|------|-----------|
 | Critical | 2 | 2 | 0 |
-| High Priority | 7 | 4 | 3 |
+| High Priority | 7 | **7** | **0** |
 | Medium Priority | 12 | 0 | 12 |
 | Low Priority | 8 | 0 | 8 |
-| **TOTAL** | **29** | **6** | **23** |
+| **TOTAL** | **29** | **9** | **20** |
 
 ---
 
@@ -34,19 +34,23 @@
 - [x] Music toggle missing in Settings
 - [x] Level fail sound (playLevelFail added)
 
-### To Do 🔧
+### Fixed ✅ (2025-12-23)
 
-- [ ] **Timer not paused on app background**
+- [x] **Timer paused on app background**
   - File: `lib/features/game/game_screen.dart`
-  - Add: `WidgetsBindingObserver` to pause/resume timer
+  - Added: `WidgetsBindingObserver` to pause/resume timer
+  - Timer subtracts background time when app resumes
 
-- [ ] **No input validation in LevelLoader**
-  - File: `lib/data/services/level_loader.dart`
-  - Add: try-catch for JSON parsing errors
+- [x] **Input validation in LevelLoader**
+  - File: `lib/core/models/game_models.dart`
+  - Added: try-catch for JSON parsing, type validation
+  - Added: `LevelLoadException` class
+  - Added: `getLevel()`, `clearCache()`, `isCached`, `cachedCount`
 
-- [ ] **Lives refill not persisted**
+- [x] **Lives refill now persisted**
   - File: `lib/core/services/storage_service.dart`
-  - Fix: Save calculated lives back to storage
+  - Fixed: `_persistLivesUpdate()` saves calculated lives
+  - Added: Null safety checks for `_prefs`
 
 ---
 

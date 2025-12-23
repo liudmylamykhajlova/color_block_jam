@@ -84,11 +84,13 @@ class StorageService {
   // === LIVES SYSTEM ===
   
   static int getLives() {
-    final savedLives = _prefs?.getInt(_livesKey) ?? maxLives;
+    if (_prefs == null) return maxLives; // Safety check
+    
+    final savedLives = _prefs!.getInt(_livesKey) ?? maxLives;
     if (savedLives >= maxLives) return maxLives;
     
     // Check if lives should be refilled based on time
-    final lastLostTime = _prefs?.getInt(_lastLifeLostTimeKey) ?? 0;
+    final lastLostTime = _prefs!.getInt(_lastLifeLostTimeKey) ?? 0;
     if (lastLostTime == 0) return savedLives;
     
     final now = DateTime.now().millisecondsSinceEpoch;
@@ -96,8 +98,31 @@ class StorageService {
     final minutesPassed = elapsed ~/ (1000 * 60);
     final livesToAdd = minutesPassed ~/ lifeRefillMinutes;
     
-    final newLives = (savedLives + livesToAdd).clamp(0, maxLives);
-    return newLives;
+    if (livesToAdd > 0) {
+      final newLives = (savedLives + livesToAdd).clamp(0, maxLives);
+      // Persist the calculated lives so we don't lose progress
+      _persistLivesUpdate(newLives, lastLostTime, minutesPassed);
+      return newLives;
+    }
+    
+    return savedLives;
+  }
+  
+  /// Persist the calculated lives update (called internally from getLives)
+  static void _persistLivesUpdate(int newLives, int originalLostTime, int minutesPassed) {
+    if (_prefs == null) return;
+    
+    _prefs!.setInt(_livesKey, newLives);
+    
+    if (newLives >= maxLives) {
+      // Lives fully restored, clear the timer
+      _prefs!.remove(_lastLifeLostTimeKey);
+    } else {
+      // Update the lost time to account for partial refills
+      // Keep the remaining minutes for the next life
+      final newLostTime = originalLostTime + (minutesPassed * 60 * 1000);
+      _prefs!.setInt(_lastLifeLostTimeKey, newLostTime);
+    }
   }
   
   static Future<void> loseLife() async {
