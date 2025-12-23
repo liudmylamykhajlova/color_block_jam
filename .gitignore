@@ -104,3 +104,6 @@ coverage/
 *.tar
 res/ColorBlockJam_Analysis/xapk_extracted/
 res/ColorBlockJam_Analysis/phone_cache/
+
+# Chat backup - local only, not for git
+docs/CHAT_BACKUP.md
