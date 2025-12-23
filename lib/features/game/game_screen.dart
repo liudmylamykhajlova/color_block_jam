@@ -175,7 +175,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        backgroundColor: const Color(0xFF4DA6FF),
+        backgroundColor: AppColors.accent,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Column(
           children: [
@@ -183,7 +183,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
               decoration: BoxDecoration(
-                color: const Color(0xFF2D2D2D),
+                color: AppColors.surfaceDark,
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Text(
@@ -270,7 +270,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                   width: 40,
                   height: 40,
                   decoration: const BoxDecoration(
-                    color: Color(0xFFE74C3C),
+                    color: AppColors.buttonRed,
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(Icons.close, color: Colors.white, size: 20),
@@ -281,7 +281,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
               Expanded(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF7ED321),
+                    backgroundColor: AppColors.buttonGreen,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
@@ -349,7 +349,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   Widget build(BuildContext context) {
     if (_isLoading || _level == null) {
       return const Scaffold(
-        backgroundColor: Color(0xFF1a1a2e),
+        backgroundColor: AppColors.backgroundDark,
         body: Center(child: CircularProgressIndicator()),
       );
     }
@@ -361,8 +361,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF667eea),
-              Color(0xFF764ba2),
+              AppColors.primaryLight,
+              AppColors.primary,
             ],
           ),
         ),
@@ -468,13 +468,13 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     
     switch (hardness) {
       case LevelHardness.hard:
-        badgeColor = const Color(0xFF9C27B0); // Purple for hard
+        badgeColor = AppColors.badgeHard;
         break;
       case LevelHardness.veryHard:
-        badgeColor = const Color(0xFF7B1FA2); // Darker purple for very hard
+        badgeColor = AppColors.badgeVeryHard;
         break;
       default:
-        badgeColor = const Color(0xFF5C6BC0); // Blue for normal
+        badgeColor = AppColors.badgeNormal;
     }
     
     return GestureDetector(
@@ -559,14 +559,14 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     Color bgColor;
     
     if (_remainingSeconds <= 10) {
-      timerColor = const Color(0xFFFF5252); // Red when critical
-      bgColor = const Color(0xFFFF5252).withOpacity(0.2);
+      timerColor = AppColors.timerCritical;
+      bgColor = AppColors.timerCritical.withOpacity(0.2);
     } else if (_remainingSeconds <= 30) {
-      timerColor = const Color(0xFFFFB74D); // Orange when low
-      bgColor = const Color(0xFFFFB74D).withOpacity(0.2);
+      timerColor = AppColors.timerLow;
+      bgColor = AppColors.timerLow.withOpacity(0.2);
     } else {
-      timerColor = const Color(0xFFFFD54F); // Gold/yellow normally
-      bgColor = const Color(0xFFFFD54F).withOpacity(0.15);
+      timerColor = AppColors.timerNormal;
+      bgColor = AppColors.timerNormal.withOpacity(0.15);
     }
     
     return Container(
@@ -1076,7 +1076,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       builder: (context) => ConfettiWidget(
         isPlaying: true,
         child: AlertDialog(
-          backgroundColor: const Color(0xFF764ba2),
+          backgroundColor: AppColors.primary,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           title: Column(
             children: [
@@ -1120,11 +1120,11 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                         padding: const EdgeInsets.symmetric(horizontal: 6),
                         child: Icon(
                           Icons.star,
-                          color: const Color(0xFFFFD700),
+                          color: AppColors.gold,
                           size: 36,
                           shadows: const [
                             Shadow(
-                              color: Color(0x80FFD700),
+                              color: AppColors.goldGlow,
                               blurRadius: 10,
                             ),
                           ],
@@ -1161,7 +1161,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                 Expanded(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF4CAF50),
+                      backgroundColor: AppColors.buttonGreenAlt,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -1270,7 +1270,7 @@ class GameBoardPainter extends CustomPainter {
     _drawDoors(canvas, borderOffset, frameThickness);
 
     // Draw game field background
-    final bgPaint = Paint()..color = const Color(0xFF3d3d3d);
+    final bgPaint = Paint()..color = AppColors.boardBg;
     canvas.drawRect(
       Rect.fromLTWH(
         borderOffset,
@@ -1283,7 +1283,7 @@ class GameBoardPainter extends CustomPainter {
 
     // Draw grid lines
     final gridPaint = Paint()
-      ..color = const Color(0xFF555555)
+      ..color = AppColors.boardGrid
       ..strokeWidth = 1;
 
     for (int row = 0; row <= level.gridHeight; row++) {
@@ -1302,7 +1302,7 @@ class GameBoardPainter extends CustomPainter {
     }
 
     // Draw hidden cells
-    final hiddenPaint = Paint()..color = const Color(0xFF1a1a2e);
+    final hiddenPaint = Paint()..color = AppColors.backgroundDark;
     for (final cell in level.hiddenCells) {
       canvas.drawRect(
         Rect.fromLTWH(
@@ -1332,7 +1332,7 @@ class GameBoardPainter extends CustomPainter {
   }
   
   void _drawFrame(Canvas canvas, double borderOffset, double frameThickness) {
-    final frameColor = const Color(0xFF2D2D2D); // Dark gray (NOT wooden!)
+    final frameColor = AppColors.boardFrame;
     final frameHighlight = const Color(0xFF4A4A4A); // Lighter gray
     final frameShadow = const Color(0xFF1A1A1A); // Darker gray
     
