@@ -69,3 +69,4 @@ class AppConstants {
   static const double dragDirectionThreshold = 0.5;
 }
 
+
