@@ -1,673 +1,477 @@
 # Color Block Jam - UI/UX Design Document
 
-> **Версія:** 1.0.0  
-> **Дата:** 2025-12-23  
-> **Статус:** В розробці
+> **Version:** 2.0.0  
+> **Date:** 2025-12-23  
+> **Based on:** Original game screenshots analysis
 
 ---
 
-## 1. Design Principles
+## 1. Design System
 
-### 1.1 Core Principles
+### 1.1 Color Palette
 
-| Principle | Description |
-|-----------|-------------|
-| **Clarity** | Кожен елемент має чітке призначення |
-| **Consistency** | Єдиний стиль на всіх екранах |
-| **Feedback** | Миттєвий відгук на дії користувача |
-| **Accessibility** | Доступність для всіх користувачів |
-| **Delight** | Приємні анімації та ефекти |
+| Name | HEX | Usage |
+|------|-----|-------|
+| Sky Blue | #4DA6FF | Dialog backgrounds, buttons |
+| Deep Blue | #1A1A4E | Main background |
+| Bright Green | #7ED321 | Primary buttons (Play, Retry) |
+| Red | #E74C3C | Close buttons, warnings |
+| Yellow/Gold | #F5A623 | Coins, highlights |
+| Purple | #9B59B6 | Special levels, bundles |
+| Orange | #F39C12 | Bundles section |
+| White | #FFFFFF | Text, icons |
 
-### 1.2 Design System
+### 1.2 Typography
+- **Titles:** Bold, white, drop shadow
+- **Numbers:** Extra bold (coins, levels)
+- **Body:** Regular white
+- **Style:** Cartoon/playful font
 
-```
-Brand Colors:
-├── Primary:    #667eea (Purple)
-├── Secondary:  #764ba2 (Deep Purple)
-├── Success:    #48aa1a (Green)
-├── Warning:    #fbb32d (Yellow)
-├── Error:      #b8202c (Red)
-├── Background: #f5f5f5 (Light Gray)
-└── Surface:    #ffffff (White)
-
-Typography:
-├── Heading:    Poppins Bold
-├── Body:       Poppins Regular
-└── Numbers:    Poppins SemiBold
-
-Spacing:
-├── xs: 4px
-├── sm: 8px
-├── md: 16px
-├── lg: 24px
-└── xl: 32px
-
-Border Radius:
-├── Small:  8px
-├── Medium: 16px
-├── Large:  24px
-└── Full:   999px (pills)
-```
+### 1.3 UI Components Style
+- **Dialogs:** Rounded corners (~20px), blue gradient, white border
+- **Buttons:** Rounded, gradient fill, slight 3D effect
+- **Cards:** Rounded corners, inner shadow
+- **Close button:** Red circle with white X
 
 ---
 
-## 2. Screen Flows
+## 2. Screen Specifications
 
-### 2.1 Main Flow
-
-```
-┌─────────┐     ┌─────────┐     ┌─────────┐
-│ Splash  │────▶│  Menu   │────▶│ Level   │
-│ Screen  │     │ Screen  │     │ Select  │
-└─────────┘     └────┬────┘     └────┬────┘
-                     │               │
-                     ▼               ▼
-               ┌─────────┐     ┌─────────┐
-               │Settings │     │  Game   │
-               │ Screen  │     │ Screen  │
-               └─────────┘     └────┬────┘
-                                    │
-                          ┌─────────┼─────────┐
-                          ▼         ▼         ▼
-                    ┌─────────┐ ┌─────────┐ ┌─────────┐
-                    │  Pause  │ │   Win   │ │  Fail   │
-                    │ Dialog  │ │ Dialog  │ │ Dialog  │
-                    └─────────┘ └─────────┘ └─────────┘
-```
-
-### 2.2 Monetization Flow
+### 2.1 Splash Screen
 
 ```
-┌─────────┐     ┌─────────┐     ┌─────────┐
-│No Lives │────▶│Watch Ad │────▶│Continue │
-│ Popup   │     │  or Pay │     │  Game   │
-└─────────┘     └─────────┘     └─────────┘
-      │
-      └────────▶┌─────────┐
-                │  Shop   │
-                │ Screen  │
-                └─────────┘
-```
-
----
-
-## 3. Screen Specifications
-
-### 3.1 Splash Screen
-
-```
-┌─────────────────────────────────┐
-│                                 │
-│                                 │
-│                                 │
-│           [LOGO]                │
-│                                 │
-│      COLOR BLOCK JAM            │
-│                                 │
-│                                 │
-│       ████████░░░░ 75%          │
-│                                 │
-│                                 │
-└─────────────────────────────────┘
-```
-
-**Specifications:**
-- Duration: 2-3 seconds (or until loaded)
-- Animation: Logo fade in + scale
-- Progress bar: Optional
-
-**Implementation:**
-```dart
-// Native splash + Flutter splash
-flutter_native_splash: ^2.3.0
-```
-
----
-
-### 3.2 Main Menu Screen
-
-```
-┌─────────────────────────────────┐
-│                                 │
-│  [⚙️]                     [🏆]  │
-│                                 │
-│                                 │
-│         ┌─────────┐             │
-│         │  LOGO   │             │
-│         │ & TITLE │             │
-│         └─────────┘             │
-│                                 │
-│                                 │
-│      ┌───────────────────┐      │
-│      │                   │      │
-│      │    ▶️  PLAY       │      │
-│      │                   │      │
-│      └───────────────────┘      │
-│                                 │
-│                                 │
-│   💰 1,250          ❤️ 5/5      │
-│                                 │
-│  [🎁 Daily]    [📦 Shop]        │
-│                                 │
-└─────────────────────────────────┘
++----------------------------------+
+|                                  |
+|     [Floating 3D LEGO blocks]    |
+|                                  |
+|           Color                  |
+|           Block                  |
+|            Jam                   |
+|        [Neon glow effect]        |
+|                                  |
+|     [Floating 3D LEGO blocks]    |
+|                                  |
+|        [====----] 5%             |
+|                                  |
++----------------------------------+
 ```
 
 **Elements:**
-
-| Element | Position | Action |
-|---------|----------|--------|
-| Settings (⚙️) | Top Left | Open Settings |
-| Achievements (🏆) | Top Right | Open Achievements |
-| Logo | Center Top | - |
-| Play Button | Center | Go to Level Select |
-| Coins (💰) | Bottom Left | Show balance |
-| Lives (❤️) | Bottom Right | Show lives |
-| Daily (🎁) | Bottom | Open Daily Rewards |
-| Shop (📦) | Bottom | Open Shop |
-
-**Animations:**
-- Play button: Pulsing glow
-- Logo: Subtle bounce
-- Icons: Scale on tap
+- 3D LEGO blocks floating/rotating in background
+- Logo with neon blue glow ring
+- Progress bar at bottom with percentage
 
 ---
 
-### 3.3 Level Select Screen
+### 2.2 Level Select (Map Screen)
 
 ```
-┌─────────────────────────────────┐
-│                                 │
-│  [←]    SELECT LEVEL   💰 1250  │
-│                                 │
-├─────────────────────────────────┤
-│                                 │
-│    ●═══●═══●═══●═══●═══○       │
-│    1   2   3   4   5   6        │
-│   ⭐⭐⭐ ⭐⭐☆ ⭐⭐⭐ ⭐☆☆  ●   🔒  │
-│                                 │
-│    ○═══○═══○═══○═══○═══○       │
-│    7   8   9   10  11  12       │
-│    🔒  🔒  🔒  🔒  🔒  🔒       │
-│                                 │
-├─────────────────────────────────┤
-│                                 │
-│      ┌─────────────────┐        │
-│      │    LEVEL 5      │        │
-│      │                 │        │
-│      │    ⭐⭐⭐         │        │
-│      │    Best: 45s    │        │
-│      │                 │        │
-│      │   [▶️ PLAY]     │        │
-│      └─────────────────┘        │
-│                                 │
-└─────────────────────────────────┘
++----------------------------------+
+| [Avatar] Full[5] [1.48k+] [Gear] |
+|                                  |
+|           [Skull]                |
+|            [31]  <- Purple/locked|
+|             |                    |
+|           [Skull]         [ADS]  |
+|            [30]  <- Red/locked   |
+|             |                    |
+|            [29]  <- Green/current|
+|             |                    |
+|      [===Level 29===]            |
+|                                  |
++----------------------------------+
+| [Shop]    [Home]    [Lvl50]     |
+|  coins    blocks     lock       |
++----------------------------------+
 ```
 
-**States:**
+**Top Bar:**
+- Avatar (tappable -> Profile)
+- Lives: "Full" + heart icon + "5"
+- Coins: "1.48k" + green plus button
+- Settings gear
 
-| State | Visual | Action |
-|-------|--------|--------|
-| Locked | 🔒 Gray | Show unlock requirement |
-| Unlocked | ● Colored | Tap to select |
-| Completed | ⭐ Stars | Tap to replay |
-| Selected | Highlighted | Show details panel |
+**Level Map:**
+- Vertical scrollable path
+- Levels connected by rope/line
+- Level states:
+  - Green = Available/Current
+  - Red + Skull = Hard/Locked
+  - Purple + Skull = Boss level
+  - Lock icon = Locked
+- Current level highlighted with button
 
-**Interactions:**
-- Horizontal scroll through levels
-- Tap level to select → show details
-- Tap PLAY to start
+**Side Elements:**
+- "ADS" crossed button (Remove Ads promo)
+
+**Bottom Navigation:**
+| Tab | Icon | State |
+|-----|------|-------|
+| Shop | Coins in basket | Available |
+| Home | 3D LEGO blocks | Current |
+| Lvl 50 | Lock icon | Locked milestone |
 
 ---
 
-### 3.4 Game Screen
+### 2.3 Level Start Dialog
 
 ```
-┌─────────────────────────────────┐
-│                                 │
-│  [⏸️]   LEVEL 25   ⏱️ 0:45     │
-│                                 │
-├─────────────────────────────────┤
-│                                 │
-│  ┌──[🟡]────────────[🔵]──┐     │
-│  │                        │     │
-│  │  🟡🟡   🔴🔴🔴   🔵    │     │
-│  │  🟡        🔴     🔵    │     │
-│  │            🔴          │     │
-│  │                        │     │
-│  │     🟢🟢🟢🟢           │     │
-│  │                        │     │
-│  └───────────[🔴]─────────┘     │
-│              [🟢]               │
-│                                 │
-├─────────────────────────────────┤
-│                                 │
-│   [💡 Hint]        [➕ +15s]    │
-│      -50              -50       │
-│                                 │
-└─────────────────────────────────┘
++----------------------------------+
+|        LEVEL 29           [X]   |
+|  +----------------------------+  |
+|  |                            |  |
+|  |     Unlock Level 70        |  |
+|  |    [Box] [===] 0/3 [Lock]  |  |
+|  |                            |  |
+|  |     Select Boosters:       |  |
+|  |     [Clock]    [Rocket]    |  |
+|  |       (2)        (2)       |  |
+|  |                            |  |
+|  |     [====PLAY====]         |  |
+|  |                            |  |
+|  +----------------------------+  |
++----------------------------------+
 ```
 
-**HUD Elements:**
+**Header:**
+- "LEVEL N" in dark banner
+- Red close button (X)
 
-| Element | Info |
-|---------|------|
-| Pause (⏸️) | Opens pause menu |
-| Level | Current level number |
-| Timer (⏱️) | Countdown, red when <10s |
-| Hint (💡) | Shows next move (-50 coins) |
-| Add Time (➕) | +15 seconds (-50 coins) |
+**Content:**
+- Unlock progress: "Unlock Level 70" with 0/3 progress
+- Booster selection: 2 slots with quantity badges
+- Play button (large, green)
+
+---
+
+### 2.4 Game Screen
+
+```
++----------------------------------+
+|[Lvl]    [Time]        [1.48k+]  |
+| 29     02:50  [Restart]          |
+|                                  |
+|  +----------------------------+  |
+|  |[G]                    [B]  |  |  <- Doors on edges
+|  |  [YY]  [GG] [BB]      [O]  |  |
+|  |  [YY]  [  ] [BB]      [O]  |  |
+|  |        [PP] [Ice4]         |  |
+|  |  [RR]  [PP] [Ice4]    [C]  |  |
+|  |  [RR]       [OO]      [C]  |  |
+|  |[P]                    [R]  |  |
+|  +----------------------------+  |
+|              [G]                 |
+|                                  |
++----------------------------------+
+|  [1]   [1]   [1]   [+]   [||]   |
+| clock hammer drill  buy  pause  |
++----------------------------------+
+```
+
+**Top HUD:**
+| Position | Element | Style |
+|----------|---------|-------|
+| Left | Level number | Blue circle, white text |
+| Center | Timer | Clock icon + "Time 02:50" |
+| Center-right | Restart | Circular arrow button |
+| Right | Coins | Gold coin + "1.48k" + plus |
 
 **Game Board:**
-- Centered in screen
-- Wooden frame texture
-- Doors on edges with arrows
-- Blocks are draggable
+- Dark gray background
+- Wooden/dark frame
+- Colored doors on edges with direction arrows
+- LEGO-style blocks with studs
+- Ice overlay on frozen blocks with number
+- Direction arrows (white) on restricted blocks
 
-**Visual Feedback:**
-- Selected block: Glow effect
-- Valid move: Smooth animation
-- Invalid move: Shake + haptic
-- Block exit: Scale out + particles
-
----
-
-### 3.5 Pause Dialog
-
-```
-┌─────────────────────────────────┐
-│                                 │
-│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
-│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
-│  ░░┌─────────────────────┐░░░░  │
-│  ░░│                     │░░░░  │
-│  ░░│       PAUSED        │░░░░  │
-│  ░░│                     │░░░░  │
-│  ░░│   ┌─────────────┐   │░░░░  │
-│  ░░│   │  ▶️ RESUME   │   │░░░░  │
-│  ░░│   └─────────────┘   │░░░░  │
-│  ░░│   ┌─────────────┐   │░░░░  │
-│  ░░│   │  🔄 RESTART │   │░░░░  │
-│  ░░│   └─────────────┘   │░░░░  │
-│  ░░│   ┌─────────────┐   │░░░░  │
-│  ░░│   │  🏠 HOME    │   │░░░░  │
-│  ░░│   └─────────────┘   │░░░░  │
-│  ░░│                     │░░░░  │
-│  ░░│   [🔊 ON] [📳 ON]   │░░░░  │
-│  ░░│                     │░░░░  │
-│  ░░└─────────────────────┘░░░░  │
-│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
-│                                 │
-└─────────────────────────────────┘
-```
-
-**Features:**
-- Blurred/dimmed background
-- Timer paused
-- Quick sound/haptic toggles
-- Slide in from bottom
+**Bottom Boosters:**
+| Slot | Icon | Badge | Function |
+|------|------|-------|----------|
+| 1 | Clock | "1" | Add time |
+| 2 | Hammer | "1" | Destroy block |
+| 3 | Drill | "1" | Unknown |
+| 4 | Plus | "+" | Buy boosters |
+| 5 | Pause | - | Pause menu |
 
 ---
 
-### 3.6 Win Dialog
+### 2.5 Fail Dialog
 
 ```
-┌─────────────────────────────────┐
-│  🎊                        🎊   │
-│     🎊    LEVEL COMPLETE    🎊  │
-│  🎊          25!           🎊   │
-│                                 │
-│           ⭐ ⭐ ⭐              │
-│                                 │
-│       ┌─────────────┐           │
-│       │  Time: 32s  │           │
-│       │  Moves: 15  │           │
-│       │ +50 💰      │           │
-│       └─────────────┘           │
-│                                 │
-│      ┌───────────────────┐      │
-│      │   ▶️ NEXT LEVEL   │      │
-│      └───────────────────┘      │
-│                                 │
-│   [🏠 Home]     [🔄 Replay]     │
-│                                 │
-│  ┌─────────────────────────┐    │
-│  │ 📺 Watch Ad for 2x 💰   │    │
-│  └─────────────────────────┘    │
-│                                 │
-└─────────────────────────────────┘
++----------------------------------+
+|        Level 29           [X]   |
+|  +----------------------------+  |
+|  |                            |  |
+|  |         [Heart]            |  |
+|  |           -1               |  |
+|  |                            |  |
+|  |   You will lose 1 life!    |  |
+|  |                            |  |
+|  |      [===Retry===]         |  |
+|  |                            |  |
+|  +----------------------------+  |
++----------------------------------+
 ```
 
-**Animations:**
-1. Dialog slides up (300ms)
-2. Stars appear one by one (stagger 200ms each)
-3. Stars bounce animation
-4. Confetti burst
-5. Coins counter animates up
+**Elements:**
+- Title: "Level N" in dark banner
+- Close button (X) - red circle
+- Broken heart icon with "-1"
+- Warning text
+- Retry button (green)
 
 ---
 
-### 3.7 Fail Dialog
+### 2.6 Shop Screen
 
 ```
-┌─────────────────────────────────┐
-│                                 │
-│         ⏰ TIME'S UP!           │
-│                                 │
-│        ❤️ Lives: 4/5            │
-│                                 │
-│      ┌───────────────────┐      │
-│      │   ➕ ADD TIME     │      │
-│      │    (50 💰)        │      │
-│      └───────────────────┘      │
-│                                 │
-│      ┌───────────────────┐      │
-│      │   📺 WATCH AD     │      │
-│      │   (+30 seconds)   │      │
-│      └───────────────────┘      │
-│                                 │
-│      ┌───────────────────┐      │
-│      │   🔄 TRY AGAIN    │      │
-│      │   (-1 ❤️)         │      │
-│      └───────────────────┘      │
-│                                 │
-│          [🏠 Home]              │
-│                                 │
-└─────────────────────────────────┘
++----------------------------------+
+|       Shop             [1.48k]  |
+|                                  |
+|  +======= Coins =======+        |
+|  |                      |       |
+|  | [1000]  [5000]  [10000]     |
+|  | 79.99  284.99   549.99      |
+|  |                      |       |
+|  | [25000] [50000] [100000]    |
+|  | 1099.99 1949.99 3649.99     |
+|  |                      |       |
+|  +======= Bundles ======+       |
+|  |                      |       |
+|  | [ADS] Remove inter-  |       |
+|  |       stitial &      |       |
+|  |       banner ads     |       |
+|  | No Ads      284.99   |       |
+|  +----------------------+       |
+|                                  |
++----------------------------------+
+| [Shop]    [Home]    [Lvl50]     |
++----------------------------------+
 ```
 
-**Priority of options:**
-1. Add Time (monetization)
-2. Watch Ad (monetization)
-3. Try Again (uses life)
-4. Home (gives up)
+**Sections:**
+1. **Coins** (yellow header)
+   - 6 coin packs in 2x3 grid
+   - Each shows: amount, coin pile image, price
+
+2. **Bundles** (orange header)
+   - No Ads bundle with description
+   - Green price button
 
 ---
 
-### 3.8 Settings Screen
+### 2.7 Remove Ads Dialog
 
 ```
-┌─────────────────────────────────┐
-│                                 │
-│  [←]       SETTINGS             │
-│                                 │
-├─────────────────────────────────┤
-│                                 │
-│   Sound Effects                 │
-│   ┌────────────────────[●]──┐   │
-│   └─────────────────────────┘   │
-│                                 │
-│   Music                         │
-│   ┌────────────────────[●]──┐   │
-│   └─────────────────────────┘   │
-│                                 │
-│   Vibration                     │
-│   ┌────────────────────[●]──┐   │
-│   └─────────────────────────┘   │
-│                                 │
-├─────────────────────────────────┤
-│                                 │
-│   [📧 Contact Us]               │
-│   [📜 Privacy Policy]           │
-│   [📋 Terms of Service]         │
-│   [⭐ Rate Us]                  │
-│                                 │
-│   [🗑️ Reset Progress]           │
-│                                 │
-├─────────────────────────────────┤
-│         Version 1.0.0           │
-└─────────────────────────────────┘
++----------------------------------+
+|                           [X]   |
+|       REMOVE ADS                |
+|                                  |
+|         [ADS]                   |
+|         (crossed)               |
+|                                  |
+|  [TV] Remove obligatory ads     |
+|                                  |
+|  [Phone] Remove bottom banner   |
+|          ads                    |
+|                                  |
+|  [Play] Keep optional ads for   |
+|         rewards                 |
+|                                  |
+|       Level 29                  |
+|      [=284,99 UAH=]             |
+|                                  |
++----------------------------------+
 ```
+
+**Content:**
+- Large crossed ADS icon
+- Checklist of what's included
+- Current level indicator
+- Price button (green)
 
 ---
 
-### 3.9 Shop Screen
+### 2.8 Settings Screen
 
 ```
-┌─────────────────────────────────┐
-│                                 │
-│  [←]        SHOP       💰 250   │
-│                                 │
-├─────────────────────────────────┤
-│                                 │
-│  ══════ COIN PACKS ══════       │
-│                                 │
-│  ┌─────────┐  ┌─────────┐       │
-│  │  💰     │  │  💰💰   │       │
-│  │  500    │  │  1500   │       │
-│  │ $1.99   │  │ $4.99   │       │
-│  └─────────┘  └─────────┘       │
-│                                 │
-│  ┌─────────┐  ┌─────────┐       │
-│  │  💰💰💰 │  │  💰💰💰💰│       │
-│  │  4000   │  │  10000  │       │
-│  │ $9.99   │  │ $19.99  │       │
-│  └─────────┘  └─────────┘       │
-│                                 │
-│  ══════ SPECIAL ══════          │
-│                                 │
-│  ┌─────────────────────────┐    │
-│  │  🚫 NO ADS              │    │
-│  │  Remove all ads forever │    │
-│  │         $4.99           │    │
-│  └─────────────────────────┘    │
-│                                 │
-│  [🔄 Restore Purchases]         │
-│                                 │
-└─────────────────────────────────┘
++----------------------------------+
+|       SETTINGS            [X]   |
+|  +----------------------------+  |
+|  |                            |  |
+|  |  [Phone]        [===O]     |  |  <- Vibration OFF
+|  |                            |  |
+|  |  [Speaker]      [O===]     |  |  <- Sound ON
+|  |                            |  |
+|  |  [Music]        [O===]     |  |  <- Music ON
+|  |                            |  |
+|  |  [====Legal Terms====]     |  |
+|  |                            |  |
+|  |  [===Restore Purchases==]  |  |
+|  |                            |  |
+|  |  [Checkmark Support]       |  |
+|  |                            |  |
+|  |  [====Language====]        |  |
+|  |                            |  |
+|  |  [IG +100] [FB +100]       |  |
+|  |       [TT +100]            |  |
+|  +----------------------------+  |
++----------------------------------+
 ```
+
+**Toggle Switches:**
+- Green = ON (right position)
+- Gray = OFF (left position)
+
+**Buttons:**
+- Legal Terms
+- Restore Purchases
+- Support (with green checkmark)
+- Language
+
+**Social Rewards:**
+- Instagram: +100 coins
+- Facebook: +100 coins
+- TikTok: +100 coins
 
 ---
 
-### 3.10 Daily Rewards Screen
+### 2.9 Profile Screen
 
 ```
-┌─────────────────────────────────┐
-│                                 │
-│        🎁 DAILY BONUS 🎁        │
-│                                 │
-├─────────────────────────────────┤
-│                                 │
-│  ┌─────┐ ┌─────┐ ┌─────┐        │
-│  │Day 1│ │Day 2│ │Day 3│        │
-│  │  ✓  │ │  ✓  │ │  ●  │        │
-│  │💰 50│ │💰 75│ │💰100│        │
-│  └─────┘ └─────┘ └─────┘        │
-│                                 │
-│  ┌─────┐ ┌─────┐ ┌─────┐        │
-│  │Day 4│ │Day 5│ │Day 6│        │
-│  │     │ │     │ │     │        │
-│  │💰150│ │❤️ x2│ │💰300│        │
-│  └─────┘ └─────┘ └─────┘        │
-│                                 │
-│         ┌─────────┐             │
-│         │  Day 7  │             │
-│         │   🎁    │             │
-│         │ MYSTERY │             │
-│         └─────────┘             │
-│                                 │
-│      ┌───────────────────┐      │
-│      │   CLAIM DAY 3     │      │
-│      │      💰 100       │      │
-│      └───────────────────┘      │
-│                                 │
-└─────────────────────────────────┘
++----------------------------------+
+|       Profile             [X]   |
+|  +----------------------------+  |
+|  |  +------+                  |  |
+|  |  |Avatar|  Player8659 [E]  |  |
+|  |  +------+                  |  |
+|  |                            |  |
+|  |  [Avatar]      [Frame]     |  |  <- Tabs
+|  |                            |  |
+|  |  [A1] [A2] [A3]           |  |
+|  |  [A4] [A5] [A6] <-checked |  |
+|  |  [A7] [A8] [A9]           |  |
+|  |  [A10][A11][A12]          |  |
+|  |                            |  |
+|  +----------------------------+  |
++----------------------------------+
 ```
+
+**Header:**
+- Current avatar display
+- Player name with edit button (pencil)
+
+**Tabs:**
+- Avatar (selected)
+- Frame
+
+**Grid:**
+- 3x4 avatar selection grid
+- Green checkmark on selected
+- Green border on selected
 
 ---
 
-### 3.11 No Lives Popup
+## 3. Animations
 
+### 3.1 Splash Screen
+- 3D blocks floating and rotating
+- Logo fade in with glow effect
+- Progress bar filling
+
+### 3.2 Game Interactions
+- Block pickup: Slight scale up + shadow
+- Block move: Smooth follow finger
+- Block drop: Bounce effect
+- Block exit: Scale down + particles
+
+### 3.3 Dialogs
+- Slide up from bottom
+- Fade in background dim
+- Buttons: Press state (scale down)
+
+### 3.4 Level Map
+- Smooth vertical scroll
+- Current level pulsing
+- Level complete: Star burst
+
+---
+
+## 4. Component Specifications
+
+### 4.1 Primary Button (Play, Retry)
 ```
-┌─────────────────────────────────┐
-│                                 │
-│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
-│  ░░┌─────────────────────┐░░░░  │
-│  ░░│                     │░░░░  │
-│  ░░│  ❤️ OUT OF LIVES!   │░░░░  │
-│  ░░│                     │░░░░  │
-│  ░░│  Next life in:      │░░░░  │
-│  ░░│       14:32         │░░░░  │
-│  ░░│                     │░░░░  │
-│  ░░│  ┌─────────────┐    │░░░░  │
-│  ░░│  │ 📺 WATCH AD │    │░░░░  │
-│  ░░│  │   +1 ❤️     │    │░░░░  │
-│  ░░│  └─────────────┘    │░░░░  │
-│  ░░│                     │░░░░  │
-│  ░░│  ┌─────────────┐    │░░░░  │
-│  ░░│  │ 💰 BUY LIFE │    │░░░░  │
-│  ░░│  │   100 coins │    │░░░░  │
-│  ░░│  └─────────────┘    │░░░░  │
-│  ░░│                     │░░░░  │
-│  ░░│     [Wait]          │░░░░  │
-│  ░░│                     │░░░░  │
-│  ░░└─────────────────────┘░░░░  │
-│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
-│                                 │
-└─────────────────────────────────┘
+- Background: Green gradient (#7ED321 -> #5CB812)
+- Border: 2px dark green
+- Border radius: 12px
+- Text: White, bold, uppercase
+- Shadow: 0 4px dark green
+- Height: 56px
+- Press: Scale to 95%
+```
+
+### 4.2 Dialog Box
+```
+- Background: Blue gradient (#4DA6FF -> #2E86DE)
+- Border: 3px white
+- Border radius: 20px
+- Shadow: 0 8px rgba(0,0,0,0.3)
+- Padding: 20px
+```
+
+### 4.3 Close Button
+```
+- Background: Red gradient (#E74C3C)
+- Shape: Circle, 40x40px
+- Icon: White X
+- Position: Top-right corner
+- Offset: -10px from edge
+```
+
+### 4.4 Toggle Switch
+```
+- Track: 50x28px, rounded
+- Thumb: 24x24px circle
+- ON: Green track, thumb right
+- OFF: Gray track, thumb left
 ```
 
 ---
 
-## 4. Component Library
+## 5. Implementation Notes
 
-### 4.1 Buttons
+### 5.1 Required Assets
+- 12+ avatar images
+- 10 block colors
+- Booster icons (clock, hammer, drill, pause)
+- Social icons (Instagram, Facebook, TikTok)
+- Coin pile images (6 sizes)
+- 3D LEGO blocks for splash/background
 
-| Type | Usage | Style |
-|------|-------|-------|
-| Primary | Main actions | Gradient, rounded, shadow |
-| Secondary | Alternative actions | Outline, rounded |
-| Icon | Quick actions | Circle, icon only |
-| Text | Links | No background |
-
-### 4.2 Cards
-
-```dart
-Card(
-  borderRadius: 16,
-  elevation: 4,
-  padding: 16,
-  background: white,
-)
-```
-
-### 4.3 Dialogs
-
-```dart
-Dialog(
-  borderRadius: 24,
-  dimBackground: true,
-  animation: slideUp,
-  dismissOnTapOutside: false,
-)
-```
-
-### 4.4 Progress Indicators
-
-| Type | Usage |
-|------|-------|
-| Linear | Loading, timer |
-| Circular | Loading states |
-| Dots | Pagination |
-
----
-
-## 5. Animation Specifications
-
-### 5.1 Transitions
-
-| Transition | Duration | Easing |
-|------------|----------|--------|
-| Page push | 300ms | easeInOut |
-| Dialog open | 250ms | easeOut |
-| Dialog close | 200ms | easeIn |
-| Fade | 200ms | linear |
-
-### 5.2 Micro-interactions
-
-| Animation | Duration | Easing |
-|-----------|----------|--------|
-| Button tap | 100ms | easeOut |
-| Star appear | 400ms | elasticOut |
-| Confetti | 2000ms | linear |
-| Number count | 500ms | easeOut |
-
-### 5.3 Game Animations
-
-| Animation | Duration | Easing |
-|-----------|----------|--------|
-| Block pickup | 50ms | easeOut |
-| Block drop | 100ms | bounceOut |
-| Block exit | 200ms | easeIn |
-| Invalid move | 200ms | shake |
-
----
-
-## 6. Accessibility
-
-### 6.1 Visual
-
-| Feature | Implementation |
-|---------|----------------|
-| Color contrast | WCAG AA minimum |
-| Touch targets | Min 44x44pt |
-| Font scaling | Support up to 200% |
-| Colorblind support | Patterns + icons |
-
-### 6.2 Motor
-
-| Feature | Implementation |
-|---------|----------------|
-| Drag threshold | Adjustable |
-| Tap timing | No time limit |
-| One-handed use | Bottom navigation |
-
-### 6.3 Cognitive
-
-| Feature | Implementation |
-|---------|----------------|
-| Clear icons | + Text labels |
-| Consistent layout | All screens |
-| Undo support | Restart level |
-| Progress saving | Auto-save |
-
----
-
-## 7. Implementation Notes
-
-### 7.1 Flutter Packages
-
+### 5.2 Flutter Packages
 ```yaml
 dependencies:
-  flutter_animate: ^4.x      # Animations
-  confetti_widget: ^0.4.x    # Confetti effect
-  flutter_svg: ^2.x          # SVG icons
-  google_fonts: ^6.x         # Typography
-  shared_preferences: ^2.x   # Local storage
-  audioplayers: ^5.x         # Sound effects
+  flutter_animate: ^4.x    # Animations
+  audioplayers: ^5.x       # Sound
+  shared_preferences: ^2.x # Storage
+  in_app_purchase: ^3.x    # IAP
+  google_mobile_ads: ^3.x  # Ads
 ```
 
-### 7.2 Asset Structure
-
-```
-assets/
-├── images/
-│   ├── logo.png
-│   ├── icons/
-│   └── backgrounds/
-├── fonts/
-│   └── Poppins/
-├── audio/
-│   ├── sfx/
-│   └── music/
-└── animations/
-    └── lottie/
-```
+### 5.3 Screen Priority
+1. Game Screen (done)
+2. Level Select Map
+3. Fail Dialog
+4. Shop Screen
+5. Settings
+6. Profile
+7. Remove Ads Dialog
 
 ---
 
-## Історія Змін
+## Change History
 
-| Версія | Дата | Зміни |
-|--------|------|-------|
-| 1.0.0 | 2025-12-23 | Початкова версія на основі аналізу оригінальної гри |
-
+| Version | Date | Changes |
+|---------|------|---------|
+| 2.0.0 | 2025-12-23 | Complete rewrite based on screenshots |
+| 1.0.0 | 2025-12-23 | Initial version |
