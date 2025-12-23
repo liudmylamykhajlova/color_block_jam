@@ -1031,8 +1031,9 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     
     // Determine exit direction
     String exitEdge = 'unknown';
-    if (_exitDeltaRow < 0) exitEdge = 'top';
-    else if (_exitDeltaRow > 0) exitEdge = 'bottom';
+    if (_exitDeltaRow < 0) {
+      exitEdge = 'top';
+    } else if (_exitDeltaRow > 0) exitEdge = 'bottom';
     else if (_exitDeltaCol < 0) exitEdge = 'left';
     else if (_exitDeltaCol > 0) exitEdge = 'right';
     

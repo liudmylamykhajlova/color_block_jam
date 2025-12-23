@@ -88,7 +88,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             setState(() => _hapticEnabled = value);
                             if (value) AudioService.lightTap();
                           },
-                          activeColor: const Color(0xFF4CAF50),
+                          activeThumbColor: const Color(0xFF4CAF50),
                         ),
                       ),
 
@@ -106,7 +106,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             await AudioService.setSoundEnabled(value);
                             setState(() => _soundEnabled = value);
                           },
-                          activeColor: const Color(0xFF4CAF50),
+                          activeThumbColor: const Color(0xFF4CAF50),
                         ),
                       ),
 
@@ -124,7 +124,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             await AudioService.setMusicEnabled(value);
                             setState(() => _musicEnabled = value);
                           },
-                          activeColor: const Color(0xFF4CAF50),
+                          activeThumbColor: const Color(0xFF4CAF50),
                         ),
                       ),
 

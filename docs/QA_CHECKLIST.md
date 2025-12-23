@@ -13,8 +13,8 @@
 | Critical | 2 | 2 | 0 |
 | High Priority | 7 | 7 | 0 |
 | Medium Priority | 12 | 12 | 0 |
-| Low Priority | 8 | **2** | **6** |
-| **TOTAL** | **29** | **23** | **6** |
+| Low Priority | 8 | **3** | **5** |
+| **TOTAL** | **29** | **24** | **5** |
 
 ---
 

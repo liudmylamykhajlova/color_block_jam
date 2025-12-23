@@ -33,8 +33,9 @@ class GameLevel {
   factory GameLevel.fromJson(Map<String, dynamic> json) {
     LevelHardness hardness = LevelHardness.normal;
     final hardnessValue = json['hardness'] ?? 0;
-    if (hardnessValue == 1) hardness = LevelHardness.hard;
-    else if (hardnessValue == 2) hardness = LevelHardness.veryHard;
+    if (hardnessValue == 1) {
+      hardness = LevelHardness.hard;
+    } else if (hardnessValue == 2) hardness = LevelHardness.veryHard;
     
     return GameLevel(
       id: json['id'],
@@ -188,8 +189,9 @@ class GameBlock {
 
     switch (blockGroupType) {
       case 1:
-        if (rotZ == 1) col -= 1;
-        else if (rotZ == 2) row -= 1;
+        if (rotZ == 1) {
+          col -= 1;
+        } else if (rotZ == 2) row -= 1;
         break;
       case 3:
         if (rotZ == 0) {
@@ -209,8 +211,9 @@ class GameBlock {
           3: [[-1, 0], [0, 0], [1, 0], [1, 1]],      // XXX / __X
         };
         rotatedShape = reverseLShapes[rotZ]?.map((c) => [...c]).toList() ?? rotatedShape;
-        if (rotZ == 2) col -= 1;
-        else if (rotZ == 3) row -= 1;
+        if (rotZ == 2) {
+          col -= 1;
+        } else if (rotZ == 3) row -= 1;
         break;
       case 5:
         if (rotZ == 0) {
@@ -243,8 +246,9 @@ class GameBlock {
           3: [[0, -1], [-1, 0], [0, 0], [0, 1]]    // stem left
         };
         rotatedShape = shortTShapes[rotZ]?.map((c) => [...c]).toList() ?? rotatedShape;
-        if (rotZ == 0) row -= 1;
-        else if (rotZ == 1) col -= 1;
+        if (rotZ == 0) {
+          row -= 1;
+        } else if (rotZ == 1) col -= 1;
         // rotZ == 2 and 3: no offset
         break;
     }
