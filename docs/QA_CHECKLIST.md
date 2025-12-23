@@ -12,9 +12,9 @@
 |----------|-------|------|-----------|
 | Critical | 2 | 2 | 0 |
 | High Priority | 7 | 7 | 0 |
-| Medium Priority | 12 | **12** | **0** ✅ |
-| Low Priority | 8 | 0 | 8 |
-| **TOTAL** | **29** | **21** | **8** |
+| Medium Priority | 12 | 12 | 0 |
+| Low Priority | 8 | **2** | **6** |
+| **TOTAL** | **29** | **23** | **6** |
 
 ---
 
@@ -114,41 +114,32 @@
 
 ## 🟢 Low Priority
 
-### Code Cleanup
+### Code Cleanup ✅ (2025-12-23)
 
-- [ ] **Duplicate model files**
-  - Location: `lib/core/models/`
-  - Action: Remove unused `block.dart`, `door.dart`, `level.dart`, `grid_position.dart`
+- [x] **Duplicate model files deleted**
+  - Removed: `block.dart`, `door.dart`, `level.dart`, `grid_position.dart`
+  - Removed: `lib/data/services/level_loader.dart`
 
-- [ ] **Empty folders**
-  - Locations: `lib/core/utils/`, `lib/game/logic/`, `lib/screens/`
-  - Action: Delete or add .gitkeep
+- [x] **Empty folders deleted**
+  - Removed: `lib/core/utils/`, `lib/game/`, `lib/screens/`, `lib/data/`
 
-- [ ] **No dartdoc comments**
+- [ ] **No dartdoc comments** (deferred)
   - Files: All `.dart` files
   - Add: `///` documentation for public APIs
 
-- [ ] **Missing const constructors**
-  - Files: Widget classes
-  - Add: `const` keyword where possible
+- [ ] **Const/imports cleanup** (run locally)
+  - Run: `dart fix --apply` when Flutter in PATH
 
-- [ ] **Unused imports**
-  - Files: Various
-  - Run: `dart fix --apply`
-
-### Testing
+### Testing (deferred to post-MVP)
 
 - [ ] **No unit tests**
   - Add: `test/core/models/game_block_test.dart`
-  - Cover: `GameBlock.cells`, collision detection
 
 - [ ] **No widget tests**
   - Add: `test/features/settings/settings_screen_test.dart`
-  - Cover: Toggle states, dialog interactions
 
 - [ ] **No integration tests**
   - Add: `integration_test/level_completion_test.dart`
-  - Cover: Full level flow from start to win
 
 ---
 

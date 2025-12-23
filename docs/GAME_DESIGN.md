@@ -99,7 +99,7 @@ Move ALL blocks out of the board through doors of matching color.
 | 8 | ShortT | 4 |
 | 9 | Z | 4 |
 | 10 | ReverseZ | 4 |
-| 11 | U | 6 |
+| 11 | U | 5 |
 
 ---
 
