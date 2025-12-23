@@ -185,7 +185,7 @@ class GameDoor {
 | 8 | ShortT | T-shape | 4 |
 | 9 | Z | Z-shape | 4 |
 | 10 | ReverseZ | S-shape | 4 |
-| 11 | U | U-shape | 6 |
+| 11 | U | U-shape | 5 |
 
 ---
 

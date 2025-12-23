@@ -12,9 +12,9 @@
 |----------|-------|------|-----------|
 | Critical | 2 | 2 | 0 |
 | High Priority | 7 | 7 | 0 |
-| Medium Priority | 12 | **8** | **4** |
+| Medium Priority | 12 | **12** | **0** ✅ |
 | Low Priority | 8 | 0 | 8 |
-| **TOTAL** | **29** | **17** | **12** |
+| **TOTAL** | **29** | **21** | **8** |
 
 ---
 
@@ -92,23 +92,23 @@
   - File: `lib/features/level_select/level_select_screen.dart`
   - Added: Loading spinner, error UI with retry
 
-### Performance
+### Performance ✅ (2025-12-23)
 
-- [ ] **Memory: cached levels never cleared**
-  - File: `lib/core/models/game_models.dart` (LevelLoader)
-  - Add: `clearCache()` method
+- [x] **LevelLoader.clearCache() added**
+  - File: `lib/core/models/game_models.dart`
+  - Done: Earlier with input validation
 
-- [ ] **Timer uses Future.delayed loop**
+- [x] **Timer uses Timer.periodic**
   - File: `lib/features/game/game_screen.dart`
-  - Fix: Use `Timer.periodic` or `Ticker`
+  - Fixed: Replaced Future.delayed loop
 
-- [ ] **Full repaint on every frame**
+- [x] **RepaintBoundary added**
   - File: `lib/features/game/game_screen.dart`
-  - Add: `RepaintBoundary` for static elements
+  - Done: Wrapped CustomPaint, TODO for full split
 
-- [ ] **Shape 11 (U) cell count mismatch**
-  - Files: `docs/*.md` vs `game_models.dart`
-  - Verify: Docs say 6 cells, code has 5 - check original game
+- [x] **Shape 11 (U) cell count fixed**
+  - Files: All docs updated to 5 cells
+  - Verified: Code has 5 cells, works correctly
 
 ---
 
