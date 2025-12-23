@@ -5,6 +5,11 @@ class StorageService {
   static const String _currentLevelKey = 'current_level';
   static const String _soundEnabledKey = 'sound_enabled';
   static const String _hapticEnabledKey = 'haptic_enabled';
+  static const String _livesKey = 'lives';
+  static const String _lastLifeLostTimeKey = 'last_life_lost_time';
+  
+  static const int maxLives = 5;
+  static const int lifeRefillMinutes = 30;
   
   static SharedPreferences? _prefs;
   
@@ -65,11 +70,69 @@ class StorageService {
     await _prefs?.setBool(_hapticEnabledKey, value);
   }
   
+  // === LIVES SYSTEM ===
+  
+  static int getLives() {
+    final savedLives = _prefs?.getInt(_livesKey) ?? maxLives;
+    if (savedLives >= maxLives) return maxLives;
+    
+    // Check if lives should be refilled based on time
+    final lastLostTime = _prefs?.getInt(_lastLifeLostTimeKey) ?? 0;
+    if (lastLostTime == 0) return savedLives;
+    
+    final now = DateTime.now().millisecondsSinceEpoch;
+    final elapsed = now - lastLostTime;
+    final minutesPassed = elapsed ~/ (1000 * 60);
+    final livesToAdd = minutesPassed ~/ lifeRefillMinutes;
+    
+    final newLives = (savedLives + livesToAdd).clamp(0, maxLives);
+    return newLives;
+  }
+  
+  static Future<void> loseLife() async {
+    final currentLives = getLives();
+    final newLives = (currentLives - 1).clamp(0, maxLives);
+    await _prefs?.setInt(_livesKey, newLives);
+    await _prefs?.setInt(_lastLifeLostTimeKey, DateTime.now().millisecondsSinceEpoch);
+  }
+  
+  static Future<void> addLife([int count = 1]) async {
+    final currentLives = getLives();
+    final newLives = (currentLives + count).clamp(0, maxLives);
+    await _prefs?.setInt(_livesKey, newLives);
+  }
+  
+  static Future<void> refillLives() async {
+    await _prefs?.setInt(_livesKey, maxLives);
+    await _prefs?.remove(_lastLifeLostTimeKey);
+  }
+  
+  static bool hasLives() {
+    return getLives() > 0;
+  }
+  
+  static String getTimeUntilNextLife() {
+    final currentLives = getLives();
+    if (currentLives >= maxLives) return 'Full';
+    
+    final lastLostTime = _prefs?.getInt(_lastLifeLostTimeKey) ?? 0;
+    if (lastLostTime == 0) return 'Full';
+    
+    final now = DateTime.now().millisecondsSinceEpoch;
+    final elapsed = now - lastLostTime;
+    final minutesPassed = elapsed ~/ (1000 * 60);
+    final minutesRemaining = lifeRefillMinutes - (minutesPassed % lifeRefillMinutes);
+    
+    return '${minutesRemaining}m';
+  }
+  
   // === RESET PROGRESS ===
   
   static Future<void> resetProgress() async {
     await _prefs?.remove(_completedLevelsKey);
     await _prefs?.remove(_currentLevelKey);
+    await _prefs?.remove(_livesKey);
+    await _prefs?.remove(_lastLifeLostTimeKey);
   }
 }
 

@@ -60,9 +60,9 @@
 - Subtle gradient/shadow for 3D effect
 
 ### 2.3 Board Frame
-- Brown "wooden" texture
-- 3D effect with shadows
-- Doors embedded in frame
+- Dark gray/black frame (NOT wooden)
+- Subtle 3D effect
+- Doors embedded as colored strips on edges
 
 ---
 
@@ -324,11 +324,12 @@ int _iceCount;
 - [x] Frozen blocks (ice)
 - [x] Multi-layer blocks
 - [x] 27 levels
+- [x] Timer system (countdown, per-level duration)
+- [x] Lives system (5 max, 30 min refill)
+- [x] Fail dialog
 
 ### Phase 2: Economy (NEXT)
-- [ ] Lives system (5 lives)
 - [ ] Coins system
-- [ ] Timer improvements
 - [ ] Boosters (time, hammer)
 
 ### Phase 3: Monetization
@@ -363,8 +364,9 @@ int _iceCount;
 | Multi-layer | Yes | Yes |
 | Blockers | Yes | No |
 | Rainbow | Yes | No |
-| Timer | Yes | Basic |
-| Lives | Yes | No |
+| Timer | Yes | **Yes** |
+| Lives | Yes | **Yes (5, 30m refill)** |
+| Fail dialog | Yes | **Yes** |
 | Coins | Yes | No |
 | Shop | Yes | No |
 | Ads | Yes | No |

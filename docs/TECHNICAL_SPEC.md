@@ -325,7 +325,17 @@ void _animateBlockMove(Block block, Point from, Point to) {
 | `markLevelCompleted(id)` | Mark level as complete |
 | `getSoundEnabled()` | Sound toggle state |
 | `getHapticEnabled()` | Haptic toggle state |
+| `getLives()` | Get current lives (with time-based refill) |
+| `loseLife()` | Decrease lives by 1 |
+| `addLife(count)` | Add lives (e.g., from ads) |
+| `refillLives()` | Set lives to max (5) |
+| `hasLives()` | Check if lives > 0 |
+| `getTimeUntilNextLife()` | Time until next refill |
 | `resetProgress()` | Reset all progress |
+
+**Lives Constants:**
+- `maxLives`: 5
+- `lifeRefillMinutes`: 30
 
 ### 6.2 AudioService
 
@@ -392,8 +402,8 @@ void _animateBlockMove(Block block, Point from, Point to) {
 - [x] Movement direction restrictions
 - [x] Frozen blocks mechanic
 - [x] Multi-layer blocks mechanic
-- [ ] Timer system
-- [ ] Lives system
+- [x] Timer system (countdown, color change on low time)
+- [x] Lives system (5 max, 30 min refill, lose on fail)
 
 ### Visual
 - [x] Blocks have 3D appearance

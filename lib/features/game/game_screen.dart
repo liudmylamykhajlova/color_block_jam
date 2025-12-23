@@ -37,10 +37,14 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   // Timer
   int _remainingSeconds = 0;
   bool _timerActive = false;
+  
+  // Lives
+  int _lives = 5;
 
   @override
   void initState() {
     super.initState();
+    _lives = StorageService.getLives();
     _loadLevel();
   }
 
@@ -85,23 +89,161 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     }
   }
   
-  void _onTimeUp() {
+  void _onTimeUp() async {
     _timerActive = false;
     GameLogger.timerExpired(widget.levelId);
-    // For now just show a message - can add game over logic later
+    
+    // Lose a life
+    await StorageService.loseLife();
+    setState(() {
+      _lives = StorageService.getLives();
+    });
+    
+    // Show fail dialog
     if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Time\'s up! Try again'),
-          backgroundColor: Colors.orange,
-        ),
-      );
-      _resetLevel();
-      setState(() {
-        _remainingSeconds = _level?.duration ?? 120;
-      });
-      _startTimer();
+      _showFailDialog();
     }
+  }
+  
+  void _showFailDialog() {
+    AudioService.playDrop(); // Sad sound
+    
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        backgroundColor: const Color(0xFF4DA6FF),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: Column(
+          children: [
+            // Level number
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+              decoration: BoxDecoration(
+                color: const Color(0xFF2D2D2D),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: Text(
+                'Level ${widget.levelId}',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ],
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 8),
+            // Broken heart
+            TweenAnimationBuilder<double>(
+              tween: Tween(begin: 0.0, end: 1.0),
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.elasticOut,
+              builder: (context, value, child) {
+                return Transform.scale(
+                  scale: value,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      const Text('💔', style: TextStyle(fontSize: 60)),
+                      Positioned(
+                        bottom: 0,
+                        right: 10,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: const Text(
+                            '-1',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'You will lose 1 life!',
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.9),
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Lives remaining: $_lives',
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.7),
+                fontSize: 14,
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          Row(
+            children: [
+              // Close button (X)
+              GestureDetector(
+                onTap: () {
+                  AudioService.playTap();
+                  Navigator.pop(context); // Close dialog
+                  Navigator.pop(context); // Go back to level select
+                },
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFE74C3C),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(Icons.close, color: Colors.white, size: 20),
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Retry button
+              Expanded(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF7ED321),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                  onPressed: _lives > 0 ? () {
+                    AudioService.playTap();
+                    Navigator.pop(context);
+                    _resetLevel();
+                  } : null,
+                  child: Text(
+                    _lives > 0 ? 'Retry' : 'No Lives',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
   
   String get _formattedTime {
@@ -193,6 +335,11 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
           // Level indicator with difficulty badge
           _buildLevelBadge(isHard, hardnessText),
           
+          const SizedBox(width: 12),
+          
+          // Lives indicator
+          _buildLivesIndicator(),
+          
           const Spacer(),
           
           // Timer
@@ -207,6 +354,41 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
               AudioService.playTap();
               _resetLevel();
             },
+          ),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildLivesIndicator() {
+    final isFull = _lives >= StorageService.maxLives;
+    
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      decoration: BoxDecoration(
+        color: Colors.red.withOpacity(0.2),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: Colors.red.withOpacity(0.5),
+          width: 2,
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(
+            Icons.favorite,
+            color: Colors.red,
+            size: 18,
+          ),
+          const SizedBox(width: 4),
+          Text(
+            isFull ? 'Full' : '$_lives',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),
@@ -1086,9 +1268,9 @@ class GameBoardPainter extends CustomPainter {
   }
   
   void _drawFrame(Canvas canvas, double borderOffset, double frameThickness) {
-    final frameColor = const Color(0xFF8B4513); // Brown wood color
-    final frameHighlight = const Color(0xFFCD853F); // Lighter wood
-    final frameShadow = const Color(0xFF5D3A1A); // Darker wood
+    final frameColor = const Color(0xFF2D2D2D); // Dark gray (NOT wooden!)
+    final frameHighlight = const Color(0xFF4A4A4A); // Lighter gray
+    final frameShadow = const Color(0xFF1A1A1A); // Darker gray
     
     final fieldLeft = borderOffset;
     final fieldTop = borderOffset;

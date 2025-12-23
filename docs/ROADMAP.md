@@ -104,6 +104,24 @@ Total MVP Progress:     ████████████░░░░░░�
 
 ---
 
+## ⏱️ Phase 1.5: Core Systems (COMPLETED ✅)
+
+> **Тривалість:** ~1 година  
+> **Статус:** ✅ Завершено  
+> **Дата:** 2025-12-23
+
+### Sprint 1.5.1: Timer & Lives
+| Завдання | Статус | Деталі |
+|----------|--------|--------|
+| Timer countdown | ✅ | MM:SS format, per-level duration |
+| Timer color change | ✅ | Gold -> Orange (30s) -> Red (10s) |
+| Lives system | ✅ | 5 max, 30 min refill |
+| Lose life on fail | ✅ | Timer expires = -1 life |
+| Fail dialog | ✅ | Broken heart, Retry button |
+| Lives display in HUD | ✅ | Heart icon + count |
+
+---
+
 ## 📖 Phase 2: Onboarding (PENDING)
 
 > **Тривалість:** ~1 година  
