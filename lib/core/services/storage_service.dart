@@ -1,4 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import '../constants/app_constants.dart';
 
 /// Service for persistent storage using SharedPreferences.
 /// 
@@ -13,8 +14,9 @@ class StorageService {
   static const String _livesKey = 'lives';
   static const String _lastLifeLostTimeKey = 'last_life_lost_time';
   
-  static const int maxLives = 5;
-  static const int lifeRefillMinutes = 30;
+  /// Use constants from AppConstants for consistency
+  static int get maxLives => AppConstants.maxLives;
+  static int get lifeRefillMinutes => AppConstants.lifeRefillMinutes;
   
   static SharedPreferences? _prefs;
   

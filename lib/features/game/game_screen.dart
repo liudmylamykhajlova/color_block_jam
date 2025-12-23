@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/colors.dart';
+import '../../core/constants/app_constants.dart';
 import '../../core/models/game_models.dart';
 import '../../core/services/storage_service.dart';
 import '../../core/services/audio_service.dart';
@@ -66,7 +67,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       if (_pausedAt != null && _remainingSeconds > 0) {
         // Calculate time spent in background
         final backgroundDuration = DateTime.now().difference(_pausedAt!).inSeconds;
-        _remainingSeconds = (_remainingSeconds - backgroundDuration).clamp(0, _level?.duration ?? 120);
+        _remainingSeconds = (_remainingSeconds - backgroundDuration).clamp(0, _level?.duration ?? AppConstants.defaultLevelDuration);
         _pausedAt = null;
         
         GameLogger.info('Timer resumed, remaining: $_remainingSeconds seconds', 'TIMER');
@@ -332,7 +333,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     _timerActive = false;
     setState(() {
       _initBlocks();
-      _remainingSeconds = _level?.duration ?? 120;
+      _remainingSeconds = _level?.duration ?? AppConstants.defaultLevelDuration;
     });
     _startTimer();
   }
@@ -558,10 +559,10 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     Color timerColor;
     Color bgColor;
     
-    if (_remainingSeconds <= 10) {
+    if (_remainingSeconds <= AppConstants.timerCriticalThreshold) {
       timerColor = AppColors.timerCritical;
       bgColor = AppColors.timerCritical.withOpacity(0.2);
-    } else if (_remainingSeconds <= 30) {
+    } else if (_remainingSeconds <= AppConstants.timerWarningThreshold) {
       timerColor = AppColors.timerLow;
       bgColor = AppColors.timerLow.withOpacity(0.2);
     } else {
