@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../../core/constants/colors.dart';
 import '../../core/constants/app_constants.dart';
@@ -37,7 +38,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   
   // Timer
   int _remainingSeconds = 0;
-  bool _timerActive = false;
+  Timer? _timer;
   DateTime? _pausedAt; // Track when timer was paused
   
   // Lives
@@ -57,9 +58,9 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     
     if (state == AppLifecycleState.paused || state == AppLifecycleState.inactive) {
       // App going to background - pause timer
-      if (_timerActive) {
+      if (_timer != null) {
         _pausedAt = DateTime.now();
-        _timerActive = false;
+        _stopTimer();
         GameLogger.info('Timer paused (app backgrounded)', 'TIMER');
       }
     } else if (state == AppLifecycleState.resumed) {
@@ -134,27 +135,32 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   }
   
   void _startTimer() {
-    _timerActive = true;
-    _tickTimer();
+    _stopTimer(); // Cancel any existing timer
+    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (!mounted) {
+        _stopTimer();
+        return;
+      }
+      
+      setState(() {
+        _remainingSeconds--;
+      });
+      GameLogger.timerTick(_remainingSeconds);
+      
+      if (_remainingSeconds <= 0) {
+        _stopTimer();
+        _onTimeUp();
+      }
+    });
   }
   
-  void _tickTimer() async {
-    while (_timerActive && _remainingSeconds > 0 && mounted) {
-      await Future.delayed(const Duration(seconds: 1));
-      if (_timerActive && mounted) {
-        setState(() {
-          _remainingSeconds--;
-        });
-        GameLogger.timerTick(_remainingSeconds);
-        if (_remainingSeconds <= 0) {
-          _onTimeUp();
-        }
-      }
-    }
+  void _stopTimer() {
+    _timer?.cancel();
+    _timer = null;
   }
   
   void _onTimeUp() async {
-    _timerActive = false;
+    _stopTimer();
     GameLogger.timerExpired(widget.levelId);
     
     // Lose a life
@@ -330,7 +336,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
 
   void _resetLevel() {
     GameLogger.levelReset(widget.levelId);
-    _timerActive = false;
+    _stopTimer();
     setState(() {
       _initBlocks();
       _remainingSeconds = _level?.duration ?? AppConstants.defaultLevelDuration;
@@ -341,7 +347,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this); // Clean up observer
-    _timerActive = false;
+    _stopTimer();
     _exitAnimationController?.dispose();
     super.dispose();
   }
@@ -1064,7 +1070,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   }
 
   void _showWinDialog() async {
-    _timerActive = false; // Stop the timer on win
+    _stopTimer(); // Stop the timer on win
     GameLogger.levelCompleted(widget.levelId, _remainingSeconds);
     await StorageService.markLevelCompleted(widget.levelId);
     widget.onLevelComplete?.call();
