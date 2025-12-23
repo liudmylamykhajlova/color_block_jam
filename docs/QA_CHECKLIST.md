@@ -13,8 +13,8 @@
 | Critical | 2 | 2 | 0 |
 | High Priority | 7 | 7 | 0 |
 | Medium Priority | 12 | 12 | 0 |
-| Low Priority | 8 | **3** | **5** |
-| **TOTAL** | **29** | **24** | **5** |
+| Low Priority | 8 | **6** | **2** |
+| **TOTAL** | **29** | **27** | **2** |
 
 ---
 
@@ -130,16 +130,17 @@
 - [ ] **Const/imports cleanup** (run locally)
   - Run: `dart fix --apply` when Flutter in PATH
 
-### Testing (deferred to post-MVP)
+### Testing ✅ (2025-12-23)
 
-- [ ] **No unit tests**
-  - Add: `test/core/models/game_block_test.dart`
+- [x] **Unit tests added**
+  - `test/core/models/game_block_test.dart` - GameBlock, Point, MoveDirection
+  - `test/core/services/storage_service_test.dart` - All StorageService methods
 
-- [ ] **No widget tests**
-  - Add: `test/features/settings/settings_screen_test.dart`
+- [x] **Widget tests added**
+  - `test/features/settings/settings_screen_test.dart` - Toggle states, dialogs
 
-- [ ] **No integration tests**
-  - Add: `integration_test/level_completion_test.dart`
+- [x] **Integration tests added**
+  - `integration_test/level_completion_test.dart` - Full game flow
 
 ---
 
