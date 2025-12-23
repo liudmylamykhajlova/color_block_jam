@@ -11,10 +11,10 @@
 | Category | Total | Done | Remaining |
 |----------|-------|------|-----------|
 | Critical | 2 | 2 | 0 |
-| High Priority | 7 | **7** | **0** |
-| Medium Priority | 12 | 0 | 12 |
+| High Priority | 7 | 7 | 0 |
+| Medium Priority | 12 | **4** | **8** |
 | Low Priority | 8 | 0 | 8 |
-| **TOTAL** | **29** | **9** | **20** |
+| **TOTAL** | **29** | **13** | **16** |
 
 ---
 
@@ -56,23 +56,23 @@
 
 ## 🟡 Medium Priority
 
-### Documentation
+### Documentation ✅ (2025-12-23)
 
-- [ ] **ROADMAP progress outdated**
+- [x] **ROADMAP progress updated**
   - File: `docs/ROADMAP.md`
-  - Fix: Update progress bar from 60% to 70%
+  - Fixed: Progress 60% → 75%, added Phase 1.5
 
-- [ ] **Version inconsistency**
-  - Files: All docs
-  - Fix: Sync versions (ROADMAP v1.5.0 vs GAME_DESIGN v3.0)
+- [x] **Version consistency fixed**
+  - Files: All docs + README.md
+  - Synced: ROADMAP v1.6.0, TECHNICAL_SPEC v2.1.0
 
-- [ ] **Music toggle not documented**
+- [x] **Music toggle already documented**
   - File: `docs/GAME_DESIGN.md`
-  - Add: Music toggle in Settings section (4.6)
+  - Verified: Section 4.6 + Section 8.1
 
-- [ ] **Audio placeholder note missing**
+- [x] **Audio placeholder note added**
   - File: `docs/TECHNICAL_SPEC.md`
-  - Add: Note that audio is haptic-only for MVP
+  - Added: MVP Note in AudioService section
 
 ### Code Quality
 

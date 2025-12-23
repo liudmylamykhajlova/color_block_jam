@@ -1,6 +1,6 @@
 # Color Block Jam - Technical Specification
 
-> **Version:** 2.0.0  
+> **Version:** 2.1.0  
 > **Date:** 2025-12-23  
 > **Status:** In Development
 
@@ -345,6 +345,10 @@ void _animateBlockMove(Block block, Point from, Point to) {
 
 ### 6.2 AudioService
 
+> **⚠️ MVP Note:** Current implementation uses **haptic feedback only**. 
+> Sound effects (`play*` methods) trigger vibration patterns, not actual audio.
+> Real audio files will be added in Phase 2 using `audioplayers` package.
+
 | Method | Description |
 |--------|-------------|
 | `lightTap()` | Light haptic (buttons) |
@@ -352,13 +356,15 @@ void _animateBlockMove(Block block, Point from, Point to) {
 | `heavyTap()` | Heavy haptic (drop) |
 | `success()` | Win haptic pattern |
 | `error()` | Error/fail vibration |
-| `playPickup()` | Block pickup sound |
-| `playDrop()` | Block drop sound |
-| `playExit()` | Block exit sound |
-| `playWin()` | Win sound |
-| `playLevelFail()` | Level fail sound |
-| `playTap()` | Button tap sound |
-| `setSoundEnabled(value)` | Toggle sound |
+| `playPickup()` | Block pickup → haptic |
+| `playDrop()` | Block drop → haptic |
+| `playExit()` | Block exit → haptic |
+| `playWin()` | Win → haptic pattern |
+| `playLevelFail()` | Level fail → error haptic |
+| `playTap()` | Button tap → light haptic |
+| `setSoundEnabled(value)` | Toggle sound/haptic |
+| `setMusicEnabled(value)` | Toggle music (stub) |
+| `setHapticEnabled(value)` | Toggle vibration |
 | `setMusicEnabled(value)` | Toggle music |
 | `setHapticEnabled(value)` | Toggle vibration |
 
@@ -448,6 +454,7 @@ void _animateBlockMove(Block block, Point from, Point to) {
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 2.1.0 | 2025-12-23 | Added MVP audio note (haptic-only), music settings |
 | 2.0.0 | 2025-12-23 | Merged with CORE_MECHANICS, added visual design |
 | 1.5.0 | 2025-12-23 | Added iceCount (frozen blocks) |
 | 1.4.0 | 2025-12-21 | Multi-layer block mechanics |

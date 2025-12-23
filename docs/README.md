@@ -10,9 +10,10 @@
 |----------|-------------|---------|
 | [🎮 GAME_DESIGN.md](./GAME_DESIGN.md) | Game Design Document - gameplay, mechanics, economy, monetization | v3.0.0 |
 | [🎨 UI_UX_DESIGN.md](./UI_UX_DESIGN.md) | UI/UX Design - all screens, components, animations, style guide | v2.0.0 |
-| [🔧 TECHNICAL_SPEC.md](./TECHNICAL_SPEC.md) | Technical Specification - architecture, models, algorithms, services | v2.0.0 |
+| [🔧 TECHNICAL_SPEC.md](./TECHNICAL_SPEC.md) | Technical Specification - architecture, models, algorithms, services | v2.1.0 |
 | [🔍 GAME_ANALYSIS.md](./GAME_ANALYSIS.md) | Original Game Analysis - App Store data, XAPK reverse-engineering, binary offsets | v1.0.0 |
-| [🗺️ ROADMAP.md](./ROADMAP.md) | Development Roadmap - phases, milestones, timeline | v1.5.0 |
+| [🗺️ ROADMAP.md](./ROADMAP.md) | Development Roadmap - phases, milestones, timeline | v1.6.0 |
+| [✅ QA_CHECKLIST.md](./QA_CHECKLIST.md) | QA Checklist - prioritized fixes, test plan | v1.0.0 |
 
 ---
 
@@ -75,13 +76,25 @@ Contains:
 - Task status
 - Version history
 
+### ✅ QA_CHECKLIST.md
+**Purpose:** Quality assurance tracking
+
+Contains:
+- Prioritized bug list (Critical → Low)
+- Documentation fixes
+- Code quality items
+- Test plan & coverage targets
+- Pre-release checklist
+
 ---
 
 ## 🚀 Quick Links
 
 ### Current Status
-- **Phase 1:** Core Gameplay ✅ DONE
-- **Phase 2:** Economy (Next)
+- **Phase 0-1:** Core Gameplay ✅ DONE
+- **Phase 1.5:** Core Systems (Timer, Lives) ✅ DONE
+- **Phase 2:** Onboarding (Next)
+- **MVP Progress:** 75%
 - **Levels:** 27 exported, verified
 - **Mechanics:** moveDirection, iceCount, innerBlockType
 
@@ -145,4 +158,4 @@ color_block_jam/
 
 ---
 
-*Last sync: 2025-12-23*
+*Last sync: 2025-12-23 (v1.6.0)*
