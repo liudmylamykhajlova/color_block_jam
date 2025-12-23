@@ -1194,6 +1194,67 @@
                         ctx.stroke();
                     }
                 }
+                
+                // Draw ice overlay for frozen blocks
+                const iceCount = block.iceCount;
+                if (iceCount !== undefined && iceCount > 0) {
+                    // Draw ice overlay on each cell
+                    blockCells.forEach(({ col, row }) => {
+                        const x = padding + col * cellSize;
+                        const y = padding + row * cellSize;
+                        
+                        // Clip to cell bounds
+                        ctx.save();
+                        ctx.beginPath();
+                        ctx.rect(x + 1, y + 1, cellSize - 2, cellSize - 2);
+                        ctx.clip();
+                        
+                        // Semi-transparent cyan ice layer
+                        ctx.fillStyle = 'rgba(135, 206, 250, 0.5)'; // Light sky blue
+                        ctx.fillRect(x + 1, y + 1, cellSize - 2, cellSize - 2);
+                        
+                        // Ice crystal pattern (diagonal lines)
+                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+                        ctx.lineWidth = 1;
+                        for (let i = -cellSize; i < cellSize * 2; i += 8) {
+                            ctx.beginPath();
+                            ctx.moveTo(x + i, y);
+                            ctx.lineTo(x + i + cellSize, y + cellSize);
+                            ctx.stroke();
+                        }
+                        
+                        ctx.restore();
+                    });
+                    
+                    // Find block center for ice count number
+                    let minCol = Infinity, maxCol = -Infinity;
+                    let minRow = Infinity, maxRow = -Infinity;
+                    blockCells.forEach(({ col, row }) => {
+                        minCol = Math.min(minCol, col); maxCol = Math.max(maxCol, col);
+                        minRow = Math.min(minRow, row); maxRow = Math.max(maxRow, row);
+                    });
+                    const iceCenterX = padding + (minCol + maxCol + 1) / 2 * cellSize;
+                    const iceCenterY = padding + (minRow + maxRow + 1) / 2 * cellSize;
+                    
+                    // Draw ice count number with background
+                    const fontSize = cellSize * 0.5;
+                    ctx.font = `bold ${fontSize}px Arial`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    
+                    // White circle background
+                    ctx.beginPath();
+                    ctx.arc(iceCenterX, iceCenterY, fontSize * 0.7, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                    ctx.fill();
+                    ctx.strokeStyle = 'rgba(0, 150, 200, 0.8)';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    
+                    // Ice count number
+                    ctx.fillStyle = '#0088aa';
+                    ctx.fillText(iceCount.toString(), iceCenterX, iceCenterY);
+                }
             });
             
             console.log(`Total cells drawn: ${totalCellsDrawn}, Unique cells: ${drawnCells.size}`);

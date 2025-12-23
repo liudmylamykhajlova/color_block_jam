@@ -89,6 +89,9 @@ class GameBlock {
   /// Чи зруйновано зовнішній шар (для багатошарових блоків)
   bool outerLayerDestroyed = false;
   
+  /// Кількість блоків до розморозки (0 = не заморожений)
+  int iceCount;
+  
   // Grid size for edge detection
   int gridWidth = 6;
   int gridHeight = 6;
@@ -102,7 +105,11 @@ class GameBlock {
     this.needsRowOffset = false,
     this.moveDirection = MoveDirection.both,
     this.innerBlockType = -1,
+    this.iceCount = 0,
   });
+  
+  /// Чи заморожений блок
+  bool get isFrozen => iceCount > 0;
   
   /// Чи є внутрішній шар (і він ще не оголений)
   bool get hasInnerLayer => innerBlockType >= 0 && innerBlockType <= 9 && !outerLayerDestroyed;
@@ -134,6 +141,7 @@ class GameBlock {
       needsRowOffset: json['needsRowOffset'] ?? false,
       moveDirection: direction,
       innerBlockType: json['innerBlockType'] ?? -1,
+      iceCount: json['iceCount'] ?? 0,
     );
   }
 
@@ -147,6 +155,7 @@ class GameBlock {
       needsRowOffset: needsRowOffset,
       moveDirection: moveDirection,
       innerBlockType: innerBlockType,
+      iceCount: iceCount,
     )..gridWidth = gridWidth..gridHeight = gridHeight..outerLayerDestroyed = outerLayerDestroyed;
   }
 

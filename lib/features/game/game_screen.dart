@@ -505,6 +505,11 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   }
 
   bool _canMove(GameBlock block, int deltaRow, int deltaCol, GameLevel level) {
+    // Заморожений блок не можна рухати
+    if (block.isFrozen) {
+      return false;
+    }
+    
     // Перевірка обмеження напрямку руху
     if (block.moveDirection == MoveDirection.horizontal && deltaRow != 0) {
       return false; // Горизонтальний блок не може рухатись вертикально
@@ -780,6 +785,10 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     
     setState(() {
       _blocks.remove(_exitingBlock);
+      
+      // Зменшити iceCount для всіх заморожених блоків
+      _decreaseIceCountForAll();
+      
       _exitingBlock = null;
       _exitProgress = 0.0;
     });
@@ -792,6 +801,18 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     if (_blocks.isEmpty) {
       AudioService.playWin();
       _showWinDialog();
+    }
+  }
+  
+  /// Зменшити iceCount для всіх заморожених блоків на 1
+  void _decreaseIceCountForAll() {
+    for (final block in _blocks) {
+      if (block.iceCount > 0) {
+        block.iceCount--;
+        if (block.iceCount == 0) {
+          GameLogger.info('Block ${block.blockType} unfrozen!', 'GAME');
+        }
+      }
     }
   }
 
@@ -1375,6 +1396,11 @@ class GameBoardPainter extends CustomPainter {
     if (block.moveDirection != MoveDirection.both) {
       _drawMoveDirectionArrows(canvas, block, cells, borderOffset, offsetX, offsetY);
     }
+    
+    // Малюємо шар льоду для заморожених блоків
+    if (block.isFrozen) {
+      _drawIceOverlay(canvas, block, cells, borderOffset, offsetX, offsetY);
+    }
   }
   
   void _drawMoveDirectionArrows(Canvas canvas, GameBlock block, List<Point> cells,
@@ -1557,6 +1583,85 @@ class GameBoardPainter extends CustomPainter {
         arrowStrokePaint,
       );
     }
+  }
+  
+  void _drawIceOverlay(Canvas canvas, GameBlock block, List<Point> cells,
+      double borderOffset, double offsetX, double offsetY) {
+    // Напівпрозорий блакитний шар льоду
+    final icePaint = Paint()
+      ..color = const Color(0xFF87CEFA).withOpacity(0.5); // Light sky blue
+    
+    // Кристалічний візерунок (діагональні лінії)
+    final patternPaint = Paint()
+      ..color = Colors.white.withOpacity(0.4)
+      ..strokeWidth = 1;
+    
+    // Малюємо лід на кожній клітинці
+    for (final cell in cells) {
+      final x = borderOffset + cell.col * cellSize + offsetX;
+      final y = borderOffset + cell.row * cellSize + offsetY;
+      final cellRect = Rect.fromLTWH(x + 2, y + 2, cellSize - 4, cellSize - 4);
+      
+      // Обмежуємо малювання межами клітинки
+      canvas.save();
+      canvas.clipRect(cellRect);
+      
+      // Шар льоду
+      canvas.drawRect(cellRect, icePaint);
+      
+      // Кристалічний візерунок
+      for (double i = -cellSize; i < cellSize * 2; i += 8) {
+        canvas.drawLine(
+          Offset(x + i, y),
+          Offset(x + i + cellSize, y + cellSize),
+          patternPaint,
+        );
+      }
+      
+      canvas.restore();
+    }
+    
+    // Знаходимо центр блоку для числа
+    int minCol = cells.first.col, maxCol = cells.first.col;
+    int minRow = cells.first.row, maxRow = cells.first.row;
+    for (final c in cells) {
+      if (c.col < minCol) minCol = c.col;
+      if (c.col > maxCol) maxCol = c.col;
+      if (c.row < minRow) minRow = c.row;
+      if (c.row > maxRow) maxRow = c.row;
+    }
+    final iceCenterX = borderOffset + (minCol + maxCol + 1) / 2 * cellSize + offsetX;
+    final iceCenterY = borderOffset + (minRow + maxRow + 1) / 2 * cellSize + offsetY;
+    
+    // Білий круг під числом
+    final circleRadius = cellSize * 0.35;
+    final circlePaint = Paint()
+      ..color = Colors.white.withOpacity(0.9);
+    final circleBorderPaint = Paint()
+      ..color = const Color(0xFF0096C8).withOpacity(0.8)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2;
+    
+    canvas.drawCircle(Offset(iceCenterX, iceCenterY), circleRadius, circlePaint);
+    canvas.drawCircle(Offset(iceCenterX, iceCenterY), circleRadius, circleBorderPaint);
+    
+    // Число iceCount
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: block.iceCount.toString(),
+        style: TextStyle(
+          color: const Color(0xFF0088AA),
+          fontSize: cellSize * 0.4,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+    textPainter.layout();
+    textPainter.paint(
+      canvas,
+      Offset(iceCenterX - textPainter.width / 2, iceCenterY - textPainter.height / 2),
+    );
   }
 
   void _drawBlockOutline(Canvas canvas, List<Point> cells, double borderOffset,
