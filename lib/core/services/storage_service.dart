@@ -1,5 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// Service for persistent storage using SharedPreferences.
+/// 
+/// Must call [init] before using any other methods.
+/// Throws [StateError] if accessed before initialization.
 class StorageService {
   static const String _completedLevelsKey = 'completed_levels';
   static const String _currentLevelKey = 'current_level';
@@ -14,30 +18,47 @@ class StorageService {
   
   static SharedPreferences? _prefs;
   
+  /// Check if service is initialized
+  static bool get isInitialized => _prefs != null;
+  
+  /// Ensure service is initialized, throw if not
+  static void _ensureInitialized() {
+    if (_prefs == null) {
+      throw StateError('StorageService not initialized. Call StorageService.init() in main() before runApp().');
+    }
+  }
+  
+  /// Initialize the storage service. Must be called before any other method.
   static Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
   }
   
+  // === LEVEL PROGRESS ===
+  
   static Set<int> getCompletedLevels() {
-    final list = _prefs?.getStringList(_completedLevelsKey) ?? [];
+    _ensureInitialized();
+    final list = _prefs!.getStringList(_completedLevelsKey) ?? [];
     return list.map((s) => int.parse(s)).toSet();
   }
   
   static Future<void> markLevelCompleted(int levelId) async {
+    _ensureInitialized();
     final completed = getCompletedLevels();
     completed.add(levelId);
-    await _prefs?.setStringList(
+    await _prefs!.setStringList(
       _completedLevelsKey, 
       completed.map((i) => i.toString()).toList(),
     );
   }
   
   static int getCurrentLevel() {
-    return _prefs?.getInt(_currentLevelKey) ?? 1;
+    _ensureInitialized();
+    return _prefs!.getInt(_currentLevelKey) ?? 1;
   }
   
   static Future<void> setCurrentLevel(int levelId) async {
-    await _prefs?.setInt(_currentLevelKey, levelId);
+    _ensureInitialized();
+    await _prefs!.setInt(_currentLevelKey, levelId);
   }
   
   static bool isLevelUnlocked(int levelId) {
@@ -54,37 +75,43 @@ class StorageService {
   // === SOUND SETTINGS ===
   
   static bool getSoundEnabled() {
-    return _prefs?.getBool(_soundEnabledKey) ?? true;
+    _ensureInitialized();
+    return _prefs!.getBool(_soundEnabledKey) ?? true;
   }
   
   static Future<void> setSoundEnabled(bool value) async {
-    await _prefs?.setBool(_soundEnabledKey, value);
+    _ensureInitialized();
+    await _prefs!.setBool(_soundEnabledKey, value);
   }
   
   // === MUSIC SETTINGS ===
   
   static bool getMusicEnabled() {
-    return _prefs?.getBool(_musicEnabledKey) ?? true; // Default ON
+    _ensureInitialized();
+    return _prefs!.getBool(_musicEnabledKey) ?? true; // Default ON
   }
   
   static Future<void> setMusicEnabled(bool value) async {
-    await _prefs?.setBool(_musicEnabledKey, value);
+    _ensureInitialized();
+    await _prefs!.setBool(_musicEnabledKey, value);
   }
   
   // === HAPTIC SETTINGS ===
   
   static bool getHapticEnabled() {
-    return _prefs?.getBool(_hapticEnabledKey) ?? false; // Default OFF per original game
+    _ensureInitialized();
+    return _prefs!.getBool(_hapticEnabledKey) ?? false; // Default OFF per original game
   }
   
   static Future<void> setHapticEnabled(bool value) async {
-    await _prefs?.setBool(_hapticEnabledKey, value);
+    _ensureInitialized();
+    await _prefs!.setBool(_hapticEnabledKey, value);
   }
   
   // === LIVES SYSTEM ===
   
   static int getLives() {
-    if (_prefs == null) return maxLives; // Safety check
+    _ensureInitialized();
     
     final savedLives = _prefs!.getInt(_livesKey) ?? maxLives;
     if (savedLives >= maxLives) return maxLives;
@@ -110,8 +137,7 @@ class StorageService {
   
   /// Persist the calculated lives update (called internally from getLives)
   static void _persistLivesUpdate(int newLives, int originalLostTime, int minutesPassed) {
-    if (_prefs == null) return;
-    
+    // No need to check - called only from getLives which already checked
     _prefs!.setInt(_livesKey, newLives);
     
     if (newLives >= maxLives) {
@@ -126,21 +152,24 @@ class StorageService {
   }
   
   static Future<void> loseLife() async {
+    _ensureInitialized();
     final currentLives = getLives();
     final newLives = (currentLives - 1).clamp(0, maxLives);
-    await _prefs?.setInt(_livesKey, newLives);
-    await _prefs?.setInt(_lastLifeLostTimeKey, DateTime.now().millisecondsSinceEpoch);
+    await _prefs!.setInt(_livesKey, newLives);
+    await _prefs!.setInt(_lastLifeLostTimeKey, DateTime.now().millisecondsSinceEpoch);
   }
   
   static Future<void> addLife([int count = 1]) async {
+    _ensureInitialized();
     final currentLives = getLives();
     final newLives = (currentLives + count).clamp(0, maxLives);
-    await _prefs?.setInt(_livesKey, newLives);
+    await _prefs!.setInt(_livesKey, newLives);
   }
   
   static Future<void> refillLives() async {
-    await _prefs?.setInt(_livesKey, maxLives);
-    await _prefs?.remove(_lastLifeLostTimeKey);
+    _ensureInitialized();
+    await _prefs!.setInt(_livesKey, maxLives);
+    await _prefs!.remove(_lastLifeLostTimeKey);
   }
   
   static bool hasLives() {
@@ -148,10 +177,11 @@ class StorageService {
   }
   
   static String getTimeUntilNextLife() {
+    _ensureInitialized();
     final currentLives = getLives();
     if (currentLives >= maxLives) return 'Full';
     
-    final lastLostTime = _prefs?.getInt(_lastLifeLostTimeKey) ?? 0;
+    final lastLostTime = _prefs!.getInt(_lastLifeLostTimeKey) ?? 0;
     if (lastLostTime == 0) return 'Full';
     
     final now = DateTime.now().millisecondsSinceEpoch;
@@ -165,10 +195,11 @@ class StorageService {
   // === RESET PROGRESS ===
   
   static Future<void> resetProgress() async {
-    await _prefs?.remove(_completedLevelsKey);
-    await _prefs?.remove(_currentLevelKey);
-    await _prefs?.remove(_livesKey);
-    await _prefs?.remove(_lastLifeLostTimeKey);
+    _ensureInitialized();
+    await _prefs!.remove(_completedLevelsKey);
+    await _prefs!.remove(_currentLevelKey);
+    await _prefs!.remove(_livesKey);
+    await _prefs!.remove(_lastLifeLostTimeKey);
   }
 }
 
