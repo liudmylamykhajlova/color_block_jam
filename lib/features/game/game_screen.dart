@@ -641,20 +641,24 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
             onPanStart: (details) => _onPanStart(details, cellSize, level),
             onPanUpdate: (details) => _onPanUpdate(details, cellSize, level),
             onPanEnd: (_) => _onPanEnd(),
-            child: CustomPaint(
-              size: Size(
-                (level.gridWidth + 2) * cellSize,
-                (level.gridHeight + 2) * cellSize,
-              ),
-              painter: GameBoardPainter(
-                level: level,
-                blocks: _blocks,
-                selectedBlock: _selectedBlock,
-                cellSize: cellSize,
-                exitingBlock: _exitingBlock,
-                exitProgress: _exitProgress,
-                exitDeltaRow: _exitDeltaRow,
-                exitDeltaCol: _exitDeltaCol,
+            // RepaintBoundary creates an offscreen buffer for the game board
+            // TODO: Split into StaticBoardPainter + BlocksPainter for better perf
+            child: RepaintBoundary(
+              child: CustomPaint(
+                size: Size(
+                  (level.gridWidth + 2) * cellSize,
+                  (level.gridHeight + 2) * cellSize,
+                ),
+                painter: GameBoardPainter(
+                  level: level,
+                  blocks: _blocks,
+                  selectedBlock: _selectedBlock,
+                  cellSize: cellSize,
+                  exitingBlock: _exitingBlock,
+                  exitProgress: _exitProgress,
+                  exitDeltaRow: _exitDeltaRow,
+                  exitDeltaCol: _exitDeltaCol,
+                ),
               ),
             ),
           ),
