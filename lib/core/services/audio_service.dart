@@ -4,19 +4,27 @@ import 'storage_service.dart';
 /// Service for handling sound effects and haptic feedback
 class AudioService {
   static bool _soundEnabled = true;
-  static bool _hapticEnabled = true;
+  static bool _musicEnabled = true;
+  static bool _hapticEnabled = false; // Default OFF per original game
   
   static void init() {
     _soundEnabled = StorageService.getSoundEnabled();
+    _musicEnabled = StorageService.getMusicEnabled();
     _hapticEnabled = StorageService.getHapticEnabled();
   }
   
   static bool get soundEnabled => _soundEnabled;
+  static bool get musicEnabled => _musicEnabled;
   static bool get hapticEnabled => _hapticEnabled;
   
   static Future<void> setSoundEnabled(bool value) async {
     _soundEnabled = value;
     await StorageService.setSoundEnabled(value);
+  }
+  
+  static Future<void> setMusicEnabled(bool value) async {
+    _musicEnabled = value;
+    await StorageService.setMusicEnabled(value);
   }
   
   static Future<void> setHapticEnabled(bool value) async {
@@ -95,6 +103,12 @@ class AudioService {
   static void playWin() {
     if (!_soundEnabled) return;
     success();
+  }
+  
+  /// Play level fail sound
+  static void playLevelFail() {
+    if (!_soundEnabled) return;
+    error(); // Double vibration for fail
   }
   
   /// Play button tap sound

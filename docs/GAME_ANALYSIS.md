@@ -76,12 +76,12 @@
 | 3 | L | L-shape | 4 |
 | 4 | ReverseL | Mirrored L | 4 |
 | 5 | ShortL | Short L (2+1) | 3 |
-| 6 | ReverseShortL | Mirrored short L | 3 |
+| 6 | Plus | Cross (+) | 5 |
 | 7 | TwoSquare | 2x2 square | 4 |
 | 8 | ShortT | T-shape (3+1) | 4 |
-| 9 | Plus | Cross (+) | 5 |
-| 10 | Z | Z-shape | 4 |
-| 11 | ReverseZ | S-shape | 4 |
+| 9 | Z | Z-shape | 4 |
+| 10 | ReverseZ | S-shape | 4 |
+| 11 | U | U-shape | 6 |
 
 ---
 

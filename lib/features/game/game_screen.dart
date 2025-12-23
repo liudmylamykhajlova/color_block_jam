@@ -106,7 +106,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
   }
   
   void _showFailDialog() {
-    AudioService.playDrop(); // Sad sound
+    AudioService.playLevelFail(); // Level fail sound
     
     showDialog(
       context: context,

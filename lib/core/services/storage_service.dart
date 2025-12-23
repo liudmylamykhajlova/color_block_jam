@@ -4,6 +4,7 @@ class StorageService {
   static const String _completedLevelsKey = 'completed_levels';
   static const String _currentLevelKey = 'current_level';
   static const String _soundEnabledKey = 'sound_enabled';
+  static const String _musicEnabledKey = 'music_enabled';
   static const String _hapticEnabledKey = 'haptic_enabled';
   static const String _livesKey = 'lives';
   static const String _lastLifeLostTimeKey = 'last_life_lost_time';
@@ -60,10 +61,20 @@ class StorageService {
     await _prefs?.setBool(_soundEnabledKey, value);
   }
   
+  // === MUSIC SETTINGS ===
+  
+  static bool getMusicEnabled() {
+    return _prefs?.getBool(_musicEnabledKey) ?? true; // Default ON
+  }
+  
+  static Future<void> setMusicEnabled(bool value) async {
+    await _prefs?.setBool(_musicEnabledKey, value);
+  }
+  
   // === HAPTIC SETTINGS ===
   
   static bool getHapticEnabled() {
-    return _prefs?.getBool(_hapticEnabledKey) ?? true;
+    return _prefs?.getBool(_hapticEnabledKey) ?? false; // Default OFF per original game
   }
   
   static Future<void> setHapticEnabled(bool value) async {

@@ -94,12 +94,12 @@ Move ALL blocks out of the board through doors of matching color.
 | 3 | L | 4 |
 | 4 | ReverseL | 4 |
 | 5 | ShortL | 3 |
-| 6 | ReverseShortL | 3 |
+| 6 | Plus | 5 |
 | 7 | TwoSquare | 4 |
 | 8 | ShortT | 4 |
-| 9 | Plus | 5 |
-| 10 | Z | 4 |
-| 11 | ReverseZ | 4 |
+| 9 | Z | 4 |
+| 10 | ReverseZ | 4 |
+| 11 | U | 6 |
 
 ---
 

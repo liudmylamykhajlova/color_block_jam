@@ -180,12 +180,12 @@ class GameDoor {
 | 3 | L | L-shape | 4 |
 | 4 | ReverseL | Mirrored L | 4 |
 | 5 | ShortL | Short L | 3 |
-| 6 | ReverseShortL | Mirrored short L | 3 |
+| 6 | Plus | Cross (+) | 5 |
 | 7 | TwoSquare | 2x2 | 4 |
 | 8 | ShortT | T-shape | 4 |
-| 9 | Plus | Cross | 5 |
-| 10 | Z | Z-shape | 4 |
-| 11 | ReverseZ | S-shape | 4 |
+| 9 | Z | Z-shape | 4 |
+| 10 | ReverseZ | S-shape | 4 |
+| 11 | U | U-shape | 6 |
 
 ---
 
@@ -323,8 +323,9 @@ void _animateBlockMove(Block block, Point from, Point to) {
 | `init()` | Initialize SharedPreferences |
 | `getCompletedLevels()` | Get completed level IDs |
 | `markLevelCompleted(id)` | Mark level as complete |
-| `getSoundEnabled()` | Sound toggle state |
-| `getHapticEnabled()` | Haptic toggle state |
+| `getSoundEnabled()` | Sound toggle state (default: ON) |
+| `getMusicEnabled()` | Music toggle state (default: ON) |
+| `getHapticEnabled()` | Haptic toggle state (default: OFF) |
 | `getLives()` | Get current lives (with time-based refill) |
 | `loseLife()` | Decrease lives by 1 |
 | `addLife(count)` | Add lives (e.g., from ads) |
@@ -337,6 +338,11 @@ void _animateBlockMove(Block block, Point from, Point to) {
 - `maxLives`: 5
 - `lifeRefillMinutes`: 30
 
+**Audio Defaults (per original game):**
+- Sound: ON
+- Music: ON
+- Vibration: OFF
+
 ### 6.2 AudioService
 
 | Method | Description |
@@ -345,9 +351,16 @@ void _animateBlockMove(Block block, Point from, Point to) {
 | `mediumTap()` | Medium haptic (pickup) |
 | `heavyTap()` | Heavy haptic (drop) |
 | `success()` | Win haptic pattern |
+| `error()` | Error/fail vibration |
 | `playPickup()` | Block pickup sound |
 | `playDrop()` | Block drop sound |
+| `playExit()` | Block exit sound |
 | `playWin()` | Win sound |
+| `playLevelFail()` | Level fail sound |
+| `playTap()` | Button tap sound |
+| `setSoundEnabled(value)` | Toggle sound |
+| `setMusicEnabled(value)` | Toggle music |
+| `setHapticEnabled(value)` | Toggle vibration |
 
 ---
 

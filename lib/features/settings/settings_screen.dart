@@ -11,12 +11,14 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool _soundEnabled = true;
-  bool _hapticEnabled = true;
+  bool _musicEnabled = true;
+  bool _hapticEnabled = false;
 
   @override
   void initState() {
     super.initState();
     _soundEnabled = AudioService.soundEnabled;
+    _musicEnabled = AudioService.musicEnabled;
     _hapticEnabled = AudioService.hapticEnabled;
   }
 
@@ -74,10 +76,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: Column(
                     children: [
+                      // Vibration toggle (first, per original game order)
+                      _SettingsTile(
+                        icon: _hapticEnabled ? Icons.vibration : Icons.phonelink_erase,
+                        title: 'Vibration',
+                        subtitle: _hapticEnabled ? 'On' : 'Off',
+                        trailing: Switch(
+                          value: _hapticEnabled,
+                          onChanged: (value) async {
+                            await AudioService.setHapticEnabled(value);
+                            setState(() => _hapticEnabled = value);
+                            if (value) AudioService.lightTap();
+                          },
+                          activeColor: const Color(0xFF4CAF50),
+                        ),
+                      ),
+
+                      const SizedBox(height: 16),
+
                       // Sound toggle
                       _SettingsTile(
                         icon: _soundEnabled ? Icons.volume_up : Icons.volume_off,
-                        title: 'Sound Effects',
+                        title: 'Sound',
                         subtitle: _soundEnabled ? 'On' : 'Off',
                         trailing: Switch(
                           value: _soundEnabled,
@@ -92,17 +112,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
                       const SizedBox(height: 16),
 
-                      // Haptic toggle
+                      // Music toggle
                       _SettingsTile(
-                        icon: _hapticEnabled ? Icons.vibration : Icons.phonelink_erase,
-                        title: 'Vibration',
-                        subtitle: _hapticEnabled ? 'On' : 'Off',
+                        icon: _musicEnabled ? Icons.music_note : Icons.music_off,
+                        title: 'Music',
+                        subtitle: _musicEnabled ? 'On' : 'Off',
                         trailing: Switch(
-                          value: _hapticEnabled,
+                          value: _musicEnabled,
                           onChanged: (value) async {
-                            await AudioService.setHapticEnabled(value);
-                            setState(() => _hapticEnabled = value);
-                            if (value) AudioService.lightTap();
+                            AudioService.playTap();
+                            await AudioService.setMusicEnabled(value);
+                            setState(() => _musicEnabled = value);
                           },
                           activeColor: const Color(0xFF4CAF50),
                         ),
