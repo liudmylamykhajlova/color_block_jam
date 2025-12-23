@@ -12,9 +12,9 @@
 |----------|-------|------|-----------|
 | Critical | 2 | 2 | 0 |
 | High Priority | 7 | 7 | 0 |
-| Medium Priority | 12 | **4** | **8** |
+| Medium Priority | 12 | **8** | **4** |
 | Low Priority | 8 | 0 | 8 |
-| **TOTAL** | **29** | **13** | **16** |
+| **TOTAL** | **29** | **17** | **12** |
 
 ---
 
@@ -74,23 +74,23 @@
   - File: `docs/TECHNICAL_SPEC.md`
   - Added: MVP Note in AudioService section
 
-### Code Quality
+### Code Quality ✅ (2025-12-23)
 
-- [ ] **Hardcoded colors in game_screen**
-  - File: `lib/features/game/game_screen.dart`
-  - Fix: Move colors to `GameColors` or theme
+- [x] **AppColors class created**
+  - File: `lib/core/constants/colors.dart`
+  - Added: 25+ semantic color constants
 
-- [ ] **No error handling in StorageService**
+- [x] **Error handling in StorageService**
   - File: `lib/core/services/storage_service.dart`
-  - Add: Null checks for `_prefs`
+  - Added: `_ensureInitialized()`, `isInitialized` getter
 
-- [ ] **Magic numbers scattered**
-  - Files: Various
-  - Fix: Extract to `lib/core/constants/app_constants.dart`
+- [x] **AppConstants class created**
+  - File: `lib/core/constants/app_constants.dart`
+  - Added: Timer, lives, animation, board constants
 
-- [ ] **No loading state for level select**
+- [x] **Loading/error state for level select**
   - File: `lib/features/level_select/level_select_screen.dart`
-  - Add: Shimmer/loading indicator while fetching levels
+  - Added: Loading spinner, error UI with retry
 
 ### Performance
 
