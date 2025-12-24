@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/services/audio_service.dart';
-import '../level_select/level_select_screen.dart';
+import '../level_map/level_map_screen.dart';
 import '../settings/settings_screen.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -77,7 +77,7 @@ class MenuScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       PageRouteBuilder(
-                        pageBuilder: (_, __, ___) => const LevelSelectScreen(),
+                        pageBuilder: (_, __, ___) => const LevelMapScreen(),
                         transitionsBuilder: (_, animation, __, child) {
                           return FadeTransition(opacity: animation, child: child);
                         },

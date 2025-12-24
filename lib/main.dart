@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'core/services/storage_service.dart';
 import 'core/services/audio_service.dart';
-import 'features/menu/menu_screen.dart';
+import 'features/splash/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +36,7 @@ class ColorBlockJamApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Roboto',
       ),
-      home: const MenuScreen(),
+      home: const SplashScreen(),
     );
   }
 }
