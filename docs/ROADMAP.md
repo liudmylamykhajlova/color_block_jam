@@ -134,10 +134,11 @@ Total MVP Progress:     ██████████████████�
 | Завдання | Статус | Деталі |
 |----------|--------|--------|
 | Coins display in HUD | ✅ | CoinsWidget з "+" button |
-| Bottom boosters bar | ✅ | 5 slots (time, hammer, drill, buy, pause) |
+| Bottom boosters bar | ✅ | 5 slots (freeze, rocket, drill, buy, pause) |
 | Win dialog | ✅ | Stars, coins earned, Next/Replay |
 | Level start dialog | ✅ | Boosters selection, milestone |
-| Extra time booster | ✅ | +30 seconds |
+| Freeze booster | ✅ | Freezes timer for 5 seconds |
+| Rocket booster | ✅ | Destroys one cell from any block |
 | Pause functionality | ✅ | Pause button |
 
 ---

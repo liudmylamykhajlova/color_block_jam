@@ -310,24 +310,59 @@ Move ALL blocks out of the board through doors of matching color.
 
 ---
 
-## 6. Boosters (from screenshots)
+## 6. Boosters
 
 ### 6.1 In-Game Boosters (Bottom HUD)
 
 | Icon | Name | Quantity | Function |
 |------|------|----------|----------|
-| Clock/Alarm | Extra Time | 1 | Add +30 seconds |
-| Hammer | Destroy | 1 | Remove one block |
-| Drill | Drill | 1 | TBD (possibly breaks ice?) |
-| Bell + | Buy More | - | Opens shop |
-| Pause ॥ | Pause | - | Pauses game |
+| ❄️ Snowflake | Freeze Time | 1 | Freezes the game timer for 5 seconds. Player can still move blocks. |
+| 🚀 Rocket | Destroy Unit | 1 | Removes one cell from any block. Shows target crosshairs on all block cells. |
+| 🔧 Drill | Drill | 1 | TBD (possibly breaks ice?) |
+| ➕ Plus | Buy More | - | Opens shop to purchase boosters |
+| ⏸️ Pause | Pause | - | Pauses the game |
 
 ### 6.2 Pre-Game Boosters (Level Start)
 
 | Icon | Name | Quantity | Function |
 |------|------|----------|----------|
-| Hourglass | More Time | 2 | Start with extra time |
-| Rocket | Boost | 2 | TBD (possibly removes blocks?) |
+| ⏳ Hourglass | More Time | 2 | Start level with extra time |
+| 🚀 Rocket | Destroy Unit | 2 | Same as in-game Rocket booster |
+
+### 6.3 Booster Visual Effects
+
+#### Freeze Time (❄️)
+- **Duration:** 5 seconds (`AppConstants.freezeBoosterDuration`)
+- **Overlay:** Full-screen blue tint with radial gradient
+- **Snowflakes:** 25 animated snowflakes falling and swaying
+- **Frost:** White gradient effects in all 4 corners
+- **Border:** Blue glowing border (8px width)
+- **Indicator:** Pulsing badge below timer with ❄️ icon and countdown (5, 4, 3, 2, 1)
+- **Timer display:** Shows "FROZEN" text instead of time
+
+#### Rocket (🚀)
+- **Tooltip:** Blue gradient banner at top with:
+  - 🚀 icon in orange square
+  - "ROCKET" title
+  - "Tap and destroy one unit of a block!" instruction
+  - ❌ close button (red circle)
+- **Targets:** Red circles with white crosshair on each block cell
+- **Tap behavior:**
+  - Tap on block cell → removes that cell, exits rocket mode
+  - Tap on empty cell → cancels rocket mode
+  - Tap outside board → cancels rocket mode
+  - Tap close button → cancels rocket mode
+
+### 6.4 Booster State Management
+
+Both boosters are cancelled automatically when:
+- Game is paused
+- App goes to background
+- Level is won or failed
+- Timer runs out
+- Level is restarted
+
+Booster is consumed only when actually used (not on activation).
 
 ---
 
@@ -397,7 +432,8 @@ Move ALL blocks out of the board through doors of matching color.
 - [x] Bottom boosters bar (5 slots)
 - [x] Win dialog with stars, coins earned
 - [x] Level start dialog with boosters
-- [x] Extra time booster (+30s)
+- [x] Freeze booster (freezes timer 5s)
+- [x] Rocket booster (destroys one cell)
 - [x] Pause functionality
 
 ### ✅ Done (Phase 3 - Screens)

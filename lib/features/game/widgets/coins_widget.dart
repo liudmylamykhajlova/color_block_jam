@@ -102,3 +102,4 @@ class CoinsWidget extends StatelessWidget {
   }
 }
 
+

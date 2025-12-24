@@ -23,7 +23,7 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
   List<GameLevel>? _levels;
   Set<int> _completedLevels = {};
   int _lives = 5;
-  int _coins = 1480;
+  final int _coins = 1480;
   bool _isLoading = true;
   
   late ScrollController _scrollController;

@@ -93,6 +93,10 @@ class GameBlock {
   /// Кількість блоків до розморозки (0 = не заморожений)
   int iceCount;
   
+  /// Список видалених юнітів (cells) з цього блоку (для Rocket бустера)
+  /// Зберігаємо відносні позиції (offset від gridRow/gridCol)
+  final List<Point> removedUnits = [];
+  
   // Grid size for edge detection
   int gridWidth = 6;
   int gridHeight = 6;
@@ -147,7 +151,7 @@ class GameBlock {
   }
 
   GameBlock copy() {
-    return GameBlock(
+    final copy = GameBlock(
       blockType: blockType,
       blockGroupType: blockGroupType,
       gridRow: gridRow,
@@ -158,10 +162,23 @@ class GameBlock {
       innerBlockType: innerBlockType,
       iceCount: iceCount,
     )..gridWidth = gridWidth..gridHeight = gridHeight..outerLayerDestroyed = outerLayerDestroyed;
+    copy.removedUnits.addAll(removedUnits);
+    return copy;
   }
-
-  /// Get all cells occupied by this block with complex rotation/offset logic
-  List<Point> get cells {
+  
+  /// Видалити один юніт (клітинку) з блоку
+  /// Повертає true якщо успішно видалено, false якщо це остання клітинка
+  bool removeUnit(Point absoluteCell) {
+    // Конвертуємо абсолютну позицію у відносну для зберігання
+    removedUnits.add(absoluteCell);
+    return cells.isNotEmpty;
+  }
+  
+  /// Перевірити чи блок ще має живі клітинки
+  bool get hasRemainingCells => cells.isNotEmpty;
+  
+  /// Отримати всі клітинки без фільтрації (базова форма)
+  List<Point> get _baseCells {
     final Map<int, List<List<int>>> baseShapes = {
       0: [[0, 0]],
       1: [[0, -1], [0, 0]],
@@ -202,13 +219,12 @@ class GameBlock {
           col -= 1;
         }
         break;
-      case 4: // ReverseL
-        // Явні форми для кожної ротації
+      case 4:
         final reverseLShapes = {
-          0: [[-1, -1], [0, -1], [-1, 0], [-1, 1]],  // X X / X_ / X_
-          1: [[-1, -1], [-1, 0], [0, 0], [1, 0]],    // X__ / XXX
-          2: [[1, -1], [1, 0], [0, 1], [1, 1]],      // _X / _X / XX
-          3: [[-1, 0], [0, 0], [1, 0], [1, 1]],      // XXX / __X
+          0: [[-1, -1], [0, -1], [-1, 0], [-1, 1]],
+          1: [[-1, -1], [-1, 0], [0, 0], [1, 0]],
+          2: [[1, -1], [1, 0], [0, 1], [1, 1]],
+          3: [[-1, 0], [0, 0], [1, 0], [1, 1]],
         };
         rotatedShape = reverseLShapes[rotZ]?.map((c) => [...c]).toList() ?? rotatedShape;
         if (rotZ == 2) {
@@ -225,7 +241,6 @@ class GameBlock {
         } else if (rotZ == 2) {
           rotatedShape = [[0, 0], [0, 1], [1, 1]];
           col -= 1;
-          // Apply row offset for hidden-cell levels or edge cases
           if (needsRowOffset) {
             row -= 1;
           } else {
@@ -238,22 +253,29 @@ class GameBlock {
         }
         break;
       case 8:
-        // ShortT shape with explicit rotated forms
         final shortTShapes = {
-          0: [[-1, 0], [0, 0], [1, 0], [0, 1]],    // stem down
-          1: [[0, -1], [0, 0], [1, 0], [0, 1]],    // stem right
-          2: [[0, -1], [-1, 0], [0, 0], [1, 0]],   // stem up
-          3: [[0, -1], [-1, 0], [0, 0], [0, 1]]    // stem left
+          0: [[-1, 0], [0, 0], [1, 0], [0, 1]],
+          1: [[0, -1], [0, 0], [1, 0], [0, 1]],
+          2: [[0, -1], [-1, 0], [0, 0], [1, 0]],
+          3: [[0, -1], [-1, 0], [0, 0], [0, 1]]
         };
         rotatedShape = shortTShapes[rotZ]?.map((c) => [...c]).toList() ?? rotatedShape;
         if (rotZ == 0) {
           row -= 1;
         } else if (rotZ == 1) col -= 1;
-        // rotZ == 2 and 3: no offset
         break;
     }
 
     return rotatedShape.map((offset) => Point(row + offset[1], col + offset[0])).toList();
+  }
+
+  /// Get all cells occupied by this block (filtered by removed units)
+  List<Point> get cells {
+    final baseCells = _baseCells;
+    if (removedUnits.isEmpty) return baseCells;
+    
+    // Filter out removed cells
+    return baseCells.where((cell) => !removedUnits.contains(cell)).toList();
   }
 }
 

@@ -96,6 +96,14 @@ class AppColors {
   static const Color freezeLight = Color(0xFFB0E0E6);    // Powder blue
   static const Color freezeGlow = Color(0x4000BFFF);     // Freeze with opacity
   
+  // === Rocket Effect ===
+  static const Color rocketOrange = Color(0xFFFF6B35);   // Rocket body
+  static const Color rocketYellow = Color(0xFFFFD700);   // Rocket flame
+  static const Color targetRed = Color(0xFFFF4444);      // Target crosshair
+  static const Color targetWhite = Color(0xFFFFFFFF);    // Target circle
+  static const Color explosionOrange = Color(0xFFFF8C00); // Explosion
+  static const Color explosionYellow = Color(0xFFFFEB3B); // Explosion highlight
+  
   // === Dialog Colors ===
   static const Color dialogGradientLight = Color(0xFF5BB8E8);  // Dialog top
   static const Color dialogGradientDark = Color(0xFF3D8BC4);   // Dialog bottom

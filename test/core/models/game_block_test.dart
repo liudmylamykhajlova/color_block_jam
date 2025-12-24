@@ -236,6 +236,127 @@ void main() {
         copy.iceCount = 0;
         expect(original.iceCount, 3);
       });
+      
+      test('copy preserves removedUnits', () {
+        final original = GameBlock(
+          blockType: 0,
+          blockGroupType: 2, // Three block
+          gridRow: 5,
+          gridCol: 5,
+          rotationZ: 0,
+        );
+        
+        // Remove a cell
+        final cellToRemove = original.cells.first;
+        original.removeUnit(cellToRemove);
+        
+        final copy = original.copy();
+        
+        expect(copy.removedUnits.length, 1);
+        expect(copy.cells.length, original.cells.length);
+      });
+    });
+    
+    group('removeUnit (Rocket booster)', () {
+      test('removeUnit removes a cell from block', () {
+        final block = GameBlock(
+          blockType: 0,
+          blockGroupType: 2, // Three block (3 cells)
+          gridRow: 5,
+          gridCol: 5,
+          rotationZ: 0,
+        );
+        
+        expect(block.cells.length, 3);
+        
+        final cellToRemove = block.cells.first;
+        final result = block.removeUnit(cellToRemove);
+        
+        expect(result, true); // Still has cells remaining
+        expect(block.cells.length, 2);
+        expect(block.cells.contains(cellToRemove), false);
+      });
+      
+      test('removeUnit returns false when last cell removed', () {
+        final block = GameBlock(
+          blockType: 0,
+          blockGroupType: 0, // One block (1 cell)
+          gridRow: 5,
+          gridCol: 5,
+          rotationZ: 0,
+        );
+        
+        expect(block.cells.length, 1);
+        
+        final cellToRemove = block.cells.first;
+        final result = block.removeUnit(cellToRemove);
+        
+        expect(result, false); // No cells remaining
+        expect(block.cells.length, 0);
+      });
+      
+      test('hasRemainingCells returns true when cells exist', () {
+        final block = GameBlock(
+          blockType: 0,
+          blockGroupType: 2, // Three block
+          gridRow: 5,
+          gridCol: 5,
+          rotationZ: 0,
+        );
+        
+        expect(block.hasRemainingCells, true);
+        
+        // Remove one cell
+        block.removeUnit(block.cells.first);
+        expect(block.hasRemainingCells, true);
+        
+        // Remove another
+        block.removeUnit(block.cells.first);
+        expect(block.hasRemainingCells, true);
+        
+        // Remove last
+        block.removeUnit(block.cells.first);
+        expect(block.hasRemainingCells, false);
+      });
+      
+      test('multiple cells can be removed from L-block', () {
+        final block = GameBlock(
+          blockType: 0,
+          blockGroupType: 3, // L block (4 cells)
+          gridRow: 5,
+          gridCol: 5,
+          rotationZ: 0,
+        );
+        
+        expect(block.cells.length, 4);
+        
+        // Remove 2 cells
+        block.removeUnit(block.cells.first);
+        block.removeUnit(block.cells.first);
+        
+        expect(block.cells.length, 2);
+        expect(block.hasRemainingCells, true);
+      });
+      
+      test('removedUnits tracks all removed cells', () {
+        final block = GameBlock(
+          blockType: 0,
+          blockGroupType: 6, // Plus block (5 cells)
+          gridRow: 5,
+          gridCol: 5,
+          rotationZ: 0,
+        );
+        
+        final cell1 = block.cells[0];
+        final cell2 = block.cells[1];
+        
+        block.removeUnit(cell1);
+        block.removeUnit(cell2);
+        
+        expect(block.removedUnits.length, 2);
+        expect(block.removedUnits.contains(cell1), true);
+        expect(block.removedUnits.contains(cell2), true);
+      });
     });
   });
   

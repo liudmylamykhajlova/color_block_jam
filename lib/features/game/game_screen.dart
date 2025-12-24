@@ -12,6 +12,7 @@ import 'widgets/boosters_bar.dart';
 import 'widgets/win_dialog.dart';
 import 'widgets/freeze_indicator.dart';
 import 'widgets/freeze_overlay.dart';
+import 'widgets/rocket_overlay.dart';
 
 class GameScreen extends StatefulWidget {
   final int levelId;
@@ -51,6 +52,10 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   int _freezeRemainingSeconds = 0;
   Timer? _freezeTimer;
   
+  // Rocket mode
+  bool _isRocketMode = false;
+  double _currentCellSize = 0;
+  
   // Lives
   int _lives = 5;
   
@@ -73,7 +78,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     super.didChangeAppLifecycleState(state);
     
     if (state == AppLifecycleState.paused || state == AppLifecycleState.inactive) {
-      // App going to background - pause timers
+      // App going to background - pause timers and reset states
+      _cancelRocketMode(); // Reset rocket mode
       if (_timer != null) {
         _pausedAt = DateTime.now();
         _stopTimer();
@@ -242,6 +248,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     _stopTimer();
     _stopFreezeTimer(); // Stop freeze timer
     if (_isFrozen) _endFreeze(); // Reset freeze state
+    _cancelRocketMode(); // Reset rocket mode
     GameLogger.timerExpired(widget.levelId);
     
     // Lose a life
@@ -257,6 +264,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   }
   
   void _showFailDialog() {
+    _cancelRocketMode(); // Reset rocket mode
     AudioService.playLevelFail(); // Level fail sound
     
     showDialog(
@@ -422,6 +430,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     setState(() {
       _isFrozen = false; // Reset freeze state
       _freezeRemainingSeconds = 0;
+      _isRocketMode = false; // Reset rocket mode
       _initBlocks();
       _remainingSeconds = _level?.duration ?? AppConstants.defaultLevelDuration;
     });
@@ -461,33 +470,45 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
             ),
           ),
           child: SafeArea(
-            child: Column(
+            child: Stack(
               children: [
-                // Top bar
-                _buildTopBar(),
-                
-                // Freeze indicator (shown when frozen)
-                FreezeIndicator(
-                  remainingSeconds: _freezeRemainingSeconds,
-                  isVisible: _isFrozen,
+                Column(
+                  children: [
+                    // Top bar
+                    _buildTopBar(),
+                    
+                    // Freeze indicator (shown when frozen)
+                    FreezeIndicator(
+                      remainingSeconds: _freezeRemainingSeconds,
+                      isVisible: _isFrozen,
+                    ),
+                    
+                    // Game board
+                    Expanded(
+                      child: Center(
+                        child: _buildGameBoard(),
+                      ),
+                    ),
+                    
+                    // Bottom boosters bar
+                    BoostersBar(
+                      boosters: _boosters,
+                      onBoosterTap: _isRocketMode ? null : _onBoosterTap,
+                      onPauseTap: _isRocketMode ? null : _onPauseTap,
+                    ),
+                    
+                    // Bottom safe area
+                    const SizedBox(height: 8),
+                  ],
                 ),
                 
-                // Game board
-                Expanded(
-                  child: Center(
-                    child: _buildGameBoard(),
+                // Rocket overlay (on top of everything when active)
+                if (_isRocketMode)
+                  RocketOverlay(
+                    isActive: _isRocketMode,
+                    onCancel: _cancelRocketMode,
+                    child: const SizedBox.shrink(),
                   ),
-                ),
-                
-                // Bottom boosters bar
-                BoostersBar(
-                  boosters: _boosters,
-                  onBoosterTap: _onBoosterTap,
-                  onPauseTap: _onPauseTap,
-                ),
-                
-                // Bottom safe area
-                const SizedBox(height: 8),
               ],
             ),
           ),
@@ -554,8 +575,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
         _useFreezeBooster();
         break;
       case BoosterType.destroy:
-        // TODO: Implement destroy mode
-        _showBoosterNotImplemented('Destroy');
+        _useRocketBooster();
         break;
       case BoosterType.drill:
         // TODO: Implement drill mode
@@ -593,10 +613,101 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     _activateFreeze();
   }
   
+  void _useRocketBooster() {
+    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.destroy);
+    if (boosterIndex == -1) return;
+    
+    final booster = _boosters[boosterIndex];
+    if (booster.quantity <= 0) {
+      _showBoosterNotImplemented('No rocket boosters left!');
+      return;
+    }
+    
+    // Enter rocket mode (don't consume booster until used)
+    setState(() {
+      _isRocketMode = true;
+    });
+    
+    GameLogger.info('Rocket mode activated', 'BOOSTER');
+  }
+  
+  void _onRocketCellTap(GameBlock block, Point cell) {
+    if (!_isRocketMode) return;
+    
+    // Consume booster
+    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.destroy);
+    if (boosterIndex != -1) {
+      final booster = _boosters[boosterIndex];
+      setState(() {
+        _boosters = List.from(_boosters);
+        _boosters[boosterIndex] = BoosterData(
+          type: BoosterType.destroy,
+          quantity: booster.quantity - 1,
+        );
+      });
+    }
+    
+    AudioService.playExit(); // Play destruction sound
+    
+    // Remove the cell from block
+    block.removeUnit(cell);
+    
+    GameLogger.info('Rocket destroyed cell at (${cell.row}, ${cell.col}) from block ${block.blockType}', 'BOOSTER');
+    
+    // Check if block has no remaining cells
+    if (!block.hasRemainingCells) {
+      GameLogger.info('Block ${block.blockType} completely destroyed!', 'BOOSTER');
+      setState(() {
+        _blocks.remove(block);
+        _decreaseIceCountForAll();
+      });
+      
+      // Check win condition
+      if (_blocks.isEmpty) {
+        AudioService.playWin();
+        _showWinDialog();
+      }
+    } else {
+      // Just trigger rebuild to show new shape
+      setState(() {});
+    }
+    
+    // Exit rocket mode
+    _cancelRocketMode();
+  }
+  
+  void _cancelRocketMode() {
+    setState(() {
+      _isRocketMode = false;
+    });
+    GameLogger.info('Rocket mode cancelled', 'BOOSTER');
+  }
+  
+  void _onRocketTap(TapUpDetails details, double cellSize, GameLevel level) {
+    final cell = _getCellFromPosition(details.localPosition, cellSize, level);
+    if (cell == null) {
+      // Tapped outside board - cancel rocket mode
+      _cancelRocketMode();
+      return;
+    }
+    
+    // Find which block contains this cell
+    for (final block in _blocks) {
+      if (block.cells.contains(cell)) {
+        _onRocketCellTap(block, cell);
+        return;
+      }
+    }
+    
+    // Tapped empty cell - cancel rocket mode
+    _cancelRocketMode();
+  }
+  
   void _onPauseTap() {
     AudioService.playTap();
     _stopTimer();
     _stopFreezeTimer(); // Also stop freeze timer during pause
+    _cancelRocketMode(); // Reset rocket mode
     _showPauseDialog();
   }
   
@@ -863,6 +974,13 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
         final maxHeight = constraints.maxHeight - 48;
         final cellSize = (maxWidth / (level.gridWidth + 2))
             .clamp(0.0, maxHeight / (level.gridHeight + 2));
+        
+        // Store for rocket overlay (update after frame to avoid setState during build)
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (_currentCellSize != cellSize) {
+            _currentCellSize = cellSize;
+          }
+        });
 
         return Container(
           margin: const EdgeInsets.all(16),
@@ -872,9 +990,16 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
           ),
           padding: const EdgeInsets.all(8),
           child: GestureDetector(
-            onPanStart: (details) => _onPanStart(details, cellSize, level),
-            onPanUpdate: (details) => _onPanUpdate(details, cellSize, level),
-            onPanEnd: (_) => _onPanEnd(),
+            onTapUp: _isRocketMode 
+                ? (details) => _onRocketTap(details, cellSize, level) 
+                : null,
+            onPanStart: _isRocketMode 
+                ? null 
+                : (details) => _onPanStart(details, cellSize, level),
+            onPanUpdate: _isRocketMode 
+                ? null 
+                : (details) => _onPanUpdate(details, cellSize, level),
+            onPanEnd: _isRocketMode ? null : (_) => _onPanEnd(),
             // RepaintBoundary creates an offscreen buffer for the game board
             // TODO: Split into StaticBoardPainter + BlocksPainter for better perf
             child: RepaintBoundary(
@@ -892,6 +1017,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                   exitProgress: _exitProgress,
                   exitDeltaRow: _exitDeltaRow,
                   exitDeltaCol: _exitDeltaCol,
+                  showTargets: _isRocketMode,
                 ),
               ),
             ),
@@ -1312,6 +1438,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     _stopTimer(); // Stop the timer on win
     _stopFreezeTimer(); // Stop freeze timer
     if (_isFrozen) _endFreeze(); // Reset freeze state
+    _cancelRocketMode(); // Reset rocket mode
     GameLogger.levelCompleted(widget.levelId, _remainingSeconds);
     await StorageService.markLevelCompleted(widget.levelId);
     widget.onLevelComplete?.call();
@@ -1320,8 +1447,9 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     final totalTime = _level?.duration ?? AppConstants.defaultLevelDuration;
     final timeRatio = _remainingSeconds / totalTime;
     int stars = 1;
-    if (timeRatio > 0.5) stars = 3;
-    else if (timeRatio > 0.25) stars = 2;
+    if (timeRatio > 0.5) {
+      stars = 3;
+    } else if (timeRatio > 0.25) stars = 2;
     
     // Calculate coins earned (base + time bonus)
     final coinsEarned = 50 + (_remainingSeconds * 2);
@@ -1420,6 +1548,7 @@ class GameBoardPainter extends CustomPainter {
   final double exitProgress;
   final int exitDeltaRow;
   final int exitDeltaCol;
+  final bool showTargets; // For rocket booster mode
 
   GameBoardPainter({
     required this.level,
@@ -1430,6 +1559,7 @@ class GameBoardPainter extends CustomPainter {
     this.exitProgress = 0.0,
     this.exitDeltaRow = 0,
     this.exitDeltaCol = 0,
+    this.showTargets = false,
   });
 
   @override
@@ -1503,6 +1633,69 @@ class GameBoardPainter extends CustomPainter {
     }
     
     canvas.restore();
+    
+    // Draw rocket targets on top of blocks
+    if (showTargets) {
+      _drawTargets(canvas, borderOffset);
+    }
+  }
+  
+  void _drawTargets(Canvas canvas, double borderOffset) {
+    for (final block in blocks) {
+      for (final cell in block.cells) {
+        final centerX = borderOffset + cell.col * cellSize + cellSize / 2;
+        final centerY = borderOffset + cell.row * cellSize + cellSize / 2;
+        final center = Offset(centerX, centerY);
+        
+        final baseRadius = cellSize * 0.3;
+        
+        // Outer glow (red, semi-transparent)
+        final glowPaint = Paint()
+          ..color = AppColors.targetRed.withOpacity(0.3)
+          ..style = PaintingStyle.fill;
+        canvas.drawCircle(center, baseRadius * 1.2, glowPaint);
+        
+        // Outer circle (red)
+        final outerPaint = Paint()
+          ..color = AppColors.targetRed
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 3;
+        canvas.drawCircle(center, baseRadius, outerPaint);
+        
+        // Inner circle (white filled with opacity)
+        final innerFillPaint = Paint()
+          ..color = AppColors.targetWhite.withOpacity(0.3);
+        canvas.drawCircle(center, baseRadius * 0.5, innerFillPaint);
+        
+        // Crosshair lines
+        final crosshairPaint = Paint()
+          ..color = AppColors.targetWhite.withOpacity(0.9)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2;
+        
+        final lineLength = baseRadius * 0.4;
+        
+        // Horizontal line
+        canvas.drawLine(
+          Offset(centerX - lineLength, centerY),
+          Offset(centerX + lineLength, centerY),
+          crosshairPaint,
+        );
+        
+        // Vertical line
+        canvas.drawLine(
+          Offset(centerX, centerY - lineLength),
+          Offset(centerX, centerY + lineLength),
+          crosshairPaint,
+        );
+        
+        // Center dot (red)
+        final dotPaint = Paint()
+          ..color = AppColors.targetRed
+          ..style = PaintingStyle.fill;
+        canvas.drawCircle(center, 3, dotPaint);
+      }
+    }
   }
   
   void _drawFrame(Canvas canvas, double borderOffset, double frameThickness) {

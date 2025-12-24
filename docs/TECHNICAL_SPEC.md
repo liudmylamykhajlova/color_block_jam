@@ -248,7 +248,82 @@ void _decreaseIceCountForAll() {
 }
 ```
 
-### 4.5 Block Movement Animation
+### 4.5 Booster System
+
+#### Freeze Time Booster
+```dart
+// State
+bool _isFrozen = false;
+int _freezeRemainingSeconds = 0;
+Timer? _freezeTimer;
+
+void _activateFreeze() {
+  _isFrozen = true;
+  _freezeRemainingSeconds = AppConstants.freezeBoosterDuration; // 5 sec
+  _startFreezeTimer();
+}
+
+void _endFreeze() {
+  _isFrozen = false;
+  _freezeRemainingSeconds = 0;
+}
+
+// Timer behavior:
+// - Main game timer STOPS when frozen
+// - Freeze countdown runs independently
+// - Blocks still movable during freeze
+```
+
+#### Rocket Booster
+```dart
+// State
+bool _isRocketMode = false;
+
+void _useRocketBooster() {
+  _isRocketMode = true;
+  // Don't consume booster until cell tapped
+}
+
+void _onRocketCellTap(GameBlock block, Point cell) {
+  // 1. Consume booster
+  // 2. Remove cell from block: block.removeUnit(cell)
+  // 3. If block has no cells left → remove block
+  // 4. Exit rocket mode
+}
+
+void _cancelRocketMode() {
+  _isRocketMode = false;
+}
+
+// GameBlock.removeUnit():
+class GameBlock {
+  final List<Point> removedUnits = [];
+  
+  bool removeUnit(Point cell) {
+    removedUnits.add(cell);
+    return cells.isNotEmpty; // true if block still exists
+  }
+  
+  List<Point> get cells => _baseCells
+    .where((c) => !removedUnits.contains(c))
+    .toList();
+}
+```
+
+#### Booster Lifecycle
+```
+Activate → Use → Deactivate
+
+Auto-cancel triggers:
+- _onPauseTap()
+- didChangeAppLifecycleState(paused/inactive)
+- _showWinDialog()
+- _showFailDialog()
+- _onTimeUp()
+- _resetLevel()
+```
+
+### 4.6 Block Movement Animation
 
 ```dart
 void _animateBlockMove(Block block, Point from, Point to) {
