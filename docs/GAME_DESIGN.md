@@ -1,6 +1,6 @@
 # Color Block Jam - Game Design Document
 
-> **Version:** 3.1.0  
+> **Version:** 3.2.0  
 > **Date:** 2025-12-24  
 > **Based on:** Original game screenshots (10 screens analyzed)
 
@@ -392,22 +392,33 @@ Move ALL blocks out of the board through doors of matching color.
 - [x] Settings (Sound, Music, Vibration toggles)
 - [x] Basic level select grid
 
-### 🔶 Next (Phase 2 - Core Features)
-- [ ] Coins display in HUD
-- [ ] Bottom boosters bar (5 slots)
-- [ ] Win dialog with stars
-- [ ] Level start dialog with boosters
+### ✅ Done (Phase 2 - Core Features)
+- [x] Coins display in HUD
+- [x] Bottom boosters bar (5 slots)
+- [x] Win dialog with stars, coins earned
+- [x] Level start dialog with boosters
+- [x] Extra time booster (+30s)
+- [x] Pause functionality
 
-### 🔷 Future (Phase 3+)
-- [ ] Splash screen
-- [ ] Level map (vertical scroll)
-- [ ] Shop screen/dialog
-- [ ] Profile/Avatar system
-- [ ] Remove Ads dialog
-- [ ] Milestone system
-- [ ] Ads integration
-- [ ] IAP integration
-- [ ] Social links
+### ✅ Done (Phase 3 - Screens)
+- [x] Splash screen (animated blocks, logo, progress)
+- [x] Level map (vertical scroll, rope path)
+- [x] Level nodes (green/red/purple, lock/star badges)
+- [x] Map HUD (avatar, lives, coins, settings)
+- [x] Shop screen (6 coin packs, bundles)
+- [x] Remove Ads dialog
+
+### ✅ Done (Phase 4 - Polish)
+- [x] Profile screen (avatar grid, name edit, tabs)
+- [x] Settings extras (Legal, Support, Language)
+- [x] Social links (Instagram, Facebook +100 coins)
+
+### 🔷 Future (Phase 5 - Monetization)
+- [ ] Ads integration (AdMob/AppLovin)
+- [ ] IAP integration (RevenueCat)
+- [ ] Real audio files
+- [ ] Push notifications
+- [ ] Analytics (Firebase)
 
 ---
 
@@ -415,6 +426,7 @@ Move ALL blocks out of the board through doors of matching color.
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 3.2.0 | 2025-12-24 | Updated implementation status: Phase 1-4 complete |
 | 3.1.0 | 2025-12-24 | Updated from 10 new screenshots: detailed HUD specs, Level Map elements, Settings icons, Shop views, Remove Ads bullets, Milestone system |
 | 3.0.0 | 2025-12-23 | Complete rewrite based on screenshots only |
 | 2.1.0 | 2025-12-23 | Previous version |

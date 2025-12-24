@@ -7,6 +7,7 @@ import '../game/game_screen.dart';
 import '../game/widgets/level_start_dialog.dart';
 import '../settings/settings_screen.dart';
 import '../shop/shop_screen.dart';
+import '../profile/profile_screen.dart';
 import 'widgets/map_hud.dart';
 import 'widgets/level_node.dart';
 
@@ -128,8 +129,9 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
   
   void _openProfile() {
     AudioService.playTap();
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Profile coming soon!')),
+    showDialog(
+      context: context,
+      builder: (_) => const ProfileScreen(),
     );
   }
 

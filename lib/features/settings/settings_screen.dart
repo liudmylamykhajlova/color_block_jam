@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/constants/colors.dart';
 import '../../core/services/audio_service.dart';
 import '../../core/services/storage_service.dart';
 
@@ -128,7 +129,45 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                       ),
 
-                      const SizedBox(height: 32),
+                      const SizedBox(height: 24),
+
+                      // Legal Terms
+                      _SettingsButton(
+                        label: 'Legal Terms',
+                        onTap: () => _showComingSoon('Legal Terms'),
+                      ),
+
+                      const SizedBox(height: 12),
+
+                      // Restore Purchases
+                      _SettingsButton(
+                        label: 'Restore Purchases',
+                        onTap: () => _showComingSoon('Restore Purchases'),
+                      ),
+
+                      const SizedBox(height: 12),
+
+                      // Support
+                      _SettingsButton(
+                        label: 'Support',
+                        icon: Icons.check_circle,
+                        onTap: () => _showComingSoon('Support'),
+                      ),
+
+                      const SizedBox(height: 12),
+
+                      // Language
+                      _SettingsButton(
+                        label: 'Language',
+                        onTap: () => _showComingSoon('Language'),
+                      ),
+
+                      const SizedBox(height: 24),
+
+                      // Social Links
+                      _buildSocialLinks(),
+
+                      const SizedBox(height: 24),
 
                       // Reset progress
                       _SettingsTile(
@@ -142,7 +181,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                       ),
 
-                      const Spacer(),
+                      const SizedBox(height: 24),
 
                       // Version info
                       Text(
@@ -150,14 +189,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         style: TextStyle(
                           color: Colors.white.withOpacity(0.5),
                           fontSize: 14,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Made with ❤️ in Flutter',
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.4),
-                          fontSize: 12,
                         ),
                       ),
                       const SizedBox(height: 32),
@@ -168,6 +199,60 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildSocialLinks() {
+    return Row(
+      children: [
+        Expanded(
+          child: _SocialButton(
+            icon: Icons.camera_alt,
+            label: 'Like',
+            reward: '+100',
+            color: const Color(0xFFE1306C),
+            onTap: () => _claimSocialReward('Instagram'),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: _SocialButton(
+            icon: Icons.facebook,
+            label: 'Follow',
+            reward: '+100',
+            color: const Color(0xFF1877F2),
+            onTap: () => _claimSocialReward('Facebook'),
+          ),
+        ),
+      ],
+    );
+  }
+  
+  void _showComingSoon(String feature) {
+    AudioService.playTap();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('$feature coming soon!'),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
+  
+  void _claimSocialReward(String platform) {
+    AudioService.playTap();
+    // TODO: Actually open social link and verify follow
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            const Icon(Icons.monetization_on, color: Colors.amber),
+            const SizedBox(width: 8),
+            Text('$platform: +100 coins coming soon!'),
+          ],
+        ),
+        backgroundColor: AppColors.buttonGreen,
+        behavior: SnackBarBehavior.floating,
       ),
     );
   }
@@ -233,6 +318,151 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _SettingsButton extends StatelessWidget {
+  final String label;
+  final IconData? icon;
+  final VoidCallback? onTap;
+  
+  const _SettingsButton({
+    required this.label,
+    this.icon,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 14),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              const Color(0xFF5BB8E8),
+              const Color(0xFF3D8BC4),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: Colors.white.withOpacity(0.3),
+            width: 2,
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (icon != null) ...[
+              Icon(icon, color: Colors.white, size: 20),
+              const SizedBox(width: 8),
+            ],
+            Text(
+              label,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SocialButton extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String reward;
+  final Color color;
+  final VoidCallback? onTap;
+  
+  const _SocialButton({
+    required this.icon,
+    required this.label,
+    required this.reward,
+    required this.color,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              const Color(0xFF5BB8E8),
+              const Color(0xFF3D8BC4),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: Colors.white.withOpacity(0.3),
+            width: 2,
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 28,
+              height: 28,
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Icon(icon, color: Colors.white, size: 18),
+            ),
+            const SizedBox(width: 8),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      reward,
+                      style: const TextStyle(
+                        color: Colors.amber,
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(width: 2),
+                    Container(
+                      width: 12,
+                      height: 12,
+                      decoration: BoxDecoration(
+                        color: AppColors.gold,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
