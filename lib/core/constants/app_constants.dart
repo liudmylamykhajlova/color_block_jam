@@ -24,6 +24,11 @@ class AppConstants {
   /// Minutes to wait for one life to refill
   static const int lifeRefillMinutes = 30;
   
+  // === BOOSTERS ===
+  
+  /// Freeze booster duration in seconds
+  static const int freezeBoosterDuration = 5;
+  
   // === ANIMATIONS ===
   
   /// Duration for block exit animation (milliseconds)

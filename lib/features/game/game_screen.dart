@@ -50,7 +50,6 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   bool _isFrozen = false;
   int _freezeRemainingSeconds = 0;
   Timer? _freezeTimer;
-  static const int _freezeDuration = 5; // Freeze lasts 5 seconds
   
   // Lives
   int _lives = 5;
@@ -74,20 +73,33 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     super.didChangeAppLifecycleState(state);
     
     if (state == AppLifecycleState.paused || state == AppLifecycleState.inactive) {
-      // App going to background - pause timer
+      // App going to background - pause timers
       if (_timer != null) {
         _pausedAt = DateTime.now();
         _stopTimer();
+        _stopFreezeTimer(); // Also stop freeze timer
         GameLogger.info('Timer paused (app backgrounded)', 'TIMER');
       }
     } else if (state == AppLifecycleState.resumed) {
-      // App coming back - resume timer
+      // App coming back - resume timers
       if (_pausedAt != null && _remainingSeconds > 0) {
-        // Calculate time spent in background
         final backgroundDuration = DateTime.now().difference(_pausedAt!).inSeconds;
-        _remainingSeconds = (_remainingSeconds - backgroundDuration).clamp(0, _level?.duration ?? AppConstants.defaultLevelDuration);
-        _pausedAt = null;
         
+        // Handle freeze timer if it was active
+        if (_isFrozen && _freezeRemainingSeconds > 0) {
+          _freezeRemainingSeconds = (_freezeRemainingSeconds - backgroundDuration).clamp(0, AppConstants.freezeBoosterDuration);
+          if (_freezeRemainingSeconds <= 0) {
+            _endFreeze();
+          } else {
+            _startFreezeTimer();
+          }
+          // Don't subtract from game timer if we were frozen
+        } else {
+          // Only subtract from game timer if not frozen
+          _remainingSeconds = (_remainingSeconds - backgroundDuration).clamp(0, _level?.duration ?? AppConstants.defaultLevelDuration);
+        }
+        
+        _pausedAt = null;
         GameLogger.info('Timer resumed, remaining: $_remainingSeconds seconds', 'TIMER');
         
         if (_remainingSeconds <= 0) {
@@ -206,12 +218,14 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   void _activateFreeze() {
     if (_isFrozen) return; // Already frozen
     
+    AudioService.playTap(); // Audio feedback for freeze activation
+    
     setState(() {
       _isFrozen = true;
-      _freezeRemainingSeconds = _freezeDuration;
+      _freezeRemainingSeconds = AppConstants.freezeBoosterDuration;
     });
     
-    GameLogger.info('Freeze activated for $_freezeDuration seconds', 'BOOSTER');
+    GameLogger.info('Freeze activated for ${AppConstants.freezeBoosterDuration} seconds', 'BOOSTER');
     _startFreezeTimer();
   }
   
@@ -226,6 +240,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   
   void _onTimeUp() async {
     _stopTimer();
+    _stopFreezeTimer(); // Stop freeze timer
+    if (_isFrozen) _endFreeze(); // Reset freeze state
     GameLogger.timerExpired(widget.levelId);
     
     // Lose a life
@@ -580,6 +596,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   void _onPauseTap() {
     AudioService.playTap();
     _stopTimer();
+    _stopFreezeTimer(); // Also stop freeze timer during pause
     _showPauseDialog();
   }
   
@@ -632,6 +649,10 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
               onPressed: () {
                 Navigator.pop(context);
                 _startTimer();
+                // Resume freeze timer if it was active
+                if (_isFrozen && _freezeRemainingSeconds > 0) {
+                  _startFreezeTimer();
+                }
               },
               child: const Text(
                 'Resume',
@@ -1289,6 +1310,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
 
   void _showWinDialog() async {
     _stopTimer(); // Stop the timer on win
+    _stopFreezeTimer(); // Stop freeze timer
+    if (_isFrozen) _endFreeze(); // Reset freeze state
     GameLogger.levelCompleted(widget.levelId, _remainingSeconds);
     await StorageService.markLevelCompleted(widget.levelId);
     widget.onLevelComplete?.call();
