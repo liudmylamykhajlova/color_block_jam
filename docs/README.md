@@ -8,7 +8,7 @@
 
 | Document | Description | Version |
 |----------|-------------|---------|
-| [🎮 GAME_DESIGN.md](./GAME_DESIGN.md) | Game Design Document - gameplay, mechanics, economy, monetization | v3.0.0 |
+| [🎮 GAME_DESIGN.md](./GAME_DESIGN.md) | Game Design Document - gameplay, mechanics, economy, monetization | v3.1.0 |
 | [🎨 UI_UX_DESIGN.md](./UI_UX_DESIGN.md) | UI/UX Design - all screens, components, animations, style guide | v2.0.0 |
 | [🔧 TECHNICAL_SPEC.md](./TECHNICAL_SPEC.md) | Technical Specification - architecture, models, algorithms, services | v2.1.0 |
 | [🔍 GAME_ANALYSIS.md](./GAME_ANALYSIS.md) | Original Game Analysis - App Store data, XAPK reverse-engineering, binary offsets | v1.0.0 |

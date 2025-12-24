@@ -1,8 +1,8 @@
 # Color Block Jam - Game Design Document
 
-> **Version:** 3.0.0  
-> **Date:** 2025-12-23  
-> **Based on:** Original game screenshots
+> **Version:** 3.1.0  
+> **Date:** 2025-12-24  
+> **Based on:** Original game screenshots (10 screens analyzed)
 
 ---
 
@@ -42,8 +42,8 @@ Move ALL blocks out of the board through doors of matching color.
 
 | Mechanic | Description |
 |----------|-------------|
-| **Movement Direction** | Some blocks can only move horizontally or vertically (white arrows) |
-| **Frozen Blocks** | Blocks covered in ice, number shows how many blocks must exit to unfreeze |
+| **Movement Direction** | Some blocks can only move horizontally or vertically (white arrows ↔ ↕) |
+| **Frozen Blocks** | Blocks covered in ice with number (e.g. "4") showing blocks to exit before unfreeze |
 | **Multi-layer Blocks** | Two colors - outer layer destroys on matching door, inner layer exits after |
 
 ---
@@ -70,19 +70,24 @@ Move ALL blocks out of the board through doors of matching color.
 | Element | Color | Description |
 |---------|-------|-------------|
 | Dialog background | Sky blue gradient | #4DA6FF to #2E86DE |
-| Primary buttons | Green | #7ED321 (Play, Retry) |
+| Dialog border | Light blue outline | Rounded corners |
+| Primary buttons | Green gradient | #7ED321 (Play, Retry, Buy) |
+| Secondary buttons | Blue gradient | Settings items |
+| Orange header | Orange | "Bundles" section |
 | Close buttons | Red circle | White X inside |
-| Main background | Purple/Blue gradient | Level select, menus |
+| Main background | Purple/Blue gradient | Level map, menus |
 | Game background | Light gray/blue | During gameplay |
+| Toggle ON | Green pill | With "On" label |
+| Toggle OFF | Gray pill | No label |
 
 ### 3.3 Game Board (from screenshots)
 
 | Element | Description |
 |---------|-------------|
-| **Board frame** | Dark gray/black, NOT wooden |
-| **Board interior** | Dark gray grid |
-| **Doors** | Colored strips on frame edges with direction arrows |
-| **Blocks** | 3D LEGO style with round studs on each cell |
+| **Board frame** | Dark gray/black, NOT wooden, 3D rounded edges |
+| **Board interior** | Dark gray grid with subtle lines |
+| **Doors** | Colored strips on frame edges with white direction arrows |
+| **Blocks** | 3D LEGO style with round studs (4 per cell), shadow underneath |
 
 ### 3.4 Block Shapes (12 types)
 
@@ -106,186 +111,303 @@ Move ALL blocks out of the board through doors of matching color.
 ## 4. Screens (from screenshots)
 
 ### 4.1 Splash Screen
-- 3D LEGO blocks floating in background
-- "Color Block Jam" logo with neon glow
-- Progress bar with percentage
+- Blue gradient background
+- 3D LEGO blocks floating/falling animation
+- "Color Block Jam" logo with neon glow circle effect
+- Progress bar at bottom with percentage (e.g. "5%")
+- Rollic logo in corner
 
-### 4.2 Level Select (Map)
+### 4.2 Level Map Screen
+
+**Top HUD:**
+| Element | Position | Description |
+|---------|----------|-------------|
+| Avatar | Top-left | Clickable profile picture in blue frame |
+| Lives | Left of center | Green "+" button + "Full" text + red heart "5" |
+| Coins | Right of center | Green "+" button + "1.48k" + coin icon |
+| Settings | Top-right | Yellow gear icon |
+
+**Map Content:**
 - Vertical scrollable path
-- Levels connected by rope/line
-- Level states:
-  - Green = Available
-  - Red + Skull = Hard
-  - Purple + Skull = Boss/Special
-  - Lock = Locked
-- Bottom navigation: Shop | Home | Lvl 50
+- Dark rope/line connecting level nodes
+- Level node states:
+  - **Green** = Available/Current (rounded square)
+  - **Red + Skull badge** = Hard level
+  - **Purple + Skull badge** = Boss/Special level
+  - **Gold lock icon** = Locked level
+- Gold coin badge between some levels (rewards)
+- Current level has "Level N" green label below
+
+**Right Side:**
+- "ADS" button (red crossed circle) - opens Remove Ads
+
+**Bottom Navigation Bar:**
+| Slot | Icon | Label |
+|------|------|-------|
+| 1 | Chest with coins | "Shop" |
+| 2 | 3D LEGO blocks | "Home" |
+| 3 | Lock icon | "Lvl 50" |
 
 ### 4.3 Level Start Dialog
-- "LEVEL N" title
-- "Unlock Level 70" progress (0/3)
-- Booster selection (2 slots with quantity)
-- "Play" button (green)
+- "LEVEL N" title in blue banner
+- Red X close button (top-right)
+
+**Milestone Section:**
+- Chest icon (3D treasure)
+- "Unlock Level 70" text
+- Progress bar "0/3" with lock icon
+
+**Boosters Section:**
+- "Select Boosters:" label
+- 2 booster slots:
+  | Slot | Icon | Badge |
+  |------|------|-------|
+  | 1 | Hourglass | Red circle "2" |
+  | 2 | Rocket | Red circle "2" |
+
+- "Play" button (large green)
 
 ### 4.4 Game Screen
 
 **Top HUD:**
-- Level number (blue circle)
-- Timer ("Time 02:50")
-- Restart button
-- Coins display ("1.48k")
+| Element | Position | Description |
+|---------|----------|-------------|
+| Level badge | Left | Blue oval "Level" + large number |
+| Timer | Center | Yellow clock icon + "Time" + "02:50" |
+| Restart | Right of timer | Yellow circular arrow button |
+| Coins | Right | Green coin + "1.48k" + green "+" |
 
-**Bottom HUD (5 boosters):**
-| Slot | Icon | Badge |
-|------|------|-------|
-| 1 | Clock | "1" |
-| 2 | Hammer | "1" |
-| 3 | Drill | "1" |
-| 4 | Plus | "+" |
-| 5 | Pause | - |
+**Game Board:**
+- Dark gray frame with 3D edges
+- Colored doors on edges with white arrows
+- LEGO blocks with studs
+- Movement arrows on restricted blocks (white ↔ or ↕)
+- Ice overlay with number on frozen blocks
+
+**Bottom HUD (5 Boosters):**
+| Slot | Icon | Badge | Function |
+|------|------|-------|----------|
+| 1 | Clock/Alarm | "1" | Extra time |
+| 2 | Hammer | "1" | Destroy block |
+| 3 | Drill | "1" | Unknown |
+| 4 | Bell with + | Green "+" | Buy more |
+| 5 | Pause (॥) | - | Pause game |
 
 ### 4.5 Fail Dialog
-- "Level N" title
-- Broken heart with "-1"
-- "You will lose 1 life!"
-- "Retry" button (green)
-- Close button (X)
+- "Level N" title in blue banner
+- Red X close button (top-right)
+- **Broken heart icon** (3D, cracked, red) with "-1" overlay
+- "You will lose 1 life!" text
+- "Retry" button (large green)
 
-### 4.6 Settings
-- Vibration toggle (default: OFF)
-- Sound toggle (default: ON)
-- Music toggle (default: ON)
-- Legal Terms button
-- Restore Purchases button
-- Support button
-- Language button
-- Social: Instagram, Facebook, TikTok (+100 coins each)
+### 4.6 Settings Dialog
+- "SETTINGS" title in blue banner with white stroke
+- Red X close button
 
-### 4.7 Profile
-- Avatar display with name ("Player8659")
-- Edit name button (pencil)
-- Tabs: Avatar | Frame
-- 3x4 grid of avatar options
-- Green checkmark on selected
+**Toggles (top to bottom):**
+| Icon | Setting | Default |
+|------|---------|---------|
+| Phone with vibration | Vibration | OFF (gray) |
+| Speaker with waves | Sound | ON (green) |
+| Music note | Music | ON (green) |
+
+**Buttons (blue rounded):**
+1. "Legal Terms"
+2. "Restore Purchases"
+3. "Support" (with checkmark icon)
+4. "Language"
+
+**Social Links (bottom):**
+| Platform | Icon | Reward |
+|----------|------|--------|
+| Instagram | IG logo | "Like +100" coins |
+| Facebook | F logo | "Follow +100" coins |
+| TikTok | TT logo | "Follow +100" coins |
+
+### 4.7 Profile Dialog
+- "Profile" title in blue banner
+- Red X close button
+
+**Player Card (cream/beige background):**
+- Avatar image (square, blue border)
+- "Player8659" name
+- Blue pencil edit button
+
+**Tabs:**
+- "Avatar" | "Frame" (blue buttons)
+
+**Avatar Grid:**
+- 3 columns x 4 rows = 12 avatars
+- Green checkmark + green border on selected
+- Various cartoon character portraits
 
 ### 4.8 Shop
 
-**Coins section (from screenshots - UAH prices):**
-| Coins | Price |
-|-------|-------|
-| 1,000 | 79.99 |
-| 5,000 | 284.99 |
-| 10,000 | 549.99 |
-| 25,000 | 1,099.99 |
-| 50,000 | 1,949.99 |
-| 100,000 | 3,649.99 |
+**Two Views:**
+1. **Dialog** (overlay on game/map)
+2. **Full Screen** (from bottom nav)
 
-**Bundles section:**
-- No Ads: 284.99 UAH
+**Structure:**
+- "Shop" title (full screen) or "Coins" header (dialog)
+- Coins display top-right
+
+**Coins Section (yellow/gold border):**
+| Coins | Image | Price (UAH) |
+|-------|-------|-------------|
+| 1 000 | Small pile | 79,99 |
+| 5 000 | Medium pile | 284,99 |
+| 10 000 | Large pile | 549,99 |
+| 25 000 | Bigger pile | 1 099,99 |
+| 50 000 | Huge pile | 1 949,99 |
+| 100 000 | Chest + pile | 3 649,99 |
+
+**Bundles Section (orange header):**
+- "No Ads" card:
+  - Crossed ADS icon (red circle)
+  - "Remove interstitial & banner ads"
+  - "284,99 UAH" green button
 
 ### 4.9 Remove Ads Dialog
-- Large crossed "ADS" icon
-- Removes: Interstitial ads, banner ads
-- Keeps: Optional rewarded ads
-- Price button (green)
+- "REMOVE ADS" title (white, large)
+- Red X close button
+- Large crossed "ADS" icon (3D, red prohibition sign)
+
+**Bullet Points:**
+| Icon | Text |
+|------|------|
+| TV screen | "Remove obligatory ads" |
+| Phone with line | "Remove bottom banner ads" |
+| Play button | "Keep optional ads for rewards" |
+
+- "Level 29" label (shows current level)
+- "284,99 UAH" button (large green)
 
 ---
 
 ## 5. Economy
 
 ### 5.1 Lives
-- Display: "Full 5" with heart icon
-- Maximum: 5 lives
-- Lost on: Level fail (time out)
-- Restore: Wait / Watch ad / Buy
+- **Display:** Green "+" + "Full" + Heart icon + "5"
+- **Maximum:** 5 lives
+- **Lost on:** Level fail (time out)
+- **Restore:** Wait 30 min / Watch ad / Buy
 
 ### 5.2 Coins
-- Display: "1.48k" format with plus button
-- Earn: Complete levels, watch ads, daily rewards
-- Spend: Boosters, hints, extra time
+- **Display:** "1.48k" format + coin icon + green "+" button
+- **Earn:** Complete levels, watch ads, social follows, daily rewards
+- **Spend:** Boosters, extra time, hints
 
 ### 5.3 Timer
-- Display: "Time MM:SS"
-- Varies by level difficulty
-- Can add time with boosters/ads
+- **Display:** Clock icon + "Time" + "MM:SS"
+- **Visual:** Yellow when normal, changes color when low
+- **Varies:** By level difficulty (typically 2:30-3:00)
+
+### 5.4 Milestones (NEW)
+- "Unlock Level 70" type progression
+- Progress bar (0/3)
+- Rewards: Chest with items
+- Triggers at specific level thresholds
 
 ---
 
 ## 6. Boosters (from screenshots)
 
-| Icon | Name | Function |
-|------|------|----------|
-| Clock | Extra Time | Add seconds to timer |
-| Hammer | Destroy | Remove one block |
-| Drill | Unknown | TBD |
-| Plus | Buy More | Opens shop |
-| Pause | Pause | Pause game |
+### 6.1 In-Game Boosters (Bottom HUD)
 
-Pre-game boosters (Level Start):
-- Hourglass: Start with more time
-- Rocket: Unknown effect
+| Icon | Name | Quantity | Function |
+|------|------|----------|----------|
+| Clock/Alarm | Extra Time | 1 | Add +30 seconds |
+| Hammer | Destroy | 1 | Remove one block |
+| Drill | Drill | 1 | TBD (possibly breaks ice?) |
+| Bell + | Buy More | - | Opens shop |
+| Pause ॥ | Pause | - | Pauses game |
+
+### 6.2 Pre-Game Boosters (Level Start)
+
+| Icon | Name | Quantity | Function |
+|------|------|----------|----------|
+| Hourglass | More Time | 2 | Start with extra time |
+| Rocket | Boost | 2 | TBD (possibly removes blocks?) |
 
 ---
 
 ## 7. Monetization
 
 ### 7.1 Ads
-- **Interstitial:** Between levels
-- **Rewarded:** Extra time, extra life, 2x coins
+- **Interstitial:** Between levels (removed with No Ads)
+- **Rewarded:** Extra time, extra life, 2x coins (kept with No Ads)
 - **Banner:** Bottom of screen (removed with No Ads)
 
-### 7.2 In-App Purchases
-- Coin packs (6 tiers)
-- No Ads bundle
-- Bundles (coins + boosters)
+### 7.2 In-App Purchases (UAH Prices)
+
+| Product | Price |
+|---------|-------|
+| 1,000 coins | 79.99 |
+| 5,000 coins | 284.99 |
+| 10,000 coins | 549.99 |
+| 25,000 coins | 1,099.99 |
+| 50,000 coins | 1,949.99 |
+| 100,000 coins | 3,649.99 |
+| No Ads | 284.99 |
 
 ### 7.3 Social Rewards
-- Instagram: +100 coins
-- Facebook: +100 coins
-- TikTok: +100 coins
+- Instagram Like: +100 coins
+- Facebook Follow: +100 coins
+- TikTok Follow: +100 coins
 
 ---
 
 ## 8. Audio
 
 ### 8.1 Settings (from screenshots)
-- Sound Effects: ON/OFF toggle
-- Music: ON/OFF toggle
-- Vibration: ON/OFF toggle
+- **Sound Effects:** ON/OFF toggle (speaker icon)
+- **Music:** ON/OFF toggle (note icon)
+- **Vibration:** ON/OFF toggle (phone icon)
 
 ### 8.2 Sound Effects (expected)
 - Block pickup
-- Block drop
-- Block exit
-- Level complete
-- Level fail
+- Block drop/place
+- Block exit through door
+- Level complete fanfare
+- Level fail sound
 - Button tap
+- Timer warning (low time)
+- Ice break
+- Booster use
 
 ---
 
 ## 9. Implementation Status
 
-### Done
-- [x] Core gameplay
-- [x] 27 levels
+### ✅ Done (Phase 1 - MVP)
+- [x] Core gameplay (drag & drop)
+- [x] 27 levels from original game
 - [x] Movement direction restrictions
-- [x] Frozen blocks (ice)
+- [x] Frozen blocks (ice mechanic)
 - [x] Multi-layer blocks
-- [x] Level visualizer
+- [x] Level visualizer (debug)
 - [x] Timer system (countdown, color changes)
 - [x] Lives system (5 max, 30 min refill)
 - [x] Fail dialog (broken heart, retry)
+- [x] Settings (Sound, Music, Vibration toggles)
+- [x] Basic level select grid
 
-### Next (Phase 2)
-- [ ] Boosters (clock, hammer)
-- [ ] Win dialog improvements
-- [ ] Coins system
+### 🔶 Next (Phase 2 - Core Features)
+- [ ] Coins display in HUD
+- [ ] Bottom boosters bar (5 slots)
+- [ ] Win dialog with stars
+- [ ] Level start dialog with boosters
 
-### Future
-- [ ] Shop
-- [ ] Coins system
-- [ ] Ads integration
-- [ ] Profile/Avatar
+### 🔷 Future (Phase 3+)
+- [ ] Splash screen
 - [ ] Level map (vertical scroll)
+- [ ] Shop screen/dialog
+- [ ] Profile/Avatar system
+- [ ] Remove Ads dialog
+- [ ] Milestone system
+- [ ] Ads integration
+- [ ] IAP integration
+- [ ] Social links
 
 ---
 
@@ -293,6 +415,7 @@ Pre-game boosters (Level Start):
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 3.1.0 | 2025-12-24 | Updated from 10 new screenshots: detailed HUD specs, Level Map elements, Settings icons, Shop views, Remove Ads bullets, Milestone system |
 | 3.0.0 | 2025-12-23 | Complete rewrite based on screenshots only |
 | 2.1.0 | 2025-12-23 | Previous version |
 | 1.0.0 | 2025-12-17 | Initial version |
