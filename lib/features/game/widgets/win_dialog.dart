@@ -1,5 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../../../core/constants/colors.dart';
+
+/// Animation timing constants for WinDialog
+class _WinDialogAnimations {
+  static const Duration starAnimationDuration = Duration(milliseconds: 400);
+  static const Duration starInitialDelay = Duration(milliseconds: 200);
+  static const Duration starStaggerDelay = Duration(milliseconds: 200);
+}
 
 /// Win dialog shown after completing a level
 class WinDialog extends StatefulWidget {
@@ -27,6 +36,7 @@ class WinDialog extends StatefulWidget {
 class _WinDialogState extends State<WinDialog> with TickerProviderStateMixin {
   late List<AnimationController> _starControllers;
   late List<Animation<double>> _starAnimations;
+  final List<Timer> _starTimers = [];
   
   @override
   void initState() {
@@ -34,7 +44,7 @@ class _WinDialogState extends State<WinDialog> with TickerProviderStateMixin {
     
     // Create staggered star animations
     _starControllers = List.generate(3, (i) => AnimationController(
-      duration: const Duration(milliseconds: 400),
+      duration: _WinDialogAnimations.starAnimationDuration,
       vsync: this,
     ));
     
@@ -43,18 +53,35 @@ class _WinDialogState extends State<WinDialog> with TickerProviderStateMixin {
       curve: Curves.elasticOut,
     )).toList();
     
-    // Start animations with delay
+    // Start animations with cancellable timers
+    _startStarAnimations();
+  }
+  
+  void _startStarAnimations() {
     for (int i = 0; i < widget.stars && i < 3; i++) {
-      Future.delayed(Duration(milliseconds: 200 + i * 200), () {
-        if (mounted) _starControllers[i].forward();
+      final delay = _WinDialogAnimations.starInitialDelay + 
+          _WinDialogAnimations.starStaggerDelay * i;
+      
+      final timer = Timer(delay, () {
+        if (mounted) {
+          _starControllers[i].forward();
+        }
       });
+      _starTimers.add(timer);
     }
   }
   
   @override
   void dispose() {
-    for (final c in _starControllers) {
-      c.dispose();
+    // Cancel all pending timers to prevent memory leaks
+    for (final timer in _starTimers) {
+      timer.cancel();
+    }
+    _starTimers.clear();
+    
+    // Dispose animation controllers
+    for (final controller in _starControllers) {
+      controller.dispose();
     }
     super.dispose();
   }
@@ -70,8 +97,8 @@ class _WinDialogState extends State<WinDialog> with TickerProviderStateMixin {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF5BB8E8),
-              Color(0xFF3D8BC4),
+              AppColors.dialogGradientLight,
+              AppColors.dialogGradientDark,
             ],
           ),
           borderRadius: BorderRadius.circular(24),
@@ -237,13 +264,13 @@ class _WinDialogState extends State<WinDialog> with TickerProviderStateMixin {
             decoration: BoxDecoration(
               color: AppColors.gold,
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.orange.shade700, width: 2),
+              border: Border.all(color: AppColors.coinBorder, width: 2),
             ),
             child: Center(
               child: Text(
                 '\$',
                 style: TextStyle(
-                  color: Colors.orange.shade900,
+                  color: AppColors.coinSymbol,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -307,9 +334,9 @@ class _WinDialogState extends State<WinDialog> with TickerProviderStateMixin {
                 ),
               ),
               onPressed: widget.onReplay,
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Icon(Icons.replay, color: Colors.white, size: 20),
                   SizedBox(width: 8),
                   Text(
@@ -329,4 +356,3 @@ class _WinDialogState extends State<WinDialog> with TickerProviderStateMixin {
     );
   }
 }
-

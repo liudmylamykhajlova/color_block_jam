@@ -28,30 +28,30 @@ class LevelNode extends StatelessWidget {
   });
 
   Color get _backgroundColor {
-    if (!isUnlocked) return Colors.grey.shade600;
+    if (!isUnlocked) return AppColors.levelLocked;
     
     switch (type) {
       case LevelNodeType.normal:
         return isCompleted 
-            ? const Color(0xFF4CAF50) // Green
-            : const Color(0xFF7ED321); // Bright green
+            ? AppColors.levelCompleted
+            : AppColors.levelUnlocked;
       case LevelNodeType.hard:
-        return const Color(0xFFE74C3C); // Red
+        return AppColors.levelHard;
       case LevelNodeType.boss:
-        return const Color(0xFF9C27B0); // Purple
+        return AppColors.levelBoss;
     }
   }
   
   Color get _borderColor {
-    if (!isUnlocked) return Colors.grey.shade500;
+    if (!isUnlocked) return AppColors.levelLocked.withOpacity(0.8);
     
     switch (type) {
       case LevelNodeType.normal:
-        return Colors.green.shade700;
+        return AppColors.levelCompleted.withOpacity(0.9);
       case LevelNodeType.hard:
-        return Colors.red.shade800;
+        return AppColors.levelHard.withOpacity(0.9);
       case LevelNodeType.boss:
-        return Colors.purple.shade800;
+        return AppColors.levelBoss.withOpacity(0.9);
     }
   }
 

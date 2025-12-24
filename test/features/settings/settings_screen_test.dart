@@ -1,34 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:color_block_jam/core/services/storage_service.dart';
-import 'package:color_block_jam/core/services/audio_service.dart';
 import 'package:color_block_jam/features/settings/settings_screen.dart';
+import '../../helpers/test_helpers.dart';
 
 void main() {
   group('SettingsScreen', () {
     setUp(() async {
-      SharedPreferences.setMockInitialValues({});
-      await StorageService.init();
-      AudioService.init();
+      await TestHelpers.initServices();
     });
     
     // Helper to pump SettingsScreen with proper size
     Future<void> pumpSettingsScreen(WidgetTester tester) async {
-      // Set a larger screen size to avoid overflow
-      tester.view.physicalSize = const Size(800, 1200);
-      tester.view.devicePixelRatio = 1.0;
+      tester.setLargeScreenSize();
+      addTearDown(tester.resetToDefaultScreenSize);
       
-      addTearDown(() {
-        tester.view.resetPhysicalSize();
-        tester.view.resetDevicePixelRatio();
-      });
-      
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: SettingsScreen(),
-        ),
-      );
+      await tester.pumpWidget(TestHelpers.wrapScreen(const SettingsScreen()));
     }
     
     testWidgets('renders settings title', (tester) async {
@@ -68,8 +55,7 @@ void main() {
       final soundSwitch = switches.at(1);
       
       // Tap to toggle
-      await tester.tap(soundSwitch);
-      await tester.pumpAndSettle();
+      await tester.tapAndSettle(soundSwitch);
       
       // Verify state changed
       expect(StorageService.getSoundEnabled(), false);
@@ -86,8 +72,7 @@ void main() {
       expect(StorageService.getHapticEnabled(), false);
       
       // Tap to toggle
-      await tester.tap(vibrationSwitch);
-      await tester.pumpAndSettle();
+      await tester.tapAndSettle(vibrationSwitch);
       
       // Verify state changed
       expect(StorageService.getHapticEnabled(), true);
@@ -104,9 +89,7 @@ void main() {
       );
       
       // Find and tap reset button
-      final resetButton = find.text('Reset Progress');
-      await tester.tap(resetButton);
-      await tester.pumpAndSettle();
+      await tester.tapAndSettle(find.text('Reset Progress'));
       
       // Verify dialog appears
       expect(find.text('Reset Progress?'), findsOneWidget);
@@ -125,26 +108,18 @@ void main() {
       );
       
       // Open dialog
-      await tester.tap(find.text('Reset Progress'));
-      await tester.pumpAndSettle();
+      await tester.tapAndSettle(find.text('Reset Progress'));
       
       // Tap cancel
-      await tester.tap(find.text('Cancel'));
-      await tester.pumpAndSettle();
+      await tester.tapAndSettle(find.text('Cancel'));
       
       // Dialog should be closed
       expect(find.text('Reset Progress?'), findsNothing);
     });
     
     testWidgets('back button navigates back', (tester) async {
-      // Set a larger screen size
-      tester.view.physicalSize = const Size(800, 1200);
-      tester.view.devicePixelRatio = 1.0;
-      
-      addTearDown(() {
-        tester.view.resetPhysicalSize();
-        tester.view.resetDevicePixelRatio();
-      });
+      tester.setLargeScreenSize();
+      addTearDown(tester.resetToDefaultScreenSize);
       
       await tester.pumpWidget(
         MaterialApp(
@@ -161,14 +136,12 @@ void main() {
       );
       
       // Navigate to settings
-      await tester.tap(find.text('Open Settings'));
-      await tester.pumpAndSettle();
+      await tester.tapAndSettle(find.text('Open Settings'));
       
       expect(find.text('SETTINGS'), findsOneWidget);
       
       // Tap back button
-      await tester.tap(find.byIcon(Icons.arrow_back_ios));
-      await tester.pumpAndSettle();
+      await tester.tapAndSettle(find.byIcon(Icons.arrow_back_ios));
       
       // Should be back to original screen
       expect(find.text('SETTINGS'), findsNothing);

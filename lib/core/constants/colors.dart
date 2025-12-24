@@ -90,5 +90,27 @@ class AppColors {
   static const Color gold = Color(0xFFFFD700);           // Stars, coins
   static const Color goldGlow = Color(0x80FFD700);       // Gold with opacity
   static const Color ice = Color(0xFF87CEFA);            // Ice overlay
+  
+  // === Dialog Colors ===
+  static const Color dialogGradientLight = Color(0xFF5BB8E8);  // Dialog top
+  static const Color dialogGradientDark = Color(0xFF3D8BC4);   // Dialog bottom
+  
+  // === Coin Colors ===
+  static const Color coinBorder = Color(0xFFE65100);     // Orange border
+  static const Color coinSymbol = Color(0xFFE65100);     // $ symbol color
+  
+  // === Level Node Colors ===
+  static const Color levelCompleted = Color(0xFF4CAF50);      // Green completed
+  static const Color levelUnlocked = Color(0xFF7ED321);       // Bright green unlocked
+  static const Color levelHard = Color(0xFFE74C3C);           // Red hard
+  static const Color levelBoss = Color(0xFF9C27B0);           // Purple boss
+  static const Color levelLocked = Color(0xFF757575);         // Gray locked
+  
+  // === Game Screen Colors ===
+  static const Color gameBackgroundLight = Color(0xFF667eea);  // Top gradient
+  static const Color gameBackgroundDark = Color(0xFF764ba2);   // Bottom gradient
+  
+  // === Block Colors (same as GameColors but for direct access) ===
+  static const List<Color> palette = GameColors.palette;
 }
 
