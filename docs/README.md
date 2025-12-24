@@ -12,7 +12,7 @@
 | [🎨 UI_UX_DESIGN.md](./UI_UX_DESIGN.md) | UI/UX Design - all screens, components, animations, style guide | v2.0.0 |
 | [🔧 TECHNICAL_SPEC.md](./TECHNICAL_SPEC.md) | Technical Specification - architecture, models, algorithms, services | v2.1.0 |
 | [🔍 GAME_ANALYSIS.md](./GAME_ANALYSIS.md) | Original Game Analysis - App Store data, XAPK reverse-engineering, binary offsets | v1.0.0 |
-| [🗺️ ROADMAP.md](./ROADMAP.md) | Development Roadmap - phases, milestones, timeline | v1.6.0 |
+| [🗺️ ROADMAP.md](./ROADMAP.md) | Development Roadmap - phases, milestones, timeline | v1.7.0 |
 
 ---
 
@@ -75,16 +75,6 @@ Contains:
 - Task status
 - Version history
 
-### ✅ QA_CHECKLIST.md
-**Purpose:** Quality assurance tracking
-
-Contains:
-- Prioritized bug list (Critical → Low)
-- Documentation fixes
-- Code quality items
-- Test plan & coverage targets
-- Pre-release checklist
-
 ---
 
 ## 🚀 Quick Links
@@ -92,8 +82,10 @@ Contains:
 ### Current Status
 - **Phase 0-1:** Core Gameplay ✅ DONE
 - **Phase 1.5:** Core Systems (Timer, Lives) ✅ DONE
-- **Phase 2:** Onboarding (Next)
-- **MVP Progress:** 75%
+- **Phase 2:** Core Features (Coins, Boosters, Win/Start dialogs) ✅ DONE
+- **Phase 3:** Screens (Splash, Map, Shop, Profile) ✅ DONE
+- **Phase 4:** Polish (Social, Legal, Tests) ✅ DONE
+- **MVP Progress:** 95%
 - **Levels:** 27 exported, verified
 - **Mechanics:** moveDirection, iceCount, innerBlockType
 
@@ -157,4 +149,4 @@ color_block_jam/
 
 ---
 
-*Last sync: 2025-12-23 (QA Complete)*
+*Last sync: 2025-12-24 (Phase 1-4 Complete)*
