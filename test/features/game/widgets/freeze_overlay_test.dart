@@ -31,8 +31,8 @@ void main() {
         ),
       );
       
-      // Let animation complete
-      await tester.pumpAndSettle();
+      // Pump enough frames for fade animation (500ms) - can't use pumpAndSettle because snowflake animation loops
+      await tester.pump(const Duration(milliseconds: 600));
       
       // Child should still be visible
       expect(find.text('Child Content'), findsOneWidget);
@@ -104,7 +104,8 @@ void main() {
         ),
       );
       
-      await tester.pumpAndSettle();
+      // Wait for fade in - can't use pumpAndSettle because snowflake animation loops
+      await tester.pump(const Duration(milliseconds: 600));
       
       // Now deactivate
       await tester.pumpWidget(
@@ -118,8 +119,8 @@ void main() {
         ),
       );
       
-      // Pump animation frames
-      await tester.pump(const Duration(milliseconds: 250));
+      // Pump animation frames for fade out
+      await tester.pump(const Duration(milliseconds: 600));
       
       // Child should still be visible
       expect(find.text('Child Content'), findsOneWidget);
@@ -147,7 +148,8 @@ void main() {
         ),
       );
       
-      await tester.pumpAndSettle();
+      // Wait for fade in - can't use pumpAndSettle because snowflake animation loops
+      await tester.pump(const Duration(milliseconds: 600));
       
       // Tap on the child widget
       await tester.tap(find.text('Tap Me'));
@@ -199,7 +201,8 @@ void main() {
         ),
       );
       
-      await tester.pumpAndSettle();
+      // Wait for fade in - can't use pumpAndSettle because snowflake animation loops
+      await tester.pump(const Duration(milliseconds: 600));
       
       // Should have multiple Positioned widgets for corners
       expect(find.byType(Positioned), findsWidgets);

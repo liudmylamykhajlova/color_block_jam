@@ -48,9 +48,9 @@ void main() {
         ),
       );
       
-      // Tap first booster (extraTime)
-      await tester.tap(find.byIcon(Icons.access_alarm));
-      expect(tappedType, BoosterType.extraTime);
+      // Tap first booster (freeze)
+      await tester.tap(find.byIcon(Icons.ac_unit));
+      expect(tappedType, BoosterType.freeze);
     });
     
     testWidgets('calls onPauseTap when pause tapped', (tester) async {
@@ -76,11 +76,11 @@ void main() {
   group('BoosterData', () {
     test('creates with correct type and quantity', () {
       const booster = BoosterData(
-        type: BoosterType.extraTime,
+        type: BoosterType.freeze,
         quantity: 5,
       );
       
-      expect(booster.type, BoosterType.extraTime);
+      expect(booster.type, BoosterType.freeze);
       expect(booster.quantity, 5);
       expect(booster.isEnabled, true);
     });
@@ -104,7 +104,7 @@ void main() {
   group('BoosterType', () {
     test('has all expected types', () {
       expect(BoosterType.values.length, 5);
-      expect(BoosterType.values, contains(BoosterType.extraTime));
+      expect(BoosterType.values, contains(BoosterType.freeze));
       expect(BoosterType.values, contains(BoosterType.destroy));
       expect(BoosterType.values, contains(BoosterType.drill));
       expect(BoosterType.values, contains(BoosterType.shop));
@@ -117,9 +117,9 @@ void main() {
       expect(BoostersBar.defaultBoosters.length, 5);
     });
     
-    test('first booster is extraTime with quantity 1', () {
+    test('first booster is freeze with quantity 1', () {
       final first = BoostersBar.defaultBoosters[0];
-      expect(first.type, BoosterType.extraTime);
+      expect(first.type, BoosterType.freeze);
       expect(first.quantity, 1);
     });
     
