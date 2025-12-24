@@ -13,70 +13,59 @@ void main() {
       AudioService.init();
     });
     
-    testWidgets('renders settings title', (tester) async {
+    // Helper to pump SettingsScreen with proper size
+    Future<void> pumpSettingsScreen(WidgetTester tester) async {
+      // Set a larger screen size to avoid overflow
+      tester.view.physicalSize = const Size(800, 1200);
+      tester.view.devicePixelRatio = 1.0;
+      
+      addTearDown(() {
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
+      });
+      
       await tester.pumpWidget(
         const MaterialApp(
           home: SettingsScreen(),
         ),
       );
-      
+    }
+    
+    testWidgets('renders settings title', (tester) async {
+      await pumpSettingsScreen(tester);
       expect(find.text('SETTINGS'), findsOneWidget);
     });
     
     testWidgets('renders vibration toggle', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: SettingsScreen(),
-        ),
-      );
-      
+      await pumpSettingsScreen(tester);
       expect(find.text('Vibration'), findsOneWidget);
       expect(find.byType(Switch), findsWidgets);
     });
     
     testWidgets('renders sound toggle', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: SettingsScreen(),
-        ),
-      );
-      
+      await pumpSettingsScreen(tester);
       expect(find.text('Sound'), findsOneWidget);
     });
     
     testWidgets('renders music toggle', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: SettingsScreen(),
-        ),
-      );
-      
+      await pumpSettingsScreen(tester);
       expect(find.text('Music'), findsOneWidget);
     });
     
     testWidgets('renders reset progress button', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: SettingsScreen(),
-        ),
-      );
-      
+      await pumpSettingsScreen(tester);
       expect(find.text('Reset Progress'), findsOneWidget);
     });
     
     testWidgets('sound toggle changes state', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: SettingsScreen(),
-        ),
-      );
+      await pumpSettingsScreen(tester);
       
       // Find the Sound toggle (second switch)
       final switches = find.byType(Switch);
       expect(switches, findsWidgets);
       
-      // Initial state should be ON (sound enabled by default)
-      final soundSwitch = switches.at(1); // Sound is second toggle
+      // Sound is second toggle
+      final soundSwitch = switches.at(1);
       
       // Tap to toggle
       await tester.tap(soundSwitch);
@@ -87,11 +76,7 @@ void main() {
     });
     
     testWidgets('vibration toggle changes state', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: SettingsScreen(),
-        ),
-      );
+      await pumpSettingsScreen(tester);
       
       // Find the Vibration toggle (first switch)
       final switches = find.byType(Switch);
@@ -109,10 +94,13 @@ void main() {
     });
     
     testWidgets('reset progress shows confirmation dialog', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: SettingsScreen(),
-        ),
+      await pumpSettingsScreen(tester);
+      
+      // Scroll to find reset button if needed
+      await tester.dragUntilVisible(
+        find.text('Reset Progress'),
+        find.byType(SingleChildScrollView),
+        const Offset(0, -200),
       );
       
       // Find and tap reset button
@@ -127,10 +115,13 @@ void main() {
     });
     
     testWidgets('cancel button closes reset dialog', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: SettingsScreen(),
-        ),
+      await pumpSettingsScreen(tester);
+      
+      // Scroll to find reset button if needed
+      await tester.dragUntilVisible(
+        find.text('Reset Progress'),
+        find.byType(SingleChildScrollView),
+        const Offset(0, -200),
       );
       
       // Open dialog
@@ -146,6 +137,15 @@ void main() {
     });
     
     testWidgets('back button navigates back', (tester) async {
+      // Set a larger screen size
+      tester.view.physicalSize = const Size(800, 1200);
+      tester.view.devicePixelRatio = 1.0;
+      
+      addTearDown(() {
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
+      });
+      
       await tester.pumpWidget(
         MaterialApp(
           home: Builder(
@@ -176,5 +176,3 @@ void main() {
     });
   });
 }
-
-
