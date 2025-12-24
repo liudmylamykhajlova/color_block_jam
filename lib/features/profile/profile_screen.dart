@@ -19,19 +19,7 @@ class AvatarData {
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  String _playerName = 'Player8659';
-  String _selectedAvatarId = 'avatar_1';
-  String _selectedFrameId = 'frame_1';
-  int _currentTab = 0; // 0 = Avatar, 1 = Frame
-  
-  final TextEditingController _nameController = TextEditingController();
-  
-  // Available avatars
+  /// Available avatars
   static const List<AvatarData> avatars = [
     AvatarData(id: 'avatar_1', icon: Icons.person, backgroundColor: Color(0xFF5BA3D9)),
     AvatarData(id: 'avatar_2', icon: Icons.face, backgroundColor: Color(0xFF9C27B0)),
@@ -47,7 +35,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     AvatarData(id: 'avatar_12', icon: Icons.person_4, backgroundColor: Color(0xFFFF5722)),
   ];
   
-  // Available frames
+  /// Available frames
   static const List<Color> frameColors = [
     Color(0xFF5BA3D9),
     Color(0xFF9C27B0),
@@ -56,6 +44,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
     Color(0xFFE91E63),
     Color(0xFF00BCD4),
   ];
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  String _playerName = 'Player8659';
+  String _selectedAvatarId = 'avatar_1';
+  String _selectedFrameId = 'frame_1';
+  int _currentTab = 0; // 0 = Avatar, 1 = Frame
+  
+  final TextEditingController _nameController = TextEditingController();
   
   @override
   void initState() {
@@ -170,9 +170,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
   
   Widget _buildPlayerCard() {
-    final selectedAvatar = avatars.firstWhere(
+    final selectedAvatar = ProfileScreen.avatars.firstWhere(
       (a) => a.id == _selectedAvatarId,
-      orElse: () => avatars.first,
+      orElse: () => ProfileScreen.avatars.first,
     );
     
     return Container(
@@ -278,9 +278,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisSpacing: 12,
         crossAxisSpacing: 12,
       ),
-      itemCount: avatars.length,
+      itemCount: ProfileScreen.avatars.length,
       itemBuilder: (context, index) {
-        final avatar = avatars[index];
+        final avatar = ProfileScreen.avatars[index];
         final isSelected = avatar.id == _selectedAvatarId;
         
         return _AvatarItem(
@@ -304,13 +304,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisSpacing: 12,
         crossAxisSpacing: 12,
       ),
-      itemCount: frameColors.length,
+      itemCount: ProfileScreen.frameColors.length,
       itemBuilder: (context, index) {
         final frameId = 'frame_${index + 1}';
         final isSelected = frameId == _selectedFrameId;
         
         return _FrameItem(
-          color: frameColors[index],
+          color: ProfileScreen.frameColors[index],
           isSelected: isSelected,
           onTap: () {
             AudioService.playTap();

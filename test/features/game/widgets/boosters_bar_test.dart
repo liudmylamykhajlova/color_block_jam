@@ -1,0 +1,138 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:color_block_jam/features/game/widgets/boosters_bar.dart';
+
+void main() {
+  group('BoostersBar', () {
+    testWidgets('renders all 5 default boosters', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: BoostersBar(
+              boosters: BoostersBar.defaultBoosters,
+            ),
+          ),
+        ),
+      );
+      
+      // Should have 5 booster buttons (inside _BoosterButton widgets)
+      expect(find.byType(GestureDetector), findsWidgets);
+    });
+    
+    testWidgets('shows quantity badges on boosters with quantity > 0', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: BoostersBar(
+              boosters: BoostersBar.defaultBoosters,
+            ),
+          ),
+        ),
+      );
+      
+      // First 3 default boosters have quantity "1"
+      expect(find.text('1'), findsNWidgets(3));
+    });
+    
+    testWidgets('calls onBoosterTap when booster tapped', (tester) async {
+      BoosterType? tappedType;
+      
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: BoostersBar(
+              boosters: BoostersBar.defaultBoosters,
+              onBoosterTap: (type) => tappedType = type,
+            ),
+          ),
+        ),
+      );
+      
+      // Tap first booster (extraTime)
+      await tester.tap(find.byIcon(Icons.access_alarm));
+      expect(tappedType, BoosterType.extraTime);
+    });
+    
+    testWidgets('calls onPauseTap when pause tapped', (tester) async {
+      bool pauseTapped = false;
+      
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: BoostersBar(
+              boosters: BoostersBar.defaultBoosters,
+              onPauseTap: () => pauseTapped = true,
+            ),
+          ),
+        ),
+      );
+      
+      // Tap pause icon
+      await tester.tap(find.byIcon(Icons.pause));
+      expect(pauseTapped, true);
+    });
+  });
+  
+  group('BoosterData', () {
+    test('creates with correct type and quantity', () {
+      const booster = BoosterData(
+        type: BoosterType.extraTime,
+        quantity: 5,
+      );
+      
+      expect(booster.type, BoosterType.extraTime);
+      expect(booster.quantity, 5);
+      expect(booster.isEnabled, true);
+    });
+    
+    test('can be disabled', () {
+      const booster = BoosterData(
+        type: BoosterType.destroy,
+        quantity: 1,
+        isEnabled: false,
+      );
+      
+      expect(booster.isEnabled, false);
+    });
+    
+    test('default quantity is 0', () {
+      const booster = BoosterData(type: BoosterType.shop);
+      expect(booster.quantity, 0);
+    });
+  });
+  
+  group('BoosterType', () {
+    test('has all expected types', () {
+      expect(BoosterType.values.length, 5);
+      expect(BoosterType.values, contains(BoosterType.extraTime));
+      expect(BoosterType.values, contains(BoosterType.destroy));
+      expect(BoosterType.values, contains(BoosterType.drill));
+      expect(BoosterType.values, contains(BoosterType.shop));
+      expect(BoosterType.values, contains(BoosterType.pause));
+    });
+  });
+  
+  group('BoostersBar.defaultBoosters', () {
+    test('has 5 default boosters', () {
+      expect(BoostersBar.defaultBoosters.length, 5);
+    });
+    
+    test('first booster is extraTime with quantity 1', () {
+      final first = BoostersBar.defaultBoosters[0];
+      expect(first.type, BoosterType.extraTime);
+      expect(first.quantity, 1);
+    });
+    
+    test('pause and shop have quantity 0', () {
+      final shop = BoostersBar.defaultBoosters.firstWhere(
+        (b) => b.type == BoosterType.shop,
+      );
+      final pause = BoostersBar.defaultBoosters.firstWhere(
+        (b) => b.type == BoosterType.pause,
+      );
+      
+      expect(shop.quantity, 0);
+      expect(pause.quantity, 0);
+    });
+  });
+}
