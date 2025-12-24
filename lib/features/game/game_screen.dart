@@ -10,6 +10,8 @@ import '../../core/widgets/confetti_widget.dart';
 import 'widgets/coins_widget.dart';
 import 'widgets/boosters_bar.dart';
 import 'widgets/win_dialog.dart';
+import 'widgets/freeze_indicator.dart';
+import 'widgets/freeze_overlay.dart';
 
 class GameScreen extends StatefulWidget {
   final int levelId;
@@ -43,6 +45,12 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   int _remainingSeconds = 0;
   Timer? _timer;
   DateTime? _pausedAt; // Track when timer was paused
+  
+  // Freeze effect
+  bool _isFrozen = false;
+  int _freezeRemainingSeconds = 0;
+  Timer? _freezeTimer;
+  static const int _freezeDuration = 5; // Freeze lasts 5 seconds
   
   // Lives
   int _lives = 5;
@@ -151,6 +159,9 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
         return;
       }
       
+      // Don't count down if frozen
+      if (_isFrozen) return;
+      
       setState(() {
         _remainingSeconds--;
       });
@@ -166,6 +177,51 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   void _stopTimer() {
     _timer?.cancel();
     _timer = null;
+  }
+  
+  void _startFreezeTimer() {
+    _stopFreezeTimer();
+    _freezeTimer = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (!mounted) {
+        _stopFreezeTimer();
+        return;
+      }
+      
+      setState(() {
+        _freezeRemainingSeconds--;
+      });
+      
+      if (_freezeRemainingSeconds <= 0) {
+        _stopFreezeTimer();
+        _endFreeze();
+      }
+    });
+  }
+  
+  void _stopFreezeTimer() {
+    _freezeTimer?.cancel();
+    _freezeTimer = null;
+  }
+  
+  void _activateFreeze() {
+    if (_isFrozen) return; // Already frozen
+    
+    setState(() {
+      _isFrozen = true;
+      _freezeRemainingSeconds = _freezeDuration;
+    });
+    
+    GameLogger.info('Freeze activated for $_freezeDuration seconds', 'BOOSTER');
+    _startFreezeTimer();
+  }
+  
+  void _endFreeze() {
+    setState(() {
+      _isFrozen = false;
+      _freezeRemainingSeconds = 0;
+    });
+    
+    GameLogger.info('Freeze ended', 'BOOSTER');
   }
   
   void _onTimeUp() async {
@@ -357,6 +413,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   void dispose() {
     WidgetsBinding.instance.removeObserver(this); // Clean up observer
     _stopTimer();
+    _stopFreezeTimer();
     _exitAnimationController?.dispose();
     super.dispose();
   }
@@ -371,40 +428,49 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     }
 
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              AppColors.primaryLight,
-              AppColors.primary,
-            ],
+      body: FreezeOverlay(
+        isActive: _isFrozen,
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                AppColors.primaryLight,
+                AppColors.primary,
+              ],
+            ),
           ),
-        ),
-        child: SafeArea(
-          child: Column(
-            children: [
-              // Top bar
-              _buildTopBar(),
-              
-              // Game board
-              Expanded(
-                child: Center(
-                  child: _buildGameBoard(),
+          child: SafeArea(
+            child: Column(
+              children: [
+                // Top bar
+                _buildTopBar(),
+                
+                // Freeze indicator (shown when frozen)
+                FreezeIndicator(
+                  remainingSeconds: _freezeRemainingSeconds,
+                  isVisible: _isFrozen,
                 ),
-              ),
-              
-              // Bottom boosters bar
-              BoostersBar(
-                boosters: _boosters,
-                onBoosterTap: _onBoosterTap,
-                onPauseTap: _onPauseTap,
-              ),
-              
-              // Bottom safe area
-              const SizedBox(height: 8),
-            ],
+                
+                // Game board
+                Expanded(
+                  child: Center(
+                    child: _buildGameBoard(),
+                  ),
+                ),
+                
+                // Bottom boosters bar
+                BoostersBar(
+                  boosters: _boosters,
+                  onBoosterTap: _onBoosterTap,
+                  onPauseTap: _onPauseTap,
+                ),
+                
+                // Bottom safe area
+                const SizedBox(height: 8),
+              ],
+            ),
           ),
         ),
       ),
@@ -465,8 +531,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     AudioService.playTap();
     
     switch (type) {
-      case BoosterType.extraTime:
-        _useExtraTimeBooster();
+      case BoosterType.freeze:
+        _useFreezeBooster();
         break;
       case BoosterType.destroy:
         // TODO: Implement destroy mode
@@ -485,8 +551,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     }
   }
   
-  void _useExtraTimeBooster() {
-    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.extraTime);
+  void _useFreezeBooster() {
+    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.freeze);
     if (boosterIndex == -1) return;
     
     final booster = _boosters[boosterIndex];
@@ -495,19 +561,17 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       return;
     }
     
+    // Decrease booster count
     setState(() {
-      // Add 30 seconds
-      _remainingSeconds += 30;
-      
-      // Decrease booster count
       _boosters = List.from(_boosters);
       _boosters[boosterIndex] = BoosterData(
-        type: BoosterType.extraTime,
+        type: BoosterType.freeze,
         quantity: booster.quantity - 1,
       );
     });
     
-    GameLogger.info('Used Extra Time booster, +30s', 'BOOSTER');
+    // Activate freeze effect
+    _activateFreeze();
   }
   
   void _onPauseTap() {
@@ -686,22 +750,32 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   }
   
   Widget _buildTimer() {
-    // Color changes based on remaining time
+    // Color changes based on remaining time or freeze state
     Color timerColor;
     Color bgColor;
+    IconData timerIcon;
     
-    if (_remainingSeconds <= AppConstants.timerCriticalThreshold) {
+    if (_isFrozen) {
+      // Frozen state - blue colors
+      timerColor = AppColors.freezeBlue;
+      bgColor = AppColors.freezeGlow;
+      timerIcon = Icons.ac_unit; // Snowflake icon when frozen
+    } else if (_remainingSeconds <= AppConstants.timerCriticalThreshold) {
       timerColor = AppColors.timerCritical;
       bgColor = AppColors.timerCritical.withOpacity(0.2);
+      timerIcon = Icons.access_time_filled;
     } else if (_remainingSeconds <= AppConstants.timerWarningThreshold) {
       timerColor = AppColors.timerLow;
       bgColor = AppColors.timerLow.withOpacity(0.2);
+      timerIcon = Icons.access_time_filled;
     } else {
       timerColor = AppColors.timerNormal;
       bgColor = AppColors.timerNormal.withOpacity(0.15);
+      timerIcon = Icons.access_time_filled;
     }
     
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
         color: bgColor,
@@ -710,19 +784,30 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
           color: timerColor.withOpacity(0.5),
           width: 2,
         ),
+        boxShadow: _isFrozen ? [
+          BoxShadow(
+            color: AppColors.freezeGlow,
+            blurRadius: 12,
+            spreadRadius: 2,
+          ),
+        ] : null,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Clock icon
-          Icon(
-            Icons.access_time_filled,
-            color: timerColor,
-            size: 20,
+          // Clock/Snowflake icon
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 200),
+            child: Icon(
+              timerIcon,
+              key: ValueKey(timerIcon),
+              color: timerColor,
+              size: 20,
+            ),
           ),
           const SizedBox(width: 6),
           Text(
-            'Time',
+            _isFrozen ? 'FROZEN' : 'Time',
             style: TextStyle(
               color: timerColor.withOpacity(0.8),
               fontSize: 10,

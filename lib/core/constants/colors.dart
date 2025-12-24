@@ -91,6 +91,11 @@ class AppColors {
   static const Color goldGlow = Color(0x80FFD700);       // Gold with opacity
   static const Color ice = Color(0xFF87CEFA);            // Ice overlay
   
+  // === Freeze Effect ===
+  static const Color freezeBlue = Color(0xFF00BFFF);     // Deep sky blue
+  static const Color freezeLight = Color(0xFFB0E0E6);    // Powder blue
+  static const Color freezeGlow = Color(0x4000BFFF);     // Freeze with opacity
+  
   // === Dialog Colors ===
   static const Color dialogGradientLight = Color(0xFF5BB8E8);  // Dialog top
   static const Color dialogGradientDark = Color(0xFF3D8BC4);   // Dialog bottom

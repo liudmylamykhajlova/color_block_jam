@@ -3,11 +3,11 @@ import '../../../core/constants/colors.dart';
 
 /// Booster types available in game
 enum BoosterType {
-  extraTime,
-  destroy,
-  drill,
-  shop,
-  pause,
+  freeze,    // Freeze time (clock with snowflake)
+  destroy,   // Destroy block (hammer)
+  drill,     // Drill through ice (drill)
+  shop,      // Buy more boosters
+  pause,     // Pause game
 }
 
 /// Data class for booster state
@@ -37,7 +37,7 @@ class BoostersBar extends StatelessWidget {
   });
   
   static List<BoosterData> get defaultBoosters => const [
-    BoosterData(type: BoosterType.extraTime, quantity: 1),
+    BoosterData(type: BoosterType.freeze, quantity: 1),
     BoosterData(type: BoosterType.destroy, quantity: 1),
     BoosterData(type: BoosterType.drill, quantity: 1),
     BoosterData(type: BoosterType.shop, quantity: 0),
@@ -81,8 +81,8 @@ class _BoosterButton extends StatelessWidget {
   
   IconData get _icon {
     switch (data.type) {
-      case BoosterType.extraTime:
-        return Icons.access_alarm;
+      case BoosterType.freeze:
+        return Icons.ac_unit; // Snowflake icon
       case BoosterType.destroy:
         return Icons.gavel;
       case BoosterType.drill:
@@ -96,8 +96,8 @@ class _BoosterButton extends StatelessWidget {
   
   Color get _iconColor {
     switch (data.type) {
-      case BoosterType.extraTime:
-        return Colors.lightBlue;
+      case BoosterType.freeze:
+        return Colors.cyan;
       case BoosterType.destroy:
         return Colors.amber;
       case BoosterType.drill:
