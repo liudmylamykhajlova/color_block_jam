@@ -4,6 +4,7 @@ import '../../core/models/game_models.dart';
 import '../../core/services/storage_service.dart';
 import '../../core/services/audio_service.dart';
 import '../game/game_screen.dart';
+import '../game/widgets/level_start_dialog.dart';
 
 class LevelSelectScreen extends StatefulWidget {
   const LevelSelectScreen({super.key});
@@ -187,6 +188,30 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
   
   void _openLevel(int levelId) {
     AudioService.playTap();
+    _showLevelStartDialog(levelId);
+  }
+  
+  void _showLevelStartDialog(int levelId) {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) => LevelStartDialog(
+        levelId: levelId,
+        milestoneText: 'Unlock Level 70',
+        milestoneProgress: _completedLevels.length % 3,
+        milestoneTotal: 3,
+        onPlay: () {
+          Navigator.pop(context); // Close dialog
+          _startLevel(levelId);
+        },
+        onClose: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+  }
+  
+  void _startLevel(int levelId) {
     Navigator.push(
       context,
       MaterialPageRoute(

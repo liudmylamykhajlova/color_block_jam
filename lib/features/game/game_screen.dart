@@ -7,6 +7,9 @@ import '../../core/services/storage_service.dart';
 import '../../core/services/audio_service.dart';
 import '../../core/services/game_logger.dart';
 import '../../core/widgets/confetti_widget.dart';
+import 'widgets/coins_widget.dart';
+import 'widgets/boosters_bar.dart';
+import 'widgets/win_dialog.dart';
 
 class GameScreen extends StatefulWidget {
   final int levelId;
@@ -43,6 +46,12 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   
   // Lives
   int _lives = 5;
+  
+  // Coins (placeholder - will be from StorageService)
+  int _coins = 1480;
+  
+  // Boosters
+  List<BoosterData> _boosters = BoostersBar.defaultBoosters;
 
   @override
   void initState() {
@@ -386,8 +395,15 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                 ),
               ),
               
-              // Bottom space
-              const SizedBox(height: 20),
+              // Bottom boosters bar
+              BoostersBar(
+                boosters: _boosters,
+                onBoosterTap: _onBoosterTap,
+                onPauseTap: _onPauseTap,
+              ),
+              
+              // Bottom safe area
+              const SizedBox(height: 8),
             ],
           ),
         ),
@@ -406,11 +422,6 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
           // Level indicator with difficulty badge
           _buildLevelBadge(isHard, hardnessText),
           
-          const SizedBox(width: 12),
-          
-          // Lives indicator
-          _buildLivesIndicator(),
-          
           const Spacer(),
           
           // Timer
@@ -426,45 +437,159 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
               _resetLevel();
             },
           ),
+          
+          const SizedBox(width: 8),
+          
+          // Coins display
+          CoinsWidget(
+            coins: _coins,
+            onTap: _showShopDialog,
+          ),
         ],
       ),
     );
   }
   
-  Widget _buildLivesIndicator() {
-    final isFull = _lives >= StorageService.maxLives;
-    
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(
-        color: Colors.red.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: Colors.red.withOpacity(0.5),
-          width: 2,
-        ),
+  void _showShopDialog() {
+    AudioService.playTap();
+    // TODO: Implement shop dialog
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Shop coming soon!'),
+        duration: Duration(seconds: 1),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Icon(
-            Icons.favorite,
-            color: Colors.red,
-            size: 18,
+    );
+  }
+  
+  void _onBoosterTap(BoosterType type) {
+    AudioService.playTap();
+    
+    switch (type) {
+      case BoosterType.extraTime:
+        _useExtraTimeBooster();
+        break;
+      case BoosterType.destroy:
+        // TODO: Implement destroy mode
+        _showBoosterNotImplemented('Destroy');
+        break;
+      case BoosterType.drill:
+        // TODO: Implement drill mode
+        _showBoosterNotImplemented('Drill');
+        break;
+      case BoosterType.shop:
+        _showShopDialog();
+        break;
+      case BoosterType.pause:
+        // Handled by onPauseTap
+        break;
+    }
+  }
+  
+  void _useExtraTimeBooster() {
+    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.extraTime);
+    if (boosterIndex == -1) return;
+    
+    final booster = _boosters[boosterIndex];
+    if (booster.quantity <= 0) {
+      _showBoosterNotImplemented('No boosters left!');
+      return;
+    }
+    
+    setState(() {
+      // Add 30 seconds
+      _remainingSeconds += 30;
+      
+      // Decrease booster count
+      _boosters = List.from(_boosters);
+      _boosters[boosterIndex] = BoosterData(
+        type: BoosterType.extraTime,
+        quantity: booster.quantity - 1,
+      );
+    });
+    
+    GameLogger.info('Used Extra Time booster, +30s', 'BOOSTER');
+  }
+  
+  void _onPauseTap() {
+    AudioService.playTap();
+    _stopTimer();
+    _showPauseDialog();
+  }
+  
+  void _showPauseDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        backgroundColor: const Color(0xFF4DA6FF),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        title: const Text(
+          'PAUSED',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
           ),
-          const SizedBox(width: 4),
-          Text(
-            isFull ? 'Full' : '$_lives',
-            style: const TextStyle(
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.pause_circle_filled,
+              size: 64,
               color: Colors.white,
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Level ${widget.levelId}',
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 16,
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          Center(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.buttonGreen,
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+                _startTimer();
+              },
+              child: const Text(
+                'Resume',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ],
       ),
     );
   }
+  
+  void _showBoosterNotImplemented(String name) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('$name booster coming soon!'),
+        duration: const Duration(seconds: 1),
+      ),
+    );
+  }
+  
   
   Widget _buildLevelBadge(bool isHard, String hardnessText) {
     final hardness = _level?.hardness ?? LevelHardness.normal;
@@ -1080,123 +1205,49 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     await StorageService.markLevelCompleted(widget.levelId);
     widget.onLevelComplete?.call();
     
+    // Calculate stars based on remaining time
+    final totalTime = _level?.duration ?? AppConstants.defaultLevelDuration;
+    final timeRatio = _remainingSeconds / totalTime;
+    int stars = 1;
+    if (timeRatio > 0.5) stars = 3;
+    else if (timeRatio > 0.25) stars = 2;
+    
+    // Calculate coins earned (base + time bonus)
+    final coinsEarned = 50 + (_remainingSeconds * 2);
+    
+    // Add coins to player (placeholder)
+    setState(() {
+      _coins += coinsEarned;
+    });
+    
     if (!mounted) return;
+    
+    AudioService.playDrop(); // Play win sound
     
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => ConfettiWidget(
         isPlaying: true,
-        child: AlertDialog(
-          backgroundColor: AppColors.primary,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          title: Column(
-            children: [
-              // Animated trophy
-              TweenAnimationBuilder<double>(
-                tween: Tween(begin: 0.0, end: 1.0),
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.elasticOut,
-                builder: (context, value, child) {
-                  return Transform.scale(
-                    scale: value,
-                    child: const Text('🏆', style: TextStyle(fontSize: 60)),
-                  );
-                },
-              ),
-              const SizedBox(height: 12),
-              const Text(
-                'Level Complete!',
-                style: TextStyle(
-                  color: Colors.white, 
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                ),
-              ),
-            ],
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Animated stars
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(3, (i) => TweenAnimationBuilder<double>(
-                  tween: Tween(begin: 0.0, end: 1.0),
-                  duration: Duration(milliseconds: 400 + i * 150),
-                  curve: Curves.elasticOut,
-                  builder: (context, value, child) {
-                    return Transform.scale(
-                      scale: value,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 6),
-                        child: Icon(
-                          Icons.star,
-                          color: AppColors.gold,
-                          size: 36,
-                          shadows: const [
-                            Shadow(
-                              color: AppColors.goldGlow,
-                              blurRadius: 10,
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                )),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'Great job! 🎉',
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.8),
-                  fontSize: 16,
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            Row(
-              children: [
-                Expanded(
-                  child: TextButton(
-                    onPressed: () {
-                      AudioService.playTap();
-                      Navigator.pop(context);
-                      Navigator.pop(context);
-                    },
-                    child: const Text('Home', style: TextStyle(color: Colors.white70, fontSize: 16)),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.buttonGreenAlt,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    onPressed: () {
-                      AudioService.playTap();
-                      Navigator.pop(context);
-                      _goToNextLevel();
-                    },
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Next', style: TextStyle(color: Colors.white, fontSize: 16)),
-                        SizedBox(width: 4),
-                        Icon(Icons.arrow_forward, color: Colors.white, size: 18),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
+        child: WinDialog(
+          levelId: widget.levelId,
+          stars: stars,
+          coinsEarned: coinsEarned,
+          onNextLevel: () {
+            AudioService.playTap();
+            Navigator.pop(context);
+            _goToNextLevel();
+          },
+          onReplay: () {
+            AudioService.playTap();
+            Navigator.pop(context);
+            _resetLevel();
+          },
+          onHome: () {
+            AudioService.playTap();
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
         ),
       ),
     );
