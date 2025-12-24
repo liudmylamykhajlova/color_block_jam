@@ -198,7 +198,20 @@ AppColors.levelLocked           // Gray node
 
 ## Правило #6 - ТЕСТУВАННЯ
 
-**Використовувати test helpers:**
+**КРИТИЧНО: Кожна нова функція ПОВИННА мати юніт тести!**
+
+### Порядок роботи:
+1. ✅ Реалізувати функцію
+2. ✅ **ОДРАЗУ** написати тести
+3. ✅ Запустити тести та переконатись що проходять
+4. ✅ Тільки тоді комітити
+
+### ЗАБОРОНЕНО:
+- ❌ Комітити код без тестів
+- ❌ Відкладати тести "на потім"
+- ❌ Пропускати тести для "простих" функцій
+
+### Використовувати test helpers:
 
 ```dart
 // test/helpers/test_helpers.dart
@@ -209,13 +222,13 @@ tester.setLargeScreenSize()        // Великий екран (800x1200)
 tester.tapAndSettle(finder)        // Tap + pumpAndSettle
 ```
 
-**Правила анімацій:**
+### Правила анімацій:
 - ✅ Використовувати `Timer` замість `Future.delayed`
 - ✅ Зберігати таймери в список для cleanup
 - ✅ Cancel всі таймери в `dispose()`
 - ✅ Перевіряти `mounted` перед викликом setState/forward
 
-**Приклад:**
+### Приклад Timer cleanup:
 ```dart
 final List<Timer> _timers = [];
 
@@ -232,6 +245,13 @@ void dispose() {
   super.dispose();
 }
 ```
+
+### Що тестувати:
+- Widget renders correctly
+- User interactions (tap, drag)
+- State changes
+- Callbacks fired
+- Edge cases (empty, max, disabled)
 
 ---
 

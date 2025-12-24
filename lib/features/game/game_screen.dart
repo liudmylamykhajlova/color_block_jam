@@ -402,7 +402,10 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   void _resetLevel() {
     GameLogger.levelReset(widget.levelId);
     _stopTimer();
+    _stopFreezeTimer(); // Stop freeze timer
     setState(() {
+      _isFrozen = false; // Reset freeze state
+      _freezeRemainingSeconds = 0;
       _initBlocks();
       _remainingSeconds = _level?.duration ?? AppConstants.defaultLevelDuration;
     });

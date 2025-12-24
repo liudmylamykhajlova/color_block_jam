@@ -28,11 +28,29 @@ class _FreezeIndicatorState extends State<FreezeIndicator>
     _pulseController = AnimationController(
       duration: const Duration(milliseconds: 1000),
       vsync: this,
-    )..repeat(reverse: true);
+    );
     
     _pulseAnimation = Tween<double>(begin: 0.9, end: 1.1).animate(
       CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
     );
+    
+    // Only start animation if visible
+    if (widget.isVisible) {
+      _pulseController.repeat(reverse: true);
+    }
+  }
+  
+  @override
+  void didUpdateWidget(FreezeIndicator oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    
+    // Start/stop animation based on visibility
+    if (widget.isVisible && !oldWidget.isVisible) {
+      _pulseController.repeat(reverse: true);
+    } else if (!widget.isVisible && oldWidget.isVisible) {
+      _pulseController.stop();
+      _pulseController.reset();
+    }
   }
 
   @override
