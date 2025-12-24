@@ -13,7 +13,6 @@
 | [🔧 TECHNICAL_SPEC.md](./TECHNICAL_SPEC.md) | Technical Specification - architecture, models, algorithms, services | v2.1.0 |
 | [🔍 GAME_ANALYSIS.md](./GAME_ANALYSIS.md) | Original Game Analysis - App Store data, XAPK reverse-engineering, binary offsets | v1.0.0 |
 | [🗺️ ROADMAP.md](./ROADMAP.md) | Development Roadmap - phases, milestones, timeline | v1.6.0 |
-| [✅ QA_CHECKLIST.md](./QA_CHECKLIST.md) | QA Checklist - prioritized fixes, test plan | v1.1.0 |
 
 ---
 
