@@ -7,7 +7,6 @@ enum BoosterType {
   rocket,    // Destroy one unit of a block (rocket)
   hammer,    // Destroy entire block (hammer)
   vacuum,    // Vacuum all blocks of same color
-  shop,      // Buy more boosters
   pause,     // Pause game
 }
 
@@ -90,8 +89,6 @@ class _BoosterButton extends StatelessWidget {
         return Icons.gavel; // Hammer icon
       case BoosterType.vacuum:
         return Icons.cleaning_services; // Vacuum/cleaner icon
-      case BoosterType.shop:
-        return Icons.add_circle_outline;
       case BoosterType.pause:
         return Icons.pause;
     }
@@ -107,19 +104,13 @@ class _BoosterButton extends StatelessWidget {
         return AppColors.hammerGreen; // Green for hammer
       case BoosterType.vacuum:
         return AppColors.vacuumYellow; // Yellow for vacuum
-      case BoosterType.shop:
-        return AppColors.buttonGreen;
       case BoosterType.pause:
         return Colors.white;
     }
   }
   
   bool get _showBadge {
-    return data.type != BoosterType.pause && data.type != BoosterType.shop;
-  }
-  
-  bool get _showPlusBadge {
-    return data.type == BoosterType.shop;
+    return data.type != BoosterType.pause;
   }
 
   @override
@@ -207,31 +198,6 @@ class _BoosterButton extends StatelessWidget {
               ),
             ),
           
-          // Plus badge for shop
-          if (_showPlusBadge)
-            Positioned(
-              right: -4,
-              bottom: -4,
-              child: Container(
-                width: 22,
-                height: 22,
-                decoration: BoxDecoration(
-                  color: AppColors.buttonGreen,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 2,
-                    ),
-                  ],
-                ),
-                child: const Icon(
-                  Icons.add,
-                  color: Colors.white,
-                  size: 14,
-                ),
-              ),
-            ),
         ],
       ),
     );

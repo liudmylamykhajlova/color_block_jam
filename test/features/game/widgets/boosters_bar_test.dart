@@ -96,19 +96,18 @@ void main() {
     });
     
     test('default quantity is 0', () {
-      const booster = BoosterData(type: BoosterType.shop);
+      const booster = BoosterData(type: BoosterType.pause);
       expect(booster.quantity, 0);
     });
   });
   
   group('BoosterType', () {
     test('has all expected types', () {
-      expect(BoosterType.values.length, 6);
+      expect(BoosterType.values.length, 5);
       expect(BoosterType.values, contains(BoosterType.freeze));
       expect(BoosterType.values, contains(BoosterType.rocket));
       expect(BoosterType.values, contains(BoosterType.hammer));
       expect(BoosterType.values, contains(BoosterType.vacuum));
-      expect(BoosterType.values, contains(BoosterType.shop));
       expect(BoosterType.values, contains(BoosterType.pause));
     });
   });

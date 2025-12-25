@@ -687,9 +687,6 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       case BoosterType.vacuum:
         _useVacuumBooster();
         break;
-      case BoosterType.shop:
-        _showShopDialog();
-        break;
       case BoosterType.pause:
         // Handled by onPauseTap
         break;
