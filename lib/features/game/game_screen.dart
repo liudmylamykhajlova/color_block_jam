@@ -608,12 +608,11 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                     onCancel: _cancelVacuumMode,
                   ),
                 
-                // Vacuum animation overlay
-                if (_isVacuumAnimating)
-                  VacuumAnimationOverlay(
-                    controller: _vacuumController,
-                    onComplete: _onVacuumAnimationComplete,
-                  ),
+                // Vacuum animation overlay (always rendered to keep controller attached)
+                VacuumAnimationOverlay(
+                  controller: _vacuumController,
+                  onComplete: _onVacuumAnimationComplete,
+                ),
               ],
             ),
           ),
