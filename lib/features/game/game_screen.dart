@@ -1446,6 +1446,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                   exitDeltaRow: _exitDeltaRow,
                   exitDeltaCol: _exitDeltaCol,
                   showTargets: _isRocketMode,
+                  hiddenBlocks: _isVacuumAnimating ? _pendingVacuumBlocks : null,
                 ),
               ),
             ),
@@ -1979,6 +1980,7 @@ class GameBoardPainter extends CustomPainter {
   final int exitDeltaRow;
   final int exitDeltaCol;
   final bool showTargets; // For rocket booster mode
+  final List<GameBlock>? hiddenBlocks; // Blocks to hide during vacuum animation
 
   GameBoardPainter({
     required this.level,
@@ -1990,6 +1992,7 @@ class GameBoardPainter extends CustomPainter {
     this.exitDeltaRow = 0,
     this.exitDeltaCol = 0,
     this.showTargets = false,
+    this.hiddenBlocks,
   });
 
   @override
@@ -2059,6 +2062,8 @@ class GameBoardPainter extends CustomPainter {
     ));
 
     for (final block in blocks) {
+      // Skip hidden blocks (being vacuumed)
+      if (hiddenBlocks != null && hiddenBlocks!.contains(block)) continue;
       _drawBlock(canvas, block, borderOffset);
     }
     
