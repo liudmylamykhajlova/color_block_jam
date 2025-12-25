@@ -1,7 +1,7 @@
 # Color Block Jam - UI/UX Design Document
 
-> **Version:** 2.0.0  
-> **Date:** 2025-12-23  
+> **Version:** 2.1.0  
+> **Date:** 2025-12-25  
 > **Based on:** Original game screenshots analysis
 
 ---
@@ -13,13 +13,20 @@
 | Name | HEX | Usage |
 |------|-----|-------|
 | Sky Blue | #4DA6FF | Dialog backgrounds, buttons |
-| Deep Blue | #1A1A4E | Main background |
+| Map Blue Top | #5B8DEF | Level map background (top) |
+| Map Blue Mid | #4A7DE8 | Level map background (middle) |
+| Map Blue Bottom | #3D6DD8 | Level map background (bottom) |
 | Bright Green | #7ED321 | Primary buttons (Play, Retry) |
+| Level Green | #5ED85E | Available level nodes |
 | Red | #E74C3C | Close buttons, warnings |
+| Level Red | #E85A6A | Hard level nodes |
 | Yellow/Gold | #F5A623 | Coins, highlights |
-| Purple | #9B59B6 | Special levels, bundles |
+| Golden Border | #E8A030 | Level node inner border |
+| Dark Brown | #5A3D10 | Level node outline, connection line |
+| Purple | #9B78BE | Boss/special level nodes |
 | Orange | #F39C12 | Bundles section |
-| White | #FFFFFF | Text, icons |
+| Gray-Green | #8A9B8A | Locked level nodes |
+| White | #FFFFFF | Text, icons, badges |
 
 ### 1.2 Typography
 - **Titles:** Bold, white, drop shadow
@@ -67,49 +74,99 @@
 
 ```
 +----------------------------------+
-| [Avatar] Full[5] [1.48k+] [Gear] |
+| [Avatar] [+Full♥5] [+1.48k$] [⚙] |
 |                                  |
-|           [Skull]                |
-|            [31]  <- Purple/locked|
-|             |                    |
-|           [Skull]         [ADS]  |
-|            [30]  <- Red/locked   |
-|             |                    |
-|            [29]  <- Green/current|
-|             |                    |
+|           [💀]                   |
+|          ╔══════╗                |
+|          ║  31  ║ <- Purple node |
+|          ╚══════╝                |
+|             ║                    |
+|           [💀]            [ADS]  |
+|          ╔══════╗                |
+|          ║  30  ║ <- Red node    |
+|          ╚══════╝                |
+|             ║                    |
+|          ╔══════╗                |
+|          ║  29  ║ <- Green node  |
+|          ╚══════╝                |
 |      [===Level 29===]            |
 |                                  |
 +----------------------------------+
-| [Shop]    [Home]    [Lvl50]     |
-|  coins    blocks     lock       |
+| [🛒]      [🧱🧱]     [🔒]        |
+|          Home      Lvl 50        |
 +----------------------------------+
 ```
 
-**Top Bar:**
-- Avatar (tappable -> Profile)
-- Lives: "Full" + heart icon + "5"
-- Coins: "1.48k" + green plus button
-- Settings gear
+**Background:**
+- Blue gradient: `#5B8DEF` → `#4A7DE8` → `#3D6DD8`
+- Puzzle/LEGO pattern shapes (12% opacity white)
 
-**Level Map:**
-- Vertical scrollable path
-- Levels connected by rope/line
-- Level states:
-  - Green = Available/Current
-  - Red + Skull = Hard/Locked
-  - Purple + Skull = Boss level
-  - Lock icon = Locked
-- Current level highlighted with button
+**Top HUD (MapHud):**
+| Element | Size | Description |
+|---------|------|-------------|
+| Avatar | 52x52px | Cyan frame (`#4DD0E1`), rounded 14px, clickable → Profile |
+| Lives Badge | 36px height | White pill, green "+" (22px) bottom-left corner, "Full" text dark (#333), red heart (36px) with white number half-outside right |
+| Coins Badge | 36px height | White pill, green "+" (22px) bottom-left corner, dark text, gold coin (36px) half-outside right |
+| Settings | 44x44px | Yellow/orange gear icon |
+
+**Connection Line:**
+- Width: 14px total (10px golden inner + 2px dark outline each side)
+- Colors: Golden-brown gradient (`#E8A030` → `#CC8020`) with dark outline (`#5A3D10`)
+
+**Level Nodes:**
+| Property | Value |
+|----------|-------|
+| Size | 90x90px |
+| Outer border | 3px dark brown (`#5A3D10`) |
+| Inner border | 5px golden (`#E8A030`) |
+| Corner radius | 18px outer, 15px inner, 8px content |
+| Shadow | 3px offset, dark brown 60% opacity |
+
+**Level Node Colors:**
+| State | Background | Badge |
+|-------|------------|-------|
+| Available/Current | `#5ED85E` (bright green) | None or "Level N" button |
+| Hard | `#E85A6A` (red) | Skull badge (top) |
+| Boss/Special | `#9B78BE` (purple) | Skull badge (top) |
+| Locked | `#8A9B8A` (gray-green) | Lock badge (bottom-right) |
+
+**Skull Badge:**
+- Size: 36px circle
+- Background: Golden gradient (`#FFD54F` → `#FFC107`)
+- Border: 2px orange (`#E65100`)
+- Content: Black skull with yellow eyes/nose (CustomPaint)
+
+**Lock Badge:**
+- Size: 34px circle
+- Background: Golden gradient
+- Border: 2px orange
+- Content: White lock icon (20px)
+
+**3D LEGO Studs (on each node):**
+- 4 studs (top-left, top-right, bottom-left, bottom-right)
+- Size: 16px each
+- Position: 10px from edges
+- Effect: Radial gradient with highlight + shadow
+
+**Current Level Button:**
+- Below current node
+- Size: 140x48px
+- Background: Green gradient (`#7DD85A` → `#5BC83B`)
+- Border: 3px bright green (`#9AEF70`)
+- Text: "Level N" white, bold, 20px
 
 **Side Elements:**
-- "ADS" crossed button (Remove Ads promo)
+- "ADS" button: Red circle with crossed ADS, 56x56px
 
-**Bottom Navigation:**
-| Tab | Icon | State |
-|-----|------|-------|
-| Shop | Coins in basket | Available |
-| Home | 3D LEGO blocks | Current |
-| Lvl 50 | Lock icon | Locked milestone |
+**Bottom Navigation Bar:**
+| Slot | Icon | Label | Size |
+|------|------|-------|------|
+| 1 | Shopping cart 🛒 + gold coin badge | (none) | 48x48 |
+| 2 | 4 LEGO blocks (yellow, blue, green, pink) | "Home" | 52x52 |
+| 3 | Golden lock circle | "Lvl 50" | 36x36 |
+
+- Background: Blue (`#4A7AC7`) with top rounded corners
+- Selected item: Lighter blue (`#6BA8E8`) rounded background
 
 ---
 
@@ -391,9 +448,11 @@
 - Buttons: Press state (scale down)
 
 ### 3.4 Level Map
-- Smooth vertical scroll
-- Current level pulsing
-- Level complete: Star burst
+- Smooth vertical scroll with auto-scroll to current level
+- Current level: Glow effect + "Level N" button
+- 3D LEGO studs with gradient highlight
+- Skull badge with emoji-like face
+- Connection line: Solid golden with dark outline
 
 ---
 
@@ -459,13 +518,14 @@ dependencies:
 ```
 
 ### 5.3 Screen Priority
-1. Game Screen (done)
-2. Level Select Map
-3. Fail Dialog
-4. Shop Screen
-5. Settings
-6. Profile
-7. Remove Ads Dialog
+1. ✅ Game Screen
+2. ✅ Level Select Map (polished in v2.1.0)
+3. ✅ Splash Screen
+4. Fail Dialog
+5. Shop Screen
+6. Settings
+7. Profile
+8. Remove Ads Dialog
 
 ---
 
@@ -473,5 +533,6 @@ dependencies:
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 2.1.0 | 2025-12-25 | Updated Level Map section with detailed specs: background gradient/pattern, MapHud badges (white pills with green "+" corners), connection lines (14px golden with dark outline), level nodes (90x90 with double border), 3D studs, skull/lock badges, bottom nav icons |
 | 2.0.0 | 2025-12-23 | Complete rewrite based on screenshots |
 | 1.0.0 | 2025-12-23 | Initial version |
