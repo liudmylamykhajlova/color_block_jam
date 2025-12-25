@@ -363,6 +363,41 @@ void _cancelHammerMode() {
 // - Size based on block cell count
 ```
 
+#### Vacuum Booster
+```dart
+// State
+bool _isVacuumMode = false;
+bool _isVacuumAnimating = false;
+List<GameBlock> _pendingVacuumBlocks = [];
+VacuumAnimationController _vacuumController;
+
+void _useVacuumBooster() {
+  _isVacuumMode = true;
+  // Don't consume booster until block tapped
+}
+
+void _onVacuumBlockTap(GameBlock block) {
+  // 1. Find all blocks with same blockType (color)
+  final blocksToVacuum = _blocks.where((b) => b.blockType == block.blockType);
+  // 2. Consume booster
+  // 3. Calculate bounding rects for each block
+  // 4. Start vacuum animation
+  // 5. On animation complete: remove all blocks from list
+}
+
+void _cancelVacuumMode() {
+  _isVacuumMode = false;
+  _isVacuumAnimating = false;
+  _pendingVacuumBlocks = [];
+}
+
+// Animation: VacuumAnimationOverlay with controller
+// - All blocks shrink simultaneously (scale 1.0 → 0.0)
+// - Fade out (opacity 1.0 → 0.0)
+// - Slight rotation effect
+// - Glow effect around shrinking blocks
+```
+
 #### Booster Lifecycle
 ```
 Activate → Use → Deactivate

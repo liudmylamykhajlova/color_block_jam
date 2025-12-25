@@ -190,7 +190,7 @@ Move ALL blocks out of the board through doors of matching color.
 | 1 | Snowflake ❄️ | "1" | Freeze time |
 | 2 | Rocket 🚀 | "1" | Destroy one unit |
 | 3 | Hammer 🔨 | "1" | Destroy entire block |
-| 4 | Plus ➕ | Green "+" | Buy more |
+| 4 | Vacuum 🧹 | "1" | Vacuum all same color |
 | 5 | Pause ⏸️ | - | Pause game |
 
 ### 4.5 Fail Dialog
@@ -319,7 +319,7 @@ Move ALL blocks out of the board through doors of matching color.
 | ❄️ Snowflake | Freeze Time | 1 | Freezes the game timer for 5 seconds. Player can still move blocks. |
 | 🚀 Rocket | Destroy Unit | 1 | Removes one cell from any block. Shows target crosshairs on all block cells. |
 | 🔨 Hammer | Destroy Block | 1 | Destroys an entire block instantly. |
-| ➕ Plus | Buy More | - | Opens shop to purchase boosters |
+| 🧹 Vacuum | Vacuum Color | 1 | Vacuums (removes) all blocks of the same color as the tapped block. |
 | ⏸️ Pause | Pause | - | Pauses the game |
 
 ### 6.2 Pre-Game Boosters (Level Start)
@@ -374,9 +374,26 @@ Move ALL blocks out of the board through doors of matching color.
   - Tap outside board → cancels hammer mode
   - Tap close button → cancels hammer mode
 
+#### Vacuum (🧹)
+- **Tooltip:** Blue gradient banner at top with:
+  - 🧹 icon in blue square with yellow vacuum
+  - "VACUUM" title badge
+  - "Tap and vacuum blocks with the same color!" instruction
+  - ❌ close button (red circle)
+- **Animation:** Shrink-to-zero animation:
+  - All blocks of the selected color shrink simultaneously
+  - Blocks fade out while shrinking
+  - Slight rotation effect during shrink
+  - Glow effect around shrinking blocks
+- **Tap behavior:**
+  - Tap on any block → all blocks of same color shrink and disappear
+  - Tap on empty cell → cancels vacuum mode
+  - Tap outside board → cancels vacuum mode
+  - Tap close button → cancels vacuum mode
+
 ### 6.4 Booster State Management
 
-Both boosters are cancelled automatically when:
+All boosters are cancelled automatically when:
 - Game is paused
 - App goes to background
 - Level is won or failed

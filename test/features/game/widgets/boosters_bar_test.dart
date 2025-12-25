@@ -30,8 +30,8 @@ void main() {
         ),
       );
       
-      // First 3 default boosters have quantity "1"
-      expect(find.text('1'), findsNWidgets(3));
+      // First 4 default boosters have quantity "1" (freeze, rocket, hammer, vacuum)
+      expect(find.text('1'), findsNWidgets(4));
     });
     
     testWidgets('calls onBoosterTap when booster tapped', (tester) async {
@@ -103,10 +103,11 @@ void main() {
   
   group('BoosterType', () {
     test('has all expected types', () {
-      expect(BoosterType.values.length, 5);
+      expect(BoosterType.values.length, 6);
       expect(BoosterType.values, contains(BoosterType.freeze));
       expect(BoosterType.values, contains(BoosterType.rocket));
       expect(BoosterType.values, contains(BoosterType.hammer));
+      expect(BoosterType.values, contains(BoosterType.vacuum));
       expect(BoosterType.values, contains(BoosterType.shop));
       expect(BoosterType.values, contains(BoosterType.pause));
     });
@@ -123,16 +124,20 @@ void main() {
       expect(first.quantity, 1);
     });
     
-    test('pause and shop have quantity 0', () {
-      final shop = BoostersBar.defaultBoosters.firstWhere(
-        (b) => b.type == BoosterType.shop,
-      );
+    test('pause has quantity 0', () {
       final pause = BoostersBar.defaultBoosters.firstWhere(
         (b) => b.type == BoosterType.pause,
       );
       
-      expect(shop.quantity, 0);
       expect(pause.quantity, 0);
+    });
+    
+    test('vacuum booster has quantity 1', () {
+      final vacuum = BoostersBar.defaultBoosters.firstWhere(
+        (b) => b.type == BoosterType.vacuum,
+      );
+      
+      expect(vacuum.quantity, 1);
     });
   });
 }

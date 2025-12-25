@@ -16,6 +16,8 @@ import 'widgets/rocket_overlay.dart';
 import 'widgets/rocket_animation.dart';
 import 'widgets/hammer_overlay.dart';
 import 'widgets/hammer_animation.dart';
+import 'widgets/vacuum_overlay.dart';
+import 'widgets/vacuum_animation.dart';
 
 class GameScreen extends StatefulWidget {
   final int levelId;
@@ -67,6 +69,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   Point? _pendingDestroyCell;
   bool _showExplosion = false;
   final GlobalKey _boostersBarKey = GlobalKey();
+  final GlobalKey _gameBoardKey = GlobalKey();
   
   // Hammer mode
   bool _isHammerMode = false;
@@ -78,6 +81,12 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   GameBlock? _pendingHammerDestroyBlock;
   bool _showBigExplosion = false;
   double _bigExplosionSize = 100;
+  
+  // Vacuum mode
+  bool _isVacuumMode = false;
+  bool _isVacuumAnimating = false;
+  List<GameBlock> _pendingVacuumBlocks = [];
+  final VacuumAnimationController _vacuumController = VacuumAnimationController();
   
   // Lives
   int _lives = 5;
@@ -104,6 +113,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       // App going to background - pause timers and reset states
       _cancelRocketMode(); // Reset rocket mode
       _cancelHammerMode(); // Reset hammer mode
+      _cancelVacuumMode(); // Reset vacuum mode
       if (_timer != null) {
         _pausedAt = DateTime.now();
         _stopTimer();
@@ -274,6 +284,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     if (_isFrozen) _endFreeze(); // Reset freeze state
     _cancelRocketMode(); // Reset rocket mode
     _cancelHammerMode(); // Reset hammer mode
+    _cancelVacuumMode(); // Reset vacuum mode
     GameLogger.timerExpired(widget.levelId);
     
     // Lose a life
@@ -291,6 +302,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   void _showFailDialog() {
     _cancelRocketMode(); // Reset rocket mode
     _cancelHammerMode(); // Reset hammer mode
+    _cancelVacuumMode(); // Reset vacuum mode
     AudioService.playLevelFail(); // Level fail sound
     
     showDialog(
@@ -469,6 +481,9 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       _hammerStartPos = null;
       _hammerEndPos = null;
       _pendingHammerDestroyBlock = null;
+      _isVacuumMode = false; // Reset vacuum mode
+      _isVacuumAnimating = false;
+      _pendingVacuumBlocks = [];
       _initBlocks();
       _remainingSeconds = _level?.duration ?? AppConstants.defaultLevelDuration;
     });
@@ -532,8 +547,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                     BoostersBar(
                       key: _boostersBarKey,
                       boosters: _boosters,
-                      onBoosterTap: (_isRocketMode || _isHammerMode) ? null : _onBoosterTap,
-                      onPauseTap: (_isRocketMode || _isHammerMode) ? null : _onPauseTap,
+                      onBoosterTap: (_isRocketMode || _isHammerMode || _isVacuumMode) ? null : _onBoosterTap,
+                      onPauseTap: (_isRocketMode || _isHammerMode || _isVacuumMode) ? null : _onPauseTap,
                     ),
                     
                     // Bottom safe area
@@ -584,6 +599,20 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                     position: _hammerEndPos!,
                     size: _bigExplosionSize,
                     onComplete: _onBigExplosionComplete,
+                  ),
+                
+                // Vacuum tooltip (on top of everything when active)
+                if (_isVacuumMode)
+                  VacuumOverlay(
+                    isActive: _isVacuumMode,
+                    onCancel: _cancelVacuumMode,
+                  ),
+                
+                // Vacuum animation overlay
+                if (_isVacuumAnimating)
+                  VacuumAnimationOverlay(
+                    controller: _vacuumController,
+                    onComplete: _onVacuumAnimationComplete,
                   ),
               ],
             ),
@@ -655,6 +684,9 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
         break;
       case BoosterType.hammer:
         _useHammerBooster();
+        break;
+      case BoosterType.vacuum:
+        _useVacuumBooster();
         break;
       case BoosterType.shop:
         _showShopDialog();
@@ -918,6 +950,12 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       });
       
       GameLogger.info('Block destroyed by hammer', 'BOOSTER');
+      
+      // Check win condition
+      if (_blocks.isEmpty) {
+        AudioService.playWin();
+        _showWinDialog();
+      }
     }
   }
   
@@ -953,12 +991,147 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     _cancelHammerMode();
   }
   
+  // === Vacuum Booster Methods ===
+  
+  void _useVacuumBooster() {
+    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.vacuum);
+    if (boosterIndex == -1) return;
+    
+    final booster = _boosters[boosterIndex];
+    if (booster.quantity <= 0) return;
+    
+    AudioService.playTap();
+    setState(() {
+      _isVacuumMode = true;
+    });
+    
+    GameLogger.info('Vacuum mode activated', 'BOOSTER');
+  }
+  
+  void _onVacuumBlockTap(GameBlock block) {
+    if (!_isVacuumMode || _isVacuumAnimating) return;
+    
+    // Find all blocks of the same color
+    final targetColor = block.blockType;
+    final blocksToVacuum = _blocks.where((b) => b.blockType == targetColor).toList();
+    
+    if (blocksToVacuum.isEmpty) return;
+    
+    // Consume booster
+    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.vacuum);
+    if (boosterIndex != -1) {
+      final booster = _boosters[boosterIndex];
+      setState(() {
+        _boosters = List.from(_boosters);
+        _boosters[boosterIndex] = BoosterData(
+          type: BoosterType.vacuum,
+          quantity: booster.quantity - 1,
+        );
+      });
+    }
+    
+    // Store blocks to remove
+    _pendingVacuumBlocks = blocksToVacuum;
+    
+    // Get game board global position for proper coordinate conversion
+    final RenderBox? boardBox = _gameBoardKey.currentContext?.findRenderObject() as RenderBox?;
+    final boardOffset = boardBox?.localToGlobal(Offset.zero) ?? Offset.zero;
+    // Add padding (8px) to account for container padding
+    final contentOffset = boardOffset + const Offset(8, 8);
+    
+    // Calculate block rectangles for animation (in global screen coordinates)
+    final blockRects = <Rect>[];
+    final blockColors = <Color>[];
+    
+    for (final b in blocksToVacuum) {
+      // Get bounding rect of block cells
+      if (b.cells.isNotEmpty) {
+        final minRow = b.cells.map((c) => c.row).reduce((a, b) => a < b ? a : b);
+        final maxRow = b.cells.map((c) => c.row).reduce((a, b) => a > b ? a : b);
+        final minCol = b.cells.map((c) => c.col).reduce((a, b) => a < b ? a : b);
+        final maxCol = b.cells.map((c) => c.col).reduce((a, b) => a > b ? a : b);
+        
+        // Convert to global screen coordinates
+        final cellSize = _currentCellSize;
+        final left = contentOffset.dx + (minCol + 1) * cellSize;
+        final top = contentOffset.dy + (minRow + 1) * cellSize;
+        final width = (maxCol - minCol + 1) * cellSize;
+        final height = (maxRow - minRow + 1) * cellSize;
+        
+        blockRects.add(Rect.fromLTWH(left, top, width, height));
+        blockColors.add(GameColors.getColor(b.blockType));
+      }
+    }
+    
+    // Exit vacuum mode and start animation
+    setState(() {
+      _isVacuumMode = false;
+      _isVacuumAnimating = true;
+    });
+    
+    // Start animation
+    _vacuumController.startVacuum(blockRects, blockColors);
+    
+    GameLogger.info('Vacuum started: ${blocksToVacuum.length} blocks of color $targetColor', 'BOOSTER');
+  }
+  
+  void _onVacuumAnimationComplete() {
+    // Play destruction sound
+    AudioService.playDrop();
+    
+    // Remove all vacuumed blocks
+    setState(() {
+      for (final block in _pendingVacuumBlocks) {
+        _blocks.remove(block);
+      }
+      _isVacuumAnimating = false;
+      _pendingVacuumBlocks = [];
+    });
+    
+    GameLogger.info('Vacuum complete: blocks removed', 'BOOSTER');
+    
+    // Check win condition
+    if (_blocks.isEmpty) {
+      AudioService.playWin();
+      _showWinDialog();
+    }
+  }
+  
+  void _cancelVacuumMode() {
+    setState(() {
+      _isVacuumMode = false;
+      _isVacuumAnimating = false;
+      _pendingVacuumBlocks = [];
+    });
+    GameLogger.info('Vacuum mode cancelled', 'BOOSTER');
+  }
+  
+  void _onVacuumTap(TapUpDetails details, double cellSize, GameLevel level) {
+    final cell = _getCellFromPosition(details.localPosition, cellSize, level);
+    if (cell == null) {
+      _cancelVacuumMode();
+      return;
+    }
+    
+    // Find which block contains this cell
+    for (final block in _blocks) {
+      if (block.cells.contains(cell)) {
+        _onVacuumBlockTap(block);
+        return;
+      }
+    }
+    
+    // Tapped empty cell - cancel vacuum mode
+    _cancelVacuumMode();
+  }
+  
   void _onPauseTap() {
     AudioService.playTap();
     _stopTimer();
     _stopFreezeTimer(); // Also stop freeze timer during pause
     _cancelRocketMode(); // Reset rocket mode
     _cancelHammerMode(); // Reset hammer mode
+    _cancelVacuumMode(); // Reset vacuum mode
     _showPauseDialog();
   }
   
@@ -1234,6 +1407,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
         });
 
         return Container(
+          key: _gameBoardKey,
           margin: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.1),
@@ -1245,14 +1419,16 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                 ? (details) => _onRocketTap(details, cellSize, level)
                 : _isHammerMode
                     ? (details) => _onHammerTap(details, cellSize, level)
-                    : null,
-            onPanStart: (_isRocketMode || _isHammerMode)
+                    : _isVacuumMode
+                        ? (details) => _onVacuumTap(details, cellSize, level)
+                        : null,
+            onPanStart: (_isRocketMode || _isHammerMode || _isVacuumMode)
                 ? null 
                 : (details) => _onPanStart(details, cellSize, level),
-            onPanUpdate: (_isRocketMode || _isHammerMode)
+            onPanUpdate: (_isRocketMode || _isHammerMode || _isVacuumMode)
                 ? null 
                 : (details) => _onPanUpdate(details, cellSize, level),
-            onPanEnd: (_isRocketMode || _isHammerMode) ? null : (_) => _onPanEnd(),
+            onPanEnd: (_isRocketMode || _isHammerMode || _isVacuumMode) ? null : (_) => _onPanEnd(),
             // RepaintBoundary creates an offscreen buffer for the game board
             // TODO: Split into StaticBoardPainter + BlocksPainter for better perf
             child: RepaintBoundary(
@@ -1693,6 +1869,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     if (_isFrozen) _endFreeze(); // Reset freeze state
     _cancelRocketMode(); // Reset rocket mode
     _cancelHammerMode(); // Reset hammer mode
+    _cancelVacuumMode(); // Reset vacuum mode
     GameLogger.levelCompleted(widget.levelId, _remainingSeconds);
     await StorageService.markLevelCompleted(widget.levelId);
     widget.onLevelComplete?.call();

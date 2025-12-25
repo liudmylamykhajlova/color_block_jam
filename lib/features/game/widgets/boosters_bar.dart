@@ -6,6 +6,7 @@ enum BoosterType {
   freeze,    // Freeze time (clock with snowflake)
   rocket,    // Destroy one unit of a block (rocket)
   hammer,    // Destroy entire block (hammer)
+  vacuum,    // Vacuum all blocks of same color
   shop,      // Buy more boosters
   pause,     // Pause game
 }
@@ -40,7 +41,7 @@ class BoostersBar extends StatelessWidget {
     BoosterData(type: BoosterType.freeze, quantity: 1),
     BoosterData(type: BoosterType.rocket, quantity: 1),
     BoosterData(type: BoosterType.hammer, quantity: 1),
-    BoosterData(type: BoosterType.shop, quantity: 0),
+    BoosterData(type: BoosterType.vacuum, quantity: 1),
     BoosterData(type: BoosterType.pause, quantity: 0),
   ];
 
@@ -87,6 +88,8 @@ class _BoosterButton extends StatelessWidget {
         return Icons.rocket_launch; // Rocket icon
       case BoosterType.hammer:
         return Icons.gavel; // Hammer icon
+      case BoosterType.vacuum:
+        return Icons.cleaning_services; // Vacuum/cleaner icon
       case BoosterType.shop:
         return Icons.add_circle_outline;
       case BoosterType.pause:
@@ -102,6 +105,8 @@ class _BoosterButton extends StatelessWidget {
         return AppColors.rocketOrange; // Orange for rocket
       case BoosterType.hammer:
         return AppColors.hammerGreen; // Green for hammer
+      case BoosterType.vacuum:
+        return AppColors.vacuumYellow; // Yellow for vacuum
       case BoosterType.shop:
         return AppColors.buttonGreen;
       case BoosterType.pause:

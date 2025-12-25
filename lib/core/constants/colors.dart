@@ -109,6 +109,11 @@ class AppColors {
   static const Color hammerOrange = Color(0xFFFF9800);   // Hammer handle (orange)
   static const Color hammerPurple = Color(0xFF9C27B0);   // Hammer icon background
   
+  // === Vacuum Effect ===
+  static const Color vacuumYellow = Color(0xFFFFD700);   // Vacuum body (gold/yellow)
+  static const Color vacuumBlue = Color(0xFF4FC3F7);     // Vacuum accent (light blue)
+  static const Color vacuumPurple = Color(0xFF7E57C2);   // Vacuum icon background
+  
   // === Dialog Colors ===
   static const Color dialogGradientLight = Color(0xFF5BB8E8);  // Dialog top
   static const Color dialogGradientDark = Color(0xFF3D8BC4);   // Dialog bottom
