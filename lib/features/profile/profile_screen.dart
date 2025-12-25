@@ -70,7 +70,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
   
   void _saveProfile() {
-    // TODO: Save to StorageService when implemented
+    // Phase 5: Add saveAvatar() and savePlayerName() to StorageService
+    // Currently avatar and name are stored in memory only
   }
 
   @override

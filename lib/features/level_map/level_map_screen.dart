@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/constants/colors.dart';
 import '../../core/models/game_models.dart';
 import '../../core/services/storage_service.dart';
 import '../../core/services/audio_service.dart';
@@ -158,9 +159,9 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF5B8DEF), // Bright blue top
-              Color(0xFF4A7DE8), // Mid blue  
-              Color(0xFF3D6DD8), // Saturated blue bottom
+              AppColors.mapBgTop,
+              AppColors.mapBgMid,
+              AppColors.mapBgBottom,
             ],
           ),
         ),
@@ -270,7 +271,7 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
         Container(
           width: 14,
           decoration: BoxDecoration(
-            color: const Color(0xFF5A3D10), // Dark brown outline
+            color: AppColors.mapDarkBrown,
             borderRadius: BorderRadius.circular(7),
           ),
         ),
@@ -280,7 +281,7 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
             width: 10,
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [Color(0xFFE8A030), Color(0xFFCC8020)], // Golden-brown
+                colors: [AppColors.mapGoldenBorder, AppColors.mapGoldenDark],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
               ),
@@ -396,7 +397,7 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
       decoration: BoxDecoration(
-        color: const Color(0xFF4A7AC7),
+        color: AppColors.mapNavBg,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -450,7 +451,7 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
         decoration: isSelected 
             ? BoxDecoration(
-                color: const Color(0xFF6BA8E8),
+                color: AppColors.mapNavSelected,
                 borderRadius: BorderRadius.circular(14),
               )
             : null,
@@ -501,12 +502,12 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
               height: 18,
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0xFFFFD54F), Color(0xFFFFC107)],
+                  colors: [AppColors.goldenLight, AppColors.goldenDark],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
                 shape: BoxShape.circle,
-                border: Border.all(color: const Color(0xFFE65100), width: 2),
+                border: Border.all(color: AppColors.goldenBorder, width: 2),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.3),
@@ -514,11 +515,11 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
                   ),
                 ],
               ),
-              child: const Center(
+              child: Center(
                 child: Text(
                   '\$',
                   style: TextStyle(
-                    color: Color(0xFFE65100),
+                    color: AppColors.goldenBorder,
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
                   ),
@@ -543,25 +544,25 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
           Positioned(
             left: 2,
             top: 8,
-            child: _buildMiniLegoBlock(const Color(0xFFFFEB3B), 20),
+            child: _buildMiniLegoBlock(AppColors.legoYellow, 20),
           ),
           // Blue block (back right)  
           Positioned(
             right: 4,
             top: 4,
-            child: _buildMiniLegoBlock(const Color(0xFF2196F3), 22),
+            child: _buildMiniLegoBlock(AppColors.legoBlue, 22),
           ),
           // Green block (middle)
           Positioned(
             left: 14,
             bottom: 8,
-            child: _buildMiniLegoBlock(const Color(0xFF4CAF50), 24),
+            child: _buildMiniLegoBlock(AppColors.legoGreen, 24),
           ),
           // Pink/Magenta block (front right)
           Positioned(
             right: 2,
             bottom: 0,
-            child: _buildMiniLegoBlock(const Color(0xFFE91E63), 26),
+            child: _buildMiniLegoBlock(AppColors.legoPink, 26),
           ),
         ],
       ),
@@ -647,12 +648,12 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
       height: 36,
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xFFFFD54F), Color(0xFFFFC107)],
+          colors: [AppColors.goldenLight, AppColors.goldenDark],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
         shape: BoxShape.circle,
-        border: Border.all(color: const Color(0xFFE65100), width: 2),
+        border: Border.all(color: AppColors.goldenBorder, width: 2),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.3),

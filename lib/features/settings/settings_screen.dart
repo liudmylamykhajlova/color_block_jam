@@ -241,7 +241,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   
   void _claimSocialReward(String platform) {
     AudioService.playTap();
-    // TODO: Actually open social link and verify follow
+    // Phase 5: Open social link with url_launcher and verify follow for +100 coins
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Row(

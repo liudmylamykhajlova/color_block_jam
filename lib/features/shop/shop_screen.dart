@@ -262,7 +262,7 @@ class _CoinPackCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         AudioService.playTap();
-        // TODO: Implement purchase
+        // Phase 6: Integrate with in_app_purchase package
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Purchase ${item.coins} coins - coming soon!')),
         );

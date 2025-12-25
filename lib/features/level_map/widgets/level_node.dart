@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:color_block_jam/core/constants/colors.dart';
 
 /// Types of level nodes
 enum LevelNodeType {
@@ -30,32 +31,32 @@ class LevelNode extends StatelessWidget {
   Color get _backgroundColor {
     // Hard levels ALWAYS keep their color (even when locked)
     if (type == LevelNodeType.hard) {
-      return const Color(0xFF9B78BE); // Brighter purple for hard
+      return AppColors.nodeHard;
     }
     if (type == LevelNodeType.veryHard) {
-      return const Color(0xFFE85A6A); // Brighter red/pink for very hard
+      return AppColors.nodeVeryHard;
     }
     
     // Normal levels: gray when locked, bright green when unlocked
     if (!isUnlocked) {
-      return const Color(0xFF8A9B8A); // Gray-green for locked normal
+      return AppColors.nodeLocked;
     }
     
-    return const Color(0xFF5ED85E); // Bright vivid green for unlocked normal
+    return AppColors.nodeNormal;
   }
   
   /// Get stud color (subtle but visible)
   Color get _studColor {
     if (type == LevelNodeType.hard) {
-      return const Color(0xFF8A68AE).withOpacity(0.7);
+      return AppColors.studHard.withOpacity(0.7);
     }
     if (type == LevelNodeType.veryHard) {
-      return const Color(0xFFD85060).withOpacity(0.7);
+      return AppColors.studVeryHard.withOpacity(0.7);
     }
     if (!isUnlocked) {
-      return const Color(0xFF7A8B7A).withOpacity(0.6);
+      return AppColors.studLocked.withOpacity(0.6);
     }
-    return const Color(0xFF3DB83D).withOpacity(0.7);
+    return AppColors.studNormal.withOpacity(0.7);
   }
 
   @override
@@ -86,12 +87,12 @@ class LevelNode extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
                   border: Border.all(
-                    color: const Color(0xFF5A3D10), // Dark brown outline
+                    color: AppColors.mapDarkBrown,
                     width: 3,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF5A3D10).withOpacity(0.6),
+                      color: AppColors.mapDarkBrown.withOpacity(0.6),
                       blurRadius: 0,
                       offset: const Offset(0, 3),
                     ),
@@ -101,14 +102,14 @@ class LevelNode extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(
-                      color: const Color(0xFFE8A030), // Golden-orange inner border
+                      color: AppColors.mapGoldenBorder,
                       width: 5,
                     ),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Container(
-                      color: const Color(0xFF5ED85E), // Bright vivid green for current
+                      color: AppColors.nodeNormal,
                       child: Stack(
                         children: [
                           _buildStuds(),
@@ -158,15 +159,15 @@ class LevelNode extends StatelessWidget {
             height: 48,
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [Color(0xFF7DD85A), Color(0xFF5BC83B)], // Brighter green
+                colors: [AppColors.currentLevelLight, AppColors.currentLevelDark],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: const Color(0xFF9AEF70), width: 3), // Brighter border
+              border: Border.all(color: AppColors.currentLevelBorder, width: 3),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF4AA82A).withOpacity(0.9),
+                  color: AppColors.currentLevelShadow.withOpacity(0.9),
                   blurRadius: 0,
                   offset: const Offset(0, 4),
                 ),
@@ -214,12 +215,12 @@ class LevelNode extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
               border: Border.all(
-                color: const Color(0xFF5A3D10), // Dark brown outline
+                color: AppColors.mapDarkBrown,
                 width: 3,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF5A3D10).withOpacity(0.6),
+                  color: AppColors.mapDarkBrown.withOpacity(0.6),
                   blurRadius: 0,
                   offset: const Offset(0, 3),
                 ),
@@ -229,7 +230,7 @@ class LevelNode extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(
-                  color: const Color(0xFFE8A030), // Golden-orange inner border
+                  color: AppColors.mapGoldenBorder,
                   width: 5,
                 ),
               ),
@@ -357,13 +358,13 @@ class LevelNode extends StatelessWidget {
       height: 36,
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xFFFFD54F), Color(0xFFFFC107)], // Golden
+          colors: [AppColors.goldenLight, AppColors.goldenDark],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
         shape: BoxShape.circle,
         border: Border.all(
-          color: const Color(0xFFE65100), // Orange border
+          color: AppColors.goldenBorder,
           width: 2,
         ),
         boxShadow: [
@@ -390,12 +391,12 @@ class LevelNode extends StatelessWidget {
       height: 34,
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xFFFFD54F), Color(0xFFFFC107)],
+          colors: [AppColors.goldenLight, AppColors.goldenDark],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         shape: BoxShape.circle,
-        border: Border.all(color: const Color(0xFFE6A000), width: 3),
+        border: Border.all(color: AppColors.goldenBorderAlt, width: 3),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.4),
@@ -441,7 +442,7 @@ class _SkullPainter extends CustomPainter {
     
     // Left eye (yellow)
     final eyePaint = Paint()
-      ..color = const Color(0xFFFFC107)
+      ..color = AppColors.goldenDark
       ..style = PaintingStyle.fill;
     canvas.drawOval(
       Rect.fromLTWH(w * 0.2, h * 0.2, w * 0.22, h * 0.22),

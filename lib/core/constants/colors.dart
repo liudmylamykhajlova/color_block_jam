@@ -129,6 +129,64 @@ class AppColors {
   static const Color levelBoss = Color(0xFF9C27B0);           // Purple boss
   static const Color levelLocked = Color(0xFF757575);         // Gray locked
   
+  // === Level Map Background ===
+  static const Color mapBgTop = Color(0xFF5B8DEF);            // Bright blue top
+  static const Color mapBgMid = Color(0xFF4A7DE8);            // Mid blue
+  static const Color mapBgBottom = Color(0xFF3D6DD8);         // Saturated blue bottom
+  
+  // === Level Map UI ===
+  static const Color mapDarkBrown = Color(0xFF5A3D10);        // Connection line outline, node outline
+  static const Color mapGoldenBorder = Color(0xFFE8A030);     // Node inner border, connection line
+  static const Color mapGoldenDark = Color(0xFFCC8020);       // Connection line gradient end
+  static const Color mapNavBg = Color(0xFF4A7AC7);            // Bottom nav background
+  static const Color mapNavSelected = Color(0xFF6BA8E8);      // Selected nav item
+  
+  // === Level Node States ===
+  static const Color nodeNormal = Color(0xFF5ED85E);          // Bright vivid green
+  static const Color nodeHard = Color(0xFF9B78BE);            // Brighter purple
+  static const Color nodeVeryHard = Color(0xFFE85A6A);        // Brighter red/pink
+  static const Color nodeLocked = Color(0xFF8A9B8A);          // Gray-green
+  
+  // === Level Node Studs ===
+  static const Color studNormal = Color(0xFF3DB83D);          // Green stud
+  static const Color studHard = Color(0xFF8A68AE);            // Purple stud
+  static const Color studVeryHard = Color(0xFFD85060);        // Red stud
+  static const Color studLocked = Color(0xFF7A8B7A);          // Gray stud
+  
+  // === Current Level Button ===
+  static const Color currentLevelLight = Color(0xFF7DD85A);   // Button gradient top
+  static const Color currentLevelDark = Color(0xFF5BC83B);    // Button gradient bottom
+  static const Color currentLevelBorder = Color(0xFF9AEF70);  // Button border
+  static const Color currentLevelShadow = Color(0xFF4AA82A);  // Button shadow
+  
+  // === Golden Badge/Icon ===
+  static const Color goldenLight = Color(0xFFFFD54F);         // Golden gradient top
+  static const Color goldenDark = Color(0xFFFFC107);          // Golden gradient bottom
+  static const Color goldenBorder = Color(0xFFE65100);        // Orange border
+  static const Color goldenBorderAlt = Color(0xFFE6A000);     // Alternative orange border
+  static const Color goldenBorderLight = Color(0xFFFF8F00);   // Lighter orange border
+  
+  // === Map HUD ===
+  static const Color avatarFrame = Color(0xFF4DD0E1);         // Cyan/teal frame
+  static const Color avatarBgLight = Color(0xFFFFF3E0);       // Avatar placeholder light
+  static const Color avatarBgDark = Color(0xFF8D6E63);        // Avatar placeholder dark
+  static const Color badgeBorder = Color(0xFFE0E0E0);         // Badge border
+  static const Color textDark = Color(0xFF333333);            // Dark text on light bg
+  static const Color plusGreenLight = Color(0xFF4CAF50);      // Plus button gradient top
+  static const Color plusGreenDark = Color(0xFF388E3C);       // Plus button gradient bottom
+  static const Color heartRed = Color(0xFFE53935);            // Heart icon color
+  
+  // === Settings Icon ===
+  static const Color settingsLight = Color(0xFFFFCA28);       // Yellow-orange top
+  static const Color settingsDark = Color(0xFFFF9800);        // Orange bottom
+  static const Color settingsHighlight = Color(0xFFFFE082);   // Highlight
+  
+  // === LEGO Block Icons ===
+  static const Color legoYellow = Color(0xFFFFEB3B);          // Yellow block
+  static const Color legoBlue = Color(0xFF2196F3);            // Blue block
+  static const Color legoGreen = Color(0xFF4CAF50);           // Green block
+  static const Color legoPink = Color(0xFFE91E63);            // Pink block
+  
   // === Game Screen Colors ===
   static const Color gameBackgroundLight = Color(0xFF667eea);  // Top gradient
   static const Color gameBackgroundDark = Color(0xFF764ba2);   // Bottom gradient

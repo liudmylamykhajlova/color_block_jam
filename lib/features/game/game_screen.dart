@@ -662,7 +662,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   
   void _showShopDialog() {
     AudioService.playTap();
-    // TODO: Implement shop dialog
+    // Phase 6: Shop integration - navigate to ShopScreen for coin purchase
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Shop coming soon!'),
@@ -1497,7 +1497,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                 : (details) => _onPanUpdate(details, cellSize, level),
             onPanEnd: (_isRocketMode || _isHammerMode || _isVacuumMode) ? null : (_) => _onPanEnd(),
             // RepaintBoundary creates an offscreen buffer for the game board
-            // TODO: Split into StaticBoardPainter + BlocksPainter for better perf
+            // Performance note: Could split into StaticBoardPainter + BlocksPainter
             child: RepaintBoundary(
               child: CustomPaint(
                 size: Size(
