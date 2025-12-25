@@ -51,41 +51,45 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
         _isLoading = false;
       });
       
-      // Scroll to current level
+      // Scroll to current level after layout is complete
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _scrollToCurrentLevel();
+        Future.delayed(const Duration(milliseconds: 100), () {
+          if (mounted) _scrollToCurrentLevel();
+        });
       });
     }
   }
   
   void _scrollToCurrentLevel() {
     if (_levels == null || _levels!.isEmpty) return;
+    if (!_scrollController.hasClients) return;
     
-    // Find the last unlocked level (current level to play)
-    // This is the first level that is NOT completed but IS unlocked
+    // Find the current level to play (first unlocked but not completed)
     int currentLevelId = 1;
     
     if (_completedLevels.isNotEmpty) {
       // Get the highest completed level ID
       final maxCompleted = _completedLevels.reduce((a, b) => a > b ? a : b);
-      // Current level is the next one (if exists)
+      // Current level is the next one (if exists), clamped to valid range
       currentLevelId = (maxCompleted + 1).clamp(1, _levels!.length);
     }
+    
+    // ListView has reverse: true, so:
+    // - scroll position 0 = bottom of list (level 1 visible)
+    // - scroll position max = top of list (level 27 visible)
+    // - _levels[0] = level 1, _levels[26] = level 27
     
     final index = _levels!.indexWhere((l) => l.id == currentLevelId);
     if (index == -1) return;
     
-    // Calculate scroll position (from bottom, reversed list)
-    if (_scrollController.hasClients) {
-      final itemHeight = 140.0; // Approximate height per level node
-      final targetScroll = (_levels!.length - index - 1) * itemHeight;
-      
-      _scrollController.animateTo(
-        targetScroll.clamp(0, _scrollController.position.maxScrollExtent),
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeOut,
-      );
-    }
+    // With reverse:true, to show item at index N, we scroll to index * itemHeight
+    final itemHeight = 140.0;
+    final targetScroll = index * itemHeight;
+    
+    // Jump to position without animation for initial load
+    _scrollController.jumpTo(
+      targetScroll.clamp(0.0, _scrollController.position.maxScrollExtent),
+    );
   }
   
   void _openLevel(int levelId) {

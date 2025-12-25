@@ -18,7 +18,6 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController _logoController;
   late Animation<double> _logoGlow;
   
-  double _progress = 0.0;
   final List<_FallingBlock> _blocks = [];
   final Random _random = Random();
 
@@ -67,13 +66,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Future<void> _startLoading() async {
-    // Simulate loading progress
-    _progressController.addListener(() {
-      setState(() {
-        _progress = _progressController.value;
-      });
-    });
-
+    // Start progress animation (no setState - AnimatedBuilder handles it)
     _progressController.forward();
 
     // Actually load data in background
@@ -242,74 +235,83 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Widget _buildProgressBar() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 60),
-      child: Column(
-        children: [
-          // Progress bar
-          Container(
-            height: 24,
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.3),
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: Colors.white.withOpacity(0.5),
-                width: 2,
-              ),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Stack(
-                children: [
-                  // Progress fill
-                  FractionallySizedBox(
-                    widthFactor: _progress,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.blue.shade400,
-                            Colors.cyan.shade300,
-                          ],
+    return AnimatedBuilder(
+      animation: _progressController,
+      builder: (context, child) {
+        final progress = _progressController.value;
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 60),
+          child: Column(
+            children: [
+              // Progress bar container (fixed size)
+              Container(
+                height: 24,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: Colors.white.withOpacity(0.5),
+                    width: 2,
+                  ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Stack(
+                    children: [
+                      // Progress fill (only this animates)
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: FractionallySizedBox(
+                          widthFactor: progress,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.blue.shade400,
+                                  Colors.cyan.shade300,
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  
-                  // Shine effect
-                  Positioned.fill(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.white.withOpacity(0.3),
-                            Colors.transparent,
-                          ],
-                          stops: const [0.0, 0.5],
+                      
+                      // Shine effect (static)
+                      Positioned.fill(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.white.withOpacity(0.3),
+                                Colors.transparent,
+                              ],
+                              stops: const [0.0, 0.5],
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+              
+              const SizedBox(height: 8),
+              
+              // Percentage text
+              Text(
+                '${(progress * 100).toInt()}%',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
-          
-          const SizedBox(height: 8),
-          
-          // Percentage text
-          Text(
-            '${(_progress * 100).toInt()}%',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
