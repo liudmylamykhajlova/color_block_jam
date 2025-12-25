@@ -38,6 +38,11 @@ class _WinDialogState extends State<WinDialog> with TickerProviderStateMixin {
   late List<Animation<double>> _starAnimations;
   final List<Timer> _starTimers = [];
   
+  // Coin animation
+  late AnimationController _coinController;
+  late Animation<double> _coinFlyAnimation;
+  final List<_FlyingCoin> _flyingCoins = [];
+  
   @override
   void initState() {
     super.initState();
@@ -53,8 +58,42 @@ class _WinDialogState extends State<WinDialog> with TickerProviderStateMixin {
       curve: Curves.elasticOut,
     )).toList();
     
+    // Coin fly animation
+    _coinController = AnimationController(
+      duration: const Duration(milliseconds: 1500),
+      vsync: this,
+    );
+    _coinFlyAnimation = CurvedAnimation(
+      parent: _coinController,
+      curve: Curves.easeOutCubic,
+    );
+    
+    // Generate flying coins with random offsets
+    _generateFlyingCoins();
+    
     // Start animations with cancellable timers
     _startStarAnimations();
+    
+    // Start coin animation after stars
+    final coinTimer = Timer(const Duration(milliseconds: 800), () {
+      if (mounted) {
+        _coinController.forward();
+      }
+    });
+    _starTimers.add(coinTimer);
+  }
+  
+  void _generateFlyingCoins() {
+    final random = DateTime.now().millisecondsSinceEpoch;
+    for (int i = 0; i < 8; i++) {
+      _flyingCoins.add(_FlyingCoin(
+        startX: ((random + i * 17) % 160) - 80.0, // -80 to 80
+        startY: 0,
+        endX: ((random + i * 23) % 200) - 100.0, // -100 to 100
+        endY: -150.0 - ((random + i * 13) % 50), // -150 to -200
+        delay: (i * 0.08), // Stagger the coins
+      ));
+    }
   }
   
   void _startStarAnimations() {
@@ -83,6 +122,7 @@ class _WinDialogState extends State<WinDialog> with TickerProviderStateMixin {
     for (final controller in _starControllers) {
       controller.dispose();
     }
+    _coinController.dispose();
     super.dispose();
   }
 
@@ -248,42 +288,103 @@ class _WinDialogState extends State<WinDialog> with TickerProviderStateMixin {
   }
   
   Widget _buildCoinsEarned() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
+    return SizedBox(
+      height: 80,
+      child: Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.center,
         children: [
-          // Coin icon
-          Container(
-            width: 28,
-            height: 28,
-            decoration: BoxDecoration(
-              color: AppColors.gold,
-              shape: BoxShape.circle,
-              border: Border.all(color: AppColors.coinBorder, width: 2),
-            ),
-            child: Center(
-              child: Text(
-                '\$',
-                style: TextStyle(
-                  color: AppColors.coinSymbol,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+          // Flying coins animation
+          ..._flyingCoins.map((coin) => AnimatedBuilder(
+            animation: _coinFlyAnimation,
+            builder: (context, child) {
+              // Apply delay
+              final progress = ((_coinFlyAnimation.value - coin.delay) / (1.0 - coin.delay)).clamp(0.0, 1.0);
+              
+              if (progress <= 0) return const SizedBox.shrink();
+              
+              final x = coin.startX + (coin.endX - coin.startX) * progress;
+              final y = coin.startY + (coin.endY - coin.startY) * progress;
+              final scale = 1.0 - (progress * 0.3);
+              final opacity = progress < 0.7 ? 1.0 : (1.0 - (progress - 0.7) / 0.3);
+              
+              return Transform.translate(
+                offset: Offset(x, y),
+                child: Transform.scale(
+                  scale: scale,
+                  child: Opacity(
+                    opacity: opacity,
+                    child: Container(
+                      width: 24,
+                      height: 24,
+                      decoration: BoxDecoration(
+                        color: AppColors.gold,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: AppColors.coinBorder, width: 2),
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors.gold.withOpacity(0.5),
+                            blurRadius: 8,
+                          ),
+                        ],
+                      ),
+                      child: const Center(
+                        child: Text(
+                          '\$',
+                          style: TextStyle(
+                            color: Color(0xFFE65100),
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              );
+            },
+          )),
+          
+          // Main coin display
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(20),
             ),
-          ),
-          const SizedBox(width: 8),
-          Text(
-            '+${widget.coinsEarned}',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Coin icon
+                Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    color: AppColors.gold,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: AppColors.coinBorder, width: 2),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '\$',
+                      style: TextStyle(
+                        color: AppColors.coinSymbol,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  '+${widget.coinsEarned}',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -355,4 +456,21 @@ class _WinDialogState extends State<WinDialog> with TickerProviderStateMixin {
       ),
     );
   }
+}
+
+/// Data class for flying coin animation
+class _FlyingCoin {
+  final double startX;
+  final double startY;
+  final double endX;
+  final double endY;
+  final double delay;
+  
+  const _FlyingCoin({
+    required this.startX,
+    required this.startY,
+    required this.endX,
+    required this.endY,
+    required this.delay,
+  });
 }

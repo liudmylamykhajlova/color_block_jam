@@ -91,8 +91,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   // Lives
   int _lives = 5;
   
-  // Coins (placeholder - will be from StorageService)
-  int _coins = 1480;
+  // Coins from StorageService
+  int _coins = 0;
   
   // Boosters
   List<BoosterData> _boosters = BoostersBar.defaultBoosters;
@@ -102,6 +102,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     super.initState();
     WidgetsBinding.instance.addObserver(this); // Listen to app lifecycle
     _lives = StorageService.getLives();
+    _coins = StorageService.getCoins();
     _loadLevel();
   }
   
@@ -410,7 +411,51 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                   child: const Icon(Icons.close, color: Colors.white, size: 20),
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: 8),
+              // Watch Ad button (placeholder for Phase 6)
+              Expanded(
+                child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF9C27B0), // Purple for ad
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                  onPressed: () {
+                    AudioService.playTap();
+                    // Phase 6: Show rewarded ad here
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Rewarded ads coming soon!'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.play_circle_fill, color: Colors.white, size: 20),
+                  label: const Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Watch Ad',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        '+1 Life',
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
               // Retry button
               Expanded(
                 child: ElevatedButton(
@@ -1953,9 +1998,10 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     // Calculate coins earned (base + time bonus)
     final coinsEarned = 50 + (_remainingSeconds * 2);
     
-    // Add coins to player (placeholder)
+    // Add coins to player and persist to storage
+    await StorageService.addCoins(coinsEarned);
     setState(() {
-      _coins += coinsEarned;
+      _coins = StorageService.getCoins();
     });
     
     if (!mounted) return;
