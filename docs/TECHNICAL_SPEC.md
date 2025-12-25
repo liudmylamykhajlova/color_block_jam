@@ -278,36 +278,89 @@ void _endFreeze() {
 ```dart
 // State
 bool _isRocketMode = false;
+bool _isRocketAnimating = false;
+Offset? _rocketStartPos;
+Offset? _rocketEndPos;
 
 void _useRocketBooster() {
   _isRocketMode = true;
   // Don't consume booster until cell tapped
 }
 
-void _onRocketCellTap(GameBlock block, Point cell) {
+void _onRocketCellTap(GameBlock block, Point cell, Offset tapPosition) {
   // 1. Consume booster
-  // 2. Remove cell from block: block.removeUnit(cell)
-  // 3. If block has no cells left → remove block
-  // 4. Exit rocket mode
+  // 2. Calculate animation positions
+  // 3. Start rocket animation
+  // 4. On animation complete: explosion animation
+  // 5. On explosion complete: remove cell from block
+  // 6. If block has no cells left → remove block
 }
 
 void _cancelRocketMode() {
   _isRocketMode = false;
+  _isRocketAnimating = false;
 }
 
-// GameBlock.removeUnit():
+// GameBlock.removeUnit() - uses indices for persistence across movement:
 class GameBlock {
-  final List<Point> removedUnits = [];
+  final List<int> removedUnitIndices = []; // Store indices, not coordinates
   
-  bool removeUnit(Point cell) {
-    removedUnits.add(cell);
-    return cells.isNotEmpty; // true if block still exists
+  bool removeUnit(Point absoluteCell) {
+    final baseCells = _baseCells;
+    final indexToRemove = baseCells.indexOf(absoluteCell);
+    if (indexToRemove != -1) {
+      removedUnitIndices.add(indexToRemove);
+    }
+    return cells.isNotEmpty;
   }
   
-  List<Point> get cells => _baseCells
-    .where((c) => !removedUnits.contains(c))
-    .toList();
+  List<Point> get cells {
+    final baseCells = _baseCells;
+    return List.generate(baseCells.length, (i) => i)
+        .where((i) => !removedUnitIndices.contains(i))
+        .map((i) => baseCells[i])
+        .toList();
+  }
 }
+```
+
+#### Hammer Booster
+```dart
+// State
+bool _isHammerMode = false;
+bool _isHammerAnimating = false;
+Offset? _hammerStartPos;
+Offset? _hammerEndPos;
+GameBlock? _pendingHammerDestroyBlock;
+
+void _useHammerBooster() {
+  _isHammerMode = true;
+  // Don't consume booster until block tapped
+}
+
+void _onHammerBlockTap(GameBlock block, Offset tapPosition) {
+  // 1. Consume booster
+  // 2. Calculate animation positions (from booster bar to block)
+  // 3. Start hammer animation (arc trajectory, spinning)
+  // 4. On animation complete: big explosion animation
+  // 5. On explosion complete: remove entire block
+}
+
+void _cancelHammerMode() {
+  _isHammerMode = false;
+  _isHammerAnimating = false;
+}
+
+// Animation: HammerAnimation widget with:
+// - Strike animation (raise up, slam down)
+// - Rotation swing (tilt back, swing forward)
+// - Scale on impact
+// - Fade out at end
+
+// Explosion: BigExplosionAnimation widget with:
+// - Expanding circle with gradient
+// - 8 flying particles
+// - Size based on block cell count
 ```
 
 #### Booster Lifecycle

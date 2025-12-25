@@ -187,11 +187,11 @@ Move ALL blocks out of the board through doors of matching color.
 **Bottom HUD (5 Boosters):**
 | Slot | Icon | Badge | Function |
 |------|------|-------|----------|
-| 1 | Clock/Alarm | "1" | Extra time |
-| 2 | Hammer | "1" | Destroy block |
-| 3 | Drill | "1" | Unknown |
-| 4 | Bell with + | Green "+" | Buy more |
-| 5 | Pause (॥) | - | Pause game |
+| 1 | Snowflake ❄️ | "1" | Freeze time |
+| 2 | Rocket 🚀 | "1" | Destroy one unit |
+| 3 | Hammer 🔨 | "1" | Destroy entire block |
+| 4 | Plus ➕ | Green "+" | Buy more |
+| 5 | Pause ⏸️ | - | Pause game |
 
 ### 4.5 Fail Dialog
 - "Level N" title in blue banner
@@ -318,7 +318,7 @@ Move ALL blocks out of the board through doors of matching color.
 |------|------|----------|----------|
 | ❄️ Snowflake | Freeze Time | 1 | Freezes the game timer for 5 seconds. Player can still move blocks. |
 | 🚀 Rocket | Destroy Unit | 1 | Removes one cell from any block. Shows target crosshairs on all block cells. |
-| 🔧 Drill | Drill | 1 | TBD (possibly breaks ice?) |
+| 🔨 Hammer | Destroy Block | 1 | Destroys an entire block instantly. |
 | ➕ Plus | Buy More | - | Opens shop to purchase boosters |
 | ⏸️ Pause | Pause | - | Pauses the game |
 
@@ -328,6 +328,7 @@ Move ALL blocks out of the board through doors of matching color.
 |------|------|----------|----------|
 | ⏳ Hourglass | More Time | 2 | Start level with extra time |
 | 🚀 Rocket | Destroy Unit | 2 | Same as in-game Rocket booster |
+| 🔨 Hammer | Destroy Block | 2 | Same as in-game Hammer booster |
 
 ### 6.3 Booster Visual Effects
 
@@ -342,16 +343,36 @@ Move ALL blocks out of the board through doors of matching color.
 
 #### Rocket (🚀)
 - **Tooltip:** Blue gradient banner at top with:
-  - 🚀 icon in orange square
-  - "ROCKET" title
+  - 🚀 icon in purple square with gold rocket
+  - "ROCKET" title badge
   - "Tap and destroy one unit of a block!" instruction
   - ❌ close button (red circle)
 - **Targets:** Red circles with white crosshair on each block cell
+- **Animation:** Rocket flies from booster button to tapped cell with rotation
+- **Explosion:** Orange/yellow radial explosion animation
 - **Tap behavior:**
-  - Tap on block cell → removes that cell, exits rocket mode
+  - Tap on block cell → rocket flies, explosion, removes that cell
   - Tap on empty cell → cancels rocket mode
   - Tap outside board → cancels rocket mode
   - Tap close button → cancels rocket mode
+
+#### Hammer (🔨)
+- **Tooltip:** Blue gradient banner at top with:
+  - 🔨 icon in green square with orange hammer
+  - "HAMMER" title badge
+  - "Tap any block to destroy it!" instruction
+  - ❌ close button (red circle)
+- **Animation:** Strike animation at tapped block:
+  1. Hammer appears above block
+  2. Raises up slightly (wind-up)
+  3. Strikes down fast with rotation
+  4. Fades on impact
+- **Explosion:** Large orange/yellow radial explosion with 8 flying particles
+- **Tap behavior:**
+  - Tap on any block → hammer strike, big explosion, destroys entire block
+  - Tap on empty cell → cancels hammer mode
+  - Tap outside board → cancels hammer mode
+  - Tap close button → cancels hammer mode
 
 ### 6.4 Booster State Management
 

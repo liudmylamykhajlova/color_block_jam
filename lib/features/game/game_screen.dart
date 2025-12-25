@@ -14,6 +14,8 @@ import 'widgets/freeze_indicator.dart';
 import 'widgets/freeze_overlay.dart';
 import 'widgets/rocket_overlay.dart';
 import 'widgets/rocket_animation.dart';
+import 'widgets/hammer_overlay.dart';
+import 'widgets/hammer_animation.dart';
 
 class GameScreen extends StatefulWidget {
   final int levelId;
@@ -66,6 +68,17 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   bool _showExplosion = false;
   final GlobalKey _boostersBarKey = GlobalKey();
   
+  // Hammer mode
+  bool _isHammerMode = false;
+  
+  // Hammer animation
+  bool _isHammerAnimating = false;
+  Offset? _hammerStartPos;
+  Offset? _hammerEndPos;
+  GameBlock? _pendingHammerDestroyBlock;
+  bool _showBigExplosion = false;
+  double _bigExplosionSize = 100;
+  
   // Lives
   int _lives = 5;
   
@@ -90,6 +103,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     if (state == AppLifecycleState.paused || state == AppLifecycleState.inactive) {
       // App going to background - pause timers and reset states
       _cancelRocketMode(); // Reset rocket mode
+      _cancelHammerMode(); // Reset hammer mode
       if (_timer != null) {
         _pausedAt = DateTime.now();
         _stopTimer();
@@ -259,6 +273,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     _stopFreezeTimer(); // Stop freeze timer
     if (_isFrozen) _endFreeze(); // Reset freeze state
     _cancelRocketMode(); // Reset rocket mode
+    _cancelHammerMode(); // Reset hammer mode
     GameLogger.timerExpired(widget.levelId);
     
     // Lose a life
@@ -275,6 +290,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   
   void _showFailDialog() {
     _cancelRocketMode(); // Reset rocket mode
+    _cancelHammerMode(); // Reset hammer mode
     AudioService.playLevelFail(); // Level fail sound
     
     showDialog(
@@ -447,6 +463,12 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       _rocketEndPos = null;
       _pendingDestroyBlock = null;
       _pendingDestroyCell = null;
+      _isHammerMode = false; // Reset hammer mode
+      _isHammerAnimating = false;
+      _showBigExplosion = false;
+      _hammerStartPos = null;
+      _hammerEndPos = null;
+      _pendingHammerDestroyBlock = null;
       _initBlocks();
       _remainingSeconds = _level?.duration ?? AppConstants.defaultLevelDuration;
     });
@@ -510,8 +532,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                     BoostersBar(
                       key: _boostersBarKey,
                       boosters: _boosters,
-                      onBoosterTap: _isRocketMode ? null : _onBoosterTap,
-                      onPauseTap: _isRocketMode ? null : _onPauseTap,
+                      onBoosterTap: (_isRocketMode || _isHammerMode) ? null : _onBoosterTap,
+                      onPauseTap: (_isRocketMode || _isHammerMode) ? null : _onPauseTap,
                     ),
                     
                     // Bottom safe area
@@ -539,6 +561,29 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                   ExplosionAnimation(
                     position: _rocketEndPos!,
                     onComplete: _onExplosionComplete,
+                  ),
+                
+                // Hammer tooltip (on top of everything when active)
+                if (_isHammerMode)
+                  HammerOverlay(
+                    isActive: _isHammerMode,
+                    onCancel: _cancelHammerMode,
+                  ),
+                
+                // Hammer flying animation
+                if (_isHammerAnimating && _hammerStartPos != null && _hammerEndPos != null)
+                  HammerAnimation(
+                    startPosition: _hammerStartPos!,
+                    endPosition: _hammerEndPos!,
+                    onComplete: _onHammerAnimationComplete,
+                  ),
+                
+                // Big explosion animation for hammer
+                if (_showBigExplosion && _hammerEndPos != null)
+                  BigExplosionAnimation(
+                    position: _hammerEndPos!,
+                    size: _bigExplosionSize,
+                    onComplete: _onBigExplosionComplete,
                   ),
               ],
             ),
@@ -605,12 +650,11 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       case BoosterType.freeze:
         _useFreezeBooster();
         break;
-      case BoosterType.destroy:
+      case BoosterType.rocket:
         _useRocketBooster();
         break;
-      case BoosterType.drill:
-        // TODO: Implement drill mode
-        _showBoosterNotImplemented('Drill');
+      case BoosterType.hammer:
+        _useHammerBooster();
         break;
       case BoosterType.shop:
         _showShopDialog();
@@ -645,7 +689,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   }
   
   void _useRocketBooster() {
-    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.destroy);
+    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.rocket);
     if (boosterIndex == -1) return;
     
     final booster = _boosters[boosterIndex];
@@ -666,13 +710,13 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     if (!_isRocketMode || _isRocketAnimating) return;
     
     // Consume booster first
-    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.destroy);
+    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.rocket);
     if (boosterIndex != -1) {
       final booster = _boosters[boosterIndex];
       setState(() {
         _boosters = List.from(_boosters);
         _boosters[boosterIndex] = BoosterData(
-          type: BoosterType.destroy,
+          type: BoosterType.rocket,
           quantity: booster.quantity - 1,
         );
       });
@@ -801,11 +845,120 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     _cancelRocketMode();
   }
   
+  // === Hammer Booster Methods ===
+  
+  void _useHammerBooster() {
+    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.hammer);
+    if (boosterIndex == -1) return;
+    
+    final booster = _boosters[boosterIndex];
+    if (booster.quantity <= 0) return;
+    
+    AudioService.playTap();
+    setState(() {
+      _isHammerMode = true;
+    });
+    
+    GameLogger.info('Hammer mode activated', 'BOOSTER');
+  }
+  
+  void _onHammerBlockTap(GameBlock block, Offset tapPosition) {
+    if (!_isHammerMode || _isHammerAnimating) return;
+    
+    // Consume booster first
+    final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.hammer);
+    if (boosterIndex != -1) {
+      final booster = _boosters[boosterIndex];
+      setState(() {
+        _boosters = List.from(_boosters);
+        _boosters[boosterIndex] = BoosterData(
+          type: BoosterType.hammer,
+          quantity: booster.quantity - 1,
+        );
+      });
+    }
+    
+    // Store pending destruction info
+    _pendingHammerDestroyBlock = block;
+    
+    // Calculate explosion size based on block size
+    _bigExplosionSize = block.cells.length * 25.0 + 50;
+    
+    // Exit hammer mode and start strike animation
+    // Animation strikes at tap position (center of tapped cell)
+    setState(() {
+      _isHammerMode = false;
+      _isHammerAnimating = true;
+      _hammerStartPos = tapPosition; // Not used in new animation, but kept for API
+      _hammerEndPos = tapPosition;   // Target position
+    });
+    
+    GameLogger.info('Hammer strike at block (${block.gridRow}, ${block.gridCol})', 'BOOSTER');
+  }
+  
+  void _onHammerAnimationComplete() {
+    setState(() {
+      _isHammerAnimating = false;
+      _showBigExplosion = true;
+    });
+    
+    // Play explosion sound
+    AudioService.playTap();
+  }
+  
+  void _onBigExplosionComplete() {
+    // Now actually destroy the block
+    if (_pendingHammerDestroyBlock != null) {
+      setState(() {
+        _blocks.remove(_pendingHammerDestroyBlock);
+        _showBigExplosion = false;
+        _hammerStartPos = null;
+        _hammerEndPos = null;
+        _pendingHammerDestroyBlock = null;
+      });
+      
+      GameLogger.info('Block destroyed by hammer', 'BOOSTER');
+    }
+  }
+  
+  void _cancelHammerMode() {
+    setState(() {
+      _isHammerMode = false;
+      _isHammerAnimating = false;
+      _showBigExplosion = false;
+      _hammerStartPos = null;
+      _hammerEndPos = null;
+      _pendingHammerDestroyBlock = null;
+    });
+    GameLogger.info('Hammer mode cancelled', 'BOOSTER');
+  }
+  
+  void _onHammerTap(TapUpDetails details, double cellSize, GameLevel level) {
+    final cell = _getCellFromPosition(details.localPosition, cellSize, level);
+    if (cell == null) {
+      // Tapped outside board - cancel hammer mode
+      _cancelHammerMode();
+      return;
+    }
+    
+    // Find which block contains this cell
+    for (final block in _blocks) {
+      if (block.cells.contains(cell)) {
+        _onHammerBlockTap(block, details.globalPosition);
+        return;
+      }
+    }
+    
+    // Tapped empty cell - cancel hammer mode
+    _cancelHammerMode();
+  }
+  
   void _onPauseTap() {
     AudioService.playTap();
     _stopTimer();
     _stopFreezeTimer(); // Also stop freeze timer during pause
     _cancelRocketMode(); // Reset rocket mode
+    _cancelHammerMode(); // Reset hammer mode
     _showPauseDialog();
   }
   
@@ -1089,15 +1242,17 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
           padding: const EdgeInsets.all(8),
           child: GestureDetector(
             onTapUp: _isRocketMode 
-                ? (details) => _onRocketTap(details, cellSize, level) 
-                : null,
-            onPanStart: _isRocketMode 
+                ? (details) => _onRocketTap(details, cellSize, level)
+                : _isHammerMode
+                    ? (details) => _onHammerTap(details, cellSize, level)
+                    : null,
+            onPanStart: (_isRocketMode || _isHammerMode)
                 ? null 
                 : (details) => _onPanStart(details, cellSize, level),
-            onPanUpdate: _isRocketMode 
+            onPanUpdate: (_isRocketMode || _isHammerMode)
                 ? null 
                 : (details) => _onPanUpdate(details, cellSize, level),
-            onPanEnd: _isRocketMode ? null : (_) => _onPanEnd(),
+            onPanEnd: (_isRocketMode || _isHammerMode) ? null : (_) => _onPanEnd(),
             // RepaintBoundary creates an offscreen buffer for the game board
             // TODO: Split into StaticBoardPainter + BlocksPainter for better perf
             child: RepaintBoundary(
@@ -1537,6 +1692,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     _stopFreezeTimer(); // Stop freeze timer
     if (_isFrozen) _endFreeze(); // Reset freeze state
     _cancelRocketMode(); // Reset rocket mode
+    _cancelHammerMode(); // Reset hammer mode
     GameLogger.levelCompleted(widget.levelId, _remainingSeconds);
     await StorageService.markLevelCompleted(widget.levelId);
     widget.onLevelComplete?.call();

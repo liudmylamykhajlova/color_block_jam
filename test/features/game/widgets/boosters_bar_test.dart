@@ -87,7 +87,7 @@ void main() {
     
     test('can be disabled', () {
       const booster = BoosterData(
-        type: BoosterType.destroy,
+        type: BoosterType.rocket,
         quantity: 1,
         isEnabled: false,
       );
@@ -105,8 +105,8 @@ void main() {
     test('has all expected types', () {
       expect(BoosterType.values.length, 5);
       expect(BoosterType.values, contains(BoosterType.freeze));
-      expect(BoosterType.values, contains(BoosterType.destroy));
-      expect(BoosterType.values, contains(BoosterType.drill));
+      expect(BoosterType.values, contains(BoosterType.rocket));
+      expect(BoosterType.values, contains(BoosterType.hammer));
       expect(BoosterType.values, contains(BoosterType.shop));
       expect(BoosterType.values, contains(BoosterType.pause));
     });

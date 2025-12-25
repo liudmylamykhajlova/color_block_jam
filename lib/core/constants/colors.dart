@@ -104,6 +104,11 @@ class AppColors {
   static const Color explosionOrange = Color(0xFFFF8C00); // Explosion
   static const Color explosionYellow = Color(0xFFFFEB3B); // Explosion highlight
   
+  // === Hammer Effect ===
+  static const Color hammerGreen = Color(0xFF4CAF50);    // Hammer head (green)
+  static const Color hammerOrange = Color(0xFFFF9800);   // Hammer handle (orange)
+  static const Color hammerPurple = Color(0xFF9C27B0);   // Hammer icon background
+  
   // === Dialog Colors ===
   static const Color dialogGradientLight = Color(0xFF5BB8E8);  // Dialog top
   static const Color dialogGradientDark = Color(0xFF3D8BC4);   // Dialog bottom

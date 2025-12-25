@@ -4,8 +4,8 @@ import '../../../core/constants/colors.dart';
 /// Booster types available in game
 enum BoosterType {
   freeze,    // Freeze time (clock with snowflake)
-  destroy,   // Destroy block (hammer)
-  drill,     // Drill through ice (drill)
+  rocket,    // Destroy one unit of a block (rocket)
+  hammer,    // Destroy entire block (hammer)
   shop,      // Buy more boosters
   pause,     // Pause game
 }
@@ -38,8 +38,8 @@ class BoostersBar extends StatelessWidget {
   
   static List<BoosterData> get defaultBoosters => const [
     BoosterData(type: BoosterType.freeze, quantity: 1),
-    BoosterData(type: BoosterType.destroy, quantity: 1),
-    BoosterData(type: BoosterType.drill, quantity: 1),
+    BoosterData(type: BoosterType.rocket, quantity: 1),
+    BoosterData(type: BoosterType.hammer, quantity: 1),
     BoosterData(type: BoosterType.shop, quantity: 0),
     BoosterData(type: BoosterType.pause, quantity: 0),
   ];
@@ -83,10 +83,10 @@ class _BoosterButton extends StatelessWidget {
     switch (data.type) {
       case BoosterType.freeze:
         return Icons.ac_unit; // Snowflake icon
-      case BoosterType.destroy:
+      case BoosterType.rocket:
         return Icons.rocket_launch; // Rocket icon
-      case BoosterType.drill:
-        return Icons.build;
+      case BoosterType.hammer:
+        return Icons.gavel; // Hammer icon
       case BoosterType.shop:
         return Icons.add_circle_outline;
       case BoosterType.pause:
@@ -98,10 +98,10 @@ class _BoosterButton extends StatelessWidget {
     switch (data.type) {
       case BoosterType.freeze:
         return Colors.cyan;
-      case BoosterType.destroy:
+      case BoosterType.rocket:
         return AppColors.rocketOrange; // Orange for rocket
-      case BoosterType.drill:
-        return Colors.orange;
+      case BoosterType.hammer:
+        return AppColors.hammerGreen; // Green for hammer
       case BoosterType.shop:
         return AppColors.buttonGreen;
       case BoosterType.pause:
