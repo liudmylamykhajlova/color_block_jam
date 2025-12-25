@@ -13,6 +13,7 @@ class StorageService {
   static const String _hapticEnabledKey = 'haptic_enabled';
   static const String _livesKey = 'lives';
   static const String _lastLifeLostTimeKey = 'last_life_lost_time';
+  static const String _coinsKey = 'coins';
   
   /// Use constants from AppConstants for consistency
   static int get maxLives => AppConstants.maxLives;
@@ -194,6 +195,38 @@ class StorageService {
     return '${minutesRemaining}m';
   }
   
+  // === COINS SYSTEM ===
+  
+  static const int _defaultCoins = 100; // Starting coins for new players
+  
+  static int getCoins() {
+    _ensureInitialized();
+    return _prefs!.getInt(_coinsKey) ?? _defaultCoins;
+  }
+  
+  static Future<void> setCoins(int coins) async {
+    _ensureInitialized();
+    await _prefs!.setInt(_coinsKey, coins.clamp(0, 9999999));
+  }
+  
+  static Future<void> addCoins(int amount) async {
+    _ensureInitialized();
+    final current = getCoins();
+    await setCoins(current + amount);
+  }
+  
+  static Future<bool> spendCoins(int amount) async {
+    _ensureInitialized();
+    final current = getCoins();
+    if (current < amount) return false;
+    await setCoins(current - amount);
+    return true;
+  }
+  
+  static bool hasEnoughCoins(int amount) {
+    return getCoins() >= amount;
+  }
+  
   // === RESET PROGRESS ===
   
   static Future<void> resetProgress() async {
@@ -202,6 +235,7 @@ class StorageService {
     await _prefs!.remove(_currentLevelKey);
     await _prefs!.remove(_livesKey);
     await _prefs!.remove(_lastLifeLostTimeKey);
+    await _prefs!.remove(_coinsKey);
   }
 }
 

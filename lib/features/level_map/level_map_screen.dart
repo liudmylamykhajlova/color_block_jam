@@ -23,7 +23,7 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
   List<GameLevel>? _levels;
   Set<int> _completedLevels = {};
   int _lives = 5;
-  final int _coins = 1480;
+  int _coins = 0;
   bool _isLoading = true;
   int _currentLevelId = 1;
   
@@ -43,22 +43,37 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
   }
   
   Future<void> _loadData() async {
-    final levels = await LevelLoader.loadLevels();
-    if (mounted) {
-      setState(() {
-        _levels = levels;
-        _completedLevels = StorageService.getCompletedLevels();
-        _lives = StorageService.getLives();
-        _isLoading = false;
-        _updateCurrentLevel();
-      });
-      
-      // Scroll to current level after layout is complete
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        Future.delayed(const Duration(milliseconds: 100), () {
-          if (mounted) _scrollToCurrentLevel();
+    try {
+      final levels = await LevelLoader.loadLevels();
+      if (mounted) {
+        setState(() {
+          _levels = levels;
+          _completedLevels = StorageService.getCompletedLevels();
+          _lives = StorageService.getLives();
+          _coins = StorageService.getCoins();
+          _isLoading = false;
+          _updateCurrentLevel();
         });
-      });
+        
+        // Scroll to current level after layout is complete
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          Future.delayed(const Duration(milliseconds: 100), () {
+            if (mounted) _scrollToCurrentLevel();
+          });
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Failed to load levels: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
   
