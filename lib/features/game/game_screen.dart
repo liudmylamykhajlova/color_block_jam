@@ -816,7 +816,19 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     _rocketStartPos = null;
     _rocketEndPos = null;
     
-    // Remove the cell from block
+    // Handle frozen blocks - decrease ice count instead of destroying
+    if (block.isFrozen) {
+      setState(() {
+        block.iceCount--;
+      });
+      GameLogger.info('Rocket hit frozen block - ice reduced to ${block.iceCount}', 'BOOSTER');
+      if (block.iceCount == 0) {
+        GameLogger.info('Block ${block.blockType} unfrozen by rocket!', 'BOOSTER');
+      }
+      return;
+    }
+    
+    // Remove the cell from block (rocket destroys the cell completely)
     block.removeUnit(cell);
     
     GameLogger.info('Rocket destroyed cell at (${cell.row}, ${cell.col}) from block ${block.blockType}', 'BOOSTER');
@@ -937,8 +949,40 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   void _onBigExplosionComplete() {
     // Now actually destroy the block
     if (_pendingHammerDestroyBlock != null) {
+      final block = _pendingHammerDestroyBlock!;
+      
+      // Handle frozen blocks - decrease ice count instead of destroying
+      if (block.isFrozen) {
+        setState(() {
+          block.iceCount--;
+          _showBigExplosion = false;
+          _hammerStartPos = null;
+          _hammerEndPos = null;
+          _pendingHammerDestroyBlock = null;
+        });
+        GameLogger.info('Hammer hit frozen block - ice reduced to ${block.iceCount}', 'BOOSTER');
+        if (block.iceCount == 0) {
+          GameLogger.info('Block ${block.blockType} unfrozen by hammer!', 'BOOSTER');
+        }
+        return;
+      }
+      
+      // Handle multi-layer blocks - remove outer layer only
+      if (block.hasInnerLayer && !block.outerLayerDestroyed) {
+        setState(() {
+          block.outerLayerDestroyed = true;
+          _showBigExplosion = false;
+          _hammerStartPos = null;
+          _hammerEndPos = null;
+          _pendingHammerDestroyBlock = null;
+        });
+        GameLogger.info('Hammer destroyed outer layer: ${block.blockType} -> ${block.innerBlockType}', 'BOOSTER');
+        return;
+      }
+      
+      // Normal block or inner layer already exposed - destroy completely
       setState(() {
-        _blocks.remove(_pendingHammerDestroyBlock);
+        _blocks.remove(block);
         _showBigExplosion = false;
         _hammerStartPos = null;
         _hammerEndPos = null;
@@ -1075,16 +1119,43 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     // Play destruction sound
     AudioService.playDrop();
     
-    // Remove all vacuumed blocks
+    // Process all vacuumed blocks with special handling
     setState(() {
+      final blocksToRemove = <GameBlock>[];
+      
       for (final block in _pendingVacuumBlocks) {
-        _blocks.remove(block);
+        // Handle frozen blocks - decrease ice count instead of destroying
+        if (block.isFrozen) {
+          block.iceCount--;
+          GameLogger.info('Vacuum hit frozen block - ice reduced to ${block.iceCount}', 'BOOSTER');
+          if (block.iceCount == 0) {
+            GameLogger.info('Block ${block.blockType} unfrozen by vacuum!', 'BOOSTER');
+          }
+          continue;
+        }
+        
+        // Handle multi-layer blocks - remove outer layer only
+        if (block.hasInnerLayer && !block.outerLayerDestroyed) {
+          block.outerLayerDestroyed = true;
+          GameLogger.info('Vacuum destroyed outer layer: ${block.blockType} -> ${block.innerBlockType}', 'BOOSTER');
+          continue;
+        }
+        
+        // Normal block or inner layer already exposed - mark for removal
+        blocksToRemove.add(block);
       }
+      
+      // Remove completely destroyed blocks
+      for (final block in blocksToRemove) {
+        _blocks.remove(block);
+        GameLogger.info('Vacuum removed block ${block.blockType}', 'BOOSTER');
+      }
+      
       _isVacuumAnimating = false;
       _pendingVacuumBlocks = [];
     });
     
-    GameLogger.info('Vacuum complete: blocks removed', 'BOOSTER');
+    GameLogger.info('Vacuum complete', 'BOOSTER');
     
     // Check win condition
     if (_blocks.isEmpty) {
