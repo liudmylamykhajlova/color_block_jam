@@ -84,7 +84,7 @@ class _BoosterButton extends StatelessWidget {
       case BoosterType.freeze:
         return Icons.ac_unit; // Snowflake icon
       case BoosterType.destroy:
-        return Icons.gavel;
+        return Icons.rocket_launch; // Rocket icon
       case BoosterType.drill:
         return Icons.build;
       case BoosterType.shop:
@@ -99,7 +99,7 @@ class _BoosterButton extends StatelessWidget {
       case BoosterType.freeze:
         return Colors.cyan;
       case BoosterType.destroy:
-        return Colors.amber;
+        return AppColors.rocketOrange; // Orange for rocket
       case BoosterType.drill:
         return Colors.orange;
       case BoosterType.shop:

@@ -59,11 +59,24 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
   }
   
   void _scrollToCurrentLevel() {
-    final currentLevel = _completedLevels.isEmpty ? 1 : _completedLevels.length + 1;
-    final index = (_levels?.indexWhere((l) => l.id == currentLevel) ?? 0);
+    if (_levels == null || _levels!.isEmpty) return;
+    
+    // Find the last unlocked level (current level to play)
+    // This is the first level that is NOT completed but IS unlocked
+    int currentLevelId = 1;
+    
+    if (_completedLevels.isNotEmpty) {
+      // Get the highest completed level ID
+      final maxCompleted = _completedLevels.reduce((a, b) => a > b ? a : b);
+      // Current level is the next one (if exists)
+      currentLevelId = (maxCompleted + 1).clamp(1, _levels!.length);
+    }
+    
+    final index = _levels!.indexWhere((l) => l.id == currentLevelId);
+    if (index == -1) return;
     
     // Calculate scroll position (from bottom, reversed list)
-    if (_levels != null && _scrollController.hasClients) {
+    if (_scrollController.hasClients) {
       final itemHeight = 140.0; // Approximate height per level node
       final targetScroll = (_levels!.length - index - 1) * itemHeight;
       

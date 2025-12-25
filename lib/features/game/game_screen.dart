@@ -13,6 +13,7 @@ import 'widgets/win_dialog.dart';
 import 'widgets/freeze_indicator.dart';
 import 'widgets/freeze_overlay.dart';
 import 'widgets/rocket_overlay.dart';
+import 'widgets/rocket_animation.dart';
 
 class GameScreen extends StatefulWidget {
   final int levelId;
@@ -55,6 +56,15 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
   // Rocket mode
   bool _isRocketMode = false;
   double _currentCellSize = 0;
+  
+  // Rocket animation
+  bool _isRocketAnimating = false;
+  Offset? _rocketStartPos;
+  Offset? _rocketEndPos;
+  GameBlock? _pendingDestroyBlock;
+  Point? _pendingDestroyCell;
+  bool _showExplosion = false;
+  final GlobalKey _boostersBarKey = GlobalKey();
   
   // Lives
   int _lives = 5;
@@ -431,6 +441,12 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       _isFrozen = false; // Reset freeze state
       _freezeRemainingSeconds = 0;
       _isRocketMode = false; // Reset rocket mode
+      _isRocketAnimating = false;
+      _showExplosion = false;
+      _rocketStartPos = null;
+      _rocketEndPos = null;
+      _pendingDestroyBlock = null;
+      _pendingDestroyCell = null;
       _initBlocks();
       _remainingSeconds = _level?.duration ?? AppConstants.defaultLevelDuration;
     });
@@ -492,6 +508,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                     
                     // Bottom boosters bar
                     BoostersBar(
+                      key: _boostersBarKey,
                       boosters: _boosters,
                       onBoosterTap: _isRocketMode ? null : _onBoosterTap,
                       onPauseTap: _isRocketMode ? null : _onPauseTap,
@@ -502,12 +519,26 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
                   ],
                 ),
                 
-                // Rocket overlay (on top of everything when active)
+                // Rocket tooltip (on top of everything when active)
                 if (_isRocketMode)
                   RocketOverlay(
                     isActive: _isRocketMode,
                     onCancel: _cancelRocketMode,
-                    child: const SizedBox.shrink(),
+                  ),
+                
+                // Rocket flying animation
+                if (_isRocketAnimating && _rocketStartPos != null && _rocketEndPos != null)
+                  RocketAnimation(
+                    startPosition: _rocketStartPos!,
+                    endPosition: _rocketEndPos!,
+                    onComplete: _onRocketAnimationComplete,
+                  ),
+                
+                // Explosion animation
+                if (_showExplosion && _rocketEndPos != null)
+                  ExplosionAnimation(
+                    position: _rocketEndPos!,
+                    onComplete: _onExplosionComplete,
                   ),
               ],
             ),
@@ -631,10 +662,10 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     GameLogger.info('Rocket mode activated', 'BOOSTER');
   }
   
-  void _onRocketCellTap(GameBlock block, Point cell) {
-    if (!_isRocketMode) return;
+  void _onRocketCellTap(GameBlock block, Point cell, Offset tapPosition) {
+    if (!_isRocketMode || _isRocketAnimating) return;
     
-    // Consume booster
+    // Consume booster first
     final boosterIndex = _boosters.indexWhere((b) => b.type == BoosterType.destroy);
     if (boosterIndex != -1) {
       final booster = _boosters[boosterIndex];
@@ -647,7 +678,71 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       });
     }
     
-    AudioService.playExit(); // Play destruction sound
+    // Get booster button position (start of animation)
+    // BoostersBar layout: 5 buttons (56px each) + 4 spacings (12px each) = 328px total, centered
+    // Rocket is button index 1 (second from left)
+    final screenWidth = MediaQuery.of(context).size.width;
+    final totalBarWidth = 56.0 * 5 + 12.0 * 4; // 328px
+    final barStartX = (screenWidth - totalBarWidth) / 2;
+    final rocketButtonCenterX = barStartX + 56 + 12 + 28; // First button + spacing + half of rocket button
+    
+    Offset startPos = Offset(rocketButtonCenterX, MediaQuery.of(context).size.height - 60);
+    
+    // Try to get actual Y position from BoostersBar
+    final RenderBox? boostersBox = _boostersBarKey.currentContext?.findRenderObject() as RenderBox?;
+    if (boostersBox != null) {
+      final boostersPos = boostersBox.localToGlobal(Offset.zero);
+      startPos = Offset(rocketButtonCenterX, boostersPos.dy + 28); // Center of button vertically
+    }
+    
+    // Use tap position directly - it's already in global coordinates
+    final endPos = tapPosition;
+    
+    // Store pending destruction info
+    _pendingDestroyBlock = block;
+    _pendingDestroyCell = cell;
+    
+    // Exit rocket mode and start animation
+    setState(() {
+      _isRocketMode = false;
+      _isRocketAnimating = true;
+      _rocketStartPos = startPos;
+      _rocketEndPos = endPos;
+    });
+    
+    GameLogger.info('Rocket animation started to (${cell.row}, ${cell.col})', 'BOOSTER');
+  }
+  
+  void _onRocketAnimationComplete() {
+    // Play sound and show explosion
+    AudioService.playExit();
+    
+    setState(() {
+      _isRocketAnimating = false;
+      _showExplosion = true;
+    });
+  }
+  
+  void _onExplosionComplete() {
+    setState(() {
+      _showExplosion = false;
+    });
+    
+    // Now execute the actual destruction
+    _executeRocketDestroy();
+  }
+  
+  void _executeRocketDestroy() {
+    if (_pendingDestroyBlock == null || _pendingDestroyCell == null) return;
+    
+    final block = _pendingDestroyBlock!;
+    final cell = _pendingDestroyCell!;
+    
+    // Clear pending state
+    _pendingDestroyBlock = null;
+    _pendingDestroyCell = null;
+    _rocketStartPos = null;
+    _rocketEndPos = null;
     
     // Remove the cell from block
     block.removeUnit(cell);
@@ -671,14 +766,17 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
       // Just trigger rebuild to show new shape
       setState(() {});
     }
-    
-    // Exit rocket mode
-    _cancelRocketMode();
   }
   
   void _cancelRocketMode() {
     setState(() {
       _isRocketMode = false;
+      _isRocketAnimating = false;
+      _showExplosion = false;
+      _rocketStartPos = null;
+      _rocketEndPos = null;
+      _pendingDestroyBlock = null;
+      _pendingDestroyCell = null;
     });
     GameLogger.info('Rocket mode cancelled', 'BOOSTER');
   }
@@ -694,7 +792,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin, 
     // Find which block contains this cell
     for (final block in _blocks) {
       if (block.cells.contains(cell)) {
-        _onRocketCellTap(block, cell);
+        _onRocketCellTap(block, cell, details.globalPosition);
         return;
       }
     }

@@ -16,7 +16,6 @@ class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late AnimationController _progressController;
   late AnimationController _logoController;
-  late Animation<double> _logoScale;
   late Animation<double> _logoGlow;
   
   double _progress = 0.0;
@@ -38,21 +37,17 @@ class _SplashScreenState extends State<SplashScreen>
       vsync: this,
     );
 
-    // Logo animations
+    // Logo glow animation only (subtle pulsing, no size changes)
     _logoController = AnimationController(
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 1500),
       vsync: this,
     );
 
-    _logoScale = Tween<double>(begin: 0.5, end: 1.0).animate(
-      CurvedAnimation(parent: _logoController, curve: Curves.elasticOut),
-    );
-
-    _logoGlow = Tween<double>(begin: 0.0, end: 1.0).animate(
+    _logoGlow = Tween<double>(begin: 0.7, end: 1.0).animate(
       CurvedAnimation(parent: _logoController, curve: Curves.easeInOut),
     );
 
-    _logoController.forward();
+    _logoController.repeat(reverse: true);
   }
 
   void _generateBlocks() {
@@ -163,63 +158,61 @@ class _SplashScreenState extends State<SplashScreen>
     return AnimatedBuilder(
       animation: _logoController,
       builder: (context, child) {
-        return Transform.scale(
-          scale: _logoScale.value,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              // Glow effect
-              Container(
-                width: 280,
-                height: 280,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.white.withOpacity(0.3 * _logoGlow.value),
-                      blurRadius: 60,
-                      spreadRadius: 20,
-                    ),
-                    BoxShadow(
-                      color: Colors.cyan.withOpacity(0.2 * _logoGlow.value),
-                      blurRadius: 80,
-                      spreadRadius: 30,
-                    ),
-                  ],
-                ),
-              ),
-              
-              // Neon circle
-              Container(
-                width: 240,
-                height: 240,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.white.withOpacity(0.5),
-                    width: 3,
+        // No Transform.scale - logo is always full size
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            // Glow effect (subtle pulsing)
+            Container(
+              width: 280,
+              height: 280,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.white.withOpacity(0.3 * _logoGlow.value),
+                    blurRadius: 60,
+                    spreadRadius: 20,
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.cyan.withOpacity(0.5 * _logoGlow.value),
-                      blurRadius: 20,
-                      spreadRadius: 5,
-                    ),
-                  ],
-                ),
-              ),
-              
-              // Logo text
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _buildLogoText('Color', Colors.white),
-                  _buildLogoText('Block', Colors.white),
-                  _buildLogoText('Jam', Colors.white),
+                  BoxShadow(
+                    color: Colors.cyan.withOpacity(0.2 * _logoGlow.value),
+                    blurRadius: 80,
+                    spreadRadius: 30,
+                  ),
                 ],
               ),
-            ],
-          ),
+            ),
+            
+            // Neon circle (fixed size)
+            Container(
+              width: 240,
+              height: 240,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.5),
+                  width: 3,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.cyan.withOpacity(0.5 * _logoGlow.value),
+                    blurRadius: 20,
+                    spreadRadius: 5,
+                  ),
+                ],
+              ),
+            ),
+            
+            // Logo text (fixed size)
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _buildLogoText('Color', Colors.white),
+                _buildLogoText('Block', Colors.white),
+                _buildLogoText('Jam', Colors.white),
+              ],
+            ),
+          ],
         );
       },
     );

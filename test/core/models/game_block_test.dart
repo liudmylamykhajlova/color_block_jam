@@ -237,7 +237,7 @@ void main() {
         expect(original.iceCount, 3);
       });
       
-      test('copy preserves removedUnits', () {
+      test('copy preserves removedUnitIndices', () {
         final original = GameBlock(
           blockType: 0,
           blockGroupType: 2, // Three block
@@ -252,7 +252,7 @@ void main() {
         
         final copy = original.copy();
         
-        expect(copy.removedUnits.length, 1);
+        expect(copy.removedUnitIndices.length, 1);
         expect(copy.cells.length, original.cells.length);
       });
     });
@@ -338,7 +338,7 @@ void main() {
         expect(block.hasRemainingCells, true);
       });
       
-      test('removedUnits tracks all removed cells', () {
+      test('removedUnitIndices tracks all removed cells', () {
         final block = GameBlock(
           blockType: 0,
           blockGroupType: 6, // Plus block (5 cells)
@@ -353,9 +353,34 @@ void main() {
         block.removeUnit(cell1);
         block.removeUnit(cell2);
         
-        expect(block.removedUnits.length, 2);
-        expect(block.removedUnits.contains(cell1), true);
-        expect(block.removedUnits.contains(cell2), true);
+        expect(block.removedUnitIndices.length, 2);
+        expect(block.removedUnitIndices.contains(0), true);
+        expect(block.removedUnitIndices.contains(1), true);
+      });
+      
+      test('removed cells persist after block movement', () {
+        final block = GameBlock(
+          blockType: 0,
+          blockGroupType: 2, // Three block (3 cells)
+          gridRow: 5,
+          gridCol: 5,
+          rotationZ: 0,
+        );
+        
+        expect(block.cells.length, 3);
+        
+        // Remove middle cell
+        final cellToRemove = block.cells[1];
+        block.removeUnit(cellToRemove);
+        expect(block.cells.length, 2);
+        
+        // Move block
+        block.gridRow = 6;
+        block.gridCol = 6;
+        
+        // Should still have only 2 cells after move
+        expect(block.cells.length, 2);
+        expect(block.removedUnitIndices.length, 1);
       });
     });
   });

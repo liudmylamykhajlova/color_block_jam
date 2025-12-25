@@ -94,8 +94,9 @@ class GameBlock {
   int iceCount;
   
   /// Список видалених юнітів (cells) з цього блоку (для Rocket бустера)
-  /// Зберігаємо відносні позиції (offset від gridRow/gridCol)
-  final List<Point> removedUnits = [];
+  /// Зберігаємо ІНДЕКСИ видалених клітинок у формі блоку (0, 1, 2, ...)
+  /// Це дозволяє правильно фільтрувати навіть після переміщення блоку
+  final List<int> removedUnitIndices = [];
   
   // Grid size for edge detection
   int gridWidth = 6;
@@ -162,15 +163,21 @@ class GameBlock {
       innerBlockType: innerBlockType,
       iceCount: iceCount,
     )..gridWidth = gridWidth..gridHeight = gridHeight..outerLayerDestroyed = outerLayerDestroyed;
-    copy.removedUnits.addAll(removedUnits);
+    copy.removedUnitIndices.addAll(removedUnitIndices);
     return copy;
   }
   
-  /// Видалити один юніт (клітинку) з блоку
-  /// Повертає true якщо успішно видалено, false якщо це остання клітинка
+  /// Видалити один юніт (клітинку) з блоку за абсолютною позицією
+  /// Повертає true якщо блок ще має клітинки, false якщо це остання
   bool removeUnit(Point absoluteCell) {
-    // Конвертуємо абсолютну позицію у відносну для зберігання
-    removedUnits.add(absoluteCell);
+    // Знаходимо індекс клітинки у базовій формі
+    final baseCells = _baseCells;
+    final index = baseCells.indexWhere((c) => c.row == absoluteCell.row && c.col == absoluteCell.col);
+    
+    if (index != -1 && !removedUnitIndices.contains(index)) {
+      removedUnitIndices.add(index);
+    }
+    
     return cells.isNotEmpty;
   }
   
@@ -272,10 +279,16 @@ class GameBlock {
   /// Get all cells occupied by this block (filtered by removed units)
   List<Point> get cells {
     final baseCells = _baseCells;
-    if (removedUnits.isEmpty) return baseCells;
+    if (removedUnitIndices.isEmpty) return baseCells;
     
-    // Filter out removed cells
-    return baseCells.where((cell) => !removedUnits.contains(cell)).toList();
+    // Filter out removed cells by index
+    final result = <Point>[];
+    for (int i = 0; i < baseCells.length; i++) {
+      if (!removedUnitIndices.contains(i)) {
+        result.add(baseCells[i]);
+      }
+    }
+    return result;
   }
 }
 

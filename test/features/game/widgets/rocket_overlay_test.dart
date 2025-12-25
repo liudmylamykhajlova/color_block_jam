@@ -10,24 +10,27 @@ void main() {
     }) {
       return MaterialApp(
         home: Scaffold(
-          body: RocketOverlay(
-            isActive: isActive,
-            onCancel: onCancel,
-            child: Container(
-              color: Colors.blue,
-              width: 300,
-              height: 300,
-            ),
+          body: Stack(
+            children: [
+              // Background content
+              Container(
+                color: Colors.blue,
+                width: 300,
+                height: 300,
+              ),
+              // Rocket overlay tooltip
+              RocketOverlay(
+                isActive: isActive,
+                onCancel: onCancel,
+              ),
+            ],
           ),
         ),
       );
     }
     
-    testWidgets('renders child when inactive', (tester) async {
+    testWidgets('does not render when inactive', (tester) async {
       await tester.pumpWidget(buildOverlay(isActive: false));
-      
-      // Child should be visible
-      expect(find.byType(Container), findsOneWidget);
       
       // Tooltip should NOT be visible
       expect(find.text('ROCKET'), findsNothing);
@@ -68,13 +71,6 @@ void main() {
       await tester.pump();
       
       expect(cancelCalled, true);
-    });
-    
-    testWidgets('child remains visible when active', (tester) async {
-      await tester.pumpWidget(buildOverlay(isActive: true));
-      
-      // Child should still be visible under overlay
-      expect(find.byType(Container), findsWidgets);
     });
     
     testWidgets('tooltip has correct styling', (tester) async {
