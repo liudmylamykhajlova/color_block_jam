@@ -411,6 +411,24 @@ Auto-cancel triggers:
 - _resetLevel()
 ```
 
+#### Special Block Handling
+```dart
+// Frozen blocks (iceCount > 0)
+if (block.isFrozen) {
+  block.iceCount--;  // Decrease ice, don't destroy
+  return;
+}
+
+// Multi-layer blocks (Hammer/Vacuum only)
+if (block.hasInnerLayer && !block.outerLayerDestroyed) {
+  block.outerLayerDestroyed = true;  // Remove outer layer only
+  return;
+}
+
+// Rocket ignores layers - destroys cell completely
+// Normal blocks - destroy as usual
+```
+
 ### 4.6 Block Movement Animation
 
 ```dart

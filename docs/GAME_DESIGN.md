@@ -402,6 +402,22 @@ All boosters are cancelled automatically when:
 
 Booster is consumed only when actually used (not on activation).
 
+### 6.5 Booster Interaction with Special Blocks
+
+#### Frozen Blocks (iceCount > 0)
+All boosters **decrease iceCount by 1** instead of destroying the block:
+- Block remains in place
+- When iceCount reaches 0, block becomes unfrozen and can be moved/destroyed
+
+#### Multi-Layer Blocks (hasInnerLayer)
+| Booster | Effect |
+|---------|--------|
+| 🚀 Rocket | Destroys cell completely (ignores layers) |
+| 🔨 Hammer | Removes outer layer only (exposes inner color) |
+| 🧹 Vacuum | Removes outer layer only (exposes inner color) |
+
+After outer layer is destroyed, block becomes a normal single-color block.
+
 ---
 
 ## 7. Monetization
