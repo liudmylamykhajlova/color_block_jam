@@ -1,7 +1,7 @@
 # Color Block Jam - Roadmap
 
-> **Версія:** 1.7.0  
-> **Дата оновлення:** 2025-12-24  
+> **Версія:** 1.8.0  
+> **Дата оновлення:** 2025-12-25  
 > **Статус:** Активна розробка
 
 ---
@@ -185,6 +185,18 @@ Total MVP Progress:     ██████████████████�
 | Test helpers | ✅ | TestHelpers class, extensions |
 | AppColors cleanup | ✅ | Centralized constants |
 | Timer memory leak fix | ✅ | Proper dispose in WinDialog |
+
+### Sprint 4.3: Level Map UI Polish (2025-12-25)
+| Завдання | Статус | Деталі |
+|----------|--------|--------|
+| Background pattern | ✅ | Puzzle/LEGO shapes (12% opacity) |
+| Connection lines | ✅ | Thick golden-brown with dark outline |
+| Level nodes | ✅ | 90x90, dark outline + golden border |
+| 3D studs | ✅ | Gradient effect with shadow |
+| Skull badge | ✅ | Black skull on golden circle, yellow eyes |
+| Lives badge | ✅ | White pill, green "+" corner, heart half-outside |
+| Coins badge | ✅ | White pill, green "+" corner, coin half-outside |
+| Bottom nav icons | ✅ | Shopping cart, 4 LEGO blocks, golden lock |
 
 ---
 

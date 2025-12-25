@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/colors.dart';
 import '../../core/models/game_models.dart';
 import '../../core/services/storage_service.dart';
 import '../../core/services/audio_service.dart';
@@ -11,7 +10,7 @@ import '../profile/profile_screen.dart';
 import 'widgets/map_hud.dart';
 import 'widgets/level_node.dart';
 
-/// Level map screen with vertical scrolling path
+/// Level map screen with vertical scrolling path (like original game)
 class LevelMapScreen extends StatefulWidget {
   const LevelMapScreen({super.key});
 
@@ -25,6 +24,7 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
   int _lives = 5;
   final int _coins = 1480;
   bool _isLoading = true;
+  int _currentLevelId = 1;
   
   late ScrollController _scrollController;
   
@@ -49,6 +49,7 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
         _completedLevels = StorageService.getCompletedLevels();
         _lives = StorageService.getLives();
         _isLoading = false;
+        _updateCurrentLevel();
       });
       
       // Scroll to current level after layout is complete
@@ -60,33 +61,28 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
     }
   }
   
+  void _updateCurrentLevel() {
+    if (_levels == null || _levels!.isEmpty) return;
+    
+    if (_completedLevels.isEmpty) {
+      _currentLevelId = 1;
+    } else {
+      final maxCompleted = _completedLevels.reduce((a, b) => a > b ? a : b);
+      _currentLevelId = (maxCompleted + 1).clamp(1, _levels!.length);
+    }
+  }
+  
   void _scrollToCurrentLevel() {
     if (_levels == null || _levels!.isEmpty) return;
     if (!_scrollController.hasClients) return;
     
-    // Find the current level to play (first unlocked but not completed)
-    int currentLevelId = 1;
-    
-    if (_completedLevels.isNotEmpty) {
-      // Get the highest completed level ID
-      final maxCompleted = _completedLevels.reduce((a, b) => a > b ? a : b);
-      // Current level is the next one (if exists), clamped to valid range
-      currentLevelId = (maxCompleted + 1).clamp(1, _levels!.length);
-    }
-    
-    // ListView has reverse: true, so:
-    // - scroll position 0 = bottom of list (level 1 visible)
-    // - scroll position max = top of list (level 27 visible)
-    // - _levels[0] = level 1, _levels[26] = level 27
-    
-    final index = _levels!.indexWhere((l) => l.id == currentLevelId);
+    final index = _levels!.indexWhere((l) => l.id == _currentLevelId);
     if (index == -1) return;
     
     // With reverse:true, to show item at index N, we scroll to index * itemHeight
-    final itemHeight = 140.0;
+    const itemHeight = 120.0;
     final targetScroll = index * itemHeight;
     
-    // Jump to position without animation for initial load
     _scrollController.jumpTo(
       targetScroll.clamp(0.0, _scrollController.position.maxScrollExtent),
     );
@@ -121,6 +117,7 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
             setState(() {
               _completedLevels = StorageService.getCompletedLevels();
               _lives = StorageService.getLives();
+              _updateCurrentLevel();
             });
           },
         ),
@@ -161,34 +158,44 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF5B7FC3), // Blue-purple top
-              Color(0xFF4A67A8), // Darker middle
-              Color(0xFF3D5A94), // Even darker bottom
+              Color(0xFF5B8DEF), // Bright blue top
+              Color(0xFF4A7DE8), // Mid blue  
+              Color(0xFF3D6DD8), // Saturated blue bottom
             ],
           ),
         ),
         child: SafeArea(
-          child: Column(
+          child: Stack(
             children: [
-              // Top HUD
-              MapHud(
-                lives: _lives,
-                coins: _coins,
-                onAvatarTap: _openProfile,
-                onLivesTap: () {},
-                onCoinsTap: _openShop,
-                onSettingsTap: _openSettings,
-              ),
-              
-              // Map content
-              Expanded(
+              // Map content (full screen behind everything)
+              Positioned.fill(
                 child: _isLoading
                     ? const Center(child: CircularProgressIndicator(color: Colors.white))
                     : _buildMap(),
               ),
               
-              // Bottom navigation
-              _buildBottomNav(),
+              // Top HUD (transparent, overlaid on map)
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: MapHud(
+                  lives: _lives,
+                  coins: _coins,
+                  onAvatarTap: _openProfile,
+                  onLivesTap: () {},
+                  onCoinsTap: _openShop,
+                  onSettingsTap: _openSettings,
+                ),
+              ),
+              
+              // Bottom navigation (centered, compact)
+              Positioned(
+                bottom: 12,
+                left: 0,
+                right: 0,
+                child: Center(child: _buildBottomNav()),
+              ),
             ],
           ),
         ),
@@ -212,26 +219,27 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
         ListView.builder(
           controller: _scrollController,
           reverse: true,
-          padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+          padding: const EdgeInsets.only(top: 80, bottom: 120), // Space for HUD top and nav bottom
           itemCount: _levels!.length,
           itemBuilder: (context, index) {
             final level = _levels![index];
             final isCompleted = _completedLevels.contains(level.id);
             final isUnlocked = level.id == 1 || _completedLevels.contains(level.id - 1);
-            final isCurrent = !isCompleted && isUnlocked;
+            final isCurrent = level.id == _currentLevelId;
             
             // Determine level type for styling
             LevelNodeType nodeType = LevelNodeType.normal;
             if (level.isHard) nodeType = LevelNodeType.hard;
-            if (level.hardness == LevelHardness.veryHard) nodeType = LevelNodeType.boss;
+            if (level.hardness == LevelHardness.veryHard) nodeType = LevelNodeType.veryHard;
             
-            return _buildLevelRow(
+            return _buildLevelItem(
               level: level,
               index: index,
               isCompleted: isCompleted,
               isUnlocked: isUnlocked,
               isCurrent: isCurrent,
               nodeType: nodeType,
+              isLast: index == _levels!.length - 1,
             );
           },
         ),
@@ -239,7 +247,7 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
         // ADS button (right side)
         Positioned(
           right: 16,
-          top: MediaQuery.of(context).size.height * 0.3,
+          top: MediaQuery.of(context).size.height * 0.25,
           child: _buildAdsButton(),
         ),
       ],
@@ -254,81 +262,80 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
     );
   }
   
-  Widget _buildLevelRow({
+  /// Connection line between levels - thick with dark outline like original
+  Widget _buildConnectionLine() {
+    return Stack(
+      children: [
+        // Dark outline (behind)
+        Container(
+          width: 14,
+          decoration: BoxDecoration(
+            color: const Color(0xFF5A3D10), // Dark brown outline
+            borderRadius: BorderRadius.circular(7),
+          ),
+        ),
+        // Inner golden line
+        Center(
+          child: Container(
+            width: 10,
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [Color(0xFFE8A030), Color(0xFFCC8020)], // Golden-brown
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+              ),
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+  
+  Widget _buildLevelItem({
     required GameLevel level,
     required int index,
     required bool isCompleted,
     required bool isUnlocked,
     required bool isCurrent,
     required LevelNodeType nodeType,
+    required bool isLast,
   }) {
-    // Alternate left/right positioning for visual interest
-    final isLeft = index % 2 == 0;
+    // Current level needs more height for square + button
+    final itemHeight = isCurrent ? 160.0 : 120.0;
+    final lineBottom = isCurrent ? 100.0 : 60.0;
     
-    return Container(
-      height: 140,
-      padding: EdgeInsets.only(
-        left: isLeft ? 40 : 100,
-        right: isLeft ? 100 : 40,
-      ),
+    return SizedBox(
+      height: itemHeight,
       child: Stack(
+        alignment: Alignment.center,
         children: [
-          // Rope line (connecting to next level)
-          if (index < (_levels?.length ?? 0) - 1)
+          // Connecting line to next level (not for last item)
+          if (!isLast)
             Positioned(
-              left: 0,
-              right: 0,
-              top: 70,
-              bottom: -70,
-              child: CustomPaint(
-                painter: _RopePainter(isLeft: isLeft),
-              ),
+              top: 0,
+              bottom: lineBottom,
+              child: _buildConnectionLine(),
             ),
           
-          // Level node
-          Center(
-            child: LevelNode(
-              levelId: level.id,
-              isCompleted: isCompleted,
-              isUnlocked: isUnlocked,
-              isCurrent: isCurrent,
-              type: nodeType,
-              onTap: isUnlocked ? () => _openLevel(level.id) : null,
-            ),
-          ),
-          
-          // Coin reward badge (between some levels)
-          if (index > 0 && index % 5 == 0)
+          // Connecting line from previous level
+          if (index > 0)
             Positioned(
-              left: isLeft ? null : 20,
-              right: isLeft ? 20 : null,
-              top: 60,
-              child: _buildCoinBadge(),
+              top: lineBottom,
+              bottom: 0,
+              child: _buildConnectionLine(),
             ),
-        ],
-      ),
-    );
-  }
-  
-  Widget _buildCoinBadge() {
-    return Container(
-      width: 32,
-      height: 32,
-      decoration: BoxDecoration(
-        color: AppColors.gold,
-        shape: BoxShape.circle,
-        border: Border.all(color: Colors.orange.shade700, width: 2),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.gold.withOpacity(0.5),
-            blurRadius: 8,
+          
+          // Level node (current level is automatically a wide button)
+          LevelNode(
+            levelId: level.id,
+            isCompleted: isCompleted,
+            isUnlocked: isUnlocked,
+            isCurrent: isCurrent,
+            type: nodeType,
+            onTap: isUnlocked ? () => _openLevel(level.id) : null,
           ),
         ],
-      ),
-      child: const Icon(
-        Icons.attach_money,
-        color: Colors.white,
-        size: 18,
       ),
     );
   }
@@ -342,16 +349,17 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
         );
       },
       child: Container(
-        width: 50,
-        height: 50,
+        width: 56,
+        height: 56,
         decoration: BoxDecoration(
-          color: Colors.red.withOpacity(0.9),
+          color: Colors.red.shade600,
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white, width: 2),
+          border: Border.all(color: Colors.white, width: 3),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withOpacity(0.4),
               blurRadius: 8,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
@@ -362,7 +370,7 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
               'ADS',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 10,
+                fontSize: 11,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -370,9 +378,12 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
             Transform.rotate(
               angle: 0.5,
               child: Container(
-                width: 40,
-                height: 3,
-                color: Colors.white,
+                width: 44,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
             ),
           ],
@@ -383,26 +394,39 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
   
   Widget _buildBottomNav() {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.2),
+        color: const Color(0xFF4A7AC7),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          _BottomNavItem(
-            icon: Icons.card_giftcard,
-            label: 'Shop',
+          // Shop - Treasure chest with coins
+          _buildNavItemCustom(
+            child: _buildTreasureChestIcon(),
+            label: '',
             onTap: _openShop,
           ),
-          _BottomNavItem(
-            icon: Icons.view_in_ar,
+          const SizedBox(width: 4),
+          // Home - LEGO blocks
+          _buildNavItemCustom(
+            child: _buildLegoBlocksIcon(),
             label: 'Home',
             isSelected: true,
             onTap: () {},
           ),
-          _BottomNavItem(
-            icon: Icons.lock,
+          const SizedBox(width: 4),
+          // Lvl 50 - Locked LEGO block
+          _buildNavItemCustom(
+            child: _buildLockedBlockIcon(),
             label: 'Lvl 50',
             isLocked: true,
             onTap: () {},
@@ -411,153 +435,297 @@ class _LevelMapScreenState extends State<LevelMapScreen> {
       ),
     );
   }
-}
-
-class _BottomNavItem extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final bool isSelected;
-  final bool isLocked;
-  final VoidCallback? onTap;
   
-  const _BottomNavItem({
-    required this.icon,
-    required this.label,
-    this.isSelected = false,
-    this.isLocked = false,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildNavItemCustom({
+    required Widget child,
+    required String label,
+    bool isSelected = false,
+    bool isLocked = false,
+    VoidCallback? onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-        decoration: BoxDecoration(
-          color: isSelected 
-              ? Colors.white.withOpacity(0.2)
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
-        ),
+        width: 70,
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+        decoration: isSelected 
+            ? BoxDecoration(
+                color: const Color(0xFF6BA8E8),
+                borderRadius: BorderRadius.circular(14),
+              )
+            : null,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Stack(
-              children: [
-                Icon(
-                  icon,
-                  color: isLocked 
-                      ? Colors.white.withOpacity(0.5)
-                      : Colors.white,
-                  size: 28,
+            SizedBox(
+              height: 48,
+              child: child,
+            ),
+            if (label.isNotEmpty) ...[
+              const SizedBox(height: 2),
+              Text(
+                label,
+                style: TextStyle(
+                  color: Colors.white.withOpacity(isLocked ? 0.7 : 1.0),
+                  fontSize: 11,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                 ),
-                if (isLocked)
-                  Positioned(
-                    right: -2,
-                    top: -2,
-                    child: Container(
-                      width: 14,
-                      height: 14,
-                      decoration: const BoxDecoration(
-                        color: Colors.amber,
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.lock,
-                        color: Colors.white,
-                        size: 10,
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: TextStyle(
-                color: isLocked 
-                    ? Colors.white.withOpacity(0.5)
-                    : Colors.white,
-                fontSize: 12,
-                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),
-            ),
+            ],
           ],
         ),
       ),
     );
   }
-}
+  
+  /// Shop icon - shopping cart with coin badge
+  Widget _buildTreasureChestIcon() {
+    return SizedBox(
+      width: 48,
+      height: 48,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          // Shopping cart icon
+          const Icon(
+            Icons.shopping_cart_rounded,
+            color: Colors.white,
+            size: 32,
+          ),
+          // Small gold coin badge
+          Positioned(
+            right: 2,
+            top: 4,
+            child: Container(
+              width: 18,
+              height: 18,
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFFFFD54F), Color(0xFFFFC107)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                shape: BoxShape.circle,
+                border: Border.all(color: const Color(0xFFE65100), width: 2),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 2,
+                  ),
+                ],
+              ),
+              child: const Center(
+                child: Text(
+                  '\$',
+                  style: TextStyle(
+                    color: Color(0xFFE65100),
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  
+  /// LEGO blocks icon for Home - 4 colorful blocks like original
+  Widget _buildLegoBlocksIcon() {
+    return SizedBox(
+      width: 52,
+      height: 52,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          // Yellow block (back left)
+          Positioned(
+            left: 2,
+            top: 8,
+            child: _buildMiniLegoBlock(const Color(0xFFFFEB3B), 20),
+          ),
+          // Blue block (back right)  
+          Positioned(
+            right: 4,
+            top: 4,
+            child: _buildMiniLegoBlock(const Color(0xFF2196F3), 22),
+          ),
+          // Green block (middle)
+          Positioned(
+            left: 14,
+            bottom: 8,
+            child: _buildMiniLegoBlock(const Color(0xFF4CAF50), 24),
+          ),
+          // Pink/Magenta block (front right)
+          Positioned(
+            right: 2,
+            bottom: 0,
+            child: _buildMiniLegoBlock(const Color(0xFFE91E63), 26),
+          ),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildMiniLegoBlock(Color color, double size) {
+    return Container(
+      width: size,
+      height: size * 0.85,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(
+          color: Color.lerp(color, Colors.black, 0.2)!,
+          width: 2,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            blurRadius: 3,
+            offset: const Offset(1, 2),
+          ),
+        ],
+      ),
+      child: Stack(
+        children: [
+          // Studs on top
+          Positioned(
+            top: 2,
+            left: size * 0.15,
+            child: _buildStud(color, size * 0.25),
+          ),
+          Positioned(
+            top: 2,
+            right: size * 0.15,
+            child: _buildStud(color, size * 0.25),
+          ),
+          // Highlight
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: size * 0.2,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(3)),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.white.withOpacity(0.4),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildStud(Color baseColor, double size) {
+    return Container(
+      width: size,
+      height: size * 0.6,
+      decoration: BoxDecoration(
+        color: baseColor,
+        borderRadius: BorderRadius.circular(size / 2),
+        border: Border.all(
+          color: Color.lerp(baseColor, Colors.black, 0.15)!,
+          width: 1,
+        ),
+      ),
+    );
+  }
+  
+  /// Just golden lock icon for Lvl 50 (like original - only lock + text)
+  Widget _buildLockedBlockIcon() {
+    return Container(
+      width: 36,
+      height: 36,
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFFFFD54F), Color(0xFFFFC107)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+        shape: BoxShape.circle,
+        border: Border.all(color: const Color(0xFFE65100), width: 2),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: const Icon(
+        Icons.lock,
+        color: Colors.white,
+        size: 20,
+      ),
+    );
+  }
+  
+  }
 
-/// Background pattern painter
+/// Background pattern painter - puzzle/LEGO shapes like original
 class _BackgroundPatternPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.white.withOpacity(0.05)
+      ..color = Colors.white.withOpacity(0.12)
       ..style = PaintingStyle.fill;
     
-    // Draw subtle LEGO block shapes in background
-    final blockSize = 60.0;
-    for (double y = 0; y < size.height; y += blockSize * 2) {
-      for (double x = 0; x < size.width; x += blockSize * 2) {
-        final rect = RRect.fromRectAndRadius(
-          Rect.fromLTWH(x, y, blockSize, blockSize * 0.6),
-          const Radius.circular(4),
-        );
-        canvas.drawRRect(rect, paint);
+    // Puzzle/LEGO block shapes with step cutouts
+    const blockWidth = 100.0;
+    const blockHeight = 80.0;
+    const stepSize = 20.0;
+    const spacing = 80.0;
+    
+    for (double y = -blockHeight; y < size.height + blockHeight * 2; y += blockHeight + spacing) {
+      // Offset every other row
+      final rowIndex = ((y + blockHeight) / (blockHeight + spacing)).floor();
+      final rowOffset = (rowIndex % 2 == 0) ? 0.0 : blockWidth * 0.7;
+      
+      for (double x = -blockWidth + rowOffset; x < size.width + blockWidth; x += blockWidth + spacing) {
+        _drawPuzzleBlock(canvas, paint, x, y, blockWidth, blockHeight, stepSize);
       }
     }
   }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
-
-/// Rope line painter connecting levels
-class _RopePainter extends CustomPainter {
-  final bool isLeft;
   
-  _RopePainter({required this.isLeft});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = const Color(0xFF8B4513) // Brown rope color
-      ..strokeWidth = 4
-      ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.round;
-    
+  void _drawPuzzleBlock(Canvas canvas, Paint paint, double x, double y, double w, double h, double step) {
+    // Create puzzle shape path with step cutouts (like LEGO/tetris)
     final path = Path();
     
-    // Draw curved line connecting levels
-    final startX = size.width / 2;
-    final startY = 0.0;
-    final endX = size.width / 2;
-    final endY = size.height;
+    // Start from top-left
+    path.moveTo(x, y + step);
     
-    path.moveTo(startX, startY);
-    path.lineTo(endX, endY);
+    // Top edge with step going up
+    path.lineTo(x + w * 0.3, y + step);
+    path.lineTo(x + w * 0.3, y);
+    path.lineTo(x + w * 0.6, y);
+    path.lineTo(x + w * 0.6, y + step);
+    path.lineTo(x + w, y + step);
+    
+    // Right edge
+    path.lineTo(x + w, y + h - step);
+    
+    // Bottom edge with step going down
+    path.lineTo(x + w * 0.7, y + h - step);
+    path.lineTo(x + w * 0.7, y + h);
+    path.lineTo(x + w * 0.4, y + h);
+    path.lineTo(x + w * 0.4, y + h - step);
+    path.lineTo(x, y + h - step);
+    
+    // Close path
+    path.close();
     
     canvas.drawPath(path, paint);
-    
-    // Draw rope texture
-    final texturePaint = Paint()
-      ..color = const Color(0xFFA0522D)
-      ..strokeWidth = 2
-      ..style = PaintingStyle.stroke;
-    
-    for (double y = 0; y < size.height; y += 10) {
-      canvas.drawLine(
-        Offset(startX - 2, y),
-        Offset(startX + 2, y + 5),
-        texturePaint,
-      );
-    }
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
-

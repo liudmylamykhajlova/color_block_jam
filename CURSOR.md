@@ -409,4 +409,4 @@ python res/ColorBlockJam_Analysis/tools/export_game_levels.py
 
 ---
 
-*Останнє оновлення: 2025-12-24*
+*Останнє оновлення: 2025-12-25*

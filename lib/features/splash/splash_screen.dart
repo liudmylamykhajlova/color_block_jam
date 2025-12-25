@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import '../../core/constants/colors.dart';
 import '../../core/models/game_models.dart';
-import '../menu/menu_screen.dart';
+import '../level_map/level_map_screen.dart';
 
 /// Splash screen with animated LEGO blocks and loading progress
 class SplashScreen extends StatefulWidget {
@@ -82,7 +82,7 @@ class _SplashScreenState extends State<SplashScreen>
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
-          pageBuilder: (_, __, ___) => const MenuScreen(),
+          pageBuilder: (_, __, ___) => const LevelMapScreen(),
           transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (_, animation, __, child) {
             return FadeTransition(opacity: animation, child: child);

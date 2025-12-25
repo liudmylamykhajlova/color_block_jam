@@ -1,7 +1,7 @@
 # Color Block Jam - Game Design Document
 
-> **Version:** 3.2.0  
-> **Date:** 2025-12-24  
+> **Version:** 3.3.0  
+> **Date:** 2025-12-25  
 > **Based on:** Original game screenshots (10 screens analyzed)
 
 ---
@@ -119,24 +119,30 @@ Move ALL blocks out of the board through doors of matching color.
 
 ### 4.2 Level Map Screen
 
+**Background:**
+- Blue gradient (`#5B8DEF` → `#4A7DE8` → `#3D6DD8`)
+- Puzzle/LEGO pattern shapes (12% opacity white)
+
 **Top HUD:**
 | Element | Position | Description |
 |---------|----------|-------------|
-| Avatar | Top-left | Clickable profile picture in blue frame |
-| Lives | Left of center | Green "+" button + "Full" text + red heart "5" |
-| Coins | Right of center | Green "+" button + "1.48k" + coin icon |
-| Settings | Top-right | Yellow gear icon |
+| Avatar | Top-left | Clickable profile picture in cyan frame (52x52) |
+| Lives | Left of center | White pill badge with: green "+" (bottom-left corner), "Full" text (dark), red heart with white "5" (right, half outside) |
+| Coins | Right of center | White pill badge with: green "+" (bottom-left corner), "1.48k" text (dark), gold coin (right, half outside) |
+| Settings | Top-right | Yellow/orange gear icon |
 
 **Map Content:**
 - Vertical scrollable path
-- Dark rope/line connecting level nodes
-- Level node states:
-  - **Green** = Available/Current (rounded square)
-  - **Red + Skull badge** = Hard level
-  - **Purple + Skull badge** = Boss/Special level
-  - **Gold lock icon** = Locked level
-- Gold coin badge between some levels (rewards)
-- Current level has "Level N" green label below
+- Golden-brown connecting line (14px) with dark outline
+- Level node states (90x90 with dark outline + golden inner border):
+  - **Bright green** = Available/Current (`#5ED85E`)
+  - **Red + Skull badge** = Hard level (`#E85A6A`)
+  - **Purple + Skull badge** = Boss/Special level (`#9B78BE`)
+  - **Gray-green + Lock icon** = Locked level (`#8A9B8A`)
+- 4 LEGO studs on each node (3D effect with gradient)
+- Skull badge: black skull on golden circle with yellow eyes/nose
+- Lock badge: white lock on orange circle (bottom-right)
+- Current level has "Level N" green button below
 
 **Right Side:**
 - "ADS" button (red crossed circle) - opens Remove Ads
@@ -144,9 +150,9 @@ Move ALL blocks out of the board through doors of matching color.
 **Bottom Navigation Bar:**
 | Slot | Icon | Label |
 |------|------|-------|
-| 1 | Chest with coins | "Shop" |
-| 2 | 3D LEGO blocks | "Home" |
-| 3 | Lock icon | "Lvl 50" |
+| 1 | Shopping cart 🛒 + coin badge | (no label) |
+| 2 | 4 colorful LEGO blocks | "Home" |
+| 3 | Golden lock circle | "Lvl 50" |
 
 ### 4.3 Level Start Dialog
 - "LEVEL N" title in blue banner
@@ -516,6 +522,7 @@ After outer layer is destroyed, block becomes a normal single-color block.
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 3.3.0 | 2025-12-25 | Level Map UI polish: puzzle background pattern, golden connection lines with dark outline, 90x90 level nodes with 3D studs and dark border, realistic skull badge, simplified bottom nav icons, white pill badges for Lives/Coins with green "+" corners |
 | 3.2.0 | 2025-12-24 | Updated implementation status: Phase 1-4 complete |
 | 3.1.0 | 2025-12-24 | Updated from 10 new screenshots: detailed HUD specs, Level Map elements, Settings icons, Shop views, Remove Ads bullets, Milestone system |
 | 3.0.0 | 2025-12-23 | Complete rewrite based on screenshots only |
