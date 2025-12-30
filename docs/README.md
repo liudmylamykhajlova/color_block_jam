@@ -11,6 +11,7 @@
 | [🎮 GAME_DESIGN.md](./GAME_DESIGN.md) | Game Design Document - gameplay, mechanics, economy, monetization | v3.3.0 |
 | [🎨 UI_UX_DESIGN.md](./UI_UX_DESIGN.md) | UI/UX Design - all screens, components, animations, style guide | v2.1.0 |
 | [🔧 TECHNICAL_SPEC.md](./TECHNICAL_SPEC.md) | Technical Specification - architecture, models, algorithms, services | v2.1.0 |
+| [🎯 LEVEL_DESIGN.md](./LEVEL_DESIGN.md) | Level Design - балансування, типи рівнів, крива складності, workflow | v1.0.0 |
 | [🔍 GAME_ANALYSIS.md](./GAME_ANALYSIS.md) | Original Game Analysis - App Store data, XAPK reverse-engineering, binary offsets | v1.0.0 |
 | [🗺️ ROADMAP.md](./ROADMAP.md) | Development Roadmap - phases, milestones, timeline | v1.8.0 |
 
@@ -53,6 +54,19 @@ Contains:
 - Services (Storage, Audio)
 - Performance requirements
 - Testing checklist
+
+### 🎯 LEVEL_DESIGN.md
+**Purpose:** How to create and balance levels
+
+Contains:
+- Типи рівнів (Tutorial, Relief, Normal, Hard, Very Hard)
+- Параметри налаштування (grid, duration, blocks, doors)
+- Параметри статистики (FAIL_RATE, CV, FUUU-Factor)
+- Крива складності (хвилеподібна модель Wooga)
+- Workflow створення рівнів
+- Структура файлу рівня
+- Механіки (Directional, Frozen, Multi-layer)
+- Інструменти (Level Editor, Brute-Force)
 
 ### 🔍 GAME_ANALYSIS.md
 **Purpose:** Reference from original game
@@ -149,4 +163,4 @@ color_block_jam/
 
 ---
 
-*Last sync: 2025-12-25 (Phase 1-4 Complete, Level Map UI polished)*
+*Last sync: 2025-12-30 (Added LEVEL_DESIGN.md)*
