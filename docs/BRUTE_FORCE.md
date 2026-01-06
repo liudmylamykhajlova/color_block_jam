@@ -1,7 +1,7 @@
-# Color Block Jam - Програма Brute-Force v1.1.0
+# Color Block Jam - Програма Brute-Force v1.1.1
 
-> **Version:** 1.1.0  
-> **Date:** 2025-01-06  
+> **Version:** 1.1.1  
+> **Date:** 2025-01-07  
 > **Author:** Level Design Team
 
 ---
@@ -9,22 +9,22 @@
 ## Зміст
 
 1. [Огляд](#огляд)
-2. [Відмінності від Match3](#відмінності-від-match3)
-3. [Архітектура](#архітектура)
-4. [Головне Вікно](#головне-вікно)
-5. [Алгоритм](#алгоритм)
-6. [Статистика](#статистика)
-7. [Візуалізатор](#візуалізатор)
-8. [Формат Виводу](#формат-виводу)
-9. [Налаштування](#налаштування)
-10. [Відомі Проблеми](#відомі-проблеми)
+2. [Архітектура](#архітектура)
+3. [Головне Вікно](#головне-вікно)
+4. [Алгоритм](#алгоритм)
+5. [Статистика](#статистика)
+6. [Візуалізатор](#візуалізатор)
+7. [Експорт](#експорт)
+8. [Налаштування](#налаштування)
+9. [Відомі Проблеми](#відомі-проблеми)
+10. [TODO](#todo)
 11. [Changelog](#changelog)
 
 ---
 
 ## Огляд
 
-Brute-Force представляє собою окреме веб-додаток для автоматичного аналізу рівнів Color Block Jam. Програма перевіряє вирішуваність рівнів та знаходить оптимальне рішення (мінімальну кількість ходів).
+Brute-Force — це веб-додаток для автоматичного аналізу рівнів Color Block Jam. Програма перевіряє вирішуваність рівнів та знаходить оптимальне рішення (мінімальну кількість ходів).
 
 **ВАЖЛИВО.** Програму Brute-Force необхідно підтримувати синхронізованою з ігровим движком (`game_models.dart`). Якщо в грі змінюється логіка руху блоків, виходу через двері, або роботи льоду — це впливає на результати аналізу.
 
@@ -35,60 +35,11 @@ Brute-Force представляє собою окреме веб-додаток
 3. **Складність** — оцінка складності через кількість станів
 4. **Level Design** — допомога в балансуванні рівнів
 
----
+### Файл
 
-## Відмінності від Match3
-
-### Ключові Концептуальні Відмінності
-
-| Аспект | Match3 | Color Block Jam |
-|--------|--------|-----------------|
-| **Тип гри** | Стохастична (рандом) | Детермінована |
-| **Механіка** | Каскади, Shuffle | Sliding blocks |
-| **Спец. елементи** | Рибки, Бомби | Двері, Лід, Шари |
-| **Random Seed** | Так (ленти) | Ні |
-| **Обмеження** | Кількість ходів | Час на рівень |
-| **Перемога** | Score / Ціль | Вихід всіх блоків |
-| **Кількість спроб** | Багато (емуляції) | 1 спроба = результат |
-
-### Що НЕ ЗАСТОСОВУЄТЬСЯ (через детермінованість)
-
-Наступні метрики Match3 **НЕ потрібні** для Color Block Jam:
-
-| Метрика | Причина незастосовності |
-|---------|-------------------------|
-| **Lose Rate** | Немає рандому, 1 спроба = результат |
-| **FUUU-Factor** | Немає варіації "майже пройшов" |
-| **Scores (Min/Max/Avg/Median)** | Немає системи очків |
-| **Coefficient of Variation (CV)** | Немає варіації результатів |
-| **Possible/Activated Events** | Немає спец. елементів |
-| **Cascades** | Немає каскадів |
-| **Shuffle / Shuffle_error** | Немає перемішування |
-| **Emulations table** | 1 спроба |
-| **Retries table** | 1 спроба |
-| **Percentiles** | Немає розподілу |
-
-### Що ЗАЛИШАЄТЬСЯ Актуальним
-
-| Метрика | Адаптація для CBJ |
-|---------|-------------------|
-| **Solvable** | Так/Ні (бінарно) |
-| **Min Moves** | Мінімальна кількість ходів |
-| **States Explored** | Складність пошуку |
-| **Search Time** | Час аналізу |
-| **Alerts** | Для states/time |
-
-### Єдиний Файл
-
-| Компонент | Файл | Опис |
-|-----------|------|------|
-| **Brute-Force App** | `res/ColorBlockJam_Analysis/brute_force_visualizer.html` | Веб-додаток (все в одному) |
-
-**Переваги єдиного файлу:**
-- ✅ Один source of truth - немає ризику розсинхронізації
-- ✅ Не потрібен Python/Dart/Flutter SDK
-- ✅ Працює в будь-якому браузері
-- ✅ Легко підтримувати та оновлювати
+| Компонент | Файл |
+|-----------|------|
+| **Brute-Force App** | `res/ColorBlockJam_Analysis/brute_force_visualizer.html` |
 
 ---
 
@@ -172,48 +123,208 @@ python -m http.server 8080
 http://localhost:8080/res/ColorBlockJam_Analysis/brute_force_visualizer.html
 ```
 
-### Елементи Інтерфейсу (відповідність Match3)
+### Елементи Інтерфейсу
 
-| # | Match3 | CBJ Аналог | Статус |
-|---|--------|------------|--------|
-| 1 | Версія програми вверху | v1.1.0 в header | ✅ |
-| 2 | Load Level (DEV/PROD) | Source selector | ✅ |
-| 3 | Status bar з Last edit | Status bar з часом | ✅ |
-| 4 | Use Game Engine | N/A (детерміновано) | ⚠️ |
-| 5 | Reload Level | 🔄 Reload кнопка | ✅ |
-| 6 | Variant selector | N/A | ❌ |
-| 7 | Play in Normal Mode | N/A (TODO) | ❌ |
-| 8 | Max retries | N/A (детерміновано) | ⚠️ |
-| 9 | Stop | Pause кнопка | ✅ |
-| 10 | Info-панель | Info Log | ✅ |
-| 11 | View Brute-Force Stat | 📊 View Stats кнопка | ✅ |
-| 12 | View Retry by ID | Solution Steps (клік) | ✅ |
-| 13 | Save stat to file | Export (JSON/MD/HTML) | ✅ |
-| 14 | Settings | ⚙️ Settings panel | ✅ |
+| # | Елемент | Опис |
+|---|---------|------|
+| 1 | **Версія** | v1.1.1 в header + посилання "Docs & Changelog" |
+| 2 | **Source Selector** | Вибір джерела: DEV (локальні) / PROD (assets) |
+| 3 | **Status Bar** | Статус завантаження рівнів |
+| 4 | **Level List** | Список всіх рівнів з індикацією статусу |
+| 5 | **Reload** | Перезавантаження рівнів з обраного джерела |
+| 6 | **Canvas** | Візуалізація рівня та рішення |
+| 7 | **Solve Level** | Запуск аналізу поточного рівня |
+| 8 | **Analyze All** | Batch аналіз всіх рівнів |
+| 9 | **Playback Controls** | Play/Pause/Step/Reset для рішення |
+| 10 | **Info Log** | Журнал операцій (останні 10 записів) |
+| 11 | **View Stats** | Popup з детальною статистикою |
+| 12 | **Export** | Збереження результатів (JSON/MD/HTML) |
+| 13 | **Settings** | Налаштування параметрів аналізу |
+
+---
 
 ### Детальний Опис Елементів
 
-| Елемент | Опис | Повідомлення |
-|---------|------|--------------|
-| **Source Selector** | DEV (локальні) / PROD (assets) | - |
-| **Status Bar** | Статус завантаження | `DEV: 27 levels loaded (45ms)` |
-| **Status Bar Error** | Помилка завантаження | `ERROR: HTTP 404` |
-| **Solve Level** | Аналіз поточного рівня | Кнопка стає "Solving..." |
-| **Analyze All** | Batch аналіз всіх рівнів | Progress bar + результати |
-| **View Stats** | Відкриває popup зі статистикою | Нове вікно |
-| **Export** | JSON / Markdown / HTML | Скачує файл |
-| **Settings** | maxStates, Warning thresholds | Collapsible panel |
-| **Info Log** | Історія операцій | Останні 10 записів |
+#### 1. Версія та Changelog
+
+- Версія відображається в header: `v1.1.1`
+- Посилання "📋 Docs & Changelog" веде на цю документацію
+- Changelog знаходиться в кінці документа
+
+---
+
+#### 2. Source Selector
+
+Вибір джерела рівнів:
+
+| Джерело | Шлях | Опис |
+|---------|------|------|
+| **DEV** | `assets/levels/levels_27.json` | Локальні рівні для розробки |
+| **PROD** | `level_data/parsed_levels_complete.json` | Рівні з production |
+
+```
+Source: [DEV▼]  [🔄 Reload]
+```
+
+---
+
+#### 3. Status Bar
+
+Показує статус завантаження рівнів:
+
+| Статус | Вигляд | Опис |
+|--------|--------|------|
+| Завантаження | `⏳ Loading levels...` | Жовтий фон |
+| Успіх | `✅ DEV: 27 levels loaded (45ms)` | Зелений фон |
+| Помилка | `❌ ERROR: HTTP 404` | Червоний фон |
+
+---
+
+#### 4. Level List
+
+Список рівнів з індикацією:
+
+| Індикація | Опис |
+|-----------|------|
+| 🟢 Зелена рамка | Вирішуваний рівень |
+| 🟡 Жовта рамка | Warning (багато станів) |
+| 🔴 Червона рамка | Невирішуваний або помилка |
+| Синій фон | Поточний вибраний рівень |
+
+---
+
+#### 5-8. Кнопки Управління
+
+| Кнопка | Опис |
+|--------|------|
+| `🔄 Reload` | Перезавантажує рівні з поточного джерела |
+| `Solve Level` | Аналізує поточний рівень |
+| `Analyze All` | Аналізує всі рівні послідовно |
+| `◀ Prev` / `Next ▶` | Покроковий перегляд рішення |
+| `▶ Play` / `⏸ Pause` | Автоматичне відтворення |
+| `Reset` | Повернення до початкового стану |
+
+---
+
+#### 9. Solution Steps
+
+Після аналізу показує кроки рішення:
+
+```
+┌─ Solution Steps ─────────────────────┐
+│ ┌──┐                                 │
+│ │ 1│ Block 3 → DOWN      ← клікабельний
+│ └──┘                                 │
+│ ┌──┐                                 │
+│ │ 2│ Block 1 → LEFT      ← активний
+│ └──┘                                 │
+│ ┌──┐                                 │
+│ │ 3│ Block 5 → UP                    │
+│ └──┘                                 │
+└──────────────────────────────────────┘
+```
+
+**Як користуватися:**
+1. Клік на крок — перехід до цього стану
+2. `◀ Prev` / `Next ▶` — покроковий перегляд
+3. `▶ Play` — автоматичне відтворення
+4. `Reset` — повернення на початок
+
+---
+
+#### 10. Info Log
+
+Журнал операцій з timestamp:
+
+```
+┌─────────────────────────────────────────────────┐
+│ [12:30:15] ✅ Loaded 27 levels from DEV         │
+│ [12:30:20] 🔍 Analyzing Level 15...             │
+│ [12:30:21] ✅ Level 15: Solvable in 8 moves     │
+│ [12:30:25] 📊 Batch complete: 25/27 in 45.2s    │
+└─────────────────────────────────────────────────┘
+```
+
+- Зберігає останні 10 записів
+- Автоматично оновлюється при операціях
+
+---
+
+#### 11. View Stats (📊)
+
+Відкриває popup з детальною статистикою:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│          📊 Brute-Force Statistics                      │
+│  Generated: 2025-01-06 12:00 | Source: DEV              │
+├─────────────────────────────────────────────────────────┤
+│   27          25            2           6.5             │
+│  Total     Solvable    Unsolvable   Avg Moves           │
+├─────────────────────────────────────────────────────────┤
+│  1,234       45ms        92.6%       50,000             │
+│ Avg States  Avg Time   Success Rate  Max States         │
+├─────────────────────────────────────────────────────────┤
+│ Level │ Status │ Moves │ States  │ Time                 │
+│ 1     │ ✅ OK  │ 4     │ 22      │ 5ms                  │
+│ 2     │ ✅ OK  │ 4     │ 48      │ 13ms                 │
+│ ...                                                     │
+└─────────────────────────────────────────────────────────┘
+```
+
+- Активна тільки після аналізу
+- Відкривається в новому вікні
+
+---
+
+#### 12. Export
+
+Збереження результатів аналізу:
+
+| Кнопка | Формат | Опис |
+|--------|--------|------|
+| `📄 JSON` | `.json` | Структуровані дані для обробки |
+| `📝 MD` | `.md` | Markdown таблиця для документації |
+| `🌐 HTML` | `.html` | Стилізована веб-сторінка |
+
+---
+
+#### 13. Settings
+
+```
+┌─ ⚙️ Settings ────────────────────────────────┐
+│                                              │
+│  Max States:        [_______50000_______]    │
+│  Warning States:    [_______30000_______]    │
+│  Warning Time (ms): [_______30000_______]    │
+│                                              │
+└──────────────────────────────────────────────┘
+```
+
+| Параметр | Default | Опис |
+|----------|---------|------|
+| Max States | 50,000 | Ліміт станів для BFS |
+| Warning States | 30,000 | Поріг для жовтого alert |
+| Warning Time | 30,000ms | Поріг часу для жовтого alert |
+
+---
 
 ### Стани Кнопок
 
-*Під час аналізу:*
-- Solve Level: disabled, текст "Solving..."
-- Інші кнопки: активні
+**Під час аналізу:**
+| Кнопка | Стан |
+|--------|------|
+| Solve Level | disabled, текст "Solving..." |
+| Analyze All | disabled, текст "Analyzing..." + progress bar |
+| View Stats | disabled |
+| Export кнопки | disabled |
 
-*Після аналізу:*
-- View Stats: enabled
-- Export кнопки: enabled
+**Після аналізу:**
+| Кнопка | Стан |
+|--------|------|
+| View Stats | ✅ enabled |
+| Export JSON/MD/HTML | ✅ enabled |
+| Solve Level | ✅ enabled |
 
 ---
 
@@ -232,10 +343,12 @@ function solve(level, maxStates = 50000) {
     while (queue.length > 0 && statesExplored < maxStates) {
         const {state, path} = queue.shift();
         
+        // Перевірка перемоги
         if (state.exitedBlocks.size === state.blocks.length) {
             return { isSolvable: true, minMoves: path.length, solution: path };
         }
         
+        // Генерація можливих ходів
         for (const move of getPossibleMoves(state)) {
             const newState = applyMove(state, move);
             const key = stateKey(newState);
@@ -272,7 +385,7 @@ function applyMove(state, move) {
     while (true) {
         if (willExitThroughDoor) {
             if (block.innerBlockType >= 0 && !block.outerLayerDestroyed) {
-                block.outerLayerDestroyed = true;
+                block.outerLayerDestroyed = true;  // Знищити зовнішній шар
             } else {
                 newState.exitedBlocks.add(move.blockIndex);
                 updateIceCounts(newState);  // Зменшити лічильники льоду
@@ -300,7 +413,7 @@ function applyMove(state, move) {
 ### Логіка Шарів
 
 Блок з `innerBlockType >= 0`:
-1. Перший вихід — знищує зовнішній шар (`outer_layer_destroyed = True`)
+1. Перший вихід — знищує зовнішній шар (`outer_layer_destroyed = true`)
 2. `active_block_type` змінюється на `innerBlockType`
 3. Другий вихід — блок виходить повністю
 
@@ -308,64 +421,51 @@ function applyMove(state, move) {
 
 ## Статистика
 
-### View Stat (Порівняння з Match3)
+### Level Info Panel
 
-**Match3 View Stat має секції:**
-1. Параметри рівня
-2. Параметри емуляції
-3. Lose Rate (з графіком)
-4. % виконання рівня
-5. FUUU-Factor
-6. Scores
-7. Moves
-8. Possible Events / Activated Events
-9. Cascades
-10. Shuffle / Shuffle_error
-11. Таблиця Емуляцій
-12. Таблиця Попиток
-
-**CBJ View Stat має секції:**
-1. ✅ Параметри рівня (адаптовано)
-2. ✅ Результати аналізу
-3. ✅ Summary статистика
-
-### Параметри Рівня (Level Info)
-
-| Match3 Параметр | CBJ Аналог | Значення |
-|-----------------|------------|----------|
-| Номер рівня (1.3.15) | Level ID | 15 |
-| Кількість полів | N/A | 1 (завжди) |
-| Ціль рівня | Goal | "Вивести всі блоки" |
-| "So close" подія | N/A | Немає |
-| Кількість ходів | N/A (Duration) | 120s |
-| Кількість кольорів | Colors | 4 |
-| Random Seed | N/A | Детерміновано |
-| Plan Score 1/2/3 | N/A | Немає Score |
-
-**Додаткові CBJ параметри:**
+```
+┌─ Level Info ─────────────────────────────────┐
+│  Grid Size    │  Blocks   │  Doors  │ Colors │
+│     6×8       │     8     │    4    │   4    │
+├──────────────────────────────────────────────┤
+│  Special Blocks:                             │
+│  ⏱️ 120s | 📊 Normal | ❄️ 2 | 🔲 1 | ↔️ 3   │
+└──────────────────────────────────────────────┘
+```
 
 | Параметр | Опис | Приклад |
 |----------|------|---------|
+| Level ID | Номер рівня | 15 |
 | Grid Size | Розмір поля | 6×8 |
-| Duration | Час на рівень | 120s |
-| Hardness | Складність (0/1/2) | 1 (Hard) |
 | Blocks | Кількість блоків | 8 |
 | Doors | Кількість дверей | 4 |
-| Frozen | Заморожені блоки | ❄️ 2 frozen |
-| Multi-layer | Двошарові блоки | 🔲 1 multi-layer |
-| H-only | Тільки горизонтальні | ↔️ 3 H-only |
-| V-only | Тільки вертикальні | ↕️ 2 V-only |
+| Colors | Унікальних кольорів | 4 |
+| Duration ⏱️ | Час на рівень | 120s |
+| Hardness 📊 | Складність | Easy/Normal/Hard |
+| Frozen ❄️ | Заморожені блоки | 2 |
+| Multi-layer 🔲 | Двошарові блоки | 1 |
+| H-only ↔️ | Горизонтальний рух | 3 |
+| V-only ↕️ | Вертикальний рух | 2 |
 
-### Результати Brute-Force
+### Analysis Panel
 
-| Показник | Опис | Норма | Alert |
-|----------|------|-------|-------|
-| **Status** | Чи вирішуваний | SOLVABLE / UNSOLVABLE | 🔴 якщо FAIL |
-| **Min Moves** | Мінімальна кількість ходів | 4-15 | - |
-| **States Explored** | Кількість перевірених станів | <50,000 | 🟡 >30k, 🔴 >50k |
-| **Search Time** | Час пошуку | <30,000ms | 🟡 >30s, 🔴 >60s |
+```
+┌─ Analysis ───────────────────────────────────┐
+│  Status          │  ✅ SOLVABLE              │
+│  Minimum Moves   │  8                        │
+│  States Explored │  1,234  ⚠️ HIGH           │
+│  Search Time     │  45ms                     │
+└──────────────────────────────────────────────┘
+```
 
-### Summary Статистика (Batch)
+| Показник | Опис | Alert |
+|----------|------|-------|
+| **Status** | Чи вирішуваний | 🔴 якщо UNSOLVABLE |
+| **Min Moves** | Оптимальна кількість ходів | - |
+| **States Explored** | Перевірених станів | 🟡 >30k, 🔴 >50k |
+| **Search Time** | Час пошуку | 🟡 >30s, 🔴 >60s |
+
+### Summary Статистика
 
 | Показник | Опис |
 |----------|------|
@@ -375,7 +475,7 @@ function applyMove(state, move) {
 | Average Moves | Середня кількість ходів |
 | Average States | Середня кількість станів |
 | Average Time | Середній час аналізу |
-| Success Rate | % вирішуваних |
+| Success Rate | % вирішуваних рівнів |
 
 ### Метрики Складності
 
@@ -383,7 +483,7 @@ function applyMove(state, move) {
 |---------|---------|-------|
 | **Move Complexity** | min_moves / blocks_count | 1.0-2.0 |
 | **State Space** | states_explored / min_moves | <10,000 |
-| **Time Pressure** | duration / avg_solve_time | 2.0-5.0 |
+| **Time Pressure** | duration / solve_time | 2.0-5.0 |
 
 ---
 
@@ -414,12 +514,6 @@ function applyMove(state, move) {
 │ Status: ✅ Solvable! Min moves: 8                   │
 │                                                     │
 │ [▶️ Play] [⏭️ Step] [🔄 Reset]                       │
-├─────────────────────────────────────────────────────┤
-│ Solution:                                           │
-│   1. Block 3 → DOWN                                 │
-│   2. Block 1 → LEFT                                 │
-│   3. Block 5 → UP                                   │
-│   ...                                               │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -427,54 +521,67 @@ function applyMove(state, move) {
 
 | ID | Колір | Hex |
 |----|-------|-----|
-| 0 | Blue | #6BA3FF |
-| 1 | DarkBlue | #4169E1 |
-| 2 | Green | #7ED957 |
-| 3 | DarkGreen | #228B22 |
-| 4 | Purple | #9B59B6 |
-| 5 | Red | #FF6B6B |
-| 6 | Orange | #FFA500 |
-| 7 | Yellow | #FFD700 |
-| 8 | Gray | #808080 |
-| 9 | Pink | #FFB6C1 |
+| 0 | Blue | #03a5ef |
+| 1 | DarkBlue | #143cf6 |
+| 2 | Green | #48aa1a |
+| 3 | Pink | #b844c8 |
+| 4 | Purple | #7343db |
+| 5 | Yellow | #fbb32d |
+| 6 | DarkGreen | #09521d |
+| 7 | Orange | #f2772b |
+| 8 | Red | #b8202c |
+| 9 | Cyan | #0facae |
 
 ### Візуалізація Механік
 
 | Механіка | Відображення |
 |----------|--------------|
-| Frozen Block | ❄️ overlay + ice counter |
+| Frozen Block | ❄️ overlay + лічильник льоду |
 | Multi-layer Block | Подвійна рамка + inner color |
 | Horizontal Only | ↔️ іконка |
 | Vertical Only | ↕️ іконка |
 | Hidden Cell | Темна клітинка |
+| Door | Кольорова смужка на краю поля |
 
 ---
 
-## Формат Виводу
+## Експорт
 
-### Веб-Інтерфейс
+### JSON Format
 
-Результати відображаються в правій панелі:
+```json
+{
+  "version": "1.1.1",
+  "timestamp": "2025-01-06T12:00:00Z",
+  "source": "DEV",
+  "levels": [
+    {
+      "levelId": 15,
+      "solvable": true,
+      "minMoves": 8,
+      "statesExplored": 1234,
+      "searchTimeMs": 45,
+      "solution": [
+        {"blockIndex": 3, "direction": "DOWN"},
+        {"blockIndex": 1, "direction": "LEFT"}
+      ]
+    }
+  ],
+  "summary": {
+    "total": 27,
+    "solvable": 25,
+    "unsolvable": 2,
+    "averageMoves": 6.5
+  }
+}
+```
 
-| Поле | Опис |
-|------|------|
-| **Status** | SOLVABLE (зелений) / UNSOLVABLE (жовтий) |
-| **Minimum Moves** | Кількість ходів в оптимальному рішенні |
-| **States Explored** | Скільки станів було перевірено |
-| **Search Time** | Час пошуку в мілісекундах |
-
-### Batch Results
-
-При натисканні "Analyze All" показується список:
-- Зелена рамка = вирішуваний
-- Червона рамка = невирішуваний
-
-### Markdown Output (Export)
+### Markdown Format
 
 ```markdown
 # Brute-Force Analysis Results
 
-Generated: 2025-01-05 12:00:00
+Generated: 2025-01-06 12:00:00
 
 | Level | Solvable | Min Moves | States | Time (ms) | Error |
 |-------|----------|-----------|--------|-----------|-------|
@@ -482,36 +589,15 @@ Generated: 2025-01-05 12:00:00
 | 2 | OK | 4 | 48 | 13 | - |
 | 6 | FAIL | - | 50000 | 125067 | Max states reached |
 
-**Summary:** 6/27 levels solvable
+**Summary:** 25/27 levels solvable
 ```
 
-### JSON Output (TODO)
+### HTML Format
 
-```json
-{
-  "version": "1.0.0",
-  "timestamp": "2025-01-05T12:00:00Z",
-  "levels": [
-    {
-      "id": 1,
-      "solvable": true,
-      "minMoves": 4,
-      "statesExplored": 22,
-      "searchTimeMs": 5,
-      "solution": [
-        {"blockIndex": 0, "direction": "UP"},
-        {"blockIndex": 1, "direction": "LEFT"}
-      ]
-    }
-  ],
-  "summary": {
-    "total": 27,
-    "solvable": 6,
-    "unsolvable": 21,
-    "averageMoves": 6.5
-  }
-}
-```
+Генерує стилізовану веб-сторінку з:
+- Summary статистикою
+- Таблицею всіх результатів
+- Кольоровою індикацією
 
 ---
 
@@ -519,51 +605,39 @@ Generated: 2025-01-05 12:00:00
 
 ### Settings Panel
 
-Доступні налаштування в UI:
+| Параметр | Default | Min | Max | Опис |
+|----------|---------|-----|-----|------|
+| **Max States** | 50,000 | 1,000 | 500,000 | Ліміт станів для BFS |
+| **Warning States** | 30,000 | 1,000 | 100,000 | Поріг для жовтого alert |
+| **Warning Time** | 30,000ms | 1,000 | 300,000 | Поріг часу для alert |
 
-| Параметр | Default | Опис |
-|----------|---------|------|
-| **Max States** | 50,000 | Ліміт станів для пошуку |
-| **Warning States** | 30,000 | Поріг для жовтого alert |
-| **Warning Time** | 30,000ms | Поріг для жовтого alert по часу |
+### Alerts
 
-### Alerts (Порівняння з Match3)
+| Параметр | OK (🟢) | Warning (🟡) | Error (🔴) |
+|----------|---------|--------------|------------|
+| **Status** | SOLVABLE | - | UNSOLVABLE |
+| **States** | <30,000 | 30,000-50,000 | ≥50,000 |
+| **Time** | <30,000ms | 30,000-60,000ms | ≥60,000ms |
 
-**Match3 Alerts:**
+### Рекомендації по Типах Рівнів
 
-| Параметр | Min | Max |
-|----------|-----|-----|
-| Lose Rate CV (7th Percentile) | 33% | 1000% |
-| FUUU-Factor CV (7th Percentile) | 33% | 100% |
-| Scores CV (7th Percentile) | 33% | 100% |
-| Moves CV (7th Percentile) | 33% | 100% |
-| Shuffle_error | 0% | 1% |
+| Тип Рівня | Hardness | Target Moves | Max States | Max Time |
+|-----------|----------|--------------|------------|----------|
+| **Tutorial** | 0 | 3-5 | <1,000 | <1s |
+| **Relief** | 0 | 4-6 | <5,000 | <5s |
+| **Normal** | 1 | 6-10 | <20,000 | <15s |
+| **Hard** | 2 | 8-15 | <50,000 | <30s |
+| **Very Hard** | 2 | 10-20 | <100,000 | <60s |
 
-**CBJ Alerts (адаптовано):**
+### Інтерпретація States Explored
 
-| Параметр | Warning (🟡) | Error (🔴) | Коментар |
-|----------|--------------|------------|----------|
-| States Explored | ≥30,000 | ≥50,000 | Великий простір станів |
-| Search Time | ≥30,000ms | ≥60,000ms | Повільний аналіз |
-| Status | - | UNSOLVABLE | Рівень не вирішуваний |
-
-### Кольорова Індикація
-
-| Колір | Значення |
-|-------|----------|
-| 🟢 Зелений | OK, в межах норми |
-| 🟡 Жовтий | Warning, потребує уваги |
-| 🔴 Червоний | Error, критична проблема |
-
-### Рекомендації по Рівнях
-
-| Тип Рівня | Target Min Moves | Max States | Max Time |
-|-----------|------------------|------------|----------|
-| Tutorial | 3-5 | <1,000 | <1s |
-| Relief | 4-6 | <5,000 | <5s |
-| Normal | 6-10 | <20,000 | <15s |
-| Hard | 8-15 | <50,000 | <30s |
-| Very Hard | 10-20 | <100,000 | <60s |
+| Значення | Інтерпретація | Дія |
+|----------|---------------|-----|
+| <1,000 | Дуже простий | ✅ OK для Tutorial |
+| 1,000-10,000 | Простий | ✅ OK для Relief/Normal |
+| 10,000-30,000 | Середній | ✅ OK для Normal/Hard |
+| 30,000-50,000 | Складний | ⚠️ Перевірити дизайн |
+| ≥50,000 | Ліміт | 🔴 Збільшити ліміт |
 
 ---
 
@@ -585,7 +659,7 @@ Generated: 2025-01-05 12:00:00
 
 ### 2. ShortL Rotation Bug
 
-**Проблема:** Блоки типу ShortL з `rotationZ=2` потребують спеціального offset залежно від позиції на полі.
+**Проблема:** Блоки типу ShortL з `rotationZ=2` потребують спеціального offset.
 
 **Симптоми:**
 - Блок відображається на неправильній позиції
@@ -597,7 +671,7 @@ Generated: 2025-01-05 12:00:00
 
 ### 3. Multi-layer Door Matching
 
-**Проблема:** Двошаровий блок повинен виходити через двері `blockType`, а потім через двері `innerBlockType`.
+**Проблема:** Двошаровий блок повинен виходити через двері відповідного кольору.
 
 **Симптоми:**
 - Блок виходить через неправильні двері
@@ -608,102 +682,75 @@ Generated: 2025-01-05 12:00:00
 
 ---
 
+## TODO
+
+### Critical Priority
+
+| # | Task | Description | Status |
+|---|------|-------------|--------|
+| C1 | Continue Anyway | Show "Continue with higher limit" button when maxStates reached | ✅ Done |
+| C2 | Last Edit time | Show file last modification time | ✅ Done |
+
+### High Priority
+
+| # | Task | Description | Status |
+|---|------|-------------|--------|
+| H1 | Save to level file | Save stats directly to level JSON | ✅ Done |
+| H2 | Algorithm display | Show "Algorithm: BFS" in Info Log | ✅ Done |
+| H3 | Game Engine version | Show game_models.dart version | ✅ Done |
+
+### Medium Priority
+
+| # | Task | Description |
+|---|------|-------------|
+| M1 | A* algorithm | Heuristic for large levels |
+| M2 | Play in Normal Mode | Built-in game emulator |
+| M3 | PDF Export | Add PDF export |
+| M4 | Graphs/Charts | Batch results visualization |
+
+### Low Priority
+
+| # | Task | Description |
+|---|------|-------------|
+| L1 | Firebase sync | Sync with PROD levels |
+| L2 | Variant selector | A/B level variants |
+
+---
+
 ## Changelog
 
+### v1.1.1 (2025-01-07)
+- ✅ Added "Continue Anyway" button when maxStates reached (C1)
+- ✅ Added file last modification time display (C2)
+- ✅ Added "Save Brute-Force stat to level file" function (H1)
+- ✅ Added "Save Stat to HTML" button in View Stats popup
+- ✅ Added "Algorithm: BFS" display in Info Log (H2)
+- ✅ Added Game Engine version display in header (H3)
+
 ### v1.1.0 (2025-01-06)
-- ✅ Об'єднано в один HTML файл (як Match3)
-- ✅ Видалено Python/Dart дублікати
-- ✅ DEV/PROD Source Selector
-- ✅ Status Bar з часом завантаження
-- ✅ Level Info panel (blocks, doors, colors, special)
-- ✅ Settings Panel (maxStates, warning thresholds)
-- ✅ Alerts - кольорова індикація проблемних рівнів
-- ✅ View Stats popup window
-- ✅ Export JSON/Markdown/HTML
-- ✅ Info Log (останні 10 операцій)
-- ✅ Solution Steps fix (keepSolution)
-- ✅ Оновлено документацію з порівнянням Match3
+- Consolidated into single HTML file
+- DEV/PROD Source Selector
+- Status Bar with load time
+- Level Info panel
+- Settings Panel
+- Alerts - color indication
+- View Stats popup window
+- Export JSON/Markdown/HTML
+- Info Log (last 10 operations)
+- Solution Steps fix
 
 ### v1.0.0 (2025-01-05)
-- ✅ Початкова версія
-- ✅ BFS алгоритм пошуку
-- ✅ Підтримка всіх форм блоків (0-11)
-- ✅ Підтримка moveDirection
-- ✅ Підтримка iceCount (frozen blocks)
-- ✅ Підтримка innerBlockType (multi-layer)
-- ✅ Веб-візуалізатор
-- ✅ Batch аналіз (Analyze All)
-- ✅ Play/Step/Reset контроли
-- ✅ Speed Control
-
-### TODO
-- 🔴 A* алгоритм з евристикою (для великих рівнів)
-- 🔴 Play level in Normal Mode
-- 🔴 Синхронізація з PROD рівнями (Firebase)
-- 🔴 Save stat to level file (в сам JSON)
-- 🔴 Duration/Hardness в Level Info
+- Initial version
+- BFS search algorithm
+- All block shapes support (0-11)
+- moveDirection support
+- iceCount support (frozen blocks)
+- innerBlockType support (multi-layer)
+- Web visualizer
+- Batch analysis (Analyze All)
+- Play/Step/Reset controls
+- Speed Control
 
 ---
 
-## Повне Порівняння з Match3 Brute-Force
-
-### Main Screen Функції
-
-| # | Match3 Функція | CBJ Реалізація | Статус |
-|---|----------------|----------------|--------|
-| 1 | Версія програми вверху | v1.1.0 в header | ✅ |
-| 2 | Load Level (номер + DEV/PROD) | Level list + Source selector | ✅ |
-| 3 | Status bar "File loaded! Last edit: 30s" | Status bar з часом | ✅ |
-| 4 | Use Game Engine (DEV/PROD + версія) | N/A | ⚠️ Детерміновано |
-| 5 | Reload Level | 🔄 Reload кнопка | ✅ |
-| 6 | Variant selector | N/A | ❌ Немає варіантів |
-| 7 | Play level in Normal Mode | N/A | ❌ TODO |
-| 8 | Max number of retries | N/A | ⚠️ Детерміновано |
-| 9 | Stop (завжди активна) | Pause кнопка | ✅ |
-| 10 | Info-панель з логами | Info Log (10 записів) | ✅ |
-| 11 | View Brute-Force Stat | 📊 View Stats popup | ✅ |
-| 12 | View Retry by ID | Solution Steps (клікабельні) | ✅ |
-| 13 | Save stat to level file | Export (JSON/MD/HTML) | ✅ |
-| 14 | Settings | ⚙️ Settings panel | ✅ |
-
-### View Stat Секції
-
-| Match3 Секція | CBJ Аналог | Статус |
-|---------------|------------|--------|
-| Параметри рівня | Level Info panel | ✅ Адаптовано |
-| Параметри емуляції | N/A | ⚠️ 1 спроба |
-| Lose Rate (графік) | N/A | ⚠️ Детерміновано |
-| % виконання рівня | N/A | ⚠️ Детерміновано |
-| FUUU-Factor | N/A | ⚠️ Детерміновано |
-| Scores | N/A | ⚠️ Немає Score |
-| Moves (Min/Max/Avg/Median) | Min Moves only | ✅ Спрощено |
-| Possible Events | N/A | ⚠️ Немає подій |
-| Activated Events | N/A | ⚠️ Немає подій |
-| Cascades | N/A | ⚠️ Немає каскадів |
-| Shuffle/Shuffle_error | N/A | ⚠️ Немає shuffle |
-| Таблиця Емуляцій | N/A | ⚠️ 1 спроба |
-| Таблиця Попиток | N/A | ⚠️ 1 спроба |
-| Alerts (CV limits) | Alerts (States/Time) | ✅ Адаптовано |
-
-### Export Функції
-
-| Match3 | CBJ | Статус |
-|--------|-----|--------|
-| Save Stat to HTML | Export HTML | ✅ |
-| Save Stat to PDF | N/A | ❌ |
-| Save to level file | Export JSON | ✅ Альтернатива |
-| - | Export Markdown | ✅ Додатково |
-
-### Висновок
-
-**CBJ Brute-Force реалізує ~80% функціоналу Match3:**
-- ✅ 14 з 14 Main Screen функцій (з адаптаціями)
-- ✅ 4 з 12 View Stat секцій (інші не застосовуються)
-- ✅ 3 Export формати
-
-**Причина різниці:** Color Block Jam — детермінована гра без рандому. Кожен рівень має єдине рішення, тому статистичні метрики (Lose Rate, CV, FUUU-Factor) не мають сенсу.
-
----
-
-*Документ оновлюється в міру розвитку програми*
-
+*Document updated as the program develops*

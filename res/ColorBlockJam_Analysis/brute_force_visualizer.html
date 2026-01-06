@@ -177,6 +177,16 @@
             color: #111;
         }
         
+        .btn-warning {
+            background: var(--warning);
+            color: #111;
+        }
+        
+        .btn-warning:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+        }
+        
         /* Stats Panel */
         .stats-grid {
             display: grid;
@@ -492,7 +502,8 @@
         <header>
             <h1>Color Block Jam - Brute-Force Visualizer</h1>
             <p class="subtitle">
-                v1.1.0 | Analyze and visualize level solutions | 
+                v1.1.1 | Analyze and visualize level solutions | 
+                Game Engine: <span id="gameEngineVersion">v1.0.0</span> |
                 <a href="../../docs/BRUTE_FORCE.md" target="_blank" style="color: var(--primary); text-decoration: none;">📋 Docs & Changelog</a>
             </p>
         </header>
@@ -514,6 +525,9 @@
                 <div class="status-bar loading" id="statusBar">
                     <span class="status-icon">⏳</span>
                     <span id="statusText">Loading levels...</span>
+                </div>
+                <div id="fileLastModified" style="margin-top: 8px; font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+                    Last modified: <span id="lastModifiedTime">-</span>
                 </div>
                 <div class="level-list" id="levelList">
                     <!-- Populated by JS -->
@@ -555,6 +569,11 @@
                 </div>
                 <div id="infoLog" style="margin-top: 15px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted); max-height: 80px; overflow-y: auto;">
                     Ready. Select a level to start.
+                </div>
+                <div id="continueAnywayContainer" style="margin-top: 10px; display: none;">
+                    <button class="btn btn-warning" onclick="continueWithHigherLimit()" id="continueAnywayBtn" style="width: 100%; background: var(--warning); color: #111;">
+                        ⚡ Continue with Higher Limit (2x)
+                    </button>
                 </div>
             </div>
             
@@ -648,6 +667,9 @@
                     <button class="btn btn-secondary" onclick="exportHTML()" id="exportHTMLBtn" disabled>
                         🌐 HTML
                     </button>
+                    <button class="btn btn-success" onclick="saveBruteForceStatsToLevelFile()" id="saveToLevelBtn" disabled>
+                        💾 Save to Level File
+                    </button>
                 </div>
             </div>
         </div>
@@ -660,6 +682,9 @@
         prod: 'level_data/parsed_levels_complete.json'
     };
     let currentSource = 'dev';
+    
+    // Game Engine version (sync with game_models.dart)
+    const GAME_ENGINE_VERSION = 'v1.0.0';
     
     const COLORS = [
         '#03a5ef', // 0 Blue
@@ -741,6 +766,39 @@
             const response = await fetch(url);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             
+            // Get last modified time from response headers
+            const lastModified = response.headers.get('Last-Modified');
+            if (lastModified) {
+                const modDate = new Date(lastModified);
+                const formattedDate = modDate.toLocaleString('uk-UA', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                document.getElementById('lastModifiedTime').textContent = formattedDate;
+            } else {
+                // Fallback: try HEAD request
+                try {
+                    const headResponse = await fetch(url, { method: 'HEAD' });
+                    const headModified = headResponse.headers.get('Last-Modified');
+                    if (headModified) {
+                        const modDate = new Date(headModified);
+                        const formattedDate = modDate.toLocaleString('uk-UA', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                        document.getElementById('lastModifiedTime').textContent = formattedDate;
+                    }
+                } catch (e) {
+                    document.getElementById('lastModifiedTime').textContent = 'Unknown';
+                }
+            }
+            
             const data = await response.json();
             levels = data.levels || data;
             
@@ -758,6 +816,7 @@
             updateStatusBar('error', `ERROR: ${e.message}`);
             document.getElementById('levelList').innerHTML = 
                 '<p style="color: #ef4444;">Failed to load levels. Make sure to run from a local server.</p>';
+            document.getElementById('lastModifiedTime').textContent = 'Error';
         }
     }
 
@@ -1253,18 +1312,37 @@
             if (gameState.exitedBlocks.has(i)) return;
             
             const cells = getBlockCells(block, gameState.gridHeight);
-            const color = COLORS[block.outerLayerDestroyed ? block.innerBlockType : block.blockType] || '#888';
+            // Multi-layer block: has innerBlockType that is different from blockType
+            const isMultiLayer = block.innerBlockType >= 0 && 
+                                 block.innerBlockType <= 9 && 
+                                 block.innerBlockType !== block.blockType;
+            const outerColor = COLORS[block.blockType] || '#888';
+            const innerColor = isMultiLayer ? (COLORS[block.innerBlockType] || '#888') : outerColor;
+            
+            // Для multi-layer: заливка = inner color, обводка = outer color
+            // Для звичайного: заливка = blockType color
+            const fillColor = (isMultiLayer && !block.outerLayerDestroyed) ? innerColor : outerColor;
+            const borderColor = (isMultiLayer && !block.outerLayerDestroyed) ? outerColor : null;
             
             cells.forEach(cell => {
                 const x = padding + cell.col * cellSize + 2;
                 const y = padding + cell.row * cellSize + 2;
                 const size = cellSize - 4;
                 
-                // Block body
-                ctx.fillStyle = color;
+                // Block body (fill color)
+                ctx.fillStyle = fillColor;
                 ctx.beginPath();
                 ctx.roundRect(x, y, size, size, 6);
                 ctx.fill();
+                
+                // Multi-layer block: товста обводка зовнішнього кольору
+                if (borderColor) {
+                    ctx.strokeStyle = borderColor;
+                    ctx.lineWidth = 6; // Товста обводка для видимості
+                    ctx.beginPath();
+                    ctx.roundRect(x, y, size, size, 6);
+                    ctx.stroke();
+                }
                 
                 // Highlight
                 ctx.fillStyle = 'rgba(255,255,255,0.3)';
@@ -1327,15 +1405,24 @@
         render();
     }
 
-    function solveCurrent() {
+    let currentMaxStates = null; // Track current limit for Continue Anyway
+    
+    function solveCurrent(customLimit = null) {
         if (!currentLevel) return;
+        
+        const limitToUse = customLimit || maxStates;
+        currentMaxStates = limitToUse;
+        
+        // Hide Continue Anyway button
+        document.getElementById('continueAnywayContainer').style.display = 'none';
         
         document.getElementById('solveBtn').disabled = true;
         document.getElementById('solveBtn').textContent = 'Solving...';
         
         log(`🔍 Analyzing Level ${currentLevel.id}...`);
+        log(`📊 Algorithm: BFS (Breadth-First Search)`);
         setTimeout(() => {
-            const result = solve(currentLevel);
+            const result = solve(currentLevel, limitToUse);
             analysisResults.set(currentLevel.id, result);
             displayResult(result);
             renderLevelList();
@@ -1347,12 +1434,24 @@
                 resetLevel(true); // Keep solution visible
             } else {
                 log(`❌ Level ${currentLevel.id}: ${result.error}`);
+                
+                // Show Continue Anyway button if max states reached
+                if (result.error === 'Max states reached') {
+                    document.getElementById('continueAnywayContainer').style.display = 'block';
+                }
             }
             
             document.getElementById('solveBtn').disabled = false;
             document.getElementById('solveBtn').textContent = 'Solve Level';
             enableExportButtons();
         }, 50);
+    }
+    
+    function continueWithHigherLimit() {
+        if (!currentLevel) return;
+        const newLimit = currentMaxStates ? currentMaxStates * 2 : maxStates * 2;
+        log(`⚡ Continuing with higher limit: ${newLimit.toLocaleString()} states`);
+        solveCurrent(newLimit);
     }
 
     function displayResult(result) {
@@ -1473,6 +1572,7 @@
         const results = [];
         const progressBar = document.getElementById('analysisProgress');
         log(`📊 Starting batch analysis of ${levels.length} levels...`);
+        log(`📊 Algorithm: BFS (Breadth-First Search)`);
         
         for (let i = 0; i < levels.length; i++) {
             const level = levels[i];
@@ -1564,7 +1664,7 @@
         }));
         
         const output = {
-            version: '1.1.0',
+            version: '1.1.1',
             timestamp: new Date().toISOString(),
             source: currentSource.toUpperCase(),
             levels: results,
@@ -1597,7 +1697,7 @@
         let md = `# Brute-Force Analysis Results\n\n`;
         md += `**Generated:** ${new Date().toLocaleString()}\n`;
         md += `**Source:** ${currentSource.toUpperCase()}\n`;
-        md += `**Version:** v1.1.0\n\n`;
+        md += `**Version:** v1.1.1\n\n`;
         md += `## Summary\n\n`;
         md += `- **Total Levels:** ${results.length}\n`;
         md += `- **Solvable:** ${solved} ✅\n`;
@@ -1625,6 +1725,7 @@
         document.getElementById('exportMDBtn').disabled = false;
         document.getElementById('exportHTMLBtn').disabled = false;
         document.getElementById('viewStatsBtn').disabled = false;
+        document.getElementById('saveToLevelBtn').disabled = false;
     }
     
     function viewFullStats() {
@@ -1666,8 +1767,15 @@
 </head>
 <body>
     <h1>📊 Brute-Force Statistics</h1>
-    <p class="subtitle">Generated: ${new Date().toLocaleString()} | Source: ${currentSource.toUpperCase()}</p>
-    
+    <p class="subtitle">Generated: ${new Date().toLocaleString()} | Source: ${currentSource.toUpperCase()} | Algorithm: BFS</p>
+    <div style="margin-bottom: 20px;">
+        <button onclick="window.opener.exportHTML(); window.close();" style="padding: 10px 20px; background: #4ade80; color: #111; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+            💾 Save Stat to HTML
+        </button>
+        <button onclick="window.close();" style="padding: 10px 20px; margin-left: 10px; background: #0f3460; color: #eee; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+            ✕ Close
+        </button>
+    </div>
     <div class="summary">
         <div class="stat-box">
             <div class="stat-value">${results.length}</div>
@@ -1732,6 +1840,87 @@
         log('📊 Opened stats in new window');
     }
     
+    async function saveBruteForceStatsToLevelFile() {
+        if (analysisResults.size === 0) {
+            alert('No analysis results to save. Please analyze levels first.');
+            return;
+        }
+        
+        if (!confirm('This will save brute-force statistics directly to the level file structure. Continue?')) {
+            return;
+        }
+        
+        try {
+            // Load current levels file
+            const url = SOURCES[currentSource];
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`Failed to load levels: HTTP ${response.status}`);
+            
+            const data = await response.json();
+            const levelsData = data.levels || data;
+            
+            // Add bruteForceResult to each level that has analysis
+            let updatedCount = 0;
+            for (let i = 0; i < levelsData.length; i++) {
+                const level = levelsData[i];
+                const result = analysisResults.get(level.id);
+                
+                if (result) {
+                    // Initialize metadata if not exists
+                    if (!level.metadata) {
+                        level.metadata = {};
+                    }
+                    
+                    // Add bruteForceResult
+                    level.metadata.bruteForceResult = {
+                        solvable: result.isSolvable,
+                        minMoves: result.minMoves || null,
+                        statesExplored: result.statesExplored,
+                        searchTimeMs: Math.round(result.searchTime),
+                        error: result.error || null,
+                        algorithm: 'BFS',
+                        analyzedAt: new Date().toISOString(),
+                        bruteForceVersion: '1.1.1',
+                        gameEngineVersion: GAME_ENGINE_VERSION
+                    };
+                    
+                    // Add solution if available
+                    if (result.solution && result.solution.length > 0) {
+                        level.metadata.bruteForceResult.solution = result.solution.map(m => ({
+                            blockIndex: m.blockIndex,
+                            direction: m.direction
+                        }));
+                    }
+                    
+                    updatedCount++;
+                }
+            }
+            
+            // Create output structure
+            const output = {
+                levels: levelsData,
+                metadata: {
+                    source: currentSource.toUpperCase(),
+                    bruteForceVersion: '1.1.1',
+                    gameEngineVersion: GAME_ENGINE_VERSION,
+                    updatedAt: new Date().toISOString(),
+                    levelsAnalyzed: updatedCount
+                }
+            };
+            
+            // Download the updated file
+            const filename = `levels_with_bruteforce_${currentSource}_${Date.now()}.json`;
+            downloadFile(filename, JSON.stringify(output, null, 2), 'application/json');
+            
+            log(`💾 Saved brute-force stats to level file: ${updatedCount} levels updated`);
+            alert(`Successfully saved brute-force statistics to ${updatedCount} level(s)!\n\nFile saved as: ${filename}`);
+        } catch (e) {
+            console.error('Failed to save to level file:', e);
+            alert(`Error saving to level file: ${e.message}`);
+            log(`❌ Failed to save to level file: ${e.message}`);
+        }
+    }
+    
     function exportHTML() {
         if (analysisResults.size === 0) return;
         
@@ -1763,7 +1952,7 @@
 </head>
 <body>
     <h1>🎮 Brute-Force Analysis Results</h1>
-    <p>Generated: ${new Date().toLocaleString()} | Source: ${currentSource.toUpperCase()} | Version: v1.1.0</p>
+    <p>Generated: ${new Date().toLocaleString()} | Source: ${currentSource.toUpperCase()} | Version: v1.1.1</p>
     
     <div class="summary">
         <h2>📊 Summary</h2>
@@ -1823,6 +2012,8 @@
     });
 
     // ============ INIT ============
+    // Set game engine version in UI
+    document.getElementById('gameEngineVersion').textContent = GAME_ENGINE_VERSION;
     loadLevels();
     </script>
 </body>
