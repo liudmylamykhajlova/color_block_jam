@@ -502,7 +502,7 @@
         <header>
             <h1>Color Block Jam - Brute-Force Visualizer</h1>
             <p class="subtitle">
-                v1.1.1 | Analyze and visualize level solutions | 
+                v1.6.1 | Analyze and visualize level solutions | 
                 Game Engine: <span id="gameEngineVersion">v1.0.0</span> |
                 <a href="../../docs/BRUTE_FORCE.md" target="_blank" style="color: var(--primary); text-decoration: none;">📋 Docs & Changelog</a>
             </p>
@@ -641,7 +641,7 @@
                 <div class="settings-panel" id="settingsPanel">
                     <div class="setting-row">
                         <span class="setting-label">Max States:</span>
-                        <input type="number" class="setting-input" id="maxStatesInput" value="50000" min="1000" max="500000" onchange="updateSettings()">
+                        <input type="number" class="setting-input" id="maxStatesInput" value="100000" min="1000" max="1000000" onchange="updateSettings()">
                     </div>
                     <div class="setting-row">
                         <span class="setting-label">Warning States:</span>
@@ -1037,6 +1037,104 @@
     }
 
     // ============ BRUTE-FORCE SOLVER ============
+    
+    /**
+     * Checks if block can exit by moving in ONE direction only (no turns needed)
+     * Returns: { canExit: boolean, direction: string, stepsToExit: number, door: object } or null
+     */
+    function hasDirectPath(state, blockIndex) {
+        const block = state.blocks[blockIndex];
+        if (state.exitedBlocks.has(blockIndex)) return null;
+        if ((block.iceCount || 0) > 0) return null;
+        
+        const blockType = block.outerLayerDestroyed ? block.innerBlockType : block.blockType;
+        const cells = getBlockCells(block, state.gridHeight);
+        
+        // Find compatible doors
+        for (const door of state.doors) {
+            if (door.blockType !== blockType) continue;
+            
+            const direction = { top: 'UP', bottom: 'DOWN', left: 'LEFT', right: 'RIGHT' }[door.edge];
+            const [dRow, dCol] = DELTAS[direction];
+            
+            // Check if block is aligned with door
+            const doorCells = getDoorCells(door);
+            const isAligned = checkAlignment(cells, doorCells, door.edge, state);
+            
+            if (!isAligned) continue;
+            
+            // Count steps to exit and check for obstacles
+            let steps = 0;
+            let blocked = false;
+            let testBlock = { ...block };
+            
+            while (!blocked) {
+                steps++;
+                testBlock = { ...testBlock, gridRow: testBlock.gridRow + dRow, gridCol: testBlock.gridCol + dCol };
+                const testCells = getBlockCells(testBlock, state.gridHeight);
+                
+                // Check if any cell would exit
+                let wouldExit = false;
+                for (const cell of testCells) {
+                    if (isDoorExit(state, cell.row, cell.col, blockType, direction)) {
+                        wouldExit = true;
+                    }
+                }
+                
+                if (wouldExit) {
+                    return { canExit: true, direction, stepsToExit: steps, door };
+                }
+                
+                // Check for collisions or out of bounds
+                for (const cell of testCells) {
+                    // Skip cells that would be on door
+                    if (isDoorExit(state, cell.row, cell.col, blockType, direction)) continue;
+                    
+                    if (cell.row < 0 || cell.row >= state.gridHeight ||
+                        cell.col < 0 || cell.col >= state.gridWidth) {
+                        blocked = true;
+                        break;
+                    }
+                    if (hasCollision(state, blockIndex, cell.row, cell.col)) {
+                        blocked = true;
+                        break;
+                    }
+                    if (isHidden(state, cell.row, cell.col)) {
+                        blocked = true;
+                        break;
+                    }
+                }
+                
+                // Safety limit
+                if (steps > 20) {
+                    blocked = true;
+                }
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Check if block cells are aligned with door cells
+     */
+    function checkAlignment(blockCells, doorCells, edge, state) {
+        if (edge === 'top' || edge === 'bottom') {
+            // For top/bottom doors, check column alignment
+            const blockCols = blockCells.map(c => c.col).sort((a, b) => a - b);
+            const doorCols = doorCells.map(c => c.col).sort((a, b) => a - b);
+            
+            // Block columns must be subset of door columns (or overlap enough)
+            return blockCols.every(col => doorCols.includes(col));
+        } else {
+            // For left/right doors, check row alignment
+            const blockRows = blockCells.map(c => c.row).sort((a, b) => a - b);
+            const doorRows = doorCells.map(c => c.row).sort((a, b) => a - b);
+            
+            return blockRows.every(row => doorRows.includes(row));
+        }
+    }
+
     function getPossibleMoves(state) {
         const moves = [];
         
@@ -1067,19 +1165,128 @@
         const [dRow, dCol] = DELTAS[direction];
         const blockType = block.outerLayerDestroyed ? block.innerBlockType : block.blockType;
         
+        // Find the best door for this block and direction
+        const door = getBestDoorForBlock(state, block, direction);
+        
+        // Check if block fits within door range (for exit)
+        const blockFitsDoor = door ? true : false; // getBestDoorForBlock already checks this
+        
         for (const cell of cells) {
             const newRow = cell.row + dRow;
             const newCol = cell.col + dCol;
             
             if (isDoorExit(state, newRow, newCol, blockType, direction)) continue;
             
-            if (newRow < 0 || newRow >= state.gridHeight) return false;
-            if (newCol < 0 || newCol >= state.gridWidth) return false;
+            // Cell goes out of bounds - check if it can exit through door edge
+            if (newRow < 0 || newRow >= state.gridHeight ||
+                newCol < 0 || newCol >= state.gridWidth) {
+                // Only allow exit if block fits within door range
+                if (door && blockFitsDoor && canExitThroughDoorEdge(door, cell, newRow, newCol, direction)) continue;
+                return false;
+            }
             if (hasCollision(state, blockIndex, newRow, newCol)) return false;
             if (isHidden(state, newRow, newCol)) return false;
         }
         
         return true;
+    }
+
+    function getDoorEdgeForType(state, blockType) {
+        for (const door of state.doors) {
+            if (door.blockType === blockType) {
+                return door.edge;
+            }
+        }
+        return null;
+    }
+    
+    function getDoorForType(state, blockType) {
+        // Return first matching door (for simple cases)
+        for (const door of state.doors) {
+            if (door.blockType === blockType) {
+                return door;
+            }
+        }
+        return null;
+    }
+    
+    function getAllDoorsForType(state, blockType) {
+        // Return ALL doors for this block type
+        return state.doors.filter(door => door.blockType === blockType);
+    }
+    
+    function getBestDoorForBlock(state, block, direction) {
+        const blockType = block.outerLayerDestroyed ? block.innerBlockType : block.blockType;
+        const doors = getAllDoorsForType(state, blockType);
+        
+        // Find door that matches direction and block can exit through
+        for (const door of doors) {
+            const doorDirection = door.edge === 'top' ? 'UP' : door.edge === 'bottom' ? 'DOWN' : door.edge === 'left' ? 'LEFT' : 'RIGHT';
+            if (doorDirection === direction && canBlockExitThroughDoor(state, block, door, direction)) {
+                return door;
+            }
+        }
+        return null;
+    }
+    
+    function canExitThroughDoorEdge(door, cell, newRow, newCol, direction) {
+        // Cell is going out of bounds - check if it's aligned with door
+        if (door.edge === 'bottom' && direction === 'DOWN') {
+            // For bottom door, cell's col must be within door's column range
+            const doorStartCol = door.startCol;
+            const doorEndCol = door.startCol + door.partCount - 1;
+            return cell.col >= doorStartCol && cell.col <= doorEndCol;
+        }
+        if (door.edge === 'top' && direction === 'UP') {
+            const doorStartCol = door.startCol;
+            const doorEndCol = door.startCol + door.partCount - 1;
+            return cell.col >= doorStartCol && cell.col <= doorEndCol;
+        }
+        if (door.edge === 'left' && direction === 'LEFT') {
+            const doorStartRow = door.startRow;
+            const doorEndRow = door.startRow + door.partCount - 1;
+            return cell.row >= doorStartRow && cell.row <= doorEndRow;
+        }
+        if (door.edge === 'right' && direction === 'RIGHT') {
+            const doorStartRow = door.startRow;
+            const doorEndRow = door.startRow + door.partCount - 1;
+            return cell.row >= doorStartRow && cell.row <= doorEndRow;
+        }
+        return false;
+    }
+    
+    /**
+     * Check if block can exit through a door
+     * At least one cell must be aligned with door range
+     */
+    function canBlockExitThroughDoor(state, block, door, direction) {
+        const cells = getBlockCells(block, state.gridHeight);
+        
+        if (door.edge === 'bottom' || door.edge === 'top') {
+            // Check if at least one cell's column is within door range
+            const doorStartCol = door.startCol;
+            const doorEndCol = door.startCol + door.partCount - 1;
+            for (const cell of cells) {
+                if (cell.col >= doorStartCol && cell.col <= doorEndCol) {
+                    return true; // At least one cell aligned with door
+                }
+            }
+            return false;
+        }
+        
+        if (door.edge === 'left' || door.edge === 'right') {
+            // Check if at least one cell's row is within door range
+            const doorStartRow = door.startRow;
+            const doorEndRow = door.startRow + door.partCount - 1;
+            for (const cell of cells) {
+                if (cell.row >= doorStartRow && cell.row <= doorEndRow) {
+                    return true; // At least one cell aligned with door
+                }
+            }
+            return false;
+        }
+        
+        return false;
     }
 
     function isDoorExit(state, row, col, blockType, direction) {
@@ -1102,9 +1309,15 @@
     function getDoorCells(door) {
         const cells = [];
         for (let i = 0; i < door.partCount; i++) {
-            if (door.edge === 'left' || door.edge === 'right') {
-                cells.push({row: door.startRow + i, col: door.startCol});
+            if (door.edge === 'left') {
+                // Left door: cells are at col=-1 (outside grid)
+                cells.push({row: door.startRow + i, col: -1});
+            } else if (door.edge === 'right') {
+                // Right door: cells are at col=gridWidth (outside grid)
+                // Use startCol + 1 since startCol is at the edge
+                cells.push({row: door.startRow + i, col: door.startCol + 1});
             } else {
+                // Top/bottom doors: already have correct row (-1 or gridHeight)
                 cells.push({row: door.startRow, col: door.startCol + i});
             }
         }
@@ -1130,107 +1343,406 @@
         const [dRow, dCol] = DELTAS[move.direction];
         const blockType = block.outerLayerDestroyed ? block.innerBlockType : block.blockType;
         
-        let moved = false;
-        let exited = false;
+        const cells = getBlockCells(block, state.gridHeight);
+        let exitingCells = 0;
+        let movableCells = 0;
+        let blockedCells = 0;
         
-        while (true) {
-            const cells = getBlockCells(block, state.gridHeight);
-            let canMove = true;
-            let willExit = false;
+        // Get best door for this block and direction
+        const door = getBestDoorForBlock(newState, block, move.direction);
+        
+        // Check each cell
+        for (const cell of cells) {
+            const newRow = cell.row + dRow;
+            const newCol = cell.col + dCol;
             
-            for (const cell of cells) {
-                const newRow = cell.row + dRow;
-                const newCol = cell.col + dCol;
-                
-                if (isDoorExit(newState, newRow, newCol, blockType, move.direction)) {
-                    willExit = true;
-                    continue;
-                }
-                
-                if (newRow < 0 || newRow >= state.gridHeight ||
-                    newCol < 0 || newCol >= state.gridWidth) {
-                    canMove = false;
-                    break;
-                }
-                
-                if (hasCollision(newState, move.blockIndex, newRow, newCol)) {
-                    canMove = false;
-                    break;
-                }
-                
-                if (isHidden(newState, newRow, newCol)) {
-                    canMove = false;
-                    break;
-                }
+            // Check if cell would exit through door
+            if (isDoorExit(newState, newRow, newCol, blockType, move.direction)) {
+                exitingCells++;
+                continue;
             }
             
-            if (willExit) {
-                exited = true;
-                if (block.innerBlockType >= 0 && block.innerBlockType <= 9 && !block.outerLayerDestroyed) {
-                    block.outerLayerDestroyed = true;
+            // Check bounds
+            if (newRow < 0 || newRow >= state.gridHeight ||
+                newCol < 0 || newCol >= state.gridWidth) {
+                // Cell goes out of bounds - check if it can exit through door edge
+                if (door && canExitThroughDoorEdge(door, cell, newRow, newCol, move.direction)) {
+                    exitingCells++;
                 } else {
-                    newState.exitedBlocks.add(move.blockIndex);
-                    // Update ice counts
-                    newState.blocks.forEach((b, i) => {
-                        if (!newState.exitedBlocks.has(i) && (b.iceCount || 0) > 0) {
-                            b.iceCount--;
-                        }
-                    });
+                    blockedCells++;
                 }
+                continue;
+            }
+            
+            // Check collision
+            if (hasCollision(newState, move.blockIndex, newRow, newCol)) {
+                blockedCells++;
+                continue;
+            }
+            
+            // Check hidden cells
+            if (isHidden(newState, newRow, newCol)) {
+                blockedCells++;
+                continue;
+            }
+            
+            movableCells++;
+        }
+        
+        // Block can move if no cells are blocked
+        const canMoveBlock = (blockedCells === 0);
+        // Block exits ONLY when ALL cells exit AND there's a matching door
+        // (getBestDoorForBlock already checks if block fits door)
+        const willExit = (exitingCells === cells.length) && door;
+        
+        if (willExit) {
+            block.gridRow += dRow;
+            block.gridCol += dCol;
+            
+            if (block.innerBlockType >= 0 && block.innerBlockType <= 9 && !block.outerLayerDestroyed) {
+                block.outerLayerDestroyed = true;
+            } else {
+                newState.exitedBlocks.add(move.blockIndex);
+                // Update ice counts
+                newState.blocks.forEach((b, i) => {
+                    if (!newState.exitedBlocks.has(i) && (b.iceCount || 0) > 0) {
+                        b.iceCount--;
+                    }
+                });
+            }
+            return newState;
+        }
+        
+        // If block can move (but not exit)
+        if (canMoveBlock) {
+            block.gridRow += dRow;
+            block.gridCol += dCol;
+            return newState;
+        }
+        
+        // Cannot move
+        return null;
+    }
+
+    /**
+     * Calculate heuristic: sum of distances of all blocks to their doors
+     */
+    function heuristic(state) {
+        let totalDistance = 0;
+        for (let i = 0; i < state.blocks.length; i++) {
+            if (state.exitedBlocks.has(i)) continue;
+            
+            const block = state.blocks[i];
+            const blockType = block.outerLayerDestroyed ? block.innerBlockType : block.blockType;
+            const door = getDoorForType(state, blockType);
+            if (!door) continue;
+            
+            const cells = getBlockCells(block, state.gridHeight);
+            
+            // Calculate minimum distance to door
+            let minDist = Infinity;
+            for (const cell of cells) {
+                let dist = 0;
+                if (door.edge === 'top') {
+                    dist = cell.row + 1; // Distance to row -1
+                    // Add horizontal distance if not aligned
+                    const doorCols = new Set();
+                    for (let c = door.startCol; c < door.startCol + door.partCount; c++) doorCols.add(c);
+                    if (!doorCols.has(cell.col)) {
+                        dist += Math.min(Math.abs(cell.col - door.startCol), Math.abs(cell.col - (door.startCol + door.partCount - 1)));
+                    }
+                } else if (door.edge === 'bottom') {
+                    dist = state.gridHeight - cell.row;
+                    const doorCols = new Set();
+                    for (let c = door.startCol; c < door.startCol + door.partCount; c++) doorCols.add(c);
+                    if (!doorCols.has(cell.col)) {
+                        dist += Math.min(Math.abs(cell.col - door.startCol), Math.abs(cell.col - (door.startCol + door.partCount - 1)));
+                    }
+                } else if (door.edge === 'left') {
+                    dist = cell.col + 1;
+                    const doorRows = new Set();
+                    for (let r = door.startRow; r < door.startRow + door.partCount; r++) doorRows.add(r);
+                    if (!doorRows.has(cell.row)) {
+                        dist += Math.min(Math.abs(cell.row - door.startRow), Math.abs(cell.row - (door.startRow + door.partCount - 1)));
+                    }
+                } else if (door.edge === 'right') {
+                    dist = state.gridWidth - cell.col;
+                    const doorRows = new Set();
+                    for (let r = door.startRow; r < door.startRow + door.partCount; r++) doorRows.add(r);
+                    if (!doorRows.has(cell.row)) {
+                        dist += Math.min(Math.abs(cell.row - door.startRow), Math.abs(cell.row - (door.startRow + door.partCount - 1)));
+                    }
+                }
+                minDist = Math.min(minDist, dist);
+            }
+            totalDistance += minDist === Infinity ? 10 : minDist;
+        }
+        return totalDistance;
+    }
+    
+    /**
+     * Get all valid step counts for a block moving in a direction
+     * Returns array of step counts, including stops at doors
+     */
+    function getValidStepCounts(state, blockIndex, direction) {
+        const validSteps = [];
+        let testState = cloneState(state);
+        let steps = 0;
+        
+        while (steps < 20) { // Safety limit
+            const newState = applyMove(testState, { blockIndex, direction });
+            if (!newState) break;
+            steps++;
+            
+            // Block exited - this is a valid stop
+            if (newState.exitedBlocks.has(blockIndex)) {
+                validSteps.push(steps);
                 break;
             }
             
-            if (!canMove) break;
-            
-            block.gridRow += dRow;
-            block.gridCol += dCol;
-            moved = true;
-        }
-        
-        return (moved || exited) ? newState : null;
-    }
-
-    function solve(level, maxStatesLimit = null) {
-        const limit = maxStatesLimit || maxStates;
-        const startTime = performance.now();
-        const initialState = createState(level);
-        
-        const queue = [{state: initialState, path: []}];
-        const visited = new Set([stateKey(initialState)]);
-        let statesExplored = 0;
-        
-        while (queue.length > 0 && statesExplored < limit) {
-            const {state, path} = queue.shift();
-            statesExplored++;
-            
-            if (state.exitedBlocks.size === state.blocks.length) {
-                return {
-                    isSolvable: true,
-                    minMoves: path.length,
-                    solution: path,
-                    statesExplored,
-                    searchTime: performance.now() - startTime
-                };
+            // Check if block is now aligned with a door (can exit on next move)
+            const block = newState.blocks[blockIndex];
+            const blockType = block.outerLayerDestroyed ? block.innerBlockType : block.blockType;
+            const doors = getAllDoorsForType(newState, blockType);
+            for (const door of doors) {
+                if (canBlockExitThroughDoor(newState, block, door, direction)) {
+                    // Block is aligned with door - add as valid stop
+                    if (!validSteps.includes(steps)) {
+                        validSteps.push(steps);
+                    }
+                }
             }
             
-            const moves = getPossibleMoves(state);
-            for (const move of moves) {
-                const newState = applyMove(state, move);
-                if (!newState) continue;
+            testState = newState;
+        }
+        
+        // Always include max steps if not already added
+        if (steps > 0 && !validSteps.includes(steps)) {
+            validSteps.push(steps);
+        }
+        
+        return validSteps.length > 0 ? validSteps : [1]; // At least 1 step
+    }
+
+    /**
+     * Heuristic solver: prioritizes blocks with direct paths
+     */
+    function solve(level, maxStatesLimit = null) {
+        const startTime = performance.now();
+        let state = createState(level);
+        const path = [];
+        let statesExplored = 0;
+        
+        // DEBUG: Check initial state
+        console.log('=== SOLVE START ===');
+        console.log('Blocks:', state.blocks.length);
+        console.log('Doors:', state.doors.map(d => `type=${d.blockType} edge=${d.edge} startRow=${d.startRow} startCol=${d.startCol} parts=${d.partCount}`));
+        console.log('Initial moves:', getPossibleMoves(state));
+        
+        // Phase 1: Greedy - exit all blocks with direct paths
+        let progress = true;
+        while (progress && state.exitedBlocks.size < state.blocks.length) {
+            progress = false;
+            
+            // Find all blocks with direct paths
+            const directPaths = [];
+            for (let i = 0; i < state.blocks.length; i++) {
+                const dp = hasDirectPath(state, i);
+                if (dp) {
+                    directPaths.push({ blockIndex: i, ...dp });
+                }
+            }
+            
+            console.log('Direct paths found:', directPaths.length, directPaths);
+            
+            if (directPaths.length > 0) {
+                // Sort by steps to exit (shortest first)
+                directPaths.sort((a, b) => a.stepsToExit - b.stepsToExit);
+                const chosen = directPaths[0];
                 
-                const key = stateKey(newState);
-                if (!visited.has(key)) {
-                    visited.add(key);
-                    queue.push({state: newState, path: [...path, move]});
+                // Apply all moves to exit this block - count as 1 swipe
+                let actualSteps = 0;
+                for (let step = 0; step < chosen.stepsToExit; step++) {
+                    const newState = applyMove(state, { blockIndex: chosen.blockIndex, direction: chosen.direction });
+                    if (newState) {
+                        state = newState;
+                        actualSteps++;
+                        statesExplored++;
+                    } else {
+                        break;
+                    }
+                }
+                if (actualSteps > 0) {
+                    // 1 swipe = 1 move, regardless of cells traveled
+                    path.push({ blockIndex: chosen.blockIndex, direction: chosen.direction, steps: actualSteps });
+                    progress = true;
                 }
             }
         }
         
+        // Phase 2: If not all blocks exited, use A* for remaining
+        if (state.exitedBlocks.size < state.blocks.length) {
+            console.log('=== PHASE 2: A* Search ===');
+            console.log('Exited so far:', state.exitedBlocks.size, '/', state.blocks.length);
+            
+            const limit = maxStatesLimit || maxStates;
+            
+            // Priority queue: lower score = higher priority
+            // Score = path length + heuristic (distance to doors)
+            const queue = [{state, path: [...path], score: heuristic(state)}];
+            const visited = new Set([stateKey(state)]);
+            
+            // Track best partial solution
+            let maxExitedBlocks = state.exitedBlocks.size;
+            let maxExitedPath = [...path];
+            
+            console.log('Initial queue:', queue.length, 'Possible moves:', getPossibleMoves(state).length);
+            
+            let iterations = 0;
+            while (queue.length > 0 && statesExplored < limit) {
+                // A*: sort queue by score (lowest first) - do it periodically for performance
+                if (iterations % 100 === 0) {
+                    queue.sort((a, b) => a.score - b.score);
+                }
+                
+                const current = queue.shift();
+                statesExplored++;
+                iterations++;
+                
+                // Log first 5 iterations
+                if (iterations <= 5) {
+                    console.log(`Iteration ${iterations}: path=${current.path.length}, exited=${current.state.exitedBlocks.size}, score=${current.score}, queue=${queue.length}`);
+                }
+                
+                if (current.state.exitedBlocks.size === current.state.blocks.length) {
+                    console.log('SOLUTION FOUND!');
+                    return {
+                        isSolvable: true,
+                        minMoves: current.path.length,
+                        solution: current.path,
+                        statesExplored,
+                        searchTime: performance.now() - startTime
+                    };
+                }
+                
+                const moves = getPossibleMoves(current.state);
+                
+                if (iterations <= 5) {
+                    console.log(`  Moves available: ${moves.length}`);
+                }
+                
+                let addedCount = 0;
+                for (const move of moves) {
+                    // Get all valid step counts (including stops at doors)
+                    const validStepCounts = getValidStepCounts(current.state, move.blockIndex, move.direction);
+                    
+                    for (const numSteps of validStepCounts) {
+                        // Apply steps
+                        let testState = current.state;
+                        let actualSteps = 0;
+                        
+                        for (let s = 0; s < numSteps; s++) {
+                            const newState = applyMove(testState, move);
+                            if (!newState) break;
+                            testState = newState;
+                            actualSteps++;
+                            if (newState.exitedBlocks.has(move.blockIndex)) break; // Block exited
+                        }
+                        
+                        if (actualSteps === 0) continue;
+                        
+                        const key = stateKey(testState);
+                        if (!visited.has(key)) {
+                            visited.add(key);
+                            // Count as 1 move regardless of steps, but store steps for visualization
+                            const moveWithSteps = { ...move, steps: actualSteps };
+                            const newPath = [...current.path, moveWithSteps];
+                            const newScore = newPath.length + heuristic(testState);
+                            queue.push({state: testState, path: newPath, score: newScore});
+                            addedCount++;
+                            
+                            // Track best partial solution
+                            if (testState.exitedBlocks.size > maxExitedBlocks) {
+                                maxExitedBlocks = testState.exitedBlocks.size;
+                                maxExitedPath = newPath;
+                                console.log(`New best: ${maxExitedBlocks} blocks exited, ${newPath.length} moves`);
+                            }
+                        }
+                    }
+                }
+                
+                if (iterations <= 5) {
+                    console.log(`  Added to queue: ${addedCount}, total queue: ${queue.length}`);
+                }
+            }
+            
+            console.log(`=== BFS FINISHED: No solution found ===`);
+            console.log(`States explored: ${statesExplored}, Queue remaining: ${queue.length}`);
+            console.log(`Max exited blocks seen: ${maxExitedBlocks}/${state.blocks.length}`);
+            
+            // Debug: show which blocks didn't exit in best partial solution
+            if (maxExitedPath.length > 0) {
+                let debugState = createState(level);
+                for (const move of maxExitedPath) {
+                    const steps = move.steps || 1;
+                    for (let s = 0; s < steps; s++) {
+                        debugState = applyMove(debugState, move) || debugState;
+                    }
+                }
+                const remainingBlocks = [];
+                for (let i = 0; i < debugState.blocks.length; i++) {
+                    if (!debugState.exitedBlocks.has(i)) {
+                        const block = debugState.blocks[i];
+                        const blockType = block.outerLayerDestroyed ? block.innerBlockType : block.blockType;
+                        const door = getDoorForType(debugState, blockType);
+                        const cells = getBlockCells(block, debugState.gridHeight);
+                        const cellsStr = cells.map(c => `(${c.row},${c.col})`).join(',');
+                        let doorInfo = 'no door';
+                        if (door) {
+                            if (door.edge === 'left' || door.edge === 'right') {
+                                doorInfo = `${door.edge} row=${door.startRow}-${door.startRow+door.partCount-1}`;
+                            } else {
+                                doorInfo = `${door.edge} col=${door.startCol}-${door.startCol+door.partCount-1}`;
+                            }
+                        }
+                        const direction = door ? (door.edge === 'top' ? 'UP' : door.edge === 'bottom' ? 'DOWN' : door.edge === 'left' ? 'LEFT' : 'RIGHT') : '';
+                        const fitsDoor = door ? canBlockExitThroughDoor(debugState, block, door, direction) : false;
+                        // Extra debug: check cell rows vs door rows for left/right
+                        let rowsInfo = '';
+                        if (door && (door.edge === 'left' || door.edge === 'right')) {
+                            const cellRows = cells.map(c => c.row).sort((a,b) => a-b);
+                            rowsInfo = ` cellRows=[${cellRows.join(',')}]`;
+                        }
+                        remainingBlocks.push(`Block${i}(type=${blockType}): cells=${cellsStr}, door=${doorInfo}, fitsDoor=${fitsDoor}${rowsInfo}`);
+                    }
+                }
+                console.log('Remaining blocks:', remainingBlocks);
+            }
+            if (maxExitedPath.length > 0) {
+                console.log(`Best partial solution (${maxExitedPath.length} moves, ${maxExitedBlocks} blocks exited):`, 
+                    maxExitedPath.map(m => `Block${m.blockIndex}:${m.direction}`).join(' → '));
+            }
+            
+            return {
+                isSolvable: false,
+                statesExplored,
+                searchTime: performance.now() - startTime,
+                error: statesExplored >= limit ? 'Max states reached' : 'No solution',
+                partialSolution: maxExitedPath.length > 0 ? maxExitedPath : null,
+                maxExitedBlocks
+            };
+        }
+        
+        console.log(`=== BFS FINISHED: Solution found! ===`);
+        console.log(`Moves: ${path.length}, States explored: ${statesExplored}`);
+        console.log(`Solution:`, path.map(m => `Block${m.blockIndex}:${m.direction}`).join(' → '));
+        
         return {
-            isSolvable: false,
+            isSolvable: true,
+            minMoves: path.length,
+            solution: path,
             statesExplored,
-            searchTime: performance.now() - startTime,
-            error: statesExplored >= limit ? 'Max states reached' : 'No solution'
+            searchTime: performance.now() - startTime
         };
     }
 
@@ -1435,6 +1947,14 @@
             } else {
                 log(`❌ Level ${currentLevel.id}: ${result.error}`);
                 
+                // Show partial solution if available
+                if (result.partialSolution && result.partialSolution.length > 0) {
+                    log(`📋 Partial solution: ${result.partialSolution.length} moves, ${result.maxExitedBlocks || 0} blocks exited`);
+                    solution = result.partialSolution;
+                    currentStep = -1;
+                    resetLevel(true);
+                }
+                
                 // Show Continue Anyway button if max states reached
                 if (result.error === 'Max states reached') {
                     document.getElementById('continueAnywayContainer').style.display = 'block';
@@ -1489,7 +2009,7 @@
             document.getElementById('solutionSteps').innerHTML = result.solution.map((move, i) => `
                 <div class="step ${i === currentStep ? 'active' : ''}" onclick="goToStep(${i})">
                     <span class="step-num">${i + 1}</span>
-                    Block ${move.blockIndex} → ${move.direction}
+                    Block ${move.blockIndex} → ${move.direction}${move.steps > 1 ? ` (×${move.steps})` : ''}
                 </div>
             `).join('');
         }
@@ -1518,7 +2038,11 @@
         // Reset and replay to step
         gameState = createState(currentLevel);
         for (let i = 0; i <= step; i++) {
-            gameState = applyMove(gameState, solution[i]) || gameState;
+            const move = solution[i];
+            const steps = move.steps || 1; // Support multi-step moves
+            for (let s = 0; s < steps; s++) {
+                gameState = applyMove(gameState, move) || gameState;
+            }
         }
         
         currentStep = step;
@@ -1620,7 +2144,7 @@
     }
 
     // ============ SETTINGS ============
-    let maxStates = 50000;
+    let maxStates = 100000;
     
     function toggleSettings() {
         const panel = document.getElementById('settingsPanel');
@@ -1697,7 +2221,7 @@
         let md = `# Brute-Force Analysis Results\n\n`;
         md += `**Generated:** ${new Date().toLocaleString()}\n`;
         md += `**Source:** ${currentSource.toUpperCase()}\n`;
-        md += `**Version:** v1.1.1\n\n`;
+        md += `**Version:** v1.6.1\n\n`;
         md += `## Summary\n\n`;
         md += `- **Total Levels:** ${results.length}\n`;
         md += `- **Solvable:** ${solved} ✅\n`;
@@ -1952,7 +2476,7 @@
 </head>
 <body>
     <h1>🎮 Brute-Force Analysis Results</h1>
-    <p>Generated: ${new Date().toLocaleString()} | Source: ${currentSource.toUpperCase()} | Version: v1.1.1</p>
+    <p>Generated: ${new Date().toLocaleString()} | Source: ${currentSource.toUpperCase()} | Version: v1.6.1</p>
     
     <div class="summary">
         <h2>📊 Summary</h2>
