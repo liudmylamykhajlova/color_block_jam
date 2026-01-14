@@ -1457,8 +1457,9 @@
         // Block exits if:
         // 1. It's FULLY aligned with door (100% cells in door range - checked in blockCanExitThroughDoor)
         // 2. At least 1 cell touches/reaches the door position
-        // This matches game behavior: fully aligned block exits when ANY part touches door
-        const willExit = blockCanExitThroughDoor && (exitingCells > 0);
+        // 3. No blocked cells (other blocks/walls don't obstruct the movement)
+        // This matches game behavior: fully aligned block exits when ANY part touches door AND path is clear
+        const willExit = blockCanExitThroughDoor && (exitingCells > 0) && (blockedCells === 0);
         
         console.log(`[applyMove] Block ${move.blockIndex} type=${blockType} dir=${move.direction}: exitingCells=${exitingCells}, blockedCells=${blockedCells}, canExitThroughDoor=${blockCanExitThroughDoor}, willExit=${willExit}, hasOuterLayer=${hasOuterLayer}`);
             
