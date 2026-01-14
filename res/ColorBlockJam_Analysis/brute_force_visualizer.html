@@ -502,7 +502,7 @@
         <header>
             <h1>Color Block Jam - Brute-Force Visualizer</h1>
             <p class="subtitle">
-                v1.8.13-debug | Analyze and visualize level solutions | 
+                v1.8.15 | Analyze and visualize level solutions | 
                 Game Engine: <span id="gameEngineVersion">v1.0.0</span> |
                 <a href="../../docs/BRUTE_FORCE.md" target="_blank" style="color: var(--primary); text-decoration: none;">📋 Docs & Changelog</a>
             </p>
@@ -684,7 +684,7 @@
     let currentSource = 'dev';
     
     // Game Engine version (sync with game_models.dart)
-    const GAME_ENGINE_VERSION = 'v1.8.14';
+    const GAME_ENGINE_VERSION = 'v1.8.15';
     
     const COLORS = [
         '#03a5ef', // 0 Blue
@@ -1444,10 +1444,11 @@
         // Check if this is a multi-layer block
         const hasOuterLayer = block.innerBlockType >= 0 && block.innerBlockType <= 9 && !block.outerLayerDestroyed;
         
-        // If enough cells are exiting through door, the whole block exits
-        // "blocked" cells (outside door range) exit together with the block
-        // This matches game behavior where block is "pulled through" the door
-        const willExit = (exitingCells >= exitThreshold) && blockCanExitThroughDoor;
+        // Block exits if:
+        // 1. It's aligned with door (50%+ cells in door range - checked in blockCanExitThroughDoor)
+        // 2. At least one cell reaches/touches the door position
+        // This matches game behavior where aligned block exits when ANY part touches the door
+        const willExit = blockCanExitThroughDoor && (exitingCells > 0);
             
             if (willExit) {
             if (hasOuterLayer) {
@@ -2505,7 +2506,7 @@
         let md = `# Brute-Force Analysis Results\n\n`;
         md += `**Generated:** ${new Date().toLocaleString()}\n`;
         md += `**Source:** ${currentSource.toUpperCase()}\n`;
-        md += `**Version:** v1.8.13-debug\n\n`;
+        md += `**Version:** v1.8.15\n\n`;
         md += `## Summary\n\n`;
         md += `- **Total Levels:** ${results.length}\n`;
         md += `- **Solvable:** ${solved} ✅\n`;
@@ -2760,7 +2761,7 @@
 </head>
 <body>
     <h1>🎮 Brute-Force Analysis Results</h1>
-    <p>Generated: ${new Date().toLocaleString()} | Source: ${currentSource.toUpperCase()} | Version: v1.8.13-debug</p>
+    <p>Generated: ${new Date().toLocaleString()} | Source: ${currentSource.toUpperCase()} | Version: v1.8.15</p>
     
     <div class="summary">
         <h2>📊 Summary</h2>
