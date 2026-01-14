@@ -1051,7 +1051,7 @@
 
     function stateKey(state) {
         return state.blocks.map((b, i) => 
-            state.exitedBlocks.has(i) ? 'X' : `${b.gridRow},${b.gridCol}`
+            state.exitedBlocks.has(i) ? 'X' : `${b.gridRow},${b.gridCol}${b.outerLayerDestroyed ? 'd' : ''}`
         ).join(';');
     }
 
