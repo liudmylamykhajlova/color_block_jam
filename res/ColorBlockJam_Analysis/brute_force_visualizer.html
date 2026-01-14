@@ -1677,9 +1677,15 @@
                               originalBlock.innerBlockType <= 9 && 
                               !originalBlock.outerLayerDestroyed;
         
+        // Debug: log for Block 0 (plus)
+        const isBlock0 = blockIndex === 0 && originalBlock.blockGroupType === 6;
+        
         while (steps < 20) { // Safety limit
             const newState = applyMove(testState, { blockIndex, direction });
-            if (!newState) break;
+            if (!newState) {
+                if (isBlock0) console.log(`[getValidStepCounts] Block 0 dir=${direction}: stopped at step ${steps} (applyMove returned null)`);
+                break;
+            }
             steps++;
             
             // Block exited - this is a valid stop
@@ -1715,6 +1721,8 @@
         if (steps > 0 && !validSteps.includes(steps)) {
             validSteps.push(steps);
         }
+        
+        if (isBlock0) console.log(`[getValidStepCounts] Block 0 dir=${direction}: validSteps=[${validSteps.join(',')}], exitedBlocks=[${[...state.exitedBlocks].join(',')}]`);
         
         return validSteps.length > 0 ? validSteps : [1]; // At least 1 step
     }
