@@ -502,7 +502,7 @@
         <header>
             <h1>Color Block Jam - Brute-Force Visualizer</h1>
             <p class="subtitle">
-                v1.8.15 | Analyze and visualize level solutions | 
+                v1.8.16 | Analyze and visualize level solutions | 
                 Game Engine: <span id="gameEngineVersion">v1.0.0</span> |
                 <a href="../../docs/BRUTE_FORCE.md" target="_blank" style="color: var(--primary); text-decoration: none;">📋 Docs & Changelog</a>
             </p>
@@ -684,7 +684,7 @@
     let currentSource = 'dev';
     
     // Game Engine version (sync with game_models.dart)
-    const GAME_ENGINE_VERSION = 'v1.8.15';
+    const GAME_ENGINE_VERSION = 'v1.8.16';
     
     const COLORS = [
         '#03a5ef', // 0 Blue
@@ -1138,20 +1138,29 @@
      * Check if block cells are aligned with door cells
      */
     function checkAlignment(blockCells, doorCells, edge, state) {
+        const exitThreshold = Math.ceil(blockCells.length / 2); // 50% rounded up
+        let alignedCells = 0;
+        
         if (edge === 'top' || edge === 'bottom') {
             // For top/bottom doors, check column alignment
-            const blockCols = blockCells.map(c => c.col).sort((a, b) => a - b);
-            const doorCols = doorCells.map(c => c.col).sort((a, b) => a - b);
-            
-            // Block columns must be subset of door columns (or overlap enough)
-            return blockCols.every(col => doorCols.includes(col));
-        } else {
+            const doorCols = doorCells.map(c => c.col);
+            for (const cell of blockCells) {
+                if (doorCols.includes(cell.col)) {
+                    alignedCells++;
+                }
+            }
+            } else {
             // For left/right doors, check row alignment
-            const blockRows = blockCells.map(c => c.row).sort((a, b) => a - b);
-            const doorRows = doorCells.map(c => c.row).sort((a, b) => a - b);
-            
-            return blockRows.every(row => doorRows.includes(row));
+            const doorRows = doorCells.map(c => c.row);
+            for (const cell of blockCells) {
+                if (doorRows.includes(cell.row)) {
+                    alignedCells++;
+                }
+            }
         }
+        
+        // Block is aligned if 50%+ cells are in door range
+        return alignedCells >= exitThreshold;
     }
 
     function getPossibleMoves(state) {
@@ -1740,7 +1749,7 @@
                         state = newState;
                         actualSteps++;
                         statesExplored++;
-                    } else {
+                                    } else {
                         break;
                     }
                 }
@@ -1789,7 +1798,7 @@
                 const moves = getPossibleMoves(current.state);
                 
                 let addedCount = 0;
-                for (const move of moves) {
+            for (const move of moves) {
                     // Get all valid step counts (including stops at doors)
                     const validStepCounts = getValidStepCounts(current.state, move.blockIndex, move.direction);
                     
@@ -1809,8 +1818,8 @@
                         if (actualSteps === 0) continue;
                         
                         const key = stateKey(testState);
-                        if (!visited.has(key)) {
-                            visited.add(key);
+                if (!visited.has(key)) {
+                    visited.add(key);
                             // Count as 1 move regardless of steps, but store steps for visualization
                             const moveWithSteps = { ...move, steps: actualSteps };
                             const newPath = [...current.path, moveWithSteps];
@@ -1827,11 +1836,11 @@
                     }
                 }
             }
-            
-            return {
-                isSolvable: false,
-                statesExplored,
-                searchTime: performance.now() - startTime,
+        
+        return {
+            isSolvable: false,
+            statesExplored,
+            searchTime: performance.now() - startTime,
                 error: statesExplored >= limit ? 'Max states reached' : 'No solution',
                 partialSolution: maxExitedPath.length > 0 ? maxExitedPath : null,
                 maxExitedBlocks
@@ -2506,7 +2515,7 @@
         let md = `# Brute-Force Analysis Results\n\n`;
         md += `**Generated:** ${new Date().toLocaleString()}\n`;
         md += `**Source:** ${currentSource.toUpperCase()}\n`;
-        md += `**Version:** v1.8.15\n\n`;
+        md += `**Version:** v1.8.16\n\n`;
         md += `## Summary\n\n`;
         md += `- **Total Levels:** ${results.length}\n`;
         md += `- **Solvable:** ${solved} ✅\n`;
@@ -2761,7 +2770,7 @@
 </head>
 <body>
     <h1>🎮 Brute-Force Analysis Results</h1>
-    <p>Generated: ${new Date().toLocaleString()} | Source: ${currentSource.toUpperCase()} | Version: v1.8.15</p>
+    <p>Generated: ${new Date().toLocaleString()} | Source: ${currentSource.toUpperCase()} | Version: v1.8.16</p>
     
     <div class="summary">
         <h2>📊 Summary</h2>
