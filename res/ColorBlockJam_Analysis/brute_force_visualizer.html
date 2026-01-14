@@ -502,7 +502,7 @@
         <header>
             <h1>Color Block Jam - Brute-Force Visualizer</h1>
             <p class="subtitle">
-                v1.8.20-debug | Analyze and visualize level solutions | 
+                v1.8.21-debug | Analyze and visualize level solutions | 
                 Game Engine: <span id="gameEngineVersion">v1.0.0</span> |
                 <a href="../../docs/BRUTE_FORCE.md" target="_blank" style="color: var(--primary); text-decoration: none;">📋 Docs & Changelog</a>
             </p>
@@ -684,7 +684,7 @@
     let currentSource = 'dev';
     
     // Game Engine version (sync with game_models.dart)
-    const GAME_ENGINE_VERSION = 'v1.8.20-debug';
+    const GAME_ENGINE_VERSION = 'v1.8.21-debug';
     
     const COLORS = [
         '#03a5ef', // 0 Blue
@@ -1139,15 +1139,19 @@
      */
     function checkAlignment(blockCells, doorCells, edge, state) {
         if (edge === 'top' || edge === 'bottom') {
-            // For top/bottom doors: ALL UNIQUE block columns must be within door columns
+            // For top/bottom doors: 50%+ UNIQUE block columns must be within door columns
             const doorCols = doorCells.map(c => c.col);
             const uniqueBlockCols = [...new Set(blockCells.map(c => c.col))];
-            return uniqueBlockCols.every(col => doorCols.includes(col));
+            const alignedCols = uniqueBlockCols.filter(col => doorCols.includes(col));
+            const threshold = Math.ceil(uniqueBlockCols.length / 2);
+            return alignedCols.length >= threshold;
         } else {
-            // For left/right doors: ALL UNIQUE block rows must be within door rows
+            // For left/right doors: 50%+ UNIQUE block rows must be within door rows
             const doorRows = doorCells.map(c => c.row);
             const uniqueBlockRows = [...new Set(blockCells.map(c => c.row))];
-            return uniqueBlockRows.every(row => doorRows.includes(row));
+            const alignedRows = uniqueBlockRows.filter(row => doorRows.includes(row));
+            const threshold = Math.ceil(uniqueBlockRows.length / 2);
+            return alignedRows.length >= threshold;
         }
     }
 
@@ -1301,33 +1305,33 @@
         const blockType = block.outerLayerDestroyed ? block.innerBlockType : block.blockType;
         
         if (door.edge === 'bottom' || door.edge === 'top') {
-            // For vertical movement (up/down): ALL UNIQUE columns must be within door
+            // For vertical movement (up/down): 50%+ of UNIQUE columns must be within door
             const doorStartCol = door.startCol;
             const doorEndCol = door.startCol + door.partCount - 1;
             const uniqueCols = [...new Set(cells.map(c => c.col))];
-            console.log(`[canBlockExitThroughDoor] Block type=${blockType} at (${block.gridRow},${block.gridCol}), door=${door.edge} cols ${doorStartCol}-${doorEndCol}, uniqueCols=[${uniqueCols}], cells=${JSON.stringify(cells)}`);
-            for (const col of uniqueCols) {
-                if (col < doorStartCol || col > doorEndCol) {
-                    console.log(`[canBlockExitThroughDoor] FAIL: col ${col} outside door range`);
-                    return false; // This column is outside door range
-                }
+            const alignedCols = uniqueCols.filter(col => col >= doorStartCol && col <= doorEndCol);
+            const threshold = Math.ceil(uniqueCols.length / 2);
+            console.log(`[canBlockExitThroughDoor] Block type=${blockType} at (${block.gridRow},${block.gridCol}), door=${door.edge} cols ${doorStartCol}-${doorEndCol}, uniqueCols=[${uniqueCols}], alignedCols=[${alignedCols}], threshold=${threshold}`);
+            if (alignedCols.length < threshold) {
+                console.log(`[canBlockExitThroughDoor] FAIL: only ${alignedCols.length}/${uniqueCols.length} cols aligned (need ${threshold})`);
+                return false;
             }
         } else if (door.edge === 'left' || door.edge === 'right') {
-            // For horizontal movement (left/right): ALL UNIQUE rows must be within door
+            // For horizontal movement (left/right): 50%+ of UNIQUE rows must be within door
             const doorStartRow = door.startRow;
             const doorEndRow = door.startRow + door.partCount - 1;
             const uniqueRows = [...new Set(cells.map(c => c.row))];
-            console.log(`[canBlockExitThroughDoor] Block type=${blockType} at (${block.gridRow},${block.gridCol}), door=${door.edge} rows ${doorStartRow}-${doorEndRow}, uniqueRows=[${uniqueRows}], cells=${JSON.stringify(cells)}`);
-            for (const row of uniqueRows) {
-                if (row < doorStartRow || row > doorEndRow) {
-                    console.log(`[canBlockExitThroughDoor] FAIL: row ${row} outside door range`);
-                    return false; // This row is outside door range
-                }
+            const alignedRows = uniqueRows.filter(row => row >= doorStartRow && row <= doorEndRow);
+            const threshold = Math.ceil(uniqueRows.length / 2);
+            console.log(`[canBlockExitThroughDoor] Block type=${blockType} at (${block.gridRow},${block.gridCol}), door=${door.edge} rows ${doorStartRow}-${doorEndRow}, uniqueRows=[${uniqueRows}], alignedRows=[${alignedRows}], threshold=${threshold}`);
+            if (alignedRows.length < threshold) {
+                console.log(`[canBlockExitThroughDoor] FAIL: only ${alignedRows.length}/${uniqueRows.length} rows aligned (need ${threshold})`);
+                return false;
             }
         }
         
         console.log(`[canBlockExitThroughDoor] SUCCESS: block aligned with door`);
-        // All unique rows/cols are within door range
+        // 50%+ unique rows/cols are within door range
         return true;
     }
 
