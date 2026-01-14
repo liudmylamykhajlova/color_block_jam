@@ -1697,16 +1697,25 @@
             }
             
             // Check if block is now aligned with a door (can exit on next move)
-            const blockType = newBlock.outerLayerDestroyed ? newBlock.innerBlockType : newBlock.blockType;
-            const doors = getAllDoorsForType(newState, blockType);
-            for (const door of doors) {
-                if (canBlockExitThroughDoor(newState, newBlock, door, direction)) {
-                    // Block is aligned with door - add as valid stop
-                    if (!validSteps.includes(steps)) {
-                        validSteps.push(steps);
+            // For multi-layer blocks: DON'T stop at "aligned" - must continue until layer is removed
+            const currentHasOuterLayer = newBlock.innerBlockType >= 0 && 
+                                         newBlock.innerBlockType <= 9 && 
+                                         !newBlock.outerLayerDestroyed;
+            
+            if (!currentHasOuterLayer) {
+                // Single-layer block: aligned with door = valid stop
+                const blockType = newBlock.outerLayerDestroyed ? newBlock.innerBlockType : newBlock.blockType;
+                const doors = getAllDoorsForType(newState, blockType);
+                for (const door of doors) {
+                    if (canBlockExitThroughDoor(newState, newBlock, door, direction)) {
+                        // Block is aligned with door - add as valid stop
+                        if (!validSteps.includes(steps)) {
+                            validSteps.push(steps);
+                        }
                     }
                 }
             }
+            // Multi-layer blocks continue swiping until layer is removed (handled above in lines 1691-1697)
             
             testState = newState;
         }
