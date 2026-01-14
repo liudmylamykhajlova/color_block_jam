@@ -2241,6 +2241,17 @@
             }
         }
         
+        // Debug: log position of all blocks after this step
+        console.log(`[goToStep ${step + 1}] Block positions:`);
+        gameState.blocks.forEach((block, idx) => {
+            if (!gameState.exitedBlocks.has(idx)) {
+                const cells = getBlockCells(block, gameState.gridHeight);
+                const uniqueRows = [...new Set(cells.map(c => c.row))].sort((a,b) => a-b);
+                const uniqueCols = [...new Set(cells.map(c => c.col))].sort((a,b) => a-b);
+                console.log(`  Block ${idx}: type=${block.blockType} gt=${block.blockGroupType} at (${block.gridRow},${block.gridCol}) rows=[${uniqueRows}] cols=[${uniqueCols}] outerDestroyed=${block.outerLayerDestroyed || false}`);
+            }
+        });
+        
         currentStep = step;
         render();
         
