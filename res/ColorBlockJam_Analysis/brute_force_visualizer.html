@@ -502,7 +502,7 @@
         <header>
             <h1>Color Block Jam - Brute-Force Visualizer</h1>
             <p class="subtitle">
-                v1.8.20 | Analyze and visualize level solutions | 
+                v1.8.20-debug | Analyze and visualize level solutions | 
                 Game Engine: <span id="gameEngineVersion">v1.0.0</span> |
                 <a href="../../docs/BRUTE_FORCE.md" target="_blank" style="color: var(--primary); text-decoration: none;">📋 Docs & Changelog</a>
             </p>
@@ -684,7 +684,7 @@
     let currentSource = 'dev';
     
     // Game Engine version (sync with game_models.dart)
-    const GAME_ENGINE_VERSION = 'v1.8.20';
+    const GAME_ENGINE_VERSION = 'v1.8.20-debug';
     
     const COLORS = [
         '#03a5ef', // 0 Blue
@@ -1298,14 +1298,17 @@
      */
     function canBlockExitThroughDoor(state, block, door, direction) {
         const cells = getBlockCells(block, state.gridHeight);
+        const blockType = block.outerLayerDestroyed ? block.innerBlockType : block.blockType;
         
         if (door.edge === 'bottom' || door.edge === 'top') {
             // For vertical movement (up/down): ALL UNIQUE columns must be within door
             const doorStartCol = door.startCol;
             const doorEndCol = door.startCol + door.partCount - 1;
             const uniqueCols = [...new Set(cells.map(c => c.col))];
+            console.log(`[canBlockExitThroughDoor] Block type=${blockType}, door=${door.edge} cols ${doorStartCol}-${doorEndCol}, uniqueCols=[${uniqueCols}]`);
             for (const col of uniqueCols) {
                 if (col < doorStartCol || col > doorEndCol) {
+                    console.log(`[canBlockExitThroughDoor] FAIL: col ${col} outside door range`);
                     return false; // This column is outside door range
                 }
             }
@@ -1314,13 +1317,16 @@
             const doorStartRow = door.startRow;
             const doorEndRow = door.startRow + door.partCount - 1;
             const uniqueRows = [...new Set(cells.map(c => c.row))];
+            console.log(`[canBlockExitThroughDoor] Block type=${blockType}, door=${door.edge} rows ${doorStartRow}-${doorEndRow}, uniqueRows=[${uniqueRows}]`);
             for (const row of uniqueRows) {
                 if (row < doorStartRow || row > doorEndRow) {
+                    console.log(`[canBlockExitThroughDoor] FAIL: row ${row} outside door range`);
                     return false; // This row is outside door range
                 }
             }
         }
         
+        console.log(`[canBlockExitThroughDoor] SUCCESS: block aligned with door`);
         // All unique rows/cols are within door range
         return true;
     }
@@ -1446,11 +1452,15 @@
         // 2. At least 1 cell touches/reaches the door position
         // This matches game behavior: fully aligned block exits when ANY part touches door
         const willExit = blockCanExitThroughDoor && (exitingCells > 0);
+        
+        console.log(`[applyMove] Block ${move.blockIndex} type=${blockType} dir=${move.direction}: exitingCells=${exitingCells}, blockedCells=${blockedCells}, canExitThroughDoor=${blockCanExitThroughDoor}, willExit=${willExit}, hasOuterLayer=${hasOuterLayer}`);
             
             if (willExit) {
+            console.log(`[applyMove] Block ${move.blockIndex} WILL EXIT! hasOuterLayer=${hasOuterLayer}`);
             if (hasOuterLayer) {
                 // Outer layer is destroyed, but block stays on field (doesn't move into door)
                 // Block remains at current position, only outer layer is removed
+                console.log(`[applyMove] Removing outer layer from block ${move.blockIndex}`);
                     block.outerLayerDestroyed = true;
                 } else {
                 // Block actually exits - move it and mark as exited
