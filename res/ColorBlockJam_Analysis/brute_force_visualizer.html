@@ -1066,6 +1066,13 @@
         if (state.exitedBlocks.has(blockIndex)) return null;
         if ((block.iceCount || 0) > 0) return null;
         
+        // Multi-layer blocks with outer layer intact need 2 moves (remove layer + exit)
+        // They don't have a "direct path" - handle them in Phase 2 (A*)
+        const hasOuterLayer = block.innerBlockType >= 0 && 
+                              block.innerBlockType <= 9 && 
+                              !block.outerLayerDestroyed;
+        if (hasOuterLayer) return null;
+        
         const blockType = block.outerLayerDestroyed ? block.innerBlockType : block.blockType;
         const cells = getBlockCells(block, state.gridHeight);
         
@@ -1689,22 +1696,13 @@
             }
             
             // Check if block is now aligned with a door (can exit on next move)
-            // For multi-layer blocks: DON'T stop at "aligned" position - swipe continues until layer is removed
             const blockType = newBlock.outerLayerDestroyed ? newBlock.innerBlockType : newBlock.blockType;
-            const currentHasOuterLayer = newBlock.innerBlockType >= 0 && 
-                                         newBlock.innerBlockType <= 9 && 
-                                         !newBlock.outerLayerDestroyed;
-            
-            // Only add "aligned with door" as valid stop for single-layer blocks
-            // Multi-layer blocks must continue until layer is removed
-            if (!currentHasOuterLayer) {
-                const doors = getAllDoorsForType(newState, blockType);
-                for (const door of doors) {
-                    if (canBlockExitThroughDoor(newState, newBlock, door, direction)) {
-                        // Block is aligned with door - add as valid stop
-                        if (!validSteps.includes(steps)) {
-                            validSteps.push(steps);
-                        }
+            const doors = getAllDoorsForType(newState, blockType);
+            for (const door of doors) {
+                if (canBlockExitThroughDoor(newState, newBlock, door, direction)) {
+                    // Block is aligned with door - add as valid stop
+                    if (!validSteps.includes(steps)) {
+                        validSteps.push(steps);
                     }
                 }
             }
