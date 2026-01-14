@@ -1305,7 +1305,7 @@
             const doorStartCol = door.startCol;
             const doorEndCol = door.startCol + door.partCount - 1;
             const uniqueCols = [...new Set(cells.map(c => c.col))];
-            console.log(`[canBlockExitThroughDoor] Block type=${blockType}, door=${door.edge} cols ${doorStartCol}-${doorEndCol}, uniqueCols=[${uniqueCols}]`);
+            console.log(`[canBlockExitThroughDoor] Block type=${blockType} at (${block.gridRow},${block.gridCol}), door=${door.edge} cols ${doorStartCol}-${doorEndCol}, uniqueCols=[${uniqueCols}], cells=${JSON.stringify(cells)}`);
             for (const col of uniqueCols) {
                 if (col < doorStartCol || col > doorEndCol) {
                     console.log(`[canBlockExitThroughDoor] FAIL: col ${col} outside door range`);
@@ -1317,7 +1317,7 @@
             const doorStartRow = door.startRow;
             const doorEndRow = door.startRow + door.partCount - 1;
             const uniqueRows = [...new Set(cells.map(c => c.row))];
-            console.log(`[canBlockExitThroughDoor] Block type=${blockType}, door=${door.edge} rows ${doorStartRow}-${doorEndRow}, uniqueRows=[${uniqueRows}]`);
+            console.log(`[canBlockExitThroughDoor] Block type=${blockType} at (${block.gridRow},${block.gridCol}), door=${door.edge} rows ${doorStartRow}-${doorEndRow}, uniqueRows=[${uniqueRows}], cells=${JSON.stringify(cells)}`);
             for (const row of uniqueRows) {
                 if (row < doorStartRow || row > doorEndRow) {
                     console.log(`[canBlockExitThroughDoor] FAIL: row ${row} outside door range`);
