@@ -1715,22 +1715,13 @@
             }
             
             // Check if block is now aligned with a door (can exit on next move)
-            // For multi-layer blocks with intact outer layer: DON'T stop at "aligned" position
-            // They should continue until layer is removed (in one swipe)
-            const currentHasOuterLayer = newBlock.innerBlockType >= 0 && 
-                                         newBlock.innerBlockType <= 9 && 
-                                         !newBlock.outerLayerDestroyed;
-            
-            if (!currentHasOuterLayer) {
-                // Only add "aligned" as valid stop for single-layer blocks or blocks that already shed layer
-                const blockType = newBlock.outerLayerDestroyed ? newBlock.innerBlockType : newBlock.blockType;
-                const doors = getAllDoorsForType(newState, blockType);
-                for (const door of doors) {
-                    if (canBlockExitThroughDoor(newState, newBlock, door, direction)) {
-                        // Block is aligned with door - add as valid stop
-                        if (!validSteps.includes(steps)) {
-                            validSteps.push(steps);
-                        }
+            const blockType = newBlock.outerLayerDestroyed ? newBlock.innerBlockType : newBlock.blockType;
+            const doors = getAllDoorsForType(newState, blockType);
+            for (const door of doors) {
+                if (canBlockExitThroughDoor(newState, newBlock, door, direction)) {
+                    // Block is aligned with door - add as valid stop
+                    if (!validSteps.includes(steps)) {
+                        validSteps.push(steps);
                     }
                 }
             }
