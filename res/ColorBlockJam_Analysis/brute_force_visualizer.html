@@ -1613,11 +1613,23 @@
      */
     function heuristic(state) {
         let totalDistance = 0;
-                        for (let i = 0; i < state.blocks.length; i++) {
+        let multiLayerPenalty = 0;
+        
+        for (let i = 0; i < state.blocks.length; i++) {
             if (state.exitedBlocks.has(i)) continue;
             
             const block = state.blocks[i];
-                                const blockType = block.outerLayerDestroyed ? block.innerBlockType : block.blockType;
+            
+            // Multi-layer blocks with outer layer still intact need 2 moves (remove layer + exit)
+            // Add penalty to encourage exploring states where layers are already removed
+            const hasOuterLayer = block.innerBlockType >= 0 && 
+                                  block.innerBlockType <= 9 && 
+                                  !block.outerLayerDestroyed;
+            if (hasOuterLayer) {
+                multiLayerPenalty += 1; // Each intact layer adds 1 to heuristic
+            }
+            
+            const blockType = block.outerLayerDestroyed ? block.innerBlockType : block.blockType;
             const door = getDoorForType(state, blockType);
             if (!door) continue;
             
@@ -1661,7 +1673,7 @@
             }
             totalDistance += minDist === Infinity ? 10 : minDist;
         }
-        return totalDistance;
+        return totalDistance + multiLayerPenalty;
     }
     
     /**
