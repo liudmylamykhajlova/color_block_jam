@@ -917,7 +917,7 @@
         // Duration & Hardness
         const duration = currentLevel.duration || currentLevel.levelDuration || '-';
         const hardness = currentLevel.hardness ?? currentLevel.levelHardness ?? '-';
-        const hardnessLabels = {0: 'Easy', 1: 'Normal', 2: 'Hard'};
+        const hardnessLabels = {0: 'Normal', 1: 'Hard', 2: 'Very Hard'};
         const hardnessText = typeof hardness === 'number' ? hardnessLabels[hardness] || hardness : hardness;
         
         // Special blocks
