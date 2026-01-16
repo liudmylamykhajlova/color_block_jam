@@ -684,7 +684,10 @@
     let currentSource = 'dev';
     
     // Game Engine version (sync with game_models.dart)
-    const GAME_ENGINE_VERSION = 'v1.8.22-debug';
+    const GAME_ENGINE_VERSION = 'v1.8.27';
+    
+    // Debug mode - set to true to enable console logging
+    const DEBUG = false;
     
     const COLORS = [
         '#03a5ef', // 0 Blue
@@ -1312,10 +1315,10 @@
             const doorStartCol = door.startCol;
             const doorEndCol = door.startCol + door.partCount - 1;
             const uniqueCols = [...new Set(cells.map(c => c.col))];
-            console.log(`[canBlockExitThroughDoor] Block type=${blockType} gt=${block.blockGroupType} at (${block.gridRow},${block.gridCol}), door=${door.edge} cols ${doorStartCol}-${doorEndCol}, uniqueCols=[${uniqueCols}], cells=${JSON.stringify(cells)}`);
+            DEBUG && console.log(`[canBlockExitThroughDoor] Block type=${blockType} gt=${block.blockGroupType} at (${block.gridRow},${block.gridCol}), door=${door.edge} cols ${doorStartCol}-${doorEndCol}, uniqueCols=[${uniqueCols}], cells=${JSON.stringify(cells)}`);
             for (const col of uniqueCols) {
                 if (col < doorStartCol || col > doorEndCol) {
-                    console.log(`[canBlockExitThroughDoor] FAIL: col ${col} outside door range`);
+                    DEBUG && console.log(`[canBlockExitThroughDoor] FAIL: col ${col} outside door range`);
                     return false;
                 }
             }
@@ -1324,16 +1327,16 @@
             const doorStartRow = door.startRow;
             const doorEndRow = door.startRow + door.partCount - 1;
             const uniqueRows = [...new Set(cells.map(c => c.row))];
-            console.log(`[canBlockExitThroughDoor] Block type=${blockType} gt=${block.blockGroupType} at (${block.gridRow},${block.gridCol}), door=${door.edge} rows ${doorStartRow}-${doorEndRow}, uniqueRows=[${uniqueRows}], cells=${JSON.stringify(cells)}`);
+            DEBUG && console.log(`[canBlockExitThroughDoor] Block type=${blockType} gt=${block.blockGroupType} at (${block.gridRow},${block.gridCol}), door=${door.edge} rows ${doorStartRow}-${doorEndRow}, uniqueRows=[${uniqueRows}], cells=${JSON.stringify(cells)}`);
             for (const row of uniqueRows) {
                 if (row < doorStartRow || row > doorEndRow) {
-                    console.log(`[canBlockExitThroughDoor] FAIL: row ${row} outside door range`);
+                    DEBUG && console.log(`[canBlockExitThroughDoor] FAIL: row ${row} outside door range`);
                     return false;
                 }
             }
         }
         
-        console.log(`[canBlockExitThroughDoor] SUCCESS: block aligned with door`);
+        DEBUG && console.log(`[canBlockExitThroughDoor] SUCCESS: block aligned with door`);
         // All unique rows/cols are within door range
         return true;
     }
@@ -1461,14 +1464,14 @@
         // This matches game behavior: fully aligned block exits when ANY part touches door AND path is clear
         const willExit = blockCanExitThroughDoor && (exitingCells > 0) && (blockedCells === 0);
         
-        console.log(`[applyMove] Block ${move.blockIndex} type=${blockType} dir=${move.direction}: exitingCells=${exitingCells}, blockedCells=${blockedCells}, canExitThroughDoor=${blockCanExitThroughDoor}, willExit=${willExit}, hasOuterLayer=${hasOuterLayer}`);
+        DEBUG && console.log(`[applyMove] Block ${move.blockIndex} type=${blockType} dir=${move.direction}: exitingCells=${exitingCells}, blockedCells=${blockedCells}, canExitThroughDoor=${blockCanExitThroughDoor}, willExit=${willExit}, hasOuterLayer=${hasOuterLayer}`);
             
             if (willExit) {
-            console.log(`[applyMove] Block ${move.blockIndex} WILL EXIT! hasOuterLayer=${hasOuterLayer}`);
+            DEBUG && console.log(`[applyMove] Block ${move.blockIndex} WILL EXIT! hasOuterLayer=${hasOuterLayer}`);
             if (hasOuterLayer) {
                 // Outer layer is destroyed, but block stays on field (doesn't move into door)
                 // Block remains at current position, only outer layer is removed
-                console.log(`[applyMove] Removing outer layer from block ${move.blockIndex}`);
+                DEBUG && console.log(`[applyMove] Removing outer layer from block ${move.blockIndex}`);
                     block.outerLayerDestroyed = true;
                 } else {
                 // Block actually exits - move it and mark as exited
@@ -1695,7 +1698,7 @@
         while (steps < 20) { // Safety limit
             const newState = applyMove(testState, { blockIndex, direction });
             if (!newState) {
-                if (isBlock0) console.log(`[getValidStepCounts] Block 0 dir=${direction}: stopped at step ${steps} (applyMove returned null)`);
+                if (DEBUG && isBlock0) console.log(`[getValidStepCounts] Block 0 dir=${direction}: stopped at step ${steps} (applyMove returned null)`);
                 break;
             }
             steps++;
@@ -1750,7 +1753,7 @@
             validSteps.push(steps);
         }
         
-        if (isBlock0) console.log(`[getValidStepCounts] Block 0 dir=${direction}: validSteps=[${validSteps.join(',')}], exitedBlocks=[${[...state.exitedBlocks].join(',')}]`);
+        if (DEBUG && isBlock0) console.log(`[getValidStepCounts] Block 0 dir=${direction}: validSteps=[${validSteps.join(',')}], exitedBlocks=[${[...state.exitedBlocks].join(',')}]`);
         
         return validSteps.length > 0 ? validSteps : [1]; // At least 1 step
     }
@@ -1829,7 +1832,7 @@
                 
                 // Debug: log when exploring state with Block 0's outer layer destroyed
                 if (current.state.blocks[0].outerLayerDestroyed && !current.state.exitedBlocks.has(0)) {
-                    console.log(`[A*] Exploring state with Block 0 outerLayerDestroyed=true, pos=(${current.state.blocks[0].gridRow},${current.state.blocks[0].gridCol}), iteration=${iterations}`);
+                    DEBUG && console.log(`[A*] Exploring state with Block 0 outerLayerDestroyed=true, pos=(${current.state.blocks[0].gridRow},${current.state.blocks[0].gridCol}), iteration=${iterations}`);
                 }
                 
                 if (current.state.exitedBlocks.size === current.state.blocks.length) {
@@ -1876,7 +1879,7 @@
                             
                             // Debug: log when Block 0's outer layer was just destroyed
                             if (move.blockIndex === 0 && testState.blocks[0].outerLayerDestroyed && !current.state.blocks[0].outerLayerDestroyed) {
-                                console.log(`[A*] Block 0 outer layer destroyed! Added to queue. Key: ${key}, Score: ${newScore}, Path length: ${newPath.length}`);
+                                DEBUG && console.log(`[A*] Block 0 outer layer destroyed! Added to queue. Key: ${key}, Score: ${newScore}, Path length: ${newPath.length}`);
                             }
                             
                             // Track best partial solution
@@ -2296,7 +2299,7 @@
         }
         
         // Debug: log position of all blocks after this step
-        console.log(`[goToStep ${step + 1}] Block positions:`);
+        DEBUG && console.log(`[goToStep ${step + 1}] Block positions:`);
         gameState.blocks.forEach((block, idx) => {
             if (!gameState.exitedBlocks.has(idx)) {
                 const cells = getBlockCells(block, gameState.gridHeight);
@@ -2501,7 +2504,7 @@
     }
 
     // ============ SETTINGS ============
-    let maxStates = 30000;
+    let maxStates = 50000;
     
     function toggleSettings() {
         const panel = document.getElementById('settingsPanel');
