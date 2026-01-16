@@ -1799,6 +1799,11 @@
                 statesExplored++;
                 iterations++;
                 
+                // Debug: log when exploring state with Block 0's outer layer destroyed
+                if (current.state.blocks[0].outerLayerDestroyed && !current.state.exitedBlocks.has(0)) {
+                    console.log(`[A*] Exploring state with Block 0 outerLayerDestroyed=true, pos=(${current.state.blocks[0].gridRow},${current.state.blocks[0].gridCol}), iteration=${iterations}`);
+                }
+                
                 if (current.state.exitedBlocks.size === current.state.blocks.length) {
                     return {
                         isSolvable: true,
@@ -1840,6 +1845,11 @@
                             const newScore = newPath.length + heuristic(testState);
                             queue.push({state: testState, path: newPath, score: newScore});
                             addedCount++;
+                            
+                            // Debug: log when Block 0's outer layer was just destroyed
+                            if (move.blockIndex === 0 && testState.blocks[0].outerLayerDestroyed && !current.state.blocks[0].outerLayerDestroyed) {
+                                console.log(`[A*] Block 0 outer layer destroyed! Added to queue. Key: ${key}, Score: ${newScore}, Path length: ${newPath.length}`);
+                            }
                             
                             // Track best partial solution
                             if (testState.exitedBlocks.size > maxExitedBlocks) {
