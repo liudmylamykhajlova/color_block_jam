@@ -1,7 +1,7 @@
-# Color Block Jam - Програма Brute-Force v1.1.1
+# Color Block Jam - Програма Brute-Force v1.8.27
 
-> **Version:** 1.1.1  
-> **Date:** 2025-01-07  
+> **Version:** 1.8.27  
+> **Date:** 2026-01-16  
 > **Author:** Level Design Team
 
 ---
@@ -127,7 +127,7 @@ http://localhost:8080/res/ColorBlockJam_Analysis/brute_force_visualizer.html
 
 | # | Елемент | Опис |
 |---|---------|------|
-| 1 | **Версія** | v1.1.1 в header + посилання "Docs & Changelog" |
+| 1 | **Версія** | v1.8.27 в header + посилання "Docs & Changelog" |
 | 2 | **Source Selector** | Вибір джерела: DEV (локальні) / PROD (assets) |
 | 3 | **Status Bar** | Статус завантаження рівнів |
 | 4 | **Level List** | Список всіх рівнів з індикацією статусу |
@@ -147,7 +147,7 @@ http://localhost:8080/res/ColorBlockJam_Analysis/brute_force_visualizer.html
 
 #### 1. Версія та Changelog
 
-- Версія відображається в header: `v1.1.1`
+- Версія відображається в header: `v1.8.27`
 - Посилання "📋 Docs & Changelog" веде на цю документацію
 - Changelog знаходиться в кінці документа
 
@@ -330,36 +330,67 @@ Source: [DEV▼]  [🔄 Reload]
 
 ## Алгоритм
 
-### BFS (Breadth-First Search)
+### Двофазний підхід: Greedy + A*
 
-Програма використовує BFS для пошуку найкоротшого шляху (мінімальна кількість ходів).
+Програма використовує комбінований алгоритм для оптимального пошуку рішення:
+
+#### Phase 1: Greedy (жадібний пошук)
+- Знаходить блоки з "прямим шляхом" до виходу (без перешкод)
+- Виводить їх першими для швидкого спрощення рівня
+- **Multi-layer блоки пропускаються** в цій фазі (потребують 2 ходи)
+
+#### Phase 2: A* (евристичний пошук)
+- Для решти блоків використовується A* з пріоритетною чергою
+- **Евристика** враховує:
+  - Відстань кожного блока до його дверей
+  - Penalty для multi-layer блоків з intact outer layer (+1 за кожен)
+- Це дозволяє пріоритизувати стани де multi-layer блоки прогресують
 
 ```javascript
 function solve(level, maxStates = 50000) {
-    const initialState = createState(level);
-    const queue = [{state: initialState, path: []}];
-    const visited = new Set([stateKey(initialState)]);
+    let state = createState(level);
+    const path = [];
     
-    while (queue.length > 0 && statesExplored < maxStates) {
-        const {state, path} = queue.shift();
-        
-        // Перевірка перемоги
-        if (state.exitedBlocks.size === state.blocks.length) {
-            return { isSolvable: true, minMoves: path.length, solution: path };
-        }
-        
-        // Генерація можливих ходів
-        for (const move of getPossibleMoves(state)) {
-            const newState = applyMove(state, move);
-            const key = stateKey(newState);
-            if (!visited.has(key)) {
-                visited.add(key);
-                queue.push({state: newState, path: [...path, move]});
-            }
+    // Phase 1: Greedy - exit blocks with direct paths
+    while (progress) {
+        const directPaths = findBlocksWithDirectPath(state);
+        if (directPaths.length > 0) {
+            applyBestDirectPath(state, path);
         }
     }
     
-    return { isSolvable: false, error: 'Max states reached' };
+    // Phase 2: A* for remaining blocks
+    if (state.exitedBlocks.size < state.blocks.length) {
+        const queue = [{state, path, score: heuristic(state)}];
+        const visited = new Set([stateKey(state)]);
+        
+        while (queue.length > 0 && statesExplored < maxStates) {
+            queue.sort((a, b) => a.score - b.score); // Priority by score
+            const current = queue.shift();
+            
+            if (allBlocksExited(current.state)) {
+                return { isSolvable: true, solution: current.path };
+            }
+            
+            for (const move of getPossibleMoves(current.state)) {
+                // ... generate new states
+            }
+        }
+    }
+}
+
+function heuristic(state) {
+    let totalDistance = 0;
+    let multiLayerPenalty = 0;
+    
+    for (const block of state.blocks) {
+        if (hasIntactOuterLayer(block)) {
+            multiLayerPenalty += 1; // Encourage removing layers
+        }
+        totalDistance += distanceToDoor(block);
+    }
+    
+    return totalDistance + multiLayerPenalty;
 }
 ```
 
@@ -441,7 +472,7 @@ function applyMove(state, move) {
 | Doors | Кількість дверей | 4 |
 | Colors | Унікальних кольорів | 4 |
 | Duration ⏱️ | Час на рівень | 120s |
-| Hardness 📊 | Складність | Easy/Normal/Hard |
+| Hardness 📊 | Складність | Normal/Hard/Very Hard |
 | Frozen ❄️ | Заморожені блоки | 2 |
 | Multi-layer 🔲 | Двошарові блоки | 1 |
 | H-only ↔️ | Горизонтальний рух | 3 |
@@ -625,8 +656,8 @@ Generated: 2025-01-06 12:00:00
 |-----------|----------|--------------|------------|----------|
 | **Tutorial** | 0 | 3-5 | <1,000 | <1s |
 | **Relief** | 0 | 4-6 | <5,000 | <5s |
-| **Normal** | 1 | 6-10 | <20,000 | <15s |
-| **Hard** | 2 | 8-15 | <50,000 | <30s |
+| **Normal** | 0 | 6-10 | <20,000 | <15s |
+| **Hard** | 1 | 8-15 | <50,000 | <30s |
 | **Very Hard** | 2 | 10-20 | <100,000 | <60s |
 
 ### Інтерпретація States Explored
@@ -718,6 +749,16 @@ Generated: 2025-01-06 12:00:00
 ---
 
 ## Changelog
+
+### v1.8.27 (2026-01-16)
+- ✅ Двофазний алгоритм: Phase 1 (Greedy) + Phase 2 (A* з евристикою)
+- ✅ Multi-layer блоки: правильна обробка зняття шарів
+- ✅ Heuristic penalty для multi-layer блоків з intact outer layer
+- ✅ Multi-layer блоки не зупиняються на "aligned" при свайпі до своїх дверей
+- ✅ stateKey включає outerLayerDestroyed для правильного відстеження станів
+- ✅ DEBUG флаг для вимкнення console логів (performance)
+- ✅ maxStates збільшено до 50,000
+- ✅ Hardness labels: Normal/Hard/Very Hard (замість Easy/Normal/Hard)
 
 ### v1.1.1 (2025-01-07)
 - ✅ Added "Continue Anyway" button when maxStates reached (C1)
